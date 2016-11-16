@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="InfoCategory">
+    <resultMap type="InfoCategory" id="InfoCategoryResultMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="InfoCategory">
+        insert into info_category
+        (name,parent_id,create_time,update_time)
+        VALUES
+        (#{name},#{parentId},#{createTime},#{updateTime})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+
+    <update id="update" parameterType="InfoCategory">
+        update info_category set name=#{name}, parent_id=#{parentId}, update_time=#{updateTime} where id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+		delete from info_category where id=#{id}
+	</delete>
+
+    <select id="select" parameterType="int" resultMap="InfoCategoryResultMap">
+		select id,name,parent_id,create_time,update_time
+		from info_category
+		where id=#{id}
+	</select>
+
+    <select id="findInfoCategoryByParentId" parameterType="int" resultMap="InfoCategoryResultMap">
+        select id,name,parent_id,create_time,update_time
+        from info_category
+        where parent_id=#{parentId}
+    </select>
+
+    <sql id="sql_count">
+        select count(1)
+    </sql>
+    <sql id="sql_select">
+        select id,name,parent_id,create_time,update_time
+    </sql>
+    <sql id="sql_where">
+        from info_category
+        <where>
+            <if test="parentId != null and parentId !=''">
+                AND parent_id = #{parentId}
+            </if>
+            <if test="name != null and name !=''">
+                AND name = #{name}
+            </if>
+        </where>
+    </sql>
+    <sql id="sql_order">
+        ORDER BY create_time ASC
+    </sql>
+
+    <select id="findByParams_count" parameterType="java.util.HashMap" resultType="int">
+        <include refid="sql_count" />
+        <include refid="sql_where" />
+    </select>
+    <select id="findByParams" parameterType="java.util.HashMap" resultMap="InfoCategoryResultMap">
+        <include refid="sql_select" />
+        <include refid="sql_where" />
+        <include refid="sql_order" />
+    </select>
+</mapper>

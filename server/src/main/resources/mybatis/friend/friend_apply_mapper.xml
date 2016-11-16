@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FriendApply">
+    <resultMap type="FriendApply" id="FriendApplyResultMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="friendId" column="friend_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="status" column="status"/>
+        <result property="msg" column="msg"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="FriendApply">
+        insert into friend_apply
+        (user_id,friend_id,create_time,update_time,status,msg)
+        VALUES
+        (#{userId},#{friendId},#{createTime},#{updateTime},#{status},#{msg})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+
+    <update id="agreeFriendApply" parameterType="Map">
+		update friend_apply set status=1 where id=#{id} and user_id=#{userId} and friend_id=#{friendId}
+	</update>
+
+    <update id="refuseFriendApply" parameterType="Map">
+        update friend_apply set status=-1 where id=#{id} and user_id=#{userId} and friend_id=#{friendId}
+    </update>
+
+    <select id="queryFriendApply" parameterType="int" resultMap="FriendApplyResultMap">
+		select id,user_id,friend_id,create_time,update_time,status,msg
+		from friend_apply
+		where user_id=#{userId} and status=0
+	</select>
+
+</mapper>

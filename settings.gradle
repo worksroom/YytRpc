@@ -1,0 +1,13 @@
+rootProject.name = 'YytRPC'
+
+include 'common'
+
+include 'client'
+
+include 'server'
+
+project(':common').projectDir = "$rootDir/common" as File
+
+project(':server').projectDir = "$rootDir/server" as File
+
+project(':client').projectDir = "$rootDir/client" as File
