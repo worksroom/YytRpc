@@ -35,198 +35,198 @@ drop table if exists user_third_bind;
 /*==============================================================*/
 create table ad
 (
-   id                   int not null auto_increment comment '¹ã¸æID',
-   ad_type              varchar(20) comment '¹ã¸æÀà±ğ',
-   img                  blob comment '¹ã¸æÍ¼Æ¬',
-   des                  varchar(2000) comment '¹ã¸æÃèÊö',
-   url                  varchar(200) comment 'Ìø×ªµØÖ·',
-   used                 int comment 'ÊÇ·ñÓĞĞ§£º0 ÓĞĞ§£¬-1 ÎŞĞ§',
-   create_time          timestamp comment '´´½¨Ê±¼ä',
+   id                   int not null auto_increment comment 'å¹¿å‘ŠID',
+   ad_type              varchar(20) comment 'å¹¿å‘Šç±»åˆ«',
+   img                  blob comment 'å¹¿å‘Šå›¾ç‰‡',
+   des                  varchar(2000) comment 'å¹¿å‘Šæè¿°',
+   url                  varchar(200) comment 'è·³è½¬åœ°å€',
+   used                 int comment 'æ˜¯å¦æœ‰æ•ˆï¼š0 æœ‰æ•ˆï¼Œ-1 æ— æ•ˆ',
+   create_time          timestamp comment 'åˆ›å»ºæ—¶é—´',
    primary key (id)
 );
 
-alter table ad comment '¹ã¸æ';
+alter table ad comment 'å¹¿å‘Š';
 
 /*==============================================================*/
 /* Table: ad_category                                           */
 /*==============================================================*/
 create table ad_category
 (
-   id                   varchar(20) not null comment '¹ã¸æÀà±ğID',
-   name                 varchar(50) comment '¹ã¸æÀà±ğÃû³Æ',
-   create_time          timestamp comment '´´½¨Ê±¼ä',
+   id                   varchar(20) not null comment 'å¹¿å‘Šç±»åˆ«ID',
+   name                 varchar(50) comment 'å¹¿å‘Šç±»åˆ«åç§°',
+   create_time          timestamp comment 'åˆ›å»ºæ—¶é—´',
    primary key (id)
 );
 
-alter table ad_category comment '¹ã¸æÀà±ğ';
+alter table ad_category comment 'å¹¿å‘Šç±»åˆ«';
 
 /*==============================================================*/
 /* Table: chat_record                                           */
 /*==============================================================*/
 create table chat_record
 (
-   id                   int not null auto_increment comment 'Ö÷¼ü',
-   session_id           int comment '»á»°ID',
-   user_id              int comment 'Ëµ»°ÈËID',
-   content              varchar(200) comment 'ÁÄÌìÄÚÈİ',
-   create_time          timestamp comment 'ÁÄÌìÄÚÈİÊ±¼ä',
-   type                 int comment 'ÁÄÌìÄÚÈİÀàĞÍ£ºÀ©Õ¹Ê¹ÓÃ',
-   push_type            int comment 'ÊÇ·ñÒÑÍÆËÍ£º0-Î´ÍÆËÍ£¬1-ÒÑÍÆËÍ',
+   id                   int not null auto_increment comment 'ä¸»é”®',
+   session_id           int comment 'ä¼šè¯ID',
+   user_id              int comment 'è¯´è¯äººID',
+   content              varchar(200) comment 'èŠå¤©å†…å®¹',
+   create_time          timestamp comment 'èŠå¤©å†…å®¹æ—¶é—´',
+   type                 int comment 'èŠå¤©å†…å®¹ç±»å‹ï¼šæ‰©å±•ä½¿ç”¨',
+   push_type            int comment 'æ˜¯å¦å·²æ¨é€ï¼š0-æœªæ¨é€ï¼Œ1-å·²æ¨é€',
    primary key (id)
 );
 
-alter table chat_record comment 'ÁÄÌì¼ÇÂ¼';
+alter table chat_record comment 'èŠå¤©è®°å½•';
 
 /*==============================================================*/
 /* Table: chat_session                                          */
 /*==============================================================*/
 create table chat_session
 (
-   id                   int not null auto_increment comment '»á»°ID',
-   user_id              int comment 'ÓÃ»§ID',
-   friend_id            int comment 'ºÃÓÑID,¿ÉÒÔÊÇ·ÇºÃÓÑID',
-   create_time          timestamp comment '»á»°´´½¨Ê±¼ä',
-   last_time            timestamp comment '×îºóÁÄÌìÊ±¼ä',
-   last_content         varchar(200) comment '×îºóÁÄÌìÄÚÈİ',
+   id                   int not null auto_increment comment 'ä¼šè¯ID',
+   user_id              int comment 'ç”¨æˆ·ID',
+   friend_id            int comment 'å¥½å‹ID,å¯ä»¥æ˜¯éå¥½å‹ID',
+   create_time          timestamp comment 'ä¼šè¯åˆ›å»ºæ—¶é—´',
+   last_time            timestamp comment 'æœ€åèŠå¤©æ—¶é—´',
+   last_content         varchar(200) comment 'æœ€åèŠå¤©å†…å®¹',
    lastr_uid            int comment 'lastr_uid',
    primary key (id)
 );
 
-alter table chat_session comment '»á»°ÁĞ±í';
+alter table chat_session comment 'ä¼šè¯åˆ—è¡¨';
 
 /*==============================================================*/
 /* Table: fragment_home                                         */
 /*==============================================================*/
 create table fragment_home
 (
-   id                   int not null auto_increment comment 'Ö÷¼ü',
-   rank                 int comment 'ÅÅĞò£¬Êı×ÖÔ½Ğ¡ÅÅĞòÔ½¿¿Ç°',
-   type                 int comment 'ÀàĞÍ£¬1 Àà±ğÇø£¨Õ¹Ê¾ÑùÊ½Îª£©£»2 Ò»ĞĞÒ»Í¼ÇøÓò£»3 Ò»ĞĞÁ½Í¼ÇøÓò£»4 Ò»ĞĞÈıÍ¼ÇøÓò',
-   content              varchar(1000) comment 'ÄÚÈİ£¬¸ñÊ½£º[{"img":"...","url":"..."},{"img":"...","url":"..."}]',
-   used                 int comment 'ÊÇ·ñÓĞĞ§£¬0 ÓĞĞ§£»-1 ÎŞĞ§',
-   create_time          timestamp comment '´´½¨Ê±¼ä',
+   id                   int not null auto_increment comment 'ä¸»é”®',
+   rank                 int comment 'æ’åºï¼Œæ•°å­—è¶Šå°æ’åºè¶Šé å‰',
+   type                 int comment 'ç±»å‹ï¼Œ1 ç±»åˆ«åŒºï¼ˆå±•ç¤ºæ ·å¼ä¸ºï¼‰ï¼›2 ä¸€è¡Œä¸€å›¾åŒºåŸŸï¼›3 ä¸€è¡Œä¸¤å›¾åŒºåŸŸï¼›4 ä¸€è¡Œä¸‰å›¾åŒºåŸŸ',
+   content              varchar(1000) comment 'å†…å®¹ï¼Œæ ¼å¼ï¼š[{"img":"...","url":"..."},{"img":"...","url":"..."}]',
+   used                 int comment 'æ˜¯å¦æœ‰æ•ˆï¼Œ0 æœ‰æ•ˆï¼›-1 æ— æ•ˆ',
+   create_time          timestamp comment 'åˆ›å»ºæ—¶é—´',
    primary key (id)
 );
 
-alter table fragment_home comment 'Ê×Ò³ËéÆ¬Çø';
+alter table fragment_home comment 'é¦–é¡µç¢ç‰‡åŒº';
 
 /*==============================================================*/
 /* Table: friend                                                */
 /*==============================================================*/
 create table friend
 (
-   user_id              int not null comment 'ÓÃ»§ID',
-   friend_id            int not null comment 'ºÃÓÑID',
-   create_time          timestamp comment '´´½¨Ê±¼ä',
-   update_time          timestamp comment 'ĞŞ¸ÄÊ±¼ä',
+   user_id              int not null comment 'ç”¨æˆ·ID',
+   friend_id            int not null comment 'å¥½å‹ID',
+   create_time          timestamp comment 'åˆ›å»ºæ—¶é—´',
+   update_time          timestamp comment 'ä¿®æ”¹æ—¶é—´',
    primary key (user_id, friend_id)
 );
 
-alter table friend comment 'ÎÒµÄºÃÓÑ';
+alter table friend comment 'æˆ‘çš„å¥½å‹';
 
 /*==============================================================*/
 /* Table: friend_apply                                          */
 /*==============================================================*/
 create table friend_apply
 (
-   id                   int not null auto_increment comment 'Ö÷¼ü',
-   user_id              int comment 'ÓÃ»§ID',
-   friend_id            int comment 'ºÃÓÑID',
-   create_time          timestamp comment '´´½¨Ê±¼ä',
-   update_time          timestamp comment 'ĞŞ¸ÄÊ±¼ä',
-   status               int comment 'ÉêÇë×´Ì¬£º0-ÉêÇë 1-Í¨¹ı -1-¾Ü¾ø',
-   msg                  varchar(100) comment 'ÉêÇëÁôÑÔ',
+   id                   int not null auto_increment comment 'ä¸»é”®',
+   user_id              int comment 'ç”¨æˆ·ID',
+   friend_id            int comment 'å¥½å‹ID',
+   create_time          timestamp comment 'åˆ›å»ºæ—¶é—´',
+   update_time          timestamp comment 'ä¿®æ”¹æ—¶é—´',
+   status               int comment 'ç”³è¯·çŠ¶æ€ï¼š0-ç”³è¯· 1-é€šè¿‡ -1-æ‹’ç»',
+   msg                  varchar(100) comment 'ç”³è¯·ç•™è¨€',
    primary key (id)
 );
 
-alter table friend_apply comment 'ºÃÓÑÉêÇë';
+alter table friend_apply comment 'å¥½å‹ç”³è¯·';
 
 /*==============================================================*/
 /* Table: info_category                                         */
 /*==============================================================*/
 create table info_category
 (
-   id                   int not null auto_increment comment 'Àà±ğID',
-   name                 varchar(50) comment 'Àà±ğÃû³Æ',
-   parent_id            int comment '¸¸Àà±ğID',
-   create_time          timestamp comment '´´½¨Ê±¼ä',
-   update_time          timestamp comment 'ĞŞ¸ÄÊ±¼ä',
+   id                   int not null auto_increment comment 'ç±»åˆ«ID',
+   name                 varchar(50) comment 'ç±»åˆ«åç§°',
+   parent_id            int comment 'çˆ¶ç±»åˆ«ID',
+   create_time          timestamp comment 'åˆ›å»ºæ—¶é—´',
+   update_time          timestamp comment 'ä¿®æ”¹æ—¶é—´',
    primary key (id)
 );
 
-alter table info_category comment 'ĞÅÏ¢¹ÜÀíÀàĞÍ';
+alter table info_category comment 'ä¿¡æ¯ç®¡ç†ç±»å‹';
 
 /*==============================================================*/
 /* Table: info_content                                          */
 /*==============================================================*/
 create table info_content
 (
-   id                   int comment '×ÊÑ¶ID',
-   weight               int comment 'È¨ÖØ',
-   user_id              int comment 'ÓÃ»§ID',
-   class_id             int comment '×ÊÑ¶·ÖÀàID',
-   title                varchar(100) comment '×ÊÑ¶±êÌâ',
-   type                 int comment 'ÄÚÈİÀàĞÍ£º1 ÄÚÈİÒ³ html¸ñÊ½£¬2.ÄÚÈİÒ³ json¸ñÊ½',
-   des                  varchar(200) comment '¼ò½é',
-   photo                blob comment 'ÅäÍ¼',
-   content              varchar(2000) comment '×ÊÑ¶ÄÚÈİ',
-   create_time          timestamp comment '´´½¨Ê±¼ä',
-   update_time          timestamp comment 'ĞŞ¸ÄÊ±¼ä'
+   id                   int comment 'èµ„è®¯ID',
+   weight               int comment 'æƒé‡',
+   user_id              int comment 'ç”¨æˆ·ID',
+   class_id             int comment 'èµ„è®¯åˆ†ç±»ID',
+   title                varchar(100) comment 'èµ„è®¯æ ‡é¢˜',
+   type                 int comment 'å†…å®¹ç±»å‹ï¼š1 å†…å®¹é¡µ htmlæ ¼å¼ï¼Œ2.å†…å®¹é¡µ jsonæ ¼å¼',
+   des                  varchar(200) comment 'ç®€ä»‹',
+   photo                blob comment 'é…å›¾',
+   content              varchar(2000) comment 'èµ„è®¯å†…å®¹',
+   create_time          timestamp comment 'åˆ›å»ºæ—¶é—´',
+   update_time          timestamp comment 'ä¿®æ”¹æ—¶é—´'
 );
 
-alter table info_content comment 'ĞÅÏ¢ÄÚÈİ';
+alter table info_content comment 'ä¿¡æ¯å†…å®¹';
 
 /*==============================================================*/
 /* Table: user                                                  */
 /*==============================================================*/
 create table user
 (
-   user_id              int not null auto_increment comment 'ÓÃ»§ID£¬×ÔÔö',
-   create_time          timestamp comment '×¢²áÊ±¼ä',
-   update_time          timestamp comment 'ĞŞ¸ÄÊ±¼ä',
-   user_name            varchar(30) comment 'ÓÃ»§Ãû',
-   nick_name            varchar(50) comment 'ÓÃ»§êÇ³Æ',
-   email                varchar(50) comment 'ÓÊÏä',
-   phone                varchar(11) comment 'ÊÖ»úºÅ',
+   user_id              int not null auto_increment comment 'ç”¨æˆ·IDï¼Œè‡ªå¢',
+   create_time          timestamp comment 'æ³¨å†Œæ—¶é—´',
+   update_time          timestamp comment 'ä¿®æ”¹æ—¶é—´',
+   user_name            varchar(30) comment 'ç”¨æˆ·å',
+   nick_name            varchar(50) comment 'ç”¨æˆ·æ˜µç§°',
+   email                varchar(50) comment 'é‚®ç®±',
+   phone                varchar(11) comment 'æ‰‹æœºå·',
    primary key (user_id)
 );
 
-alter table user comment 'ÓÃ»§±í';
+alter table user comment 'ç”¨æˆ·è¡¨';
 
 /*==============================================================*/
 /* Table: user_buyer                                            */
 /*==============================================================*/
 create table user_buyer
 (
-   user_id              int not null comment 'ÓÃ»§ID',
-   card_number          varchar(30) comment 'Éí·İÖ¤ºÅÂë',
-   card_f_photo         blob comment 'Ö¤¼şÕÕÕıÃæ',
-   card_b_photo         blob comment 'Ö¤¼şÕÕ±³Ãæ',
-   user_card_photo      blob comment 'ÊÖ³ÖÖ¤¼şÕÕ',
-   status               int comment 'ÉóºË×´Ì¬£º0-´ıÉó 1-Í¨¹ı -1-´ò»Ø',
-   msg                  varchar(100) comment '´ò»ØÔ­Òò',
-   create_time          timestamp comment '´´½¨Ê±¼ä',
-   update_time          timestamp comment 'ĞŞ¸ÄÊ±¼ä',
+   user_id              int not null comment 'ç”¨æˆ·ID',
+   card_number          varchar(30) comment 'èº«ä»½è¯å·ç ',
+   card_f_photo         blob comment 'è¯ä»¶ç…§æ­£é¢',
+   card_b_photo         blob comment 'è¯ä»¶ç…§èƒŒé¢',
+   user_card_photo      blob comment 'æ‰‹æŒè¯ä»¶ç…§',
+   status               int comment 'å®¡æ ¸çŠ¶æ€ï¼š0-å¾…å®¡ 1-é€šè¿‡ -1-æ‰“å›',
+   msg                  varchar(100) comment 'æ‰“å›åŸå› ',
+   create_time          timestamp comment 'åˆ›å»ºæ—¶é—´',
+   update_time          timestamp comment 'ä¿®æ”¹æ—¶é—´',
    primary key (user_id)
 );
 
-alter table user_buyer comment 'Âò¼ÒÈÏÖ¤';
+alter table user_buyer comment 'ä¹°å®¶è®¤è¯';
 
 /*==============================================================*/
 /* Table: user_seller                                           */
 /*==============================================================*/
 create table user_seller
 (
-   user_id              int not null comment 'ÓÃ»§ID',
-   card_number          varchar(30) comment 'Éí·İÖ¤ºÅÂë',
-   card_f_photo         blob comment 'Ö¤¼şÕÕÕıÃæ',
-   card_b_photo         blob comment 'Ö¤¼şÕÕ±³Ãæ',
-   user_card_photo      blob comment 'ÊÖ³ÖÖ¤¼şÕÕ',
-   licence_phone        blob comment 'ÓªÒµÖ´ÕÕ',
-   status               int comment 'ÉóºË×´Ì¬£º0-´ıÉó 1-Í¨¹ı -1-´ò»Ø',
-   msg                  varchar(100) comment '´ò»ØÔ­Òò',
-   create_time          timestamp comment '´´½¨Ê±¼ä',
-   update_time          timestamp comment 'ĞŞ¸ÄÊ±¼ä',
+   user_id              int not null comment 'ç”¨æˆ·ID',
+   card_number          varchar(30) comment 'èº«ä»½è¯å·ç ',
+   card_f_photo         blob comment 'è¯ä»¶ç…§æ­£é¢',
+   card_b_photo         blob comment 'è¯ä»¶ç…§èƒŒé¢',
+   user_card_photo      blob comment 'æ‰‹æŒè¯ä»¶ç…§',
+   licence_phone        blob comment 'è¥ä¸šæ‰§ç…§',
+   status               int comment 'å®¡æ ¸çŠ¶æ€ï¼š0-å¾…å®¡ 1-é€šè¿‡ -1-æ‰“å›',
+   msg                  varchar(100) comment 'æ‰“å›åŸå› ',
+   create_time          timestamp comment 'åˆ›å»ºæ—¶é—´',
+   update_time          timestamp comment 'ä¿®æ”¹æ—¶é—´',
    primary key (user_id)
 );
 
@@ -235,11 +235,11 @@ create table user_seller
 /*==============================================================*/
 create table user_third_bind
 (
-   user_id              int comment 'ÓÃ»§ID',
-   third_id             varchar(100) comment 'µÚÈı·½Î¨Ò»±êÊ¶ID',
-   type                 int comment '°ó¶¨ÀàĞÍ',
-   create_time          timestamp comment '°ó¶¨Ê±¼ä'
+   user_id              int comment 'ç”¨æˆ·ID',
+   third_id             varchar(100) comment 'ç¬¬ä¸‰æ–¹å”¯ä¸€æ ‡è¯†ID',
+   type                 int comment 'ç»‘å®šç±»å‹',
+   create_time          timestamp comment 'ç»‘å®šæ—¶é—´'
 );
 
-alter table user_third_bind comment 'ÓÃ»§Èı·½°ó¶¨¹ØÏµ';
+alter table user_third_bind comment 'ç”¨æˆ·ä¸‰æ–¹ç»‘å®šå…³ç³»';
 
