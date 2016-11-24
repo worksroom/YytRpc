@@ -8,13 +8,13 @@ import java.util.Date;
  */
 public class DeliveryAddr {
     private int id;
-    private int userId;
-    private String name;
-    private String phone;
-    private String tel;
-    private String region;
-    private String addr;
-    private String code;
+    private int userId;//用户ID
+    private String name;//收货人姓名
+    private String phone;//手机号
+    private String tel;//固定电话
+    private String region;//所在地区
+    private String addr;//详细地址
+    private String code;//邮政编码
     private Date createTime;
     private Date updateTime;
 
