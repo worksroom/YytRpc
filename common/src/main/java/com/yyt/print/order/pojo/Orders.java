@@ -3,8 +3,8 @@ package com.yyt.print.order.pojo;
 import java.util.Date;
 
 /**
- * Created by leo on 2016/11/17.
  * 订单表
+ * Created by leo on 2016/11/21.
  */
 public class Orders {
     private String id;//订单ID

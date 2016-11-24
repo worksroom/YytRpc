@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by leo on 2016/11/17.
  * 商品销售属性
  */
-public class MallProductSaleAttr {
+public class MallProductSalePro {
     private int id;
     private int goodsId;//货品ID
     private int productId;
