@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MallProductCategory">
+    <resultMap type="MallProductCategory" id="MallProductCategoryMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="des" column="des"/>
+        <result property="rank" column="rank"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="isEnd" column="is_end"/>
+        <result property="logo" column="logo"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="MallProductCategory">
+        insert into mall_product_category
+        (name,des,parent_id,is_end,logo,update_time,create_time,rank)
+        VALUES
+        (#{name},#{des},#{parentId},#{isEnd},#{logo},#{updateTime},#{createTime},#{rank})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+
+    <update id="update" parameterType="MallProductCategory">
+        update mall_product_category set des=#{des}, parent_id=#{parentId}, is_end=#{isEnd}, logo=#{logo}, update_time=#{updateTime}, create_time=#{createTime},rank=#{rank}
+        where id=#{id}
+    </update>
+
+
+
+    <select id="selectByParentId" parameterType="java.util.HashMap" resultMap="MallProductCategoryMap">
+		select id,name,des,parent_id,is_end,logo,update_time,create_time,rank
+		from mall_product_category
+		where parent_id=#{parentId} order by rank
+	</select>
+
+
+
+</mapper>
