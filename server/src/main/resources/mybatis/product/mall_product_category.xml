@@ -28,7 +28,14 @@
         where id=#{id}
     </update>
 
+    <select id="select" parameterType="int" resultMap="MallProductCategoryMap">
+        select id,name,des,parent_id,is_end,logo,update_time,create_time,rank
+        from mall_product_category where id=#{id}
+    </select>
 
+    <delete id="delete" parameterType="int">
+        delete from mall_product_category where id=#{id}
+    </delete>
 
     <select id="selectByParentId" parameterType="java.util.HashMap" resultMap="MallProductCategoryMap">
 		select id,name,des,parent_id,is_end,logo,update_time,create_time,rank
@@ -36,6 +43,11 @@
 		where parent_id=#{parentId} order by rank
 	</select>
 
-
+    <!--管理平台使用-->
+    <select id="selectall" resultMap="MallProductCategoryMap">
+        select id,name,des,parent_id,is_end,logo,update_time,create_time,rank
+        from mall_product_category
+        where  order by rank
+    </select>
 
 </mapper>

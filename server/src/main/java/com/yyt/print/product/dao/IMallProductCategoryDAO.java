@@ -23,11 +23,31 @@ public interface IMallProductCategoryDAO {
     int updateMallProductCategory(MallProductCategory mallProductCategory);
 
     /**
+     * 删除类别
+     * @param id
+     * @return
+     */
+    int deleteMallProductCategory(int id);
+
+    /**
+     * 获取类别
+     * @param id
+     * @return
+     */
+    MallProductCategory getMallProductCategory(int id);
+
+    /**
      * 通过parentId查询产品分类
      * @param parentId
      * @return
      */
     List<MallProductCategory> queryCategoryByParentId(int parentId);
 
-    //TODO 管理平台需要的数据
+    // 管理平台需要的数据
+
+    /**
+     * 获取全部数据
+     * @return
+     */
+    List<MallProductCategory> queryAllCategory();
 }

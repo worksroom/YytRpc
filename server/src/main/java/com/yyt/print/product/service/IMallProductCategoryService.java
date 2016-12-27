@@ -39,20 +39,15 @@ public interface IMallProductCategoryService {
     public MallProductCategory getMallProductCategory(int id);
 
     /**
-     * 分页查询，仅限管理后台调用此方法
-     * @param id
-     * @param parentId
-     * @param pageIndex
-     * @param pageSize
+     * 获取全部分类
      * @return
      */
-    public PageHolder<MallProductCategory> queryMallProductCategory(int id, int parentId, int pageIndex, int pageSize);
+    public List<MallProductCategory> queryAllMallProductCategory();
 
     /**
      * 查询父分类下的子分类列表
      * @param parentId 父节点ID
-     * @param level 子节点层级数，-1表示查询全部层级的子节点
      * @return
      */
-    public List<MallProductCategory> findMallProductCategoryList(int parentId, int level);
+    public List<MallProductCategory> findMallProductCategoryList(int parentId);
 }
