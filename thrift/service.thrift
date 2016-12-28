@@ -168,10 +168,10 @@ service ProductThriftRpcService {
     string saveMallProductCategory(1:string mallProductCategory);
 
     /** 修改商品分类 **/
-    int updateMallProductCategory(1:string mallProductCategory);
+    i32 updateMallProductCategory(1:string mallProductCategory);
 
     /** 删除分类 **/
-    int deleteMallProductCategory(1:i32 id);
+    i32 deleteMallProductCategory(1:i32 id);
 
     /** 获取商品分类 **/
     string getMallProductCategory(1:i32 id);
