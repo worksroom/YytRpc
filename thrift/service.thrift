@@ -165,7 +165,7 @@ service ProductThriftRpcService {
     string findMallProductCategoryList(1:i32 parentId);
 
     /** 保存商品分类 **/
-    string saveMallProductCategory(1:string mallProductCategory);
+    i32 saveMallProductCategory(1:string mallProductCategory);
 
     /** 修改商品分类 **/
     i32 updateMallProductCategory(1:string mallProductCategory);
