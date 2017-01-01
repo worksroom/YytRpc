@@ -6,6 +6,8 @@ import com.yyt.print.rpc.client.friend.FriendChatRpcServiceImpl;
 import com.yyt.print.rpc.client.friend.IFriendChatRpcService;
 import com.yyt.print.rpc.client.info.IInfoRpcService;
 import com.yyt.print.rpc.client.info.InfoRpcServiceImpl;
+import com.yyt.print.rpc.client.product.IProductRpcService;
+import com.yyt.print.rpc.client.product.ProductRpcServiceImpl;
 import com.yyt.print.rpc.client.user.IUserRpcService;
 import com.yyt.print.rpc.client.user.UserRpcServiceImpl;
 
@@ -15,6 +17,7 @@ public class YytRpcClientFactory {
     private static IAdRpcService adRpcService = null;
     private static IInfoRpcService infoRpcService = null;
     private static IUserRpcService userRpcService = null;
+    private static IProductRpcService productRpcService = null;
 
 
     public static IFriendChatRpcService getFriendChatRpcService() {
@@ -78,5 +81,20 @@ public class YytRpcClientFactory {
             }
         }
         return userRpcService;
+    }
+
+    public static IProductRpcService getProductRpcService() {
+        if (productRpcService != null) {
+            return productRpcService;
+        } else {
+            synchronized (YytRpcClientFactory.class) {
+                if (productRpcService != null) {
+                    return productRpcService;
+                } else {
+                    productRpcService = new ProductRpcServiceImpl();
+                }
+            }
+        }
+        return productRpcService;
     }
 }

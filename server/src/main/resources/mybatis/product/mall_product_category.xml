@@ -47,7 +47,7 @@
     <select id="selectall" resultMap="MallProductCategoryMap">
         select id,name,des,parent_id,is_end,logo,update_time,create_time,rank
         from mall_product_category
-        where  order by rank
+        order by rank
     </select>
 
 </mapper>

@@ -59,6 +59,6 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
 
     @Override
     public String getMallProductCategory(int id) throws TException {
-        return null;
+        return JSON.toJSONString(mallProductCategoryService.getMallProductCategory(id));
     }
 }
