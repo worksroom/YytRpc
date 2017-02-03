@@ -2,6 +2,9 @@ package com.yyt.print.rpc.server.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializeConfig;
+import com.youguu.core.util.PageHolder;
+import com.yyt.print.parser.PageHolderSerializer;
 import com.yyt.print.rpc.thrift.gen.UserThriftRpcService;
 import com.yyt.print.user.pojo.User;
 import com.yyt.print.user.pojo.UserBuyer;
@@ -81,6 +84,14 @@ public class UserThriftRpcServiceImpl implements UserThriftRpcService.Iface {
     }
 
     @Override
+    public String queryUserBuyerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) throws TException {
+        PageHolder<UserBuyer> pageHolder = userBuyerService.queryUserBuyerByPage(userId, userName, nickName, phone, cardNumber, name, pageIndex, pageSize);
+        SerializeConfig config = new SerializeConfig();
+        config.put(PageHolder.class, new PageHolderSerializer());
+        return JSON.toJSONString(pageHolder, config);
+    }
+
+    @Override
     public int saveUserSeller(String userSeller) throws TException {
         UserSeller seller = JSONObject.parseObject(userSeller, UserSeller.class);
         return userSellerService.saveUserSeller(seller);
@@ -96,6 +107,14 @@ public class UserThriftRpcServiceImpl implements UserThriftRpcService.Iface {
     public int updateUserSeller(String userSeller) throws TException {
         UserSeller seller = JSONObject.parseObject(userSeller, UserSeller.class);
         return userSellerService.updateUserSeller(seller);
+    }
+
+    @Override
+    public String queryUserSellerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) throws TException {
+        PageHolder<UserSeller> pageHolder = userSellerService.queryUserSellerByPage(userId, userName, nickName, phone, cardNumber, name, pageIndex, pageSize);
+        SerializeConfig config = new SerializeConfig();
+        config.put(PageHolder.class, new PageHolderSerializer());
+        return JSON.toJSONString(pageHolder, config);
     }
 
     @Override

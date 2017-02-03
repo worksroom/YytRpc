@@ -3,8 +3,12 @@ package com.yyt.print.rpc.client.user;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
+import com.alibaba.fastjson.parser.ParserConfig;
 import com.youguu.core.logging.Log;
 import com.youguu.core.logging.LogFactory;
+import com.youguu.core.util.PageHolder;
+import com.yyt.print.parser.PageHolderDeserializer;
 import com.yyt.print.rpc.common.Constants;
 import com.yyt.print.user.pojo.User;
 import com.yyt.print.user.pojo.UserBuyer;
@@ -132,6 +136,18 @@ public class UserRpcServiceImpl implements IUserRpcService {
     }
 
     @Override
+    public PageHolder<UserBuyer> queryUserBuyerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) {
+        try {
+            String json = getClient().queryUserBuyerByPage(userId, userName, nickName, phone, cardNumber, name, pageIndex, pageSize);
+            ParserConfig.getGlobalInstance().putDeserializer(PageHolder.class, new PageHolderDeserializer());
+            return JSON.parseObject(json, new TypeReference<PageHolder<UserBuyer>>(){});
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
     public int saveUserSeller(UserSeller userSeller) {
         try {
             return getClient().saveUserSeller(JSON.toJSONString(userSeller));
@@ -160,5 +176,17 @@ public class UserRpcServiceImpl implements IUserRpcService {
             logger.error(e.getMessage(), e);
         }
         return 0;
+    }
+
+    @Override
+    public PageHolder<UserSeller> queryUserSellerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) {
+        try {
+            String json = getClient().queryUserSellerByPage(userId, userName, nickName, phone, cardNumber, name, pageIndex, pageSize);
+            ParserConfig.getGlobalInstance().putDeserializer(PageHolder.class, new PageHolderDeserializer());
+            return JSON.parseObject(json, new TypeReference<PageHolder<UserSeller>>(){});
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
     }
 }

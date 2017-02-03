@@ -7,11 +7,12 @@ import java.util.Date;
  * Created by SomeBody on 2016/9/23.
  */
 public class UserBuyer {
-    private int userId;
-    private String cardNumber;
-    private String cardFPhoto;
-    private String cardBPhoto;
-    private String userCardPhoto;
+    private int userId;//用户ID
+    private String name;//用户姓名
+    private String cardNumber;//身份证号码
+    private String cardFPhoto;//身份证正面图片地址
+    private String cardBPhoto;//身份证反面图片地址
+    private String userCardPhoto;//头像照片地址
     private int status;
     private String msg;
     private Date createTime;
@@ -23,6 +24,14 @@ public class UserBuyer {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCardNumber() {
