@@ -154,8 +154,28 @@ service InfoThriftRpcService {
     string queryInfoContentList(1:string title, 2:string des, 3:i32 id, 4:i32 limit);
 }
 
-
+/**
+* 商品相关
+**/
 service ProductThriftRpcService {
+    /** 查询全部的分类 **/
+    string queryAllMallProductCategory();
+
+    /** 查询分类的子节点 **/
+    string findMallProductCategoryList(1:i32 parentId);
+
+    /** 保存商品分类 **/
+    i32 saveMallProductCategory(1:string mallProductCategory);
+
+    /** 修改商品分类 **/
+    i32 updateMallProductCategory(1:string mallProductCategory);
+
+    /** 删除分类 **/
+    i32 deleteMallProductCategory(1:i32 id);
+
+    /** 获取商品分类 **/
+    string getMallProductCategory(1:i32 id);
+
 
 }
 

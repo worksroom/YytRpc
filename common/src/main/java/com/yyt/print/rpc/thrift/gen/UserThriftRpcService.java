@@ -38,9 +38,9 @@ public class UserThriftRpcService {
    */
   public interface Iface {
 
-    public int saveUser(String user) throws TException;
+    public int saveUser(String user) throws org.apache.thrift.TException;
 
-    public String getUser(int userId) throws TException;
+    public String getUser(int userId) throws org.apache.thrift.TException;
 
     /**
      * 用户ID，用户名不能更改
@@ -49,65 +49,65 @@ public class UserThriftRpcService {
      * 
      * @param user
      */
-    public int updateUser(String user) throws TException;
+    public int updateUser(String user) throws org.apache.thrift.TException;
 
-    public String getUserList(List<Integer> userIdList) throws TException;
+    public String getUserList(List<Integer> userIdList) throws org.apache.thrift.TException;
 
-    public String getUserMap(List<Integer> userIdList) throws TException;
+    public String getUserMap(List<Integer> userIdList) throws org.apache.thrift.TException;
 
-    public int saveUserBuyer(String userBuyer) throws TException;
+    public int saveUserBuyer(String userBuyer) throws org.apache.thrift.TException;
 
-    public String getUserBuyer(int userId) throws TException;
+    public String getUserBuyer(int userId) throws org.apache.thrift.TException;
 
-    public int updateUserBuyer(String userBuyer) throws TException;
+    public int updateUserBuyer(String userBuyer) throws org.apache.thrift.TException;
 
-    public String queryUserBuyerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) throws TException;
+    public String queryUserBuyerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) throws org.apache.thrift.TException;
 
-    public int saveUserSeller(String userSeller) throws TException;
+    public int saveUserSeller(String userSeller) throws org.apache.thrift.TException;
 
-    public String getUserSeller(int userId) throws TException;
+    public String getUserSeller(int userId) throws org.apache.thrift.TException;
 
-    public int updateUserSeller(String userSeller) throws TException;
+    public int updateUserSeller(String userSeller) throws org.apache.thrift.TException;
 
-    public String queryUserSellerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) throws TException;
+    public String queryUserSellerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) throws org.apache.thrift.TException;
 
-    public int saveUserThirdBind(String thirdBind) throws TException;
+    public int saveUserThirdBind(String thirdBind) throws org.apache.thrift.TException;
 
-    public String getUserThirdBind(String thirdId, int type) throws TException;
+    public String getUserThirdBind(String thirdId, int type) throws org.apache.thrift.TException;
 
   }
 
   public interface AsyncIface {
 
-    public void saveUser(String user, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.saveUser_call> resultHandler) throws TException;
+    public void saveUser(String user, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.saveUser_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void getUser(int userId, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUser_call> resultHandler) throws TException;
+    public void getUser(int userId, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUser_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void updateUser(String user, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.updateUser_call> resultHandler) throws TException;
+    public void updateUser(String user, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.updateUser_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void getUserList(List<Integer> userIdList, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserList_call> resultHandler) throws TException;
+    public void getUserList(List<Integer> userIdList, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserList_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void getUserMap(List<Integer> userIdList, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserMap_call> resultHandler) throws TException;
+    public void getUserMap(List<Integer> userIdList, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserMap_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void saveUserBuyer(String userBuyer, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.saveUserBuyer_call> resultHandler) throws TException;
+    public void saveUserBuyer(String userBuyer, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.saveUserBuyer_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void getUserBuyer(int userId, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserBuyer_call> resultHandler) throws TException;
+    public void getUserBuyer(int userId, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserBuyer_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void updateUserBuyer(String userBuyer, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.updateUserBuyer_call> resultHandler) throws TException;
+    public void updateUserBuyer(String userBuyer, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.updateUserBuyer_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void queryUserBuyerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.queryUserBuyerByPage_call> resultHandler) throws TException;
+    public void queryUserBuyerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.queryUserBuyerByPage_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void saveUserSeller(String userSeller, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.saveUserSeller_call> resultHandler) throws TException;
+    public void saveUserSeller(String userSeller, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.saveUserSeller_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void getUserSeller(int userId, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserSeller_call> resultHandler) throws TException;
+    public void getUserSeller(int userId, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserSeller_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void updateUserSeller(String userSeller, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.updateUserSeller_call> resultHandler) throws TException;
+    public void updateUserSeller(String userSeller, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.updateUserSeller_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void queryUserSellerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.queryUserSellerByPage_call> resultHandler) throws TException;
+    public void queryUserSellerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.queryUserSellerByPage_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void saveUserThirdBind(String thirdBind, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.saveUserThirdBind_call> resultHandler) throws TException;
+    public void saveUserThirdBind(String thirdBind, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.saveUserThirdBind_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void getUserThirdBind(String thirdId, int type, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserThirdBind_call> resultHandler) throws TException;
+    public void getUserThirdBind(String thirdId, int type, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserThirdBind_call> resultHandler) throws org.apache.thrift.TException;
 
   }
 
@@ -131,20 +131,20 @@ public class UserThriftRpcService {
       super(iprot, oprot);
     }
 
-    public int saveUser(String user) throws TException
+    public int saveUser(String user) throws org.apache.thrift.TException
     {
       send_saveUser(user);
       return recv_saveUser();
     }
 
-    public void send_saveUser(String user) throws TException
+    public void send_saveUser(String user) throws org.apache.thrift.TException
     {
       saveUser_args args = new saveUser_args();
       args.setUser(user);
       sendBase("saveUser", args);
     }
 
-    public int recv_saveUser() throws TException
+    public int recv_saveUser() throws org.apache.thrift.TException
     {
       saveUser_result result = new saveUser_result();
       receiveBase(result, "saveUser");
@@ -154,20 +154,20 @@ public class UserThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "saveUser failed: unknown result");
     }
 
-    public String getUser(int userId) throws TException
+    public String getUser(int userId) throws org.apache.thrift.TException
     {
       send_getUser(userId);
       return recv_getUser();
     }
 
-    public void send_getUser(int userId) throws TException
+    public void send_getUser(int userId) throws org.apache.thrift.TException
     {
       getUser_args args = new getUser_args();
       args.setUserId(userId);
       sendBase("getUser", args);
     }
 
-    public String recv_getUser() throws TException
+    public String recv_getUser() throws org.apache.thrift.TException
     {
       getUser_result result = new getUser_result();
       receiveBase(result, "getUser");
@@ -177,20 +177,20 @@ public class UserThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getUser failed: unknown result");
     }
 
-    public int updateUser(String user) throws TException
+    public int updateUser(String user) throws org.apache.thrift.TException
     {
       send_updateUser(user);
       return recv_updateUser();
     }
 
-    public void send_updateUser(String user) throws TException
+    public void send_updateUser(String user) throws org.apache.thrift.TException
     {
       updateUser_args args = new updateUser_args();
       args.setUser(user);
       sendBase("updateUser", args);
     }
 
-    public int recv_updateUser() throws TException
+    public int recv_updateUser() throws org.apache.thrift.TException
     {
       updateUser_result result = new updateUser_result();
       receiveBase(result, "updateUser");
@@ -200,20 +200,20 @@ public class UserThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "updateUser failed: unknown result");
     }
 
-    public String getUserList(List<Integer> userIdList) throws TException
+    public String getUserList(List<Integer> userIdList) throws org.apache.thrift.TException
     {
       send_getUserList(userIdList);
       return recv_getUserList();
     }
 
-    public void send_getUserList(List<Integer> userIdList) throws TException
+    public void send_getUserList(List<Integer> userIdList) throws org.apache.thrift.TException
     {
       getUserList_args args = new getUserList_args();
       args.setUserIdList(userIdList);
       sendBase("getUserList", args);
     }
 
-    public String recv_getUserList() throws TException
+    public String recv_getUserList() throws org.apache.thrift.TException
     {
       getUserList_result result = new getUserList_result();
       receiveBase(result, "getUserList");
@@ -223,20 +223,20 @@ public class UserThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getUserList failed: unknown result");
     }
 
-    public String getUserMap(List<Integer> userIdList) throws TException
+    public String getUserMap(List<Integer> userIdList) throws org.apache.thrift.TException
     {
       send_getUserMap(userIdList);
       return recv_getUserMap();
     }
 
-    public void send_getUserMap(List<Integer> userIdList) throws TException
+    public void send_getUserMap(List<Integer> userIdList) throws org.apache.thrift.TException
     {
       getUserMap_args args = new getUserMap_args();
       args.setUserIdList(userIdList);
       sendBase("getUserMap", args);
     }
 
-    public String recv_getUserMap() throws TException
+    public String recv_getUserMap() throws org.apache.thrift.TException
     {
       getUserMap_result result = new getUserMap_result();
       receiveBase(result, "getUserMap");
@@ -246,20 +246,20 @@ public class UserThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getUserMap failed: unknown result");
     }
 
-    public int saveUserBuyer(String userBuyer) throws TException
+    public int saveUserBuyer(String userBuyer) throws org.apache.thrift.TException
     {
       send_saveUserBuyer(userBuyer);
       return recv_saveUserBuyer();
     }
 
-    public void send_saveUserBuyer(String userBuyer) throws TException
+    public void send_saveUserBuyer(String userBuyer) throws org.apache.thrift.TException
     {
       saveUserBuyer_args args = new saveUserBuyer_args();
       args.setUserBuyer(userBuyer);
       sendBase("saveUserBuyer", args);
     }
 
-    public int recv_saveUserBuyer() throws TException
+    public int recv_saveUserBuyer() throws org.apache.thrift.TException
     {
       saveUserBuyer_result result = new saveUserBuyer_result();
       receiveBase(result, "saveUserBuyer");
@@ -269,20 +269,20 @@ public class UserThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "saveUserBuyer failed: unknown result");
     }
 
-    public String getUserBuyer(int userId) throws TException
+    public String getUserBuyer(int userId) throws org.apache.thrift.TException
     {
       send_getUserBuyer(userId);
       return recv_getUserBuyer();
     }
 
-    public void send_getUserBuyer(int userId) throws TException
+    public void send_getUserBuyer(int userId) throws org.apache.thrift.TException
     {
       getUserBuyer_args args = new getUserBuyer_args();
       args.setUserId(userId);
       sendBase("getUserBuyer", args);
     }
 
-    public String recv_getUserBuyer() throws TException
+    public String recv_getUserBuyer() throws org.apache.thrift.TException
     {
       getUserBuyer_result result = new getUserBuyer_result();
       receiveBase(result, "getUserBuyer");
@@ -292,20 +292,20 @@ public class UserThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getUserBuyer failed: unknown result");
     }
 
-    public int updateUserBuyer(String userBuyer) throws TException
+    public int updateUserBuyer(String userBuyer) throws org.apache.thrift.TException
     {
       send_updateUserBuyer(userBuyer);
       return recv_updateUserBuyer();
     }
 
-    public void send_updateUserBuyer(String userBuyer) throws TException
+    public void send_updateUserBuyer(String userBuyer) throws org.apache.thrift.TException
     {
       updateUserBuyer_args args = new updateUserBuyer_args();
       args.setUserBuyer(userBuyer);
       sendBase("updateUserBuyer", args);
     }
 
-    public int recv_updateUserBuyer() throws TException
+    public int recv_updateUserBuyer() throws org.apache.thrift.TException
     {
       updateUserBuyer_result result = new updateUserBuyer_result();
       receiveBase(result, "updateUserBuyer");
@@ -315,13 +315,13 @@ public class UserThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "updateUserBuyer failed: unknown result");
     }
 
-    public String queryUserBuyerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) throws TException
+    public String queryUserBuyerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) throws org.apache.thrift.TException
     {
       send_queryUserBuyerByPage(userId, userName, nickName, phone, cardNumber, name, pageIndex, pageSize);
       return recv_queryUserBuyerByPage();
     }
 
-    public void send_queryUserBuyerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) throws TException
+    public void send_queryUserBuyerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) throws org.apache.thrift.TException
     {
       queryUserBuyerByPage_args args = new queryUserBuyerByPage_args();
       args.setUserId(userId);
@@ -335,7 +335,7 @@ public class UserThriftRpcService {
       sendBase("queryUserBuyerByPage", args);
     }
 
-    public String recv_queryUserBuyerByPage() throws TException
+    public String recv_queryUserBuyerByPage() throws org.apache.thrift.TException
     {
       queryUserBuyerByPage_result result = new queryUserBuyerByPage_result();
       receiveBase(result, "queryUserBuyerByPage");
@@ -345,20 +345,20 @@ public class UserThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "queryUserBuyerByPage failed: unknown result");
     }
 
-    public int saveUserSeller(String userSeller) throws TException
+    public int saveUserSeller(String userSeller) throws org.apache.thrift.TException
     {
       send_saveUserSeller(userSeller);
       return recv_saveUserSeller();
     }
 
-    public void send_saveUserSeller(String userSeller) throws TException
+    public void send_saveUserSeller(String userSeller) throws org.apache.thrift.TException
     {
       saveUserSeller_args args = new saveUserSeller_args();
       args.setUserSeller(userSeller);
       sendBase("saveUserSeller", args);
     }
 
-    public int recv_saveUserSeller() throws TException
+    public int recv_saveUserSeller() throws org.apache.thrift.TException
     {
       saveUserSeller_result result = new saveUserSeller_result();
       receiveBase(result, "saveUserSeller");
@@ -368,20 +368,20 @@ public class UserThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "saveUserSeller failed: unknown result");
     }
 
-    public String getUserSeller(int userId) throws TException
+    public String getUserSeller(int userId) throws org.apache.thrift.TException
     {
       send_getUserSeller(userId);
       return recv_getUserSeller();
     }
 
-    public void send_getUserSeller(int userId) throws TException
+    public void send_getUserSeller(int userId) throws org.apache.thrift.TException
     {
       getUserSeller_args args = new getUserSeller_args();
       args.setUserId(userId);
       sendBase("getUserSeller", args);
     }
 
-    public String recv_getUserSeller() throws TException
+    public String recv_getUserSeller() throws org.apache.thrift.TException
     {
       getUserSeller_result result = new getUserSeller_result();
       receiveBase(result, "getUserSeller");
@@ -391,20 +391,20 @@ public class UserThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getUserSeller failed: unknown result");
     }
 
-    public int updateUserSeller(String userSeller) throws TException
+    public int updateUserSeller(String userSeller) throws org.apache.thrift.TException
     {
       send_updateUserSeller(userSeller);
       return recv_updateUserSeller();
     }
 
-    public void send_updateUserSeller(String userSeller) throws TException
+    public void send_updateUserSeller(String userSeller) throws org.apache.thrift.TException
     {
       updateUserSeller_args args = new updateUserSeller_args();
       args.setUserSeller(userSeller);
       sendBase("updateUserSeller", args);
     }
 
-    public int recv_updateUserSeller() throws TException
+    public int recv_updateUserSeller() throws org.apache.thrift.TException
     {
       updateUserSeller_result result = new updateUserSeller_result();
       receiveBase(result, "updateUserSeller");
@@ -414,13 +414,13 @@ public class UserThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "updateUserSeller failed: unknown result");
     }
 
-    public String queryUserSellerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) throws TException
+    public String queryUserSellerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) throws org.apache.thrift.TException
     {
       send_queryUserSellerByPage(userId, userName, nickName, phone, cardNumber, name, pageIndex, pageSize);
       return recv_queryUserSellerByPage();
     }
 
-    public void send_queryUserSellerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) throws TException
+    public void send_queryUserSellerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) throws org.apache.thrift.TException
     {
       queryUserSellerByPage_args args = new queryUserSellerByPage_args();
       args.setUserId(userId);
@@ -434,7 +434,7 @@ public class UserThriftRpcService {
       sendBase("queryUserSellerByPage", args);
     }
 
-    public String recv_queryUserSellerByPage() throws TException
+    public String recv_queryUserSellerByPage() throws org.apache.thrift.TException
     {
       queryUserSellerByPage_result result = new queryUserSellerByPage_result();
       receiveBase(result, "queryUserSellerByPage");
@@ -444,20 +444,20 @@ public class UserThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "queryUserSellerByPage failed: unknown result");
     }
 
-    public int saveUserThirdBind(String thirdBind) throws TException
+    public int saveUserThirdBind(String thirdBind) throws org.apache.thrift.TException
     {
       send_saveUserThirdBind(thirdBind);
       return recv_saveUserThirdBind();
     }
 
-    public void send_saveUserThirdBind(String thirdBind) throws TException
+    public void send_saveUserThirdBind(String thirdBind) throws org.apache.thrift.TException
     {
       saveUserThirdBind_args args = new saveUserThirdBind_args();
       args.setThirdBind(thirdBind);
       sendBase("saveUserThirdBind", args);
     }
 
-    public int recv_saveUserThirdBind() throws TException
+    public int recv_saveUserThirdBind() throws org.apache.thrift.TException
     {
       saveUserThirdBind_result result = new saveUserThirdBind_result();
       receiveBase(result, "saveUserThirdBind");
@@ -467,13 +467,13 @@ public class UserThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "saveUserThirdBind failed: unknown result");
     }
 
-    public String getUserThirdBind(String thirdId, int type) throws TException
+    public String getUserThirdBind(String thirdId, int type) throws org.apache.thrift.TException
     {
       send_getUserThirdBind(thirdId, type);
       return recv_getUserThirdBind();
     }
 
-    public void send_getUserThirdBind(String thirdId, int type) throws TException
+    public void send_getUserThirdBind(String thirdId, int type) throws org.apache.thrift.TException
     {
       getUserThirdBind_args args = new getUserThirdBind_args();
       args.setThirdId(thirdId);
@@ -481,7 +481,7 @@ public class UserThriftRpcService {
       sendBase("getUserThirdBind", args);
     }
 
-    public String recv_getUserThirdBind() throws TException
+    public String recv_getUserThirdBind() throws org.apache.thrift.TException
     {
       getUserThirdBind_result result = new getUserThirdBind_result();
       receiveBase(result, "getUserThirdBind");
@@ -509,7 +509,7 @@ public class UserThriftRpcService {
       super(protocolFactory, clientManager, transport);
     }
 
-    public void saveUser(String user, org.apache.thrift.async.AsyncMethodCallback<saveUser_call> resultHandler) throws TException {
+    public void saveUser(String user, org.apache.thrift.async.AsyncMethodCallback<saveUser_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       saveUser_call method_call = new saveUser_call(user, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -518,12 +518,12 @@ public class UserThriftRpcService {
 
     public static class saveUser_call extends org.apache.thrift.async.TAsyncMethodCall {
       private String user;
-      public saveUser_call(String user, org.apache.thrift.async.AsyncMethodCallback<saveUser_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public saveUser_call(String user, org.apache.thrift.async.AsyncMethodCallback<saveUser_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.user = user;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("saveUser", org.apache.thrift.protocol.TMessageType.CALL, 0));
         saveUser_args args = new saveUser_args();
         args.setUser(user);
@@ -531,8 +531,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public int getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public int getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -541,7 +541,7 @@ public class UserThriftRpcService {
       }
     }
 
-    public void getUser(int userId, org.apache.thrift.async.AsyncMethodCallback<getUser_call> resultHandler) throws TException {
+    public void getUser(int userId, org.apache.thrift.async.AsyncMethodCallback<getUser_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       getUser_call method_call = new getUser_call(userId, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -550,12 +550,12 @@ public class UserThriftRpcService {
 
     public static class getUser_call extends org.apache.thrift.async.TAsyncMethodCall {
       private int userId;
-      public getUser_call(int userId, org.apache.thrift.async.AsyncMethodCallback<getUser_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public getUser_call(int userId, org.apache.thrift.async.AsyncMethodCallback<getUser_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.userId = userId;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getUser", org.apache.thrift.protocol.TMessageType.CALL, 0));
         getUser_args args = new getUser_args();
         args.setUserId(userId);
@@ -563,8 +563,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public String getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -573,7 +573,7 @@ public class UserThriftRpcService {
       }
     }
 
-    public void updateUser(String user, org.apache.thrift.async.AsyncMethodCallback<updateUser_call> resultHandler) throws TException {
+    public void updateUser(String user, org.apache.thrift.async.AsyncMethodCallback<updateUser_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       updateUser_call method_call = new updateUser_call(user, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -582,12 +582,12 @@ public class UserThriftRpcService {
 
     public static class updateUser_call extends org.apache.thrift.async.TAsyncMethodCall {
       private String user;
-      public updateUser_call(String user, org.apache.thrift.async.AsyncMethodCallback<updateUser_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public updateUser_call(String user, org.apache.thrift.async.AsyncMethodCallback<updateUser_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.user = user;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("updateUser", org.apache.thrift.protocol.TMessageType.CALL, 0));
         updateUser_args args = new updateUser_args();
         args.setUser(user);
@@ -595,8 +595,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public int getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public int getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -605,7 +605,7 @@ public class UserThriftRpcService {
       }
     }
 
-    public void getUserList(List<Integer> userIdList, org.apache.thrift.async.AsyncMethodCallback<getUserList_call> resultHandler) throws TException {
+    public void getUserList(List<Integer> userIdList, org.apache.thrift.async.AsyncMethodCallback<getUserList_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       getUserList_call method_call = new getUserList_call(userIdList, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -614,12 +614,12 @@ public class UserThriftRpcService {
 
     public static class getUserList_call extends org.apache.thrift.async.TAsyncMethodCall {
       private List<Integer> userIdList;
-      public getUserList_call(List<Integer> userIdList, org.apache.thrift.async.AsyncMethodCallback<getUserList_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public getUserList_call(List<Integer> userIdList, org.apache.thrift.async.AsyncMethodCallback<getUserList_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.userIdList = userIdList;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getUserList", org.apache.thrift.protocol.TMessageType.CALL, 0));
         getUserList_args args = new getUserList_args();
         args.setUserIdList(userIdList);
@@ -627,8 +627,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public String getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -637,7 +637,7 @@ public class UserThriftRpcService {
       }
     }
 
-    public void getUserMap(List<Integer> userIdList, org.apache.thrift.async.AsyncMethodCallback<getUserMap_call> resultHandler) throws TException {
+    public void getUserMap(List<Integer> userIdList, org.apache.thrift.async.AsyncMethodCallback<getUserMap_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       getUserMap_call method_call = new getUserMap_call(userIdList, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -646,12 +646,12 @@ public class UserThriftRpcService {
 
     public static class getUserMap_call extends org.apache.thrift.async.TAsyncMethodCall {
       private List<Integer> userIdList;
-      public getUserMap_call(List<Integer> userIdList, org.apache.thrift.async.AsyncMethodCallback<getUserMap_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public getUserMap_call(List<Integer> userIdList, org.apache.thrift.async.AsyncMethodCallback<getUserMap_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.userIdList = userIdList;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getUserMap", org.apache.thrift.protocol.TMessageType.CALL, 0));
         getUserMap_args args = new getUserMap_args();
         args.setUserIdList(userIdList);
@@ -659,8 +659,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public String getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -669,7 +669,7 @@ public class UserThriftRpcService {
       }
     }
 
-    public void saveUserBuyer(String userBuyer, org.apache.thrift.async.AsyncMethodCallback<saveUserBuyer_call> resultHandler) throws TException {
+    public void saveUserBuyer(String userBuyer, org.apache.thrift.async.AsyncMethodCallback<saveUserBuyer_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       saveUserBuyer_call method_call = new saveUserBuyer_call(userBuyer, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -678,12 +678,12 @@ public class UserThriftRpcService {
 
     public static class saveUserBuyer_call extends org.apache.thrift.async.TAsyncMethodCall {
       private String userBuyer;
-      public saveUserBuyer_call(String userBuyer, org.apache.thrift.async.AsyncMethodCallback<saveUserBuyer_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public saveUserBuyer_call(String userBuyer, org.apache.thrift.async.AsyncMethodCallback<saveUserBuyer_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.userBuyer = userBuyer;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("saveUserBuyer", org.apache.thrift.protocol.TMessageType.CALL, 0));
         saveUserBuyer_args args = new saveUserBuyer_args();
         args.setUserBuyer(userBuyer);
@@ -691,8 +691,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public int getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public int getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -701,7 +701,7 @@ public class UserThriftRpcService {
       }
     }
 
-    public void getUserBuyer(int userId, org.apache.thrift.async.AsyncMethodCallback<getUserBuyer_call> resultHandler) throws TException {
+    public void getUserBuyer(int userId, org.apache.thrift.async.AsyncMethodCallback<getUserBuyer_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       getUserBuyer_call method_call = new getUserBuyer_call(userId, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -710,12 +710,12 @@ public class UserThriftRpcService {
 
     public static class getUserBuyer_call extends org.apache.thrift.async.TAsyncMethodCall {
       private int userId;
-      public getUserBuyer_call(int userId, org.apache.thrift.async.AsyncMethodCallback<getUserBuyer_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public getUserBuyer_call(int userId, org.apache.thrift.async.AsyncMethodCallback<getUserBuyer_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.userId = userId;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getUserBuyer", org.apache.thrift.protocol.TMessageType.CALL, 0));
         getUserBuyer_args args = new getUserBuyer_args();
         args.setUserId(userId);
@@ -723,8 +723,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public String getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -733,7 +733,7 @@ public class UserThriftRpcService {
       }
     }
 
-    public void updateUserBuyer(String userBuyer, org.apache.thrift.async.AsyncMethodCallback<updateUserBuyer_call> resultHandler) throws TException {
+    public void updateUserBuyer(String userBuyer, org.apache.thrift.async.AsyncMethodCallback<updateUserBuyer_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       updateUserBuyer_call method_call = new updateUserBuyer_call(userBuyer, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -742,12 +742,12 @@ public class UserThriftRpcService {
 
     public static class updateUserBuyer_call extends org.apache.thrift.async.TAsyncMethodCall {
       private String userBuyer;
-      public updateUserBuyer_call(String userBuyer, org.apache.thrift.async.AsyncMethodCallback<updateUserBuyer_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public updateUserBuyer_call(String userBuyer, org.apache.thrift.async.AsyncMethodCallback<updateUserBuyer_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.userBuyer = userBuyer;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("updateUserBuyer", org.apache.thrift.protocol.TMessageType.CALL, 0));
         updateUserBuyer_args args = new updateUserBuyer_args();
         args.setUserBuyer(userBuyer);
@@ -755,8 +755,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public int getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public int getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -765,7 +765,7 @@ public class UserThriftRpcService {
       }
     }
 
-    public void queryUserBuyerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<queryUserBuyerByPage_call> resultHandler) throws TException {
+    public void queryUserBuyerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<queryUserBuyerByPage_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       queryUserBuyerByPage_call method_call = new queryUserBuyerByPage_call(userId, userName, nickName, phone, cardNumber, name, pageIndex, pageSize, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -781,7 +781,7 @@ public class UserThriftRpcService {
       private String name;
       private int pageIndex;
       private int pageSize;
-      public queryUserBuyerByPage_call(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<queryUserBuyerByPage_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public queryUserBuyerByPage_call(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<queryUserBuyerByPage_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.userId = userId;
         this.userName = userName;
@@ -793,7 +793,7 @@ public class UserThriftRpcService {
         this.pageSize = pageSize;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("queryUserBuyerByPage", org.apache.thrift.protocol.TMessageType.CALL, 0));
         queryUserBuyerByPage_args args = new queryUserBuyerByPage_args();
         args.setUserId(userId);
@@ -808,8 +808,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public String getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -818,7 +818,7 @@ public class UserThriftRpcService {
       }
     }
 
-    public void saveUserSeller(String userSeller, org.apache.thrift.async.AsyncMethodCallback<saveUserSeller_call> resultHandler) throws TException {
+    public void saveUserSeller(String userSeller, org.apache.thrift.async.AsyncMethodCallback<saveUserSeller_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       saveUserSeller_call method_call = new saveUserSeller_call(userSeller, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -827,12 +827,12 @@ public class UserThriftRpcService {
 
     public static class saveUserSeller_call extends org.apache.thrift.async.TAsyncMethodCall {
       private String userSeller;
-      public saveUserSeller_call(String userSeller, org.apache.thrift.async.AsyncMethodCallback<saveUserSeller_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public saveUserSeller_call(String userSeller, org.apache.thrift.async.AsyncMethodCallback<saveUserSeller_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.userSeller = userSeller;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("saveUserSeller", org.apache.thrift.protocol.TMessageType.CALL, 0));
         saveUserSeller_args args = new saveUserSeller_args();
         args.setUserSeller(userSeller);
@@ -840,8 +840,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public int getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public int getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -850,7 +850,7 @@ public class UserThriftRpcService {
       }
     }
 
-    public void getUserSeller(int userId, org.apache.thrift.async.AsyncMethodCallback<getUserSeller_call> resultHandler) throws TException {
+    public void getUserSeller(int userId, org.apache.thrift.async.AsyncMethodCallback<getUserSeller_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       getUserSeller_call method_call = new getUserSeller_call(userId, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -859,12 +859,12 @@ public class UserThriftRpcService {
 
     public static class getUserSeller_call extends org.apache.thrift.async.TAsyncMethodCall {
       private int userId;
-      public getUserSeller_call(int userId, org.apache.thrift.async.AsyncMethodCallback<getUserSeller_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public getUserSeller_call(int userId, org.apache.thrift.async.AsyncMethodCallback<getUserSeller_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.userId = userId;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getUserSeller", org.apache.thrift.protocol.TMessageType.CALL, 0));
         getUserSeller_args args = new getUserSeller_args();
         args.setUserId(userId);
@@ -872,8 +872,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public String getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -882,7 +882,7 @@ public class UserThriftRpcService {
       }
     }
 
-    public void updateUserSeller(String userSeller, org.apache.thrift.async.AsyncMethodCallback<updateUserSeller_call> resultHandler) throws TException {
+    public void updateUserSeller(String userSeller, org.apache.thrift.async.AsyncMethodCallback<updateUserSeller_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       updateUserSeller_call method_call = new updateUserSeller_call(userSeller, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -891,12 +891,12 @@ public class UserThriftRpcService {
 
     public static class updateUserSeller_call extends org.apache.thrift.async.TAsyncMethodCall {
       private String userSeller;
-      public updateUserSeller_call(String userSeller, org.apache.thrift.async.AsyncMethodCallback<updateUserSeller_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public updateUserSeller_call(String userSeller, org.apache.thrift.async.AsyncMethodCallback<updateUserSeller_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.userSeller = userSeller;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("updateUserSeller", org.apache.thrift.protocol.TMessageType.CALL, 0));
         updateUserSeller_args args = new updateUserSeller_args();
         args.setUserSeller(userSeller);
@@ -904,8 +904,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public int getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public int getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -914,7 +914,7 @@ public class UserThriftRpcService {
       }
     }
 
-    public void queryUserSellerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<queryUserSellerByPage_call> resultHandler) throws TException {
+    public void queryUserSellerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<queryUserSellerByPage_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       queryUserSellerByPage_call method_call = new queryUserSellerByPage_call(userId, userName, nickName, phone, cardNumber, name, pageIndex, pageSize, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -930,7 +930,7 @@ public class UserThriftRpcService {
       private String name;
       private int pageIndex;
       private int pageSize;
-      public queryUserSellerByPage_call(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<queryUserSellerByPage_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public queryUserSellerByPage_call(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<queryUserSellerByPage_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.userId = userId;
         this.userName = userName;
@@ -942,7 +942,7 @@ public class UserThriftRpcService {
         this.pageSize = pageSize;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("queryUserSellerByPage", org.apache.thrift.protocol.TMessageType.CALL, 0));
         queryUserSellerByPage_args args = new queryUserSellerByPage_args();
         args.setUserId(userId);
@@ -957,8 +957,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public String getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -967,7 +967,7 @@ public class UserThriftRpcService {
       }
     }
 
-    public void saveUserThirdBind(String thirdBind, org.apache.thrift.async.AsyncMethodCallback<saveUserThirdBind_call> resultHandler) throws TException {
+    public void saveUserThirdBind(String thirdBind, org.apache.thrift.async.AsyncMethodCallback<saveUserThirdBind_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       saveUserThirdBind_call method_call = new saveUserThirdBind_call(thirdBind, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -976,12 +976,12 @@ public class UserThriftRpcService {
 
     public static class saveUserThirdBind_call extends org.apache.thrift.async.TAsyncMethodCall {
       private String thirdBind;
-      public saveUserThirdBind_call(String thirdBind, org.apache.thrift.async.AsyncMethodCallback<saveUserThirdBind_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public saveUserThirdBind_call(String thirdBind, org.apache.thrift.async.AsyncMethodCallback<saveUserThirdBind_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.thirdBind = thirdBind;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("saveUserThirdBind", org.apache.thrift.protocol.TMessageType.CALL, 0));
         saveUserThirdBind_args args = new saveUserThirdBind_args();
         args.setThirdBind(thirdBind);
@@ -989,8 +989,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public int getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public int getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -999,7 +999,7 @@ public class UserThriftRpcService {
       }
     }
 
-    public void getUserThirdBind(String thirdId, int type, org.apache.thrift.async.AsyncMethodCallback<getUserThirdBind_call> resultHandler) throws TException {
+    public void getUserThirdBind(String thirdId, int type, org.apache.thrift.async.AsyncMethodCallback<getUserThirdBind_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       getUserThirdBind_call method_call = new getUserThirdBind_call(thirdId, type, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -1009,13 +1009,13 @@ public class UserThriftRpcService {
     public static class getUserThirdBind_call extends org.apache.thrift.async.TAsyncMethodCall {
       private String thirdId;
       private int type;
-      public getUserThirdBind_call(String thirdId, int type, org.apache.thrift.async.AsyncMethodCallback<getUserThirdBind_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+      public getUserThirdBind_call(String thirdId, int type, org.apache.thrift.async.AsyncMethodCallback<getUserThirdBind_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.thirdId = thirdId;
         this.type = type;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getUserThirdBind", org.apache.thrift.protocol.TMessageType.CALL, 0));
         getUserThirdBind_args args = new getUserThirdBind_args();
         args.setThirdId(thirdId);
@@ -1024,8 +1024,8 @@ public class UserThriftRpcService {
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws TException {
-        if (getState() != State.RESPONSE_READ) {
+      public String getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -1078,7 +1078,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public saveUser_result getResult(I iface, saveUser_args args) throws TException {
+      public saveUser_result getResult(I iface, saveUser_args args) throws org.apache.thrift.TException {
         saveUser_result result = new saveUser_result();
         result.success = iface.saveUser(args.user);
         result.setSuccessIsSet(true);
@@ -1099,7 +1099,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public getUser_result getResult(I iface, getUser_args args) throws TException {
+      public getUser_result getResult(I iface, getUser_args args) throws org.apache.thrift.TException {
         getUser_result result = new getUser_result();
         result.success = iface.getUser(args.userId);
         return result;
@@ -1119,7 +1119,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public updateUser_result getResult(I iface, updateUser_args args) throws TException {
+      public updateUser_result getResult(I iface, updateUser_args args) throws org.apache.thrift.TException {
         updateUser_result result = new updateUser_result();
         result.success = iface.updateUser(args.user);
         result.setSuccessIsSet(true);
@@ -1140,7 +1140,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public getUserList_result getResult(I iface, getUserList_args args) throws TException {
+      public getUserList_result getResult(I iface, getUserList_args args) throws org.apache.thrift.TException {
         getUserList_result result = new getUserList_result();
         result.success = iface.getUserList(args.userIdList);
         return result;
@@ -1160,7 +1160,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public getUserMap_result getResult(I iface, getUserMap_args args) throws TException {
+      public getUserMap_result getResult(I iface, getUserMap_args args) throws org.apache.thrift.TException {
         getUserMap_result result = new getUserMap_result();
         result.success = iface.getUserMap(args.userIdList);
         return result;
@@ -1180,7 +1180,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public saveUserBuyer_result getResult(I iface, saveUserBuyer_args args) throws TException {
+      public saveUserBuyer_result getResult(I iface, saveUserBuyer_args args) throws org.apache.thrift.TException {
         saveUserBuyer_result result = new saveUserBuyer_result();
         result.success = iface.saveUserBuyer(args.userBuyer);
         result.setSuccessIsSet(true);
@@ -1201,7 +1201,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public getUserBuyer_result getResult(I iface, getUserBuyer_args args) throws TException {
+      public getUserBuyer_result getResult(I iface, getUserBuyer_args args) throws org.apache.thrift.TException {
         getUserBuyer_result result = new getUserBuyer_result();
         result.success = iface.getUserBuyer(args.userId);
         return result;
@@ -1221,7 +1221,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public updateUserBuyer_result getResult(I iface, updateUserBuyer_args args) throws TException {
+      public updateUserBuyer_result getResult(I iface, updateUserBuyer_args args) throws org.apache.thrift.TException {
         updateUserBuyer_result result = new updateUserBuyer_result();
         result.success = iface.updateUserBuyer(args.userBuyer);
         result.setSuccessIsSet(true);
@@ -1242,7 +1242,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public queryUserBuyerByPage_result getResult(I iface, queryUserBuyerByPage_args args) throws TException {
+      public queryUserBuyerByPage_result getResult(I iface, queryUserBuyerByPage_args args) throws org.apache.thrift.TException {
         queryUserBuyerByPage_result result = new queryUserBuyerByPage_result();
         result.success = iface.queryUserBuyerByPage(args.userId, args.userName, args.nickName, args.phone, args.cardNumber, args.name, args.pageIndex, args.pageSize);
         return result;
@@ -1262,7 +1262,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public saveUserSeller_result getResult(I iface, saveUserSeller_args args) throws TException {
+      public saveUserSeller_result getResult(I iface, saveUserSeller_args args) throws org.apache.thrift.TException {
         saveUserSeller_result result = new saveUserSeller_result();
         result.success = iface.saveUserSeller(args.userSeller);
         result.setSuccessIsSet(true);
@@ -1283,7 +1283,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public getUserSeller_result getResult(I iface, getUserSeller_args args) throws TException {
+      public getUserSeller_result getResult(I iface, getUserSeller_args args) throws org.apache.thrift.TException {
         getUserSeller_result result = new getUserSeller_result();
         result.success = iface.getUserSeller(args.userId);
         return result;
@@ -1303,7 +1303,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public updateUserSeller_result getResult(I iface, updateUserSeller_args args) throws TException {
+      public updateUserSeller_result getResult(I iface, updateUserSeller_args args) throws org.apache.thrift.TException {
         updateUserSeller_result result = new updateUserSeller_result();
         result.success = iface.updateUserSeller(args.userSeller);
         result.setSuccessIsSet(true);
@@ -1324,7 +1324,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public queryUserSellerByPage_result getResult(I iface, queryUserSellerByPage_args args) throws TException {
+      public queryUserSellerByPage_result getResult(I iface, queryUserSellerByPage_args args) throws org.apache.thrift.TException {
         queryUserSellerByPage_result result = new queryUserSellerByPage_result();
         result.success = iface.queryUserSellerByPage(args.userId, args.userName, args.nickName, args.phone, args.cardNumber, args.name, args.pageIndex, args.pageSize);
         return result;
@@ -1344,7 +1344,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public saveUserThirdBind_result getResult(I iface, saveUserThirdBind_args args) throws TException {
+      public saveUserThirdBind_result getResult(I iface, saveUserThirdBind_args args) throws org.apache.thrift.TException {
         saveUserThirdBind_result result = new saveUserThirdBind_result();
         result.success = iface.saveUserThirdBind(args.thirdBind);
         result.setSuccessIsSet(true);
@@ -1365,7 +1365,7 @@ public class UserThriftRpcService {
         return false;
       }
 
-      public getUserThirdBind_result getResult(I iface, getUserThirdBind_args args) throws TException {
+      public getUserThirdBind_result getResult(I iface, getUserThirdBind_args args) throws org.apache.thrift.TException {
         getUserThirdBind_result result = new getUserThirdBind_result();
         result.success = iface.getUserThirdBind(args.thirdId, args.type);
         return result;
@@ -1597,11 +1597,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -1621,7 +1621,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -1629,7 +1629,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -1637,7 +1637,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -1650,7 +1650,7 @@ public class UserThriftRpcService {
 
     private static class saveUser_argsStandardScheme extends StandardScheme<saveUser_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUser_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUser_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1679,7 +1679,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUser_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUser_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1703,7 +1703,7 @@ public class UserThriftRpcService {
     private static class saveUser_argsTupleScheme extends TupleScheme<saveUser_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, saveUser_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, saveUser_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetUser()) {
@@ -1716,7 +1716,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, saveUser_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, saveUser_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -1953,11 +1953,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -1973,7 +1973,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -1981,7 +1981,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -1991,7 +1991,7 @@ public class UserThriftRpcService {
         // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
         __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -2004,7 +2004,7 @@ public class UserThriftRpcService {
 
     private static class saveUser_resultStandardScheme extends StandardScheme<saveUser_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUser_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUser_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2033,7 +2033,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUser_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUser_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -2057,7 +2057,7 @@ public class UserThriftRpcService {
     private static class saveUser_resultTupleScheme extends TupleScheme<saveUser_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, saveUser_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, saveUser_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -2070,7 +2070,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, saveUser_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, saveUser_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -2307,11 +2307,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -2327,7 +2327,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -2335,7 +2335,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -2345,7 +2345,7 @@ public class UserThriftRpcService {
         // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
         __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -2358,7 +2358,7 @@ public class UserThriftRpcService {
 
     private static class getUser_argsStandardScheme extends StandardScheme<getUser_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getUser_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUser_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2387,7 +2387,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getUser_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUser_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -2409,7 +2409,7 @@ public class UserThriftRpcService {
     private static class getUser_argsTupleScheme extends TupleScheme<getUser_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getUser_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUser_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetUserId()) {
@@ -2422,7 +2422,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getUser_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUser_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -2657,11 +2657,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -2681,7 +2681,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -2689,7 +2689,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -2697,7 +2697,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -2710,7 +2710,7 @@ public class UserThriftRpcService {
 
     private static class getUser_resultStandardScheme extends StandardScheme<getUser_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getUser_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUser_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2739,7 +2739,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getUser_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUser_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -2763,7 +2763,7 @@ public class UserThriftRpcService {
     private static class getUser_resultTupleScheme extends TupleScheme<getUser_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getUser_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUser_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -2776,7 +2776,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getUser_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUser_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -3011,11 +3011,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -3035,7 +3035,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -3043,7 +3043,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -3051,7 +3051,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -3064,7 +3064,7 @@ public class UserThriftRpcService {
 
     private static class updateUser_argsStandardScheme extends StandardScheme<updateUser_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, updateUser_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, updateUser_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -3093,7 +3093,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, updateUser_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, updateUser_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -3117,7 +3117,7 @@ public class UserThriftRpcService {
     private static class updateUser_argsTupleScheme extends TupleScheme<updateUser_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, updateUser_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, updateUser_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetUser()) {
@@ -3130,7 +3130,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, updateUser_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, updateUser_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -3367,11 +3367,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -3387,7 +3387,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -3395,7 +3395,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -3405,7 +3405,7 @@ public class UserThriftRpcService {
         // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
         __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -3418,7 +3418,7 @@ public class UserThriftRpcService {
 
     private static class updateUser_resultStandardScheme extends StandardScheme<updateUser_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, updateUser_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, updateUser_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -3447,7 +3447,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, updateUser_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, updateUser_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -3471,7 +3471,7 @@ public class UserThriftRpcService {
     private static class updateUser_resultTupleScheme extends TupleScheme<updateUser_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, updateUser_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, updateUser_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -3484,7 +3484,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, updateUser_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, updateUser_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -3739,11 +3739,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -3763,7 +3763,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -3771,7 +3771,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -3779,7 +3779,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -3792,7 +3792,7 @@ public class UserThriftRpcService {
 
     private static class getUserList_argsStandardScheme extends StandardScheme<getUserList_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserList_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserList_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -3831,7 +3831,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserList_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserList_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -3862,7 +3862,7 @@ public class UserThriftRpcService {
     private static class getUserList_argsTupleScheme extends TupleScheme<getUserList_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getUserList_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserList_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetUserIdList()) {
@@ -3881,7 +3881,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getUserList_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserList_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -4125,11 +4125,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -4149,7 +4149,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -4157,7 +4157,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -4165,7 +4165,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -4178,7 +4178,7 @@ public class UserThriftRpcService {
 
     private static class getUserList_resultStandardScheme extends StandardScheme<getUserList_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserList_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserList_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -4207,7 +4207,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserList_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserList_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -4231,7 +4231,7 @@ public class UserThriftRpcService {
     private static class getUserList_resultTupleScheme extends TupleScheme<getUserList_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getUserList_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserList_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -4244,7 +4244,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getUserList_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserList_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -4499,11 +4499,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -4523,7 +4523,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -4531,7 +4531,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -4539,7 +4539,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -4552,7 +4552,7 @@ public class UserThriftRpcService {
 
     private static class getUserMap_argsStandardScheme extends StandardScheme<getUserMap_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserMap_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserMap_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -4591,7 +4591,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserMap_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserMap_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -4622,7 +4622,7 @@ public class UserThriftRpcService {
     private static class getUserMap_argsTupleScheme extends TupleScheme<getUserMap_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getUserMap_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserMap_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetUserIdList()) {
@@ -4641,7 +4641,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getUserMap_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserMap_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -4885,11 +4885,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -4909,7 +4909,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -4917,7 +4917,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -4925,7 +4925,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -4938,7 +4938,7 @@ public class UserThriftRpcService {
 
     private static class getUserMap_resultStandardScheme extends StandardScheme<getUserMap_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserMap_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserMap_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -4967,7 +4967,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserMap_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserMap_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -4991,7 +4991,7 @@ public class UserThriftRpcService {
     private static class getUserMap_resultTupleScheme extends TupleScheme<getUserMap_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getUserMap_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserMap_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -5004,7 +5004,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getUserMap_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserMap_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -5239,11 +5239,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -5263,7 +5263,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -5271,7 +5271,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -5279,7 +5279,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -5292,7 +5292,7 @@ public class UserThriftRpcService {
 
     private static class saveUserBuyer_argsStandardScheme extends StandardScheme<saveUserBuyer_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUserBuyer_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUserBuyer_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -5321,7 +5321,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUserBuyer_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUserBuyer_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -5345,7 +5345,7 @@ public class UserThriftRpcService {
     private static class saveUserBuyer_argsTupleScheme extends TupleScheme<saveUserBuyer_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, saveUserBuyer_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, saveUserBuyer_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetUserBuyer()) {
@@ -5358,7 +5358,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, saveUserBuyer_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, saveUserBuyer_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -5595,11 +5595,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -5615,7 +5615,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -5623,7 +5623,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -5633,7 +5633,7 @@ public class UserThriftRpcService {
         // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
         __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -5646,7 +5646,7 @@ public class UserThriftRpcService {
 
     private static class saveUserBuyer_resultStandardScheme extends StandardScheme<saveUserBuyer_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUserBuyer_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUserBuyer_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -5675,7 +5675,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUserBuyer_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUserBuyer_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -5699,7 +5699,7 @@ public class UserThriftRpcService {
     private static class saveUserBuyer_resultTupleScheme extends TupleScheme<saveUserBuyer_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, saveUserBuyer_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, saveUserBuyer_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -5712,7 +5712,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, saveUserBuyer_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, saveUserBuyer_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -5949,11 +5949,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -5969,7 +5969,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -5977,7 +5977,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -5987,7 +5987,7 @@ public class UserThriftRpcService {
         // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
         __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -6000,7 +6000,7 @@ public class UserThriftRpcService {
 
     private static class getUserBuyer_argsStandardScheme extends StandardScheme<getUserBuyer_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserBuyer_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserBuyer_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -6029,7 +6029,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserBuyer_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserBuyer_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -6051,7 +6051,7 @@ public class UserThriftRpcService {
     private static class getUserBuyer_argsTupleScheme extends TupleScheme<getUserBuyer_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getUserBuyer_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserBuyer_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetUserId()) {
@@ -6064,7 +6064,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getUserBuyer_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserBuyer_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -6299,11 +6299,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -6323,7 +6323,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -6331,7 +6331,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -6339,7 +6339,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -6352,7 +6352,7 @@ public class UserThriftRpcService {
 
     private static class getUserBuyer_resultStandardScheme extends StandardScheme<getUserBuyer_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserBuyer_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserBuyer_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -6381,7 +6381,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserBuyer_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserBuyer_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -6405,7 +6405,7 @@ public class UserThriftRpcService {
     private static class getUserBuyer_resultTupleScheme extends TupleScheme<getUserBuyer_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getUserBuyer_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserBuyer_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -6418,7 +6418,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getUserBuyer_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserBuyer_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -6653,11 +6653,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -6677,7 +6677,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -6685,7 +6685,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -6693,7 +6693,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -6706,7 +6706,7 @@ public class UserThriftRpcService {
 
     private static class updateUserBuyer_argsStandardScheme extends StandardScheme<updateUserBuyer_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, updateUserBuyer_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, updateUserBuyer_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -6735,7 +6735,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, updateUserBuyer_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, updateUserBuyer_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -6759,7 +6759,7 @@ public class UserThriftRpcService {
     private static class updateUserBuyer_argsTupleScheme extends TupleScheme<updateUserBuyer_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, updateUserBuyer_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, updateUserBuyer_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetUserBuyer()) {
@@ -6772,7 +6772,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, updateUserBuyer_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, updateUserBuyer_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -7009,11 +7009,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -7029,7 +7029,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -7037,7 +7037,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -7047,7 +7047,7 @@ public class UserThriftRpcService {
         // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
         __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -7060,7 +7060,7 @@ public class UserThriftRpcService {
 
     private static class updateUserBuyer_resultStandardScheme extends StandardScheme<updateUserBuyer_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, updateUserBuyer_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, updateUserBuyer_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -7089,7 +7089,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, updateUserBuyer_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, updateUserBuyer_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -7113,7 +7113,7 @@ public class UserThriftRpcService {
     private static class updateUserBuyer_resultTupleScheme extends TupleScheme<updateUserBuyer_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, updateUserBuyer_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, updateUserBuyer_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -7126,7 +7126,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, updateUserBuyer_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, updateUserBuyer_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -7846,11 +7846,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -7914,7 +7914,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -7922,7 +7922,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -7932,7 +7932,7 @@ public class UserThriftRpcService {
         // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
         __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -7945,7 +7945,7 @@ public class UserThriftRpcService {
 
     private static class queryUserBuyerByPage_argsStandardScheme extends StandardScheme<queryUserBuyerByPage_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, queryUserBuyerByPage_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, queryUserBuyerByPage_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -8030,7 +8030,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, queryUserBuyerByPage_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, queryUserBuyerByPage_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -8083,7 +8083,7 @@ public class UserThriftRpcService {
     private static class queryUserBuyerByPage_argsTupleScheme extends TupleScheme<queryUserBuyerByPage_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, queryUserBuyerByPage_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, queryUserBuyerByPage_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetUserId()) {
@@ -8138,7 +8138,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, queryUserBuyerByPage_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, queryUserBuyerByPage_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(8);
         if (incoming.get(0)) {
@@ -8401,11 +8401,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -8425,7 +8425,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -8433,7 +8433,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -8441,7 +8441,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -8454,7 +8454,7 @@ public class UserThriftRpcService {
 
     private static class queryUserBuyerByPage_resultStandardScheme extends StandardScheme<queryUserBuyerByPage_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, queryUserBuyerByPage_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, queryUserBuyerByPage_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -8483,7 +8483,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, queryUserBuyerByPage_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, queryUserBuyerByPage_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -8507,7 +8507,7 @@ public class UserThriftRpcService {
     private static class queryUserBuyerByPage_resultTupleScheme extends TupleScheme<queryUserBuyerByPage_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, queryUserBuyerByPage_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, queryUserBuyerByPage_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -8520,7 +8520,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, queryUserBuyerByPage_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, queryUserBuyerByPage_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -8755,11 +8755,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -8779,7 +8779,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -8787,7 +8787,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -8795,7 +8795,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -8808,7 +8808,7 @@ public class UserThriftRpcService {
 
     private static class saveUserSeller_argsStandardScheme extends StandardScheme<saveUserSeller_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUserSeller_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUserSeller_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -8837,7 +8837,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUserSeller_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUserSeller_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -8861,7 +8861,7 @@ public class UserThriftRpcService {
     private static class saveUserSeller_argsTupleScheme extends TupleScheme<saveUserSeller_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, saveUserSeller_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, saveUserSeller_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetUserSeller()) {
@@ -8874,7 +8874,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, saveUserSeller_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, saveUserSeller_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -9111,11 +9111,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -9131,7 +9131,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -9139,7 +9139,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -9149,7 +9149,7 @@ public class UserThriftRpcService {
         // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
         __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -9162,7 +9162,7 @@ public class UserThriftRpcService {
 
     private static class saveUserSeller_resultStandardScheme extends StandardScheme<saveUserSeller_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUserSeller_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUserSeller_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -9191,7 +9191,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUserSeller_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUserSeller_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -9215,7 +9215,7 @@ public class UserThriftRpcService {
     private static class saveUserSeller_resultTupleScheme extends TupleScheme<saveUserSeller_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, saveUserSeller_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, saveUserSeller_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -9228,7 +9228,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, saveUserSeller_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, saveUserSeller_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -9465,11 +9465,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -9485,7 +9485,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -9493,7 +9493,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -9503,7 +9503,7 @@ public class UserThriftRpcService {
         // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
         __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -9516,7 +9516,7 @@ public class UserThriftRpcService {
 
     private static class getUserSeller_argsStandardScheme extends StandardScheme<getUserSeller_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserSeller_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserSeller_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -9545,7 +9545,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserSeller_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserSeller_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -9567,7 +9567,7 @@ public class UserThriftRpcService {
     private static class getUserSeller_argsTupleScheme extends TupleScheme<getUserSeller_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getUserSeller_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserSeller_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetUserId()) {
@@ -9580,7 +9580,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getUserSeller_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserSeller_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -9815,11 +9815,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -9839,7 +9839,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -9847,7 +9847,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -9855,7 +9855,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -9868,7 +9868,7 @@ public class UserThriftRpcService {
 
     private static class getUserSeller_resultStandardScheme extends StandardScheme<getUserSeller_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserSeller_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserSeller_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -9897,7 +9897,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserSeller_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserSeller_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -9921,7 +9921,7 @@ public class UserThriftRpcService {
     private static class getUserSeller_resultTupleScheme extends TupleScheme<getUserSeller_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getUserSeller_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserSeller_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -9934,7 +9934,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getUserSeller_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserSeller_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -10169,11 +10169,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -10193,7 +10193,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -10201,7 +10201,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -10209,7 +10209,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -10222,7 +10222,7 @@ public class UserThriftRpcService {
 
     private static class updateUserSeller_argsStandardScheme extends StandardScheme<updateUserSeller_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, updateUserSeller_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, updateUserSeller_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -10251,7 +10251,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, updateUserSeller_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, updateUserSeller_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -10275,7 +10275,7 @@ public class UserThriftRpcService {
     private static class updateUserSeller_argsTupleScheme extends TupleScheme<updateUserSeller_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, updateUserSeller_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, updateUserSeller_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetUserSeller()) {
@@ -10288,7 +10288,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, updateUserSeller_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, updateUserSeller_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -10525,11 +10525,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -10545,7 +10545,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -10553,7 +10553,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -10563,7 +10563,7 @@ public class UserThriftRpcService {
         // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
         __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -10576,7 +10576,7 @@ public class UserThriftRpcService {
 
     private static class updateUserSeller_resultStandardScheme extends StandardScheme<updateUserSeller_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, updateUserSeller_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, updateUserSeller_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -10605,7 +10605,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, updateUserSeller_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, updateUserSeller_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -10629,7 +10629,7 @@ public class UserThriftRpcService {
     private static class updateUserSeller_resultTupleScheme extends TupleScheme<updateUserSeller_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, updateUserSeller_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, updateUserSeller_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -10642,7 +10642,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, updateUserSeller_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, updateUserSeller_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -11362,11 +11362,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -11430,7 +11430,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -11438,7 +11438,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -11448,7 +11448,7 @@ public class UserThriftRpcService {
         // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
         __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -11461,7 +11461,7 @@ public class UserThriftRpcService {
 
     private static class queryUserSellerByPage_argsStandardScheme extends StandardScheme<queryUserSellerByPage_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, queryUserSellerByPage_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, queryUserSellerByPage_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -11546,7 +11546,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, queryUserSellerByPage_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, queryUserSellerByPage_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -11599,7 +11599,7 @@ public class UserThriftRpcService {
     private static class queryUserSellerByPage_argsTupleScheme extends TupleScheme<queryUserSellerByPage_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, queryUserSellerByPage_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, queryUserSellerByPage_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetUserId()) {
@@ -11654,7 +11654,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, queryUserSellerByPage_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, queryUserSellerByPage_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(8);
         if (incoming.get(0)) {
@@ -11917,11 +11917,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -11941,7 +11941,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -11949,7 +11949,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -11957,7 +11957,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -11970,7 +11970,7 @@ public class UserThriftRpcService {
 
     private static class queryUserSellerByPage_resultStandardScheme extends StandardScheme<queryUserSellerByPage_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, queryUserSellerByPage_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, queryUserSellerByPage_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -11999,7 +11999,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, queryUserSellerByPage_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, queryUserSellerByPage_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -12023,7 +12023,7 @@ public class UserThriftRpcService {
     private static class queryUserSellerByPage_resultTupleScheme extends TupleScheme<queryUserSellerByPage_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, queryUserSellerByPage_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, queryUserSellerByPage_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -12036,7 +12036,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, queryUserSellerByPage_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, queryUserSellerByPage_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -12271,11 +12271,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -12295,7 +12295,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -12303,7 +12303,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -12311,7 +12311,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -12324,7 +12324,7 @@ public class UserThriftRpcService {
 
     private static class saveUserThirdBind_argsStandardScheme extends StandardScheme<saveUserThirdBind_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUserThirdBind_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUserThirdBind_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -12353,7 +12353,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUserThirdBind_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUserThirdBind_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -12377,7 +12377,7 @@ public class UserThriftRpcService {
     private static class saveUserThirdBind_argsTupleScheme extends TupleScheme<saveUserThirdBind_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, saveUserThirdBind_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, saveUserThirdBind_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetThirdBind()) {
@@ -12390,7 +12390,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, saveUserThirdBind_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, saveUserThirdBind_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -12627,11 +12627,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -12647,7 +12647,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -12655,7 +12655,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -12665,7 +12665,7 @@ public class UserThriftRpcService {
         // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
         __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -12678,7 +12678,7 @@ public class UserThriftRpcService {
 
     private static class saveUserThirdBind_resultStandardScheme extends StandardScheme<saveUserThirdBind_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUserThirdBind_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUserThirdBind_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -12707,7 +12707,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUserThirdBind_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUserThirdBind_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -12731,7 +12731,7 @@ public class UserThriftRpcService {
     private static class saveUserThirdBind_resultTupleScheme extends TupleScheme<saveUserThirdBind_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, saveUserThirdBind_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, saveUserThirdBind_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -12744,7 +12744,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, saveUserThirdBind_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, saveUserThirdBind_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -13050,11 +13050,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -13078,7 +13078,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -13086,7 +13086,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -13096,7 +13096,7 @@ public class UserThriftRpcService {
         // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
         __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -13109,7 +13109,7 @@ public class UserThriftRpcService {
 
     private static class getUserThirdBind_argsStandardScheme extends StandardScheme<getUserThirdBind_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserThirdBind_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserThirdBind_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -13146,7 +13146,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserThirdBind_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserThirdBind_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -13173,7 +13173,7 @@ public class UserThriftRpcService {
     private static class getUserThirdBind_argsTupleScheme extends TupleScheme<getUserThirdBind_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getUserThirdBind_args struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserThirdBind_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetThirdId()) {
@@ -13192,7 +13192,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getUserThirdBind_args struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserThirdBind_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(2);
         if (incoming.get(0)) {
@@ -13431,11 +13431,11 @@ public class UserThriftRpcService {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -13455,7 +13455,7 @@ public class UserThriftRpcService {
       return sb.toString();
     }
 
-    public void validate() throws TException {
+    public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -13463,7 +13463,7 @@ public class UserThriftRpcService {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -13471,7 +13471,7 @@ public class UserThriftRpcService {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (TException te) {
+      } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -13484,7 +13484,7 @@ public class UserThriftRpcService {
 
     private static class getUserThirdBind_resultStandardScheme extends StandardScheme<getUserThirdBind_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserThirdBind_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, getUserThirdBind_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -13513,7 +13513,7 @@ public class UserThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserThirdBind_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, getUserThirdBind_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -13537,7 +13537,7 @@ public class UserThriftRpcService {
     private static class getUserThirdBind_resultTupleScheme extends TupleScheme<getUserThirdBind_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, getUserThirdBind_result struct) throws TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, getUserThirdBind_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -13550,7 +13550,7 @@ public class UserThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, getUserThirdBind_result struct) throws TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, getUserThirdBind_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {

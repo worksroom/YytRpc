@@ -10,8 +10,14 @@ public class MallProductCategoryPro {
     private int id;// 属性ID
     private String name;
     private int classId;
+    /**
+     * 1 颜色
+     * 2 选择
+     * 3 输入
+     */
     private int type;
     private int isNeed;
+    private int isSearch;
     private int rank;
     private Date createTime;
     private Date updateTime;
@@ -78,5 +84,13 @@ public class MallProductCategoryPro {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public int getIsSearch() {
+        return isSearch;
+    }
+
+    public void setIsSearch(int isSearch) {
+        this.isSearch = isSearch;
     }
 }
