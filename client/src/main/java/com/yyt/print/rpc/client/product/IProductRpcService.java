@@ -1,15 +1,13 @@
-package com.yyt.print.product.service;
+package com.yyt.print.rpc.client.product;
 
-import com.youguu.core.util.PageHolder;
 import com.yyt.print.product.pojo.MallProductCategory;
 
 import java.util.List;
 
 /**
- * Created by leo on 2016/11/23.
+ * Created by lenovo on 2016/12/29.
  */
-public interface IMallProductCategoryService {
-
+public interface IProductRpcService {
     /**
      * 新建商品类别
      * @param category

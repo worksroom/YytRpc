@@ -25,6 +25,9 @@
 		<typeAlias alias="UserSeller" type="com.yyt.print.user.pojo.UserSeller" />
 		<typeAlias alias="UserBuyer" type="com.yyt.print.user.pojo.UserBuyer" />
 		<typeAlias alias="UserThirdBind" type="com.yyt.print.user.pojo.UserThirdBind" />
+
+		<!--产品分类-->
+		<typeAlias alias="MallProductCategory" type="com.yyt.print.product.pojo.MallProductCategory" />
 	</typeAliases>
 
 	<typeHandlers>
@@ -53,5 +56,9 @@
 		<mapper resource="mybatis/user/user_buyer_mapper.xml" />
 		<mapper resource="mybatis/user/user_seller_mapper.xml" />
 		<mapper resource="mybatis/user/user_third_mapper.xml" />
+
+
+		<!--产品分类-->
+		<mapper resource="mybatis/product/mall_product_category.xml" />
 	</mappers>
 </configuration>

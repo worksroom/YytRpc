@@ -10,7 +10,11 @@ public class MallProductCategory {
     private int id;
     private String name;
     private String des;
-    private int parentId;
+    private int rank;
+    /**
+     * -1表示1级分类
+     */
+    private int parentId = -1;
     private int isEnd;
     private String logo;
     private Date createTime;
@@ -78,5 +82,13 @@ public class MallProductCategory {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 }
