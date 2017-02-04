@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="lazyLoadingEnabled" value="false" />
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="logPrefix" value="database.game" />
+		<setting name="mapUnderscoreToCamelCase" value="false" />
+	</settings>
+
+	<typeAliases>
+		<typeAlias alias="Ad" type="com.yyt.print.ad.pojo.Ad" />
+		<typeAlias alias="AdCategory" type="com.yyt.print.ad.pojo.AdCategory" />
+		<typeAlias alias="FragmentHome" type="com.yyt.print.fragment.pojo.FragmentHome" />
+		<typeAlias alias="Friend" type="com.yyt.print.friend.pojo.Friend" />
+		<typeAlias alias="FriendApply" type="com.yyt.print.friend.pojo.FriendApply" />
+		<typeAlias alias="ChatRecord" type="com.yyt.print.friend.pojo.ChatRecord" />
+		<typeAlias alias="ChatSession" type="com.yyt.print.friend.pojo.ChatSession" />
+		<typeAlias alias="InfoCategory" type="com.yyt.print.info.pojo.InfoCategory" />
+		<typeAlias alias="InfoContent" type="com.yyt.print.info.pojo.InfoContent" />
+		<typeAlias alias="User" type="com.yyt.print.user.pojo.User" />
+		<typeAlias alias="UserSeller" type="com.yyt.print.user.pojo.UserSeller" />
+		<typeAlias alias="UserBuyer" type="com.yyt.print.user.pojo.UserBuyer" />
+		<typeAlias alias="UserThirdBind" type="com.yyt.print.user.pojo.UserThirdBind" />
+
+		<!--产品分类-->
+		<typeAlias alias="MallProductCategory" type="com.yyt.print.product.pojo.MallProductCategory" />
+	</typeAliases>
+
+	<typeHandlers>
+		<typeHandler handler="com.yyt.print.base.ListTypeHandler"/>
+	</typeHandlers>
+
+	<plugins>
+		<plugin interceptor="com.youguu.core.dao.StatementInterceptor" />
+		<plugin interceptor="com.youguu.core.dao.ResultSetInterceptor" />
+	</plugins>
+	
+	<mappers>
+		<mapper resource="mybatis/friend/friend_mapper.xml" />
+		<mapper resource="mybatis/friend/friend_apply_mapper.xml" />
+		<mapper resource="mybatis/friend/chat_session_mapper.xml" />
+		<mapper resource="mybatis/friend/chat_record_mapper.xml" />
+
+		<mapper resource="mybatis/ad/ad_mapper.xml" />
+		<mapper resource="mybatis/ad/ad_category_mapper.xml" />
+
+		<mapper resource="mybatis/info/fragment_home_mapper.xml" />
+		<mapper resource="mybatis/info/info_category_mapper.xml" />
+		<mapper resource="mybatis/info/info_content_mapper.xml" />
+
+		<mapper resource="mybatis/user/user_mapper.xml" />
+		<mapper resource="mybatis/user/user_buyer_mapper.xml" />
+		<mapper resource="mybatis/user/user_seller_mapper.xml" />
+		<mapper resource="mybatis/user/user_third_mapper.xml" />
+
+
+		<!--产品分类-->
+		<mapper resource="mybatis/product/mall_product_category.xml" />
+	</mappers>
+</configuration>

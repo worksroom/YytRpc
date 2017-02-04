@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FragmentHome">
+    <resultMap type="FragmentHome" id="FragmentHomeResultMap">
+        <result property="id" column="id"/>
+        <result property="rank" column="rank"/>
+        <result property="type" column="type"/>
+        <result property="content" column="content" typeHandler="com.yyt.print.base.ListTypeHandler"/>
+        <result property="used" column="used"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="FragmentHome">
+        insert into fragment_home
+        (rank,type,content,used,create_time)
+        VALUES
+        (#{rank},#{type},#{content},#{used},#{createTime})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+
+    <update id="update" parameterType="FragmentHome">
+        update fragment_home set rank=#{rank}, type=#{type}, content=#{content}, used=#{used}
+        where id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+		delete from fragment_home where id=#{id}
+	</delete>
+
+    <select id="select" parameterType="int" resultMap="FragmentHomeResultMap">
+		select id,rank,type,content,used,create_time
+		from fragment_home
+		where id=#{id}
+	</select>
+
+    <sql id="sql_count">
+        select count(1)
+    </sql>
+    <sql id="sql_select">
+        select id,rank,type,content,used,create_time
+    </sql>
+    <sql id="sql_where">
+        from fragment_home
+        <where>
+            <if test="type != null and type !=''">
+                AND type = #{type}
+            </if>
+            <if test="used != null and used !=''">
+                AND used = #{used}
+            </if>
+        </where>
+    </sql>
+    <sql id="sql_order">
+        ORDER BY rank ASC
+    </sql>
+
+    <select id="findByParams_count" parameterType="java.util.HashMap" resultType="int">
+        <include refid="sql_count" />
+        <include refid="sql_where" />
+    </select>
+    <select id="findByParams" parameterType="java.util.HashMap" resultMap="FragmentHomeResultMap">
+        <include refid="sql_select" />
+        <include refid="sql_where" />
+        <include refid="sql_order" />
+    </select>
+</mapper>

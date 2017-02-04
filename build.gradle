@@ -1,0 +1,118 @@
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+
+    sourceCompatibility = 1.7
+
+    repositories {
+        mavenCentral()
+    }
+
+    compileJava {
+        options.encoding = 'UTF-8'
+    }
+
+    compileTestJava {
+        options.encoding = 'UTF-8'
+    }
+
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+    }
+
+
+}
+
+
+project(':common') {
+    dependencies {
+        /** Json **/
+        compile 'com.alibaba:fastjson:1.2.5'
+
+        /** Thrift **/
+        compile 'org.apache.thrift:libthrift:0.9.1'
+
+        /** Log **/
+        compile 'org.slf4j:slf4j-log4j12:1.7.10'
+
+        /** Common **/
+        compile 'commons-pool:commons-pool:1.6'
+        compile 'commons-lang:commons-lang:2.6'
+
+        compile fileTree(dir: 'libs', include: '*.jar')
+
+    }
+}
+
+project(':server') {
+    dependencies {
+        /** Json **/
+        compile 'com.alibaba:fastjson:1.2.5'
+        /** Mq **/
+        compile 'org.apache.qpid:qpid-client:0.24'
+        compile 'org.apache.geronimo.specs:geronimo-jms_1.1_spec:1.1'
+
+        /** Db **/
+        compile 'org.mybatis:mybatis:3.2.3'
+        compile 'org.mybatis:mybatis-spring:1.2.2'
+        compile 'mysql:mysql-connector-java:5.1.34'
+
+        /** Spring **/
+        compile 'aopalliance:aopalliance:1.0'
+        compile 'org.aspectj:aspectjweaver:1.8.5'
+        compile 'org.springframework:spring-core:3.2.5.RELEASE'
+        compile 'org.springframework:spring-context:3.2.5.RELEASE'
+        compile 'org.springframework:spring-jdbc:3.2.5.RELEASE'
+
+        /** mongodb **/
+        compile 'org.mongodb:mongo-java-driver:2.11.3'
+        compile 'org.mongodb.morphia:morphia:0.105'
+        compile 'com.google.code.morphia:morphia:0.104'
+        compile 'org.apache.curator:curator-recipes:2.8.0'
+        compile 'org.jboss.resteasy:jaxrs-api:3.0.11.Final'
+
+        /** httpClient **/
+        compile 'org.apache.httpcomponents:httpclient:4.3'
+
+        /** httpCore **/
+        compile 'org.apache.httpcomponents:httpcore:4.3'
+
+        /** Redis **/
+        compile 'redis.clients:jedis:2.2.1'
+
+        compile group: 'org.apache.poi', name: 'poi', version: '3.14'
+
+        compile group: 'org.hibernate', name: 'hibernate-core', version: '4.0.0.Final'
+        compile fileTree(dir: 'libs', include: '*.jar')
+
+        compile project(':common')
+
+    }
+}
+
+project(':client') {
+    dependencies {
+        /** Json **/
+        compile 'com.alibaba:fastjson:1.2.5'
+
+        /** Thrift **/
+        compile 'org.apache.thrift:libthrift:0.9.1'
+
+        /** Log **/
+        compile 'org.slf4j:slf4j-log4j12:1.7.10'
+
+        /** Common **/
+        compile 'commons-pool:commons-pool:1.6'
+        compile 'commons-lang:commons-lang:2.6'
+
+        compile 'org.apache.curator:curator-recipes:2.8.0'
+
+        /** Mq **/
+        compile 'org.apache.qpid:qpid-client:0.24'
+        compile 'org.apache.geronimo.specs:geronimo-jms_1.1_spec:1.1'
+
+        compile fileTree(dir: 'libs', include: '*.jar')
+        compile project(':common')
+
+    }
+}

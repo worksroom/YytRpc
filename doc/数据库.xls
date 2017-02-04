@@ -1,0 +1,201 @@
+用户(front_user)		
+字段	类型	说明
+user_id	int(11)	
+create_time	date	
+update_time	date	
+user_name	varchar(30)	
+nick_name	varchar(50)	
+email	varchar(50)	
+phone	varchar(11)	
+		
+三方绑定(user_third_bind)		
+字段	类型	说明
+user_id	int(11)	
+third_id	varchar(100)	
+type	int(4)	1 微信
+create_time	date	
+		
+		
+买家认证		
+字段	类型	说明
+user_id	int(11)	
+card_number	varchar(30)	身份证号码
+card_f_photo	blog	证件照正面
+card_b_photo	blog	证件照背面
+user_card_photo	blog	手持证件照
+status	int(4)	0 待审 1通过 -1 打回
+msg	varchar(100)	打回原因
+create_time	date	
+update_time	date	
+		
+		
+卖家认证		
+字段	类型	说明
+user_id	int(11)	
+card_number	varchar(30)	
+card_f_photo	blog	负责人证件照正面
+card_b_photo	blog	负责人证件照背面
+user_card_photo	blog	负责人手持证件照
+licence_phone	blog	营业执照
+status	int(4)	0 待审 1通过 -1 打回
+msg	varchar(100)	打回原因
+create_time	date	
+update_time	date	
+		
+		
+我的好友		
+字段	类型	说明
+user_id	int(11)	
+friend_id	int(11)	
+create_time	date	
+update_time	date	
+		
+		
+好友申请		
+字段	类型	说明
+user_id	int(11)	
+friend_id	int(11)	
+create_time	date	
+update_time	date	
+msg	varchar(100)	申请留言
+status	int(4)	0 申请 1通过 -1拒绝
+		
+会话列表		
+字段	类型	说明
+id		会话id
+		
+user_id		
+user_id_2		
+create_time		
+last_time		
+last_content		
+lastr_uid		
+		
+聊天记录	类型	说明
+字段		
+id		
+sessionId		
+userId		
+content		
+type		扩展使用
+create_time		
+push_type		"0 未推送
+1 已推送"
+		
+		
+		
+信息管理类型		
+字段	类型	说明
+id	int(11)	
+name	varchar(50)	
+parent_id	int(11)	
+create_time	date	
+update_time	date	
+		
+		
+		
+信息内容		
+字段	类型	说明
+id		
+weight		
+user_id		
+class_id		
+title		
+type		"1 内容页 html格式
+2.内容页 json格式"
+des		
+photo		
+content		
+create_time	date	
+update_time	date	
+		
+		
+推荐商品		
+字段	类型	说明
+id		
+product_id		
+weight		
+type		1 主页推荐 2折扣推荐
+create_time	date	
+update_time	date	
+		
+广告类别		
+字段	类型	说明
+id	varchar	自定义类别
+name		
+		
+广告		
+字段	类型	说明
+id		
+type	varchar	广告类别
+img		
+des		
+url		
+used		"0 有效
+-1 无效"
+create_time		
+		
+		
+商城首页碎片区		
+字段	类型	说明
+id		
+order		数字越小排序越靠前
+type		"1 类别区（展示样式为）
+2 一行一图区域
+3 一行两图区域
+4 一行三图区域"
+content		[{"img":"...","url":"..."},{"img":"...","url":"..."}]
+used		"0 有效
+-1 无效"
+create_time		
+		
+		
+首页商品推荐区		
+字段	类型	说明
+product_id		
+order		
+create_time		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+商品类别		
+字段	类型	说明
+id	int(11)	
+name	varchar(50)	
+weight	int(4)	
+parent_id	int(11)	
+json	varchar(1000)	
+photo		
+create_time		
+update_time		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+商品品牌		
+字段	类型	说明
+id		
+name		
+weight		
+photo		
+create_time		
+update_time		
+		
+		
+类别品牌关系		
+字段	类型	说明
