@@ -106,4 +106,22 @@ public class UserSeller {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("UserSeller{");
+        sb.append("userId=").append(userId);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", cardNumber='").append(cardNumber).append('\'');
+        sb.append(", cardFPhoto='").append(cardFPhoto).append('\'');
+        sb.append(", cardBPhoto='").append(cardBPhoto).append('\'');
+        sb.append(", userCardPhoto='").append(userCardPhoto).append('\'');
+        sb.append(", licencePhone='").append(licencePhone).append('\'');
+        sb.append(", status=").append(status);
+        sb.append(", msg='").append(msg).append('\'');
+        sb.append(", createTime=").append(createTime);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append('}');
+        return sb.toString();
+    }
 }

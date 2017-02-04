@@ -100,16 +100,18 @@ public class UserBuyer {
 
     @Override
     public String toString() {
-        return "UserBuyer{" +
-                "userId=" + userId +
-                ", cardNumber='" + cardNumber + '\'' +
-                ", cardFPhoto=" + cardFPhoto +
-                ", cardBPhoto=" + cardBPhoto +
-                ", userCardPhoto=" + userCardPhoto +
-                ", status=" + status +
-                ", msg='" + msg + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                '}';
+        final StringBuilder sb = new StringBuilder("UserBuyer{");
+        sb.append("userId=").append(userId);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", cardNumber='").append(cardNumber).append('\'');
+        sb.append(", cardFPhoto='").append(cardFPhoto).append('\'');
+        sb.append(", cardBPhoto='").append(cardBPhoto).append('\'');
+        sb.append(", userCardPhoto='").append(userCardPhoto).append('\'');
+        sb.append(", status=").append(status);
+        sb.append(", msg='").append(msg).append('\'');
+        sb.append(", createTime=").append(createTime);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append('}');
+        return sb.toString();
     }
 }
