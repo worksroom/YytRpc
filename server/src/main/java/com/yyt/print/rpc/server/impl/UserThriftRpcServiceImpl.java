@@ -66,6 +66,14 @@ public class UserThriftRpcServiceImpl implements UserThriftRpcService.Iface {
     }
 
     @Override
+    public String queryUserByPage(int userId, String userName, String nickName, String phone, int pageIndex, int pageSize) throws TException {
+        PageHolder<User> pageHolder = userService.queryUserByPage(userId, userName, nickName, phone, pageIndex, pageSize);
+        SerializeConfig config = new SerializeConfig();
+        config.put(PageHolder.class, new PageHolderSerializer());
+        return JSON.toJSONString(pageHolder, config);
+    }
+
+    @Override
     public int saveUserBuyer(String userBuyer) throws TException {
         UserBuyer buyer = JSONObject.parseObject(userBuyer, UserBuyer.class);
         return userBuyerService.saveUserBuyer(buyer);

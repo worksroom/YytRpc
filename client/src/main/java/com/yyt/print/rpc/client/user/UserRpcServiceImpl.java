@@ -84,6 +84,18 @@ public class UserRpcServiceImpl implements IUserRpcService {
     }
 
     @Override
+    public PageHolder<User> queryUserByPage(int userId, String userName, String nickName, String phone, int pageIndex, int pageSize) {
+        try {
+            String json = getClient().queryUserByPage(userId, userName, nickName, phone, pageIndex, pageSize);
+            ParserConfig.getGlobalInstance().putDeserializer(PageHolder.class, new PageHolderDeserializer());
+            return JSON.parseObject(json, new TypeReference<PageHolder<User>>(){});
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
     public int saveUserThirdBind(UserThirdBind thirdBind) {
         try {
             return getClient().saveUserThirdBind(JSON.toJSONString(thirdBind));

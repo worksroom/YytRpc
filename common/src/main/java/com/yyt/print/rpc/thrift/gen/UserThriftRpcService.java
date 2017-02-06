@@ -55,6 +55,8 @@ public class UserThriftRpcService {
 
     public String getUserMap(List<Integer> userIdList) throws org.apache.thrift.TException;
 
+    public String queryUserByPage(int userId, String userName, String nickName, String phone, int pageIndex, int pageSize) throws org.apache.thrift.TException;
+
     public int saveUserBuyer(String userBuyer) throws org.apache.thrift.TException;
 
     public String getUserBuyer(int userId) throws org.apache.thrift.TException;
@@ -88,6 +90,8 @@ public class UserThriftRpcService {
     public void getUserList(List<Integer> userIdList, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserList_call> resultHandler) throws org.apache.thrift.TException;
 
     public void getUserMap(List<Integer> userIdList, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserMap_call> resultHandler) throws org.apache.thrift.TException;
+
+    public void queryUserByPage(int userId, String userName, String nickName, String phone, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.queryUserByPage_call> resultHandler) throws org.apache.thrift.TException;
 
     public void saveUserBuyer(String userBuyer, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.saveUserBuyer_call> resultHandler) throws org.apache.thrift.TException;
 
@@ -244,6 +248,34 @@ public class UserThriftRpcService {
         return result.success;
       }
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getUserMap failed: unknown result");
+    }
+
+    public String queryUserByPage(int userId, String userName, String nickName, String phone, int pageIndex, int pageSize) throws org.apache.thrift.TException
+    {
+      send_queryUserByPage(userId, userName, nickName, phone, pageIndex, pageSize);
+      return recv_queryUserByPage();
+    }
+
+    public void send_queryUserByPage(int userId, String userName, String nickName, String phone, int pageIndex, int pageSize) throws org.apache.thrift.TException
+    {
+      queryUserByPage_args args = new queryUserByPage_args();
+      args.setUserId(userId);
+      args.setUserName(userName);
+      args.setNickName(nickName);
+      args.setPhone(phone);
+      args.setPageIndex(pageIndex);
+      args.setPageSize(pageSize);
+      sendBase("queryUserByPage", args);
+    }
+
+    public String recv_queryUserByPage() throws org.apache.thrift.TException
+    {
+      queryUserByPage_result result = new queryUserByPage_result();
+      receiveBase(result, "queryUserByPage");
+      if (result.isSetSuccess()) {
+        return result.success;
+      }
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "queryUserByPage failed: unknown result");
     }
 
     public int saveUserBuyer(String userBuyer) throws org.apache.thrift.TException
@@ -669,6 +701,53 @@ public class UserThriftRpcService {
       }
     }
 
+    public void queryUserByPage(int userId, String userName, String nickName, String phone, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<queryUserByPage_call> resultHandler) throws org.apache.thrift.TException {
+      checkReady();
+      queryUserByPage_call method_call = new queryUserByPage_call(userId, userName, nickName, phone, pageIndex, pageSize, resultHandler, this, ___protocolFactory, ___transport);
+      this.___currentMethod = method_call;
+      ___manager.call(method_call);
+    }
+
+    public static class queryUserByPage_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private int userId;
+      private String userName;
+      private String nickName;
+      private String phone;
+      private int pageIndex;
+      private int pageSize;
+      public queryUserByPage_call(int userId, String userName, String nickName, String phone, int pageIndex, int pageSize, org.apache.thrift.async.AsyncMethodCallback<queryUserByPage_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+        super(client, protocolFactory, transport, resultHandler, false);
+        this.userId = userId;
+        this.userName = userName;
+        this.nickName = nickName;
+        this.phone = phone;
+        this.pageIndex = pageIndex;
+        this.pageSize = pageSize;
+      }
+
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("queryUserByPage", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        queryUserByPage_args args = new queryUserByPage_args();
+        args.setUserId(userId);
+        args.setUserName(userName);
+        args.setNickName(nickName);
+        args.setPhone(phone);
+        args.setPageIndex(pageIndex);
+        args.setPageSize(pageSize);
+        args.write(prot);
+        prot.writeMessageEnd();
+      }
+
+      public String getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
+          throw new IllegalStateException("Method call not finished!");
+        }
+        org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
+        org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
+        return (new Client(prot)).recv_queryUserByPage();
+      }
+    }
+
     public void saveUserBuyer(String userBuyer, org.apache.thrift.async.AsyncMethodCallback<saveUserBuyer_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
       saveUserBuyer_call method_call = new saveUserBuyer_call(userBuyer, resultHandler, this, ___protocolFactory, ___transport);
@@ -1052,6 +1131,7 @@ public class UserThriftRpcService {
       processMap.put("updateUser", new updateUser());
       processMap.put("getUserList", new getUserList());
       processMap.put("getUserMap", new getUserMap());
+      processMap.put("queryUserByPage", new queryUserByPage());
       processMap.put("saveUserBuyer", new saveUserBuyer());
       processMap.put("getUserBuyer", new getUserBuyer());
       processMap.put("updateUserBuyer", new updateUserBuyer());
@@ -1163,6 +1243,26 @@ public class UserThriftRpcService {
       public getUserMap_result getResult(I iface, getUserMap_args args) throws org.apache.thrift.TException {
         getUserMap_result result = new getUserMap_result();
         result.success = iface.getUserMap(args.userIdList);
+        return result;
+      }
+    }
+
+    public static class queryUserByPage<I extends Iface> extends org.apache.thrift.ProcessFunction<I, queryUserByPage_args> {
+      public queryUserByPage() {
+        super("queryUserByPage");
+      }
+
+      public queryUserByPage_args getEmptyArgsInstance() {
+        return new queryUserByPage_args();
+      }
+
+      protected boolean isOneway() {
+        return false;
+      }
+
+      public queryUserByPage_result getResult(I iface, queryUserByPage_args args) throws org.apache.thrift.TException {
+        queryUserByPage_result result = new queryUserByPage_result();
+        result.success = iface.queryUserByPage(args.userId, args.userName, args.nickName, args.phone, args.pageIndex, args.pageSize);
         return result;
       }
     }
@@ -5005,6 +5105,1200 @@ public class UserThriftRpcService {
 
       @Override
       public void read(org.apache.thrift.protocol.TProtocol prot, getUserMap_result struct) throws org.apache.thrift.TException {
+        TTupleProtocol iprot = (TTupleProtocol) prot;
+        BitSet incoming = iprot.readBitSet(1);
+        if (incoming.get(0)) {
+          struct.success = iprot.readString();
+          struct.setSuccessIsSet(true);
+        }
+      }
+    }
+
+  }
+
+  public static class queryUserByPage_args implements org.apache.thrift.TBase<queryUserByPage_args, queryUserByPage_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("queryUserByPage_args");
+
+    private static final org.apache.thrift.protocol.TField USER_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("userId", org.apache.thrift.protocol.TType.I32, (short)1);
+    private static final org.apache.thrift.protocol.TField USER_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("userName", org.apache.thrift.protocol.TType.STRING, (short)2);
+    private static final org.apache.thrift.protocol.TField NICK_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("nickName", org.apache.thrift.protocol.TType.STRING, (short)3);
+    private static final org.apache.thrift.protocol.TField PHONE_FIELD_DESC = new org.apache.thrift.protocol.TField("phone", org.apache.thrift.protocol.TType.STRING, (short)4);
+    private static final org.apache.thrift.protocol.TField PAGE_INDEX_FIELD_DESC = new org.apache.thrift.protocol.TField("pageIndex", org.apache.thrift.protocol.TType.I32, (short)5);
+    private static final org.apache.thrift.protocol.TField PAGE_SIZE_FIELD_DESC = new org.apache.thrift.protocol.TField("pageSize", org.apache.thrift.protocol.TType.I32, (short)6);
+
+    private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+    static {
+      schemes.put(StandardScheme.class, new queryUserByPage_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new queryUserByPage_argsTupleSchemeFactory());
+    }
+
+    public int userId; // required
+    public String userName; // required
+    public String nickName; // required
+    public String phone; // required
+    public int pageIndex; // required
+    public int pageSize; // required
+
+    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+    public enum _Fields implements org.apache.thrift.TFieldIdEnum {
+      USER_ID((short)1, "userId"),
+      USER_NAME((short)2, "userName"),
+      NICK_NAME((short)3, "nickName"),
+      PHONE((short)4, "phone"),
+      PAGE_INDEX((short)5, "pageIndex"),
+      PAGE_SIZE((short)6, "pageSize");
+
+      private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
+
+      static {
+        for (_Fields field : EnumSet.allOf(_Fields.class)) {
+          byName.put(field.getFieldName(), field);
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, or null if its not found.
+       */
+      public static _Fields findByThriftId(int fieldId) {
+        switch(fieldId) {
+          case 1: // USER_ID
+            return USER_ID;
+          case 2: // USER_NAME
+            return USER_NAME;
+          case 3: // NICK_NAME
+            return NICK_NAME;
+          case 4: // PHONE
+            return PHONE;
+          case 5: // PAGE_INDEX
+            return PAGE_INDEX;
+          case 6: // PAGE_SIZE
+            return PAGE_SIZE;
+          default:
+            return null;
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, throwing an exception
+       * if it is not found.
+       */
+      public static _Fields findByThriftIdOrThrow(int fieldId) {
+        _Fields fields = findByThriftId(fieldId);
+        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        return fields;
+      }
+
+      /**
+       * Find the _Fields constant that matches name, or null if its not found.
+       */
+      public static _Fields findByName(String name) {
+        return byName.get(name);
+      }
+
+      private final short _thriftId;
+      private final String _fieldName;
+
+      _Fields(short thriftId, String fieldName) {
+        _thriftId = thriftId;
+        _fieldName = fieldName;
+      }
+
+      public short getThriftFieldId() {
+        return _thriftId;
+      }
+
+      public String getFieldName() {
+        return _fieldName;
+      }
+    }
+
+    // isset id assignments
+    private static final int __USERID_ISSET_ID = 0;
+    private static final int __PAGEINDEX_ISSET_ID = 1;
+    private static final int __PAGESIZE_ISSET_ID = 2;
+    private byte __isset_bitfield = 0;
+    public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
+    static {
+      Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.USER_ID, new org.apache.thrift.meta_data.FieldMetaData("userId", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+      tmpMap.put(_Fields.USER_NAME, new org.apache.thrift.meta_data.FieldMetaData("userName", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+      tmpMap.put(_Fields.NICK_NAME, new org.apache.thrift.meta_data.FieldMetaData("nickName", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+      tmpMap.put(_Fields.PHONE, new org.apache.thrift.meta_data.FieldMetaData("phone", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+      tmpMap.put(_Fields.PAGE_INDEX, new org.apache.thrift.meta_data.FieldMetaData("pageIndex", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+      tmpMap.put(_Fields.PAGE_SIZE, new org.apache.thrift.meta_data.FieldMetaData("pageSize", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+      metaDataMap = Collections.unmodifiableMap(tmpMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(queryUserByPage_args.class, metaDataMap);
+    }
+
+    public queryUserByPage_args() {
+    }
+
+    public queryUserByPage_args(
+      int userId,
+      String userName,
+      String nickName,
+      String phone,
+      int pageIndex,
+      int pageSize)
+    {
+      this();
+      this.userId = userId;
+      setUserIdIsSet(true);
+      this.userName = userName;
+      this.nickName = nickName;
+      this.phone = phone;
+      this.pageIndex = pageIndex;
+      setPageIndexIsSet(true);
+      this.pageSize = pageSize;
+      setPageSizeIsSet(true);
+    }
+
+    /**
+     * Performs a deep copy on <i>other</i>.
+     */
+    public queryUserByPage_args(queryUserByPage_args other) {
+      __isset_bitfield = other.__isset_bitfield;
+      this.userId = other.userId;
+      if (other.isSetUserName()) {
+        this.userName = other.userName;
+      }
+      if (other.isSetNickName()) {
+        this.nickName = other.nickName;
+      }
+      if (other.isSetPhone()) {
+        this.phone = other.phone;
+      }
+      this.pageIndex = other.pageIndex;
+      this.pageSize = other.pageSize;
+    }
+
+    public queryUserByPage_args deepCopy() {
+      return new queryUserByPage_args(this);
+    }
+
+    @Override
+    public void clear() {
+      setUserIdIsSet(false);
+      this.userId = 0;
+      this.userName = null;
+      this.nickName = null;
+      this.phone = null;
+      setPageIndexIsSet(false);
+      this.pageIndex = 0;
+      setPageSizeIsSet(false);
+      this.pageSize = 0;
+    }
+
+    public int getUserId() {
+      return this.userId;
+    }
+
+    public queryUserByPage_args setUserId(int userId) {
+      this.userId = userId;
+      setUserIdIsSet(true);
+      return this;
+    }
+
+    public void unsetUserId() {
+      __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __USERID_ISSET_ID);
+    }
+
+    /** Returns true if field userId is set (has been assigned a value) and false otherwise */
+    public boolean isSetUserId() {
+      return EncodingUtils.testBit(__isset_bitfield, __USERID_ISSET_ID);
+    }
+
+    public void setUserIdIsSet(boolean value) {
+      __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __USERID_ISSET_ID, value);
+    }
+
+    public String getUserName() {
+      return this.userName;
+    }
+
+    public queryUserByPage_args setUserName(String userName) {
+      this.userName = userName;
+      return this;
+    }
+
+    public void unsetUserName() {
+      this.userName = null;
+    }
+
+    /** Returns true if field userName is set (has been assigned a value) and false otherwise */
+    public boolean isSetUserName() {
+      return this.userName != null;
+    }
+
+    public void setUserNameIsSet(boolean value) {
+      if (!value) {
+        this.userName = null;
+      }
+    }
+
+    public String getNickName() {
+      return this.nickName;
+    }
+
+    public queryUserByPage_args setNickName(String nickName) {
+      this.nickName = nickName;
+      return this;
+    }
+
+    public void unsetNickName() {
+      this.nickName = null;
+    }
+
+    /** Returns true if field nickName is set (has been assigned a value) and false otherwise */
+    public boolean isSetNickName() {
+      return this.nickName != null;
+    }
+
+    public void setNickNameIsSet(boolean value) {
+      if (!value) {
+        this.nickName = null;
+      }
+    }
+
+    public String getPhone() {
+      return this.phone;
+    }
+
+    public queryUserByPage_args setPhone(String phone) {
+      this.phone = phone;
+      return this;
+    }
+
+    public void unsetPhone() {
+      this.phone = null;
+    }
+
+    /** Returns true if field phone is set (has been assigned a value) and false otherwise */
+    public boolean isSetPhone() {
+      return this.phone != null;
+    }
+
+    public void setPhoneIsSet(boolean value) {
+      if (!value) {
+        this.phone = null;
+      }
+    }
+
+    public int getPageIndex() {
+      return this.pageIndex;
+    }
+
+    public queryUserByPage_args setPageIndex(int pageIndex) {
+      this.pageIndex = pageIndex;
+      setPageIndexIsSet(true);
+      return this;
+    }
+
+    public void unsetPageIndex() {
+      __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __PAGEINDEX_ISSET_ID);
+    }
+
+    /** Returns true if field pageIndex is set (has been assigned a value) and false otherwise */
+    public boolean isSetPageIndex() {
+      return EncodingUtils.testBit(__isset_bitfield, __PAGEINDEX_ISSET_ID);
+    }
+
+    public void setPageIndexIsSet(boolean value) {
+      __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __PAGEINDEX_ISSET_ID, value);
+    }
+
+    public int getPageSize() {
+      return this.pageSize;
+    }
+
+    public queryUserByPage_args setPageSize(int pageSize) {
+      this.pageSize = pageSize;
+      setPageSizeIsSet(true);
+      return this;
+    }
+
+    public void unsetPageSize() {
+      __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __PAGESIZE_ISSET_ID);
+    }
+
+    /** Returns true if field pageSize is set (has been assigned a value) and false otherwise */
+    public boolean isSetPageSize() {
+      return EncodingUtils.testBit(__isset_bitfield, __PAGESIZE_ISSET_ID);
+    }
+
+    public void setPageSizeIsSet(boolean value) {
+      __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __PAGESIZE_ISSET_ID, value);
+    }
+
+    public void setFieldValue(_Fields field, Object value) {
+      switch (field) {
+      case USER_ID:
+        if (value == null) {
+          unsetUserId();
+        } else {
+          setUserId((Integer)value);
+        }
+        break;
+
+      case USER_NAME:
+        if (value == null) {
+          unsetUserName();
+        } else {
+          setUserName((String)value);
+        }
+        break;
+
+      case NICK_NAME:
+        if (value == null) {
+          unsetNickName();
+        } else {
+          setNickName((String)value);
+        }
+        break;
+
+      case PHONE:
+        if (value == null) {
+          unsetPhone();
+        } else {
+          setPhone((String)value);
+        }
+        break;
+
+      case PAGE_INDEX:
+        if (value == null) {
+          unsetPageIndex();
+        } else {
+          setPageIndex((Integer)value);
+        }
+        break;
+
+      case PAGE_SIZE:
+        if (value == null) {
+          unsetPageSize();
+        } else {
+          setPageSize((Integer)value);
+        }
+        break;
+
+      }
+    }
+
+    public Object getFieldValue(_Fields field) {
+      switch (field) {
+      case USER_ID:
+        return Integer.valueOf(getUserId());
+
+      case USER_NAME:
+        return getUserName();
+
+      case NICK_NAME:
+        return getNickName();
+
+      case PHONE:
+        return getPhone();
+
+      case PAGE_INDEX:
+        return Integer.valueOf(getPageIndex());
+
+      case PAGE_SIZE:
+        return Integer.valueOf(getPageSize());
+
+      }
+      throw new IllegalStateException();
+    }
+
+    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    public boolean isSet(_Fields field) {
+      if (field == null) {
+        throw new IllegalArgumentException();
+      }
+
+      switch (field) {
+      case USER_ID:
+        return isSetUserId();
+      case USER_NAME:
+        return isSetUserName();
+      case NICK_NAME:
+        return isSetNickName();
+      case PHONE:
+        return isSetPhone();
+      case PAGE_INDEX:
+        return isSetPageIndex();
+      case PAGE_SIZE:
+        return isSetPageSize();
+      }
+      throw new IllegalStateException();
+    }
+
+    @Override
+    public boolean equals(Object that) {
+      if (that == null)
+        return false;
+      if (that instanceof queryUserByPage_args)
+        return this.equals((queryUserByPage_args)that);
+      return false;
+    }
+
+    public boolean equals(queryUserByPage_args that) {
+      if (that == null)
+        return false;
+
+      boolean this_present_userId = true;
+      boolean that_present_userId = true;
+      if (this_present_userId || that_present_userId) {
+        if (!(this_present_userId && that_present_userId))
+          return false;
+        if (this.userId != that.userId)
+          return false;
+      }
+
+      boolean this_present_userName = true && this.isSetUserName();
+      boolean that_present_userName = true && that.isSetUserName();
+      if (this_present_userName || that_present_userName) {
+        if (!(this_present_userName && that_present_userName))
+          return false;
+        if (!this.userName.equals(that.userName))
+          return false;
+      }
+
+      boolean this_present_nickName = true && this.isSetNickName();
+      boolean that_present_nickName = true && that.isSetNickName();
+      if (this_present_nickName || that_present_nickName) {
+        if (!(this_present_nickName && that_present_nickName))
+          return false;
+        if (!this.nickName.equals(that.nickName))
+          return false;
+      }
+
+      boolean this_present_phone = true && this.isSetPhone();
+      boolean that_present_phone = true && that.isSetPhone();
+      if (this_present_phone || that_present_phone) {
+        if (!(this_present_phone && that_present_phone))
+          return false;
+        if (!this.phone.equals(that.phone))
+          return false;
+      }
+
+      boolean this_present_pageIndex = true;
+      boolean that_present_pageIndex = true;
+      if (this_present_pageIndex || that_present_pageIndex) {
+        if (!(this_present_pageIndex && that_present_pageIndex))
+          return false;
+        if (this.pageIndex != that.pageIndex)
+          return false;
+      }
+
+      boolean this_present_pageSize = true;
+      boolean that_present_pageSize = true;
+      if (this_present_pageSize || that_present_pageSize) {
+        if (!(this_present_pageSize && that_present_pageSize))
+          return false;
+        if (this.pageSize != that.pageSize)
+          return false;
+      }
+
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      return 0;
+    }
+
+    public int compareTo(queryUserByPage_args other) {
+      if (!getClass().equals(other.getClass())) {
+        return getClass().getName().compareTo(other.getClass().getName());
+      }
+
+      int lastComparison = 0;
+      queryUserByPage_args typedOther = (queryUserByPage_args)other;
+
+      lastComparison = Boolean.valueOf(isSetUserId()).compareTo(typedOther.isSetUserId());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetUserId()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.userId, typedOther.userId);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetUserName()).compareTo(typedOther.isSetUserName());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetUserName()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.userName, typedOther.userName);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetNickName()).compareTo(typedOther.isSetNickName());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetNickName()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.nickName, typedOther.nickName);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetPhone()).compareTo(typedOther.isSetPhone());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetPhone()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.phone, typedOther.phone);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetPageIndex()).compareTo(typedOther.isSetPageIndex());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetPageIndex()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.pageIndex, typedOther.pageIndex);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetPageSize()).compareTo(typedOther.isSetPageSize());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetPageSize()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.pageSize, typedOther.pageSize);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      return 0;
+    }
+
+    public _Fields fieldForId(int fieldId) {
+      return _Fields.findByThriftId(fieldId);
+    }
+
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+      schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
+    }
+
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+      schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
+    }
+
+    @Override
+    public String toString() {
+      StringBuilder sb = new StringBuilder("queryUserByPage_args(");
+      boolean first = true;
+
+      sb.append("userId:");
+      sb.append(this.userId);
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("userName:");
+      if (this.userName == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.userName);
+      }
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("nickName:");
+      if (this.nickName == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.nickName);
+      }
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("phone:");
+      if (this.phone == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.phone);
+      }
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("pageIndex:");
+      sb.append(this.pageIndex);
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("pageSize:");
+      sb.append(this.pageSize);
+      first = false;
+      sb.append(")");
+      return sb.toString();
+    }
+
+    public void validate() throws org.apache.thrift.TException {
+      // check for required fields
+      // check for sub-struct validity
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
+      try {
+        write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
+      try {
+        // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
+        __isset_bitfield = 0;
+        read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private static class queryUserByPage_argsStandardSchemeFactory implements SchemeFactory {
+      public queryUserByPage_argsStandardScheme getScheme() {
+        return new queryUserByPage_argsStandardScheme();
+      }
+    }
+
+    private static class queryUserByPage_argsStandardScheme extends StandardScheme<queryUserByPage_args> {
+
+      public void read(org.apache.thrift.protocol.TProtocol iprot, queryUserByPage_args struct) throws org.apache.thrift.TException {
+        org.apache.thrift.protocol.TField schemeField;
+        iprot.readStructBegin();
+        while (true)
+        {
+          schemeField = iprot.readFieldBegin();
+          if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
+            break;
+          }
+          switch (schemeField.id) {
+            case 1: // USER_ID
+              if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                struct.userId = iprot.readI32();
+                struct.setUserIdIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 2: // USER_NAME
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                struct.userName = iprot.readString();
+                struct.setUserNameIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 3: // NICK_NAME
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                struct.nickName = iprot.readString();
+                struct.setNickNameIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 4: // PHONE
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                struct.phone = iprot.readString();
+                struct.setPhoneIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 5: // PAGE_INDEX
+              if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                struct.pageIndex = iprot.readI32();
+                struct.setPageIndexIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 6: // PAGE_SIZE
+              if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                struct.pageSize = iprot.readI32();
+                struct.setPageSizeIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            default:
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+          }
+          iprot.readFieldEnd();
+        }
+        iprot.readStructEnd();
+
+        // check for required fields of primitive type, which can't be checked in the validate method
+        struct.validate();
+      }
+
+      public void write(org.apache.thrift.protocol.TProtocol oprot, queryUserByPage_args struct) throws org.apache.thrift.TException {
+        struct.validate();
+
+        oprot.writeStructBegin(STRUCT_DESC);
+        oprot.writeFieldBegin(USER_ID_FIELD_DESC);
+        oprot.writeI32(struct.userId);
+        oprot.writeFieldEnd();
+        if (struct.userName != null) {
+          oprot.writeFieldBegin(USER_NAME_FIELD_DESC);
+          oprot.writeString(struct.userName);
+          oprot.writeFieldEnd();
+        }
+        if (struct.nickName != null) {
+          oprot.writeFieldBegin(NICK_NAME_FIELD_DESC);
+          oprot.writeString(struct.nickName);
+          oprot.writeFieldEnd();
+        }
+        if (struct.phone != null) {
+          oprot.writeFieldBegin(PHONE_FIELD_DESC);
+          oprot.writeString(struct.phone);
+          oprot.writeFieldEnd();
+        }
+        oprot.writeFieldBegin(PAGE_INDEX_FIELD_DESC);
+        oprot.writeI32(struct.pageIndex);
+        oprot.writeFieldEnd();
+        oprot.writeFieldBegin(PAGE_SIZE_FIELD_DESC);
+        oprot.writeI32(struct.pageSize);
+        oprot.writeFieldEnd();
+        oprot.writeFieldStop();
+        oprot.writeStructEnd();
+      }
+
+    }
+
+    private static class queryUserByPage_argsTupleSchemeFactory implements SchemeFactory {
+      public queryUserByPage_argsTupleScheme getScheme() {
+        return new queryUserByPage_argsTupleScheme();
+      }
+    }
+
+    private static class queryUserByPage_argsTupleScheme extends TupleScheme<queryUserByPage_args> {
+
+      @Override
+      public void write(org.apache.thrift.protocol.TProtocol prot, queryUserByPage_args struct) throws org.apache.thrift.TException {
+        TTupleProtocol oprot = (TTupleProtocol) prot;
+        BitSet optionals = new BitSet();
+        if (struct.isSetUserId()) {
+          optionals.set(0);
+        }
+        if (struct.isSetUserName()) {
+          optionals.set(1);
+        }
+        if (struct.isSetNickName()) {
+          optionals.set(2);
+        }
+        if (struct.isSetPhone()) {
+          optionals.set(3);
+        }
+        if (struct.isSetPageIndex()) {
+          optionals.set(4);
+        }
+        if (struct.isSetPageSize()) {
+          optionals.set(5);
+        }
+        oprot.writeBitSet(optionals, 6);
+        if (struct.isSetUserId()) {
+          oprot.writeI32(struct.userId);
+        }
+        if (struct.isSetUserName()) {
+          oprot.writeString(struct.userName);
+        }
+        if (struct.isSetNickName()) {
+          oprot.writeString(struct.nickName);
+        }
+        if (struct.isSetPhone()) {
+          oprot.writeString(struct.phone);
+        }
+        if (struct.isSetPageIndex()) {
+          oprot.writeI32(struct.pageIndex);
+        }
+        if (struct.isSetPageSize()) {
+          oprot.writeI32(struct.pageSize);
+        }
+      }
+
+      @Override
+      public void read(org.apache.thrift.protocol.TProtocol prot, queryUserByPage_args struct) throws org.apache.thrift.TException {
+        TTupleProtocol iprot = (TTupleProtocol) prot;
+        BitSet incoming = iprot.readBitSet(6);
+        if (incoming.get(0)) {
+          struct.userId = iprot.readI32();
+          struct.setUserIdIsSet(true);
+        }
+        if (incoming.get(1)) {
+          struct.userName = iprot.readString();
+          struct.setUserNameIsSet(true);
+        }
+        if (incoming.get(2)) {
+          struct.nickName = iprot.readString();
+          struct.setNickNameIsSet(true);
+        }
+        if (incoming.get(3)) {
+          struct.phone = iprot.readString();
+          struct.setPhoneIsSet(true);
+        }
+        if (incoming.get(4)) {
+          struct.pageIndex = iprot.readI32();
+          struct.setPageIndexIsSet(true);
+        }
+        if (incoming.get(5)) {
+          struct.pageSize = iprot.readI32();
+          struct.setPageSizeIsSet(true);
+        }
+      }
+    }
+
+  }
+
+  public static class queryUserByPage_result implements org.apache.thrift.TBase<queryUserByPage_result, queryUserByPage_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("queryUserByPage_result");
+
+    private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.STRING, (short)0);
+
+    private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+    static {
+      schemes.put(StandardScheme.class, new queryUserByPage_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new queryUserByPage_resultTupleSchemeFactory());
+    }
+
+    public String success; // required
+
+    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+    public enum _Fields implements org.apache.thrift.TFieldIdEnum {
+      SUCCESS((short)0, "success");
+
+      private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
+
+      static {
+        for (_Fields field : EnumSet.allOf(_Fields.class)) {
+          byName.put(field.getFieldName(), field);
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, or null if its not found.
+       */
+      public static _Fields findByThriftId(int fieldId) {
+        switch(fieldId) {
+          case 0: // SUCCESS
+            return SUCCESS;
+          default:
+            return null;
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, throwing an exception
+       * if it is not found.
+       */
+      public static _Fields findByThriftIdOrThrow(int fieldId) {
+        _Fields fields = findByThriftId(fieldId);
+        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        return fields;
+      }
+
+      /**
+       * Find the _Fields constant that matches name, or null if its not found.
+       */
+      public static _Fields findByName(String name) {
+        return byName.get(name);
+      }
+
+      private final short _thriftId;
+      private final String _fieldName;
+
+      _Fields(short thriftId, String fieldName) {
+        _thriftId = thriftId;
+        _fieldName = fieldName;
+      }
+
+      public short getThriftFieldId() {
+        return _thriftId;
+      }
+
+      public String getFieldName() {
+        return _fieldName;
+      }
+    }
+
+    // isset id assignments
+    public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
+    static {
+      Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+      metaDataMap = Collections.unmodifiableMap(tmpMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(queryUserByPage_result.class, metaDataMap);
+    }
+
+    public queryUserByPage_result() {
+    }
+
+    public queryUserByPage_result(
+      String success)
+    {
+      this();
+      this.success = success;
+    }
+
+    /**
+     * Performs a deep copy on <i>other</i>.
+     */
+    public queryUserByPage_result(queryUserByPage_result other) {
+      if (other.isSetSuccess()) {
+        this.success = other.success;
+      }
+    }
+
+    public queryUserByPage_result deepCopy() {
+      return new queryUserByPage_result(this);
+    }
+
+    @Override
+    public void clear() {
+      this.success = null;
+    }
+
+    public String getSuccess() {
+      return this.success;
+    }
+
+    public queryUserByPage_result setSuccess(String success) {
+      this.success = success;
+      return this;
+    }
+
+    public void unsetSuccess() {
+      this.success = null;
+    }
+
+    /** Returns true if field success is set (has been assigned a value) and false otherwise */
+    public boolean isSetSuccess() {
+      return this.success != null;
+    }
+
+    public void setSuccessIsSet(boolean value) {
+      if (!value) {
+        this.success = null;
+      }
+    }
+
+    public void setFieldValue(_Fields field, Object value) {
+      switch (field) {
+      case SUCCESS:
+        if (value == null) {
+          unsetSuccess();
+        } else {
+          setSuccess((String)value);
+        }
+        break;
+
+      }
+    }
+
+    public Object getFieldValue(_Fields field) {
+      switch (field) {
+      case SUCCESS:
+        return getSuccess();
+
+      }
+      throw new IllegalStateException();
+    }
+
+    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    public boolean isSet(_Fields field) {
+      if (field == null) {
+        throw new IllegalArgumentException();
+      }
+
+      switch (field) {
+      case SUCCESS:
+        return isSetSuccess();
+      }
+      throw new IllegalStateException();
+    }
+
+    @Override
+    public boolean equals(Object that) {
+      if (that == null)
+        return false;
+      if (that instanceof queryUserByPage_result)
+        return this.equals((queryUserByPage_result)that);
+      return false;
+    }
+
+    public boolean equals(queryUserByPage_result that) {
+      if (that == null)
+        return false;
+
+      boolean this_present_success = true && this.isSetSuccess();
+      boolean that_present_success = true && that.isSetSuccess();
+      if (this_present_success || that_present_success) {
+        if (!(this_present_success && that_present_success))
+          return false;
+        if (!this.success.equals(that.success))
+          return false;
+      }
+
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      return 0;
+    }
+
+    public int compareTo(queryUserByPage_result other) {
+      if (!getClass().equals(other.getClass())) {
+        return getClass().getName().compareTo(other.getClass().getName());
+      }
+
+      int lastComparison = 0;
+      queryUserByPage_result typedOther = (queryUserByPage_result)other;
+
+      lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetSuccess()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.success, typedOther.success);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      return 0;
+    }
+
+    public _Fields fieldForId(int fieldId) {
+      return _Fields.findByThriftId(fieldId);
+    }
+
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+      schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
+    }
+
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+      schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
+      }
+
+    @Override
+    public String toString() {
+      StringBuilder sb = new StringBuilder("queryUserByPage_result(");
+      boolean first = true;
+
+      sb.append("success:");
+      if (this.success == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.success);
+      }
+      first = false;
+      sb.append(")");
+      return sb.toString();
+    }
+
+    public void validate() throws org.apache.thrift.TException {
+      // check for required fields
+      // check for sub-struct validity
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
+      try {
+        write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
+      try {
+        read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private static class queryUserByPage_resultStandardSchemeFactory implements SchemeFactory {
+      public queryUserByPage_resultStandardScheme getScheme() {
+        return new queryUserByPage_resultStandardScheme();
+      }
+    }
+
+    private static class queryUserByPage_resultStandardScheme extends StandardScheme<queryUserByPage_result> {
+
+      public void read(org.apache.thrift.protocol.TProtocol iprot, queryUserByPage_result struct) throws org.apache.thrift.TException {
+        org.apache.thrift.protocol.TField schemeField;
+        iprot.readStructBegin();
+        while (true)
+        {
+          schemeField = iprot.readFieldBegin();
+          if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
+            break;
+          }
+          switch (schemeField.id) {
+            case 0: // SUCCESS
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                struct.success = iprot.readString();
+                struct.setSuccessIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            default:
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+          }
+          iprot.readFieldEnd();
+        }
+        iprot.readStructEnd();
+
+        // check for required fields of primitive type, which can't be checked in the validate method
+        struct.validate();
+      }
+
+      public void write(org.apache.thrift.protocol.TProtocol oprot, queryUserByPage_result struct) throws org.apache.thrift.TException {
+        struct.validate();
+
+        oprot.writeStructBegin(STRUCT_DESC);
+        if (struct.success != null) {
+          oprot.writeFieldBegin(SUCCESS_FIELD_DESC);
+          oprot.writeString(struct.success);
+          oprot.writeFieldEnd();
+        }
+        oprot.writeFieldStop();
+        oprot.writeStructEnd();
+      }
+
+    }
+
+    private static class queryUserByPage_resultTupleSchemeFactory implements SchemeFactory {
+      public queryUserByPage_resultTupleScheme getScheme() {
+        return new queryUserByPage_resultTupleScheme();
+      }
+    }
+
+    private static class queryUserByPage_resultTupleScheme extends TupleScheme<queryUserByPage_result> {
+
+      @Override
+      public void write(org.apache.thrift.protocol.TProtocol prot, queryUserByPage_result struct) throws org.apache.thrift.TException {
+        TTupleProtocol oprot = (TTupleProtocol) prot;
+        BitSet optionals = new BitSet();
+        if (struct.isSetSuccess()) {
+          optionals.set(0);
+        }
+        oprot.writeBitSet(optionals, 1);
+        if (struct.isSetSuccess()) {
+          oprot.writeString(struct.success);
+        }
+      }
+
+      @Override
+      public void read(org.apache.thrift.protocol.TProtocol prot, queryUserByPage_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {

@@ -223,6 +223,7 @@ service UserThriftRpcService {
 
     string getUserMap(1:list<i32> userIdList);
 
+    string queryUserByPage(1:i32 userId, 2:string userName, 3:string nickName, 4:string phone, 5:i32 pageIndex, 6:i32 pageSize);
 
 
     i32 saveUserBuyer(1:string userBuyer);

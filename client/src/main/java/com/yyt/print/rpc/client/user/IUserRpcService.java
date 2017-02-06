@@ -28,6 +28,19 @@ public interface IUserRpcService {
 
     public Map<Integer, User> getUserMap(List<Integer> userIdList);
 
+    /**
+     * 分页查询用户，管理平台调用此接口
+     * @param userId
+     * @param userName
+     * @param nickName
+     * @param phone
+     * @param pageIndex
+     * @param pageSize
+     * @return
+     */
+    public PageHolder<User> queryUserByPage(int userId, String userName, String nickName, String phone, int pageIndex, int pageSize);
+
+
     public int saveUserThirdBind(UserThirdBind thirdBind);
 
     public UserThirdBind getUserThirdBind(String thirdId, int type);

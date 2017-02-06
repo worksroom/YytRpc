@@ -130,6 +130,26 @@ public class UserClient implements UserThriftRpcService.Iface {
     }
 
     @Override
+    public String queryUserByPage(int userId, String userName, String nickName, String phone, int pageIndex, int pageSize) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(UserThriftRpcService.Client.class).queryUserByPage(userId, userName, nickName, phone, pageIndex, pageSize);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
     public int saveUserBuyer(String userBuyer) throws TException {
         RPCMultiplexConnection client = null;
         try {

@@ -56,6 +56,16 @@ public class UserRpcServiceImplTest {
     }
 
     @Test
+    public void testQueryUserByPage() throws Exception {
+        PageHolder<User> pageHolder = userRpcService.queryUserByPage(0, "", "", "", 1, 20);
+        if (pageHolder!=null){
+            for(User user : pageHolder){
+                System.out.println(user);
+            }
+        }
+    }
+
+    @Test
     public void testSaveUserThirdBind() throws Exception {
 
     }
