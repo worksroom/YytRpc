@@ -60,5 +60,7 @@
 
 		<!--产品分类-->
 		<mapper resource="mybatis/product/mall_product_category.xml" />
+		<mapper resource="mybatis/product/mall_product_category_pro.xml" />
+		<mapper resource="mybatis/product/mall_product_category_pro_value.xml" />
 	</mappers>
 </configuration>
