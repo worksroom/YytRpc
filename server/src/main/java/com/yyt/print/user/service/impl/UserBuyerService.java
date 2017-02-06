@@ -1,5 +1,6 @@
 package com.yyt.print.user.service.impl;
 
+import com.youguu.core.util.PageHolder;
 import com.yyt.print.user.dao.IUserBuyerDAO;
 import com.yyt.print.user.pojo.UserBuyer;
 import com.yyt.print.user.service.IUserBuyerService;
@@ -28,5 +29,10 @@ public class UserBuyerService implements IUserBuyerService {
     @Override
     public int updateUserBuyer(UserBuyer userBuyer) {
         return userBuyerDAO.updateUserBuyer(userBuyer);
+    }
+
+    @Override
+    public PageHolder<UserBuyer> queryUserBuyerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) {
+        return userBuyerDAO.queryUserBuyerByPage(userId, userName, nickName, phone, cardNumber, name, pageIndex, pageSize);
     }
 }

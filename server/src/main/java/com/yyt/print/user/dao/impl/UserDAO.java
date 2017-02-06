@@ -1,5 +1,6 @@
 package com.yyt.print.user.dao.impl;
 
+import com.youguu.core.util.PageHolder;
 import com.yyt.print.base.YytBaseDAO;
 import com.yyt.print.user.dao.IUserDAO;
 import com.yyt.print.user.pojo.User;
@@ -44,5 +45,15 @@ public class UserDAO extends YytBaseDAO<User> implements IUserDAO {
             }
         }
         return resultMap;
+    }
+
+    @Override
+    public PageHolder<User> queryUserByPage(int userId, String userName, String nickName, String phone, int pageIndex, int pageSize) {
+        HashMap<String, Object> map = new HashMap();
+        map.put("userId", userId);
+        map.put("userName", userName);
+        map.put("nickName", nickName);
+        map.put("phone", phone);
+        return this.pagedQuery("queryUserByPage", map, pageIndex, pageSize);
     }
 }

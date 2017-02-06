@@ -8,11 +8,12 @@ import java.util.Date;
  */
 public class UserSeller {
     private int userId;
-    private String cardNumber;
-    private String cardFPhoto;
-    private String cardBPhoto;
-    private String userCardPhoto;
-    private String licencePhone;
+    private String name;//用户姓名
+    private String cardNumber;//身份证号码
+    private String cardFPhoto;//身份证正面图片地址
+    private String cardBPhoto;//身份证反面图片地址
+    private String userCardPhoto;//头像照片地址
+    private String licencePhone;//营业执照图片地址
     private int status;
     private String msg;
     private Date createTime;
@@ -24,6 +25,14 @@ public class UserSeller {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCardNumber() {
@@ -96,5 +105,23 @@ public class UserSeller {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("UserSeller{");
+        sb.append("userId=").append(userId);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", cardNumber='").append(cardNumber).append('\'');
+        sb.append(", cardFPhoto='").append(cardFPhoto).append('\'');
+        sb.append(", cardBPhoto='").append(cardBPhoto).append('\'');
+        sb.append(", userCardPhoto='").append(userCardPhoto).append('\'');
+        sb.append(", licencePhone='").append(licencePhone).append('\'');
+        sb.append(", status=").append(status);
+        sb.append(", msg='").append(msg).append('\'');
+        sb.append(", createTime=").append(createTime);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append('}');
+        return sb.toString();
     }
 }

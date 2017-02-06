@@ -41,4 +41,49 @@
             #{item}
         </foreach>
     </select>
+
+
+    <sql id="sql_show">
+        select user_id,create_time,update_time,user_name,password,nick_name,email,phone
+    </sql>
+
+    <sql id="sql_where">
+        from user
+        <trim prefix="where" prefixOverrides="AND|OR">
+            <if test=" userId != null and userId != 0 ">
+                AND user_id = #{userId}
+            </if>
+            <if test=" userName != null and userName != '' ">
+                AND user_name = #{userName}
+            </if>
+            <if test=" nickName != null and  nickName != '' ">
+                AND nick_name = #{nickName}
+            </if>
+            <if test=" phone != null and  phone != '' ">
+                AND phone = #{phone}
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="sql_count">
+        select count(1)
+    </sql>
+
+    <sql id="sql_order">
+        <if test="cols!=null">
+            ORDER BY ${cols}
+        </if>
+    </sql>
+
+    <select id="queryUserByPage_count" parameterType="map" resultType="int">
+        <include refid="sql_count"/>
+        <include refid="sql_where"/>
+    </select>
+
+    <select id="queryUserByPage" parameterType="map" resultMap="UserResultMap">
+        <include refid="sql_show"/>
+        <include refid="sql_where"/>
+        <include refid="sql_order"/>
+    </select>
+
 </mapper>
