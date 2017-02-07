@@ -6,15 +6,9 @@ import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.youguu.core.util.PageHolder;
 import com.yyt.print.parser.PageHolderSerializer;
 import com.yyt.print.rpc.thrift.gen.UserThriftRpcService;
-import com.yyt.print.user.pojo.User;
-import com.yyt.print.user.pojo.UserBuyer;
-import com.yyt.print.user.pojo.UserSeller;
-import com.yyt.print.user.pojo.UserThirdBind;
+import com.yyt.print.user.pojo.*;
 import com.yyt.print.user.response.AuthResponse;
-import com.yyt.print.user.service.IUserBuyerService;
-import com.yyt.print.user.service.IUserSellerService;
-import com.yyt.print.user.service.IUserService;
-import com.yyt.print.user.service.IUserThirdBindService;
+import com.yyt.print.user.service.*;
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +29,8 @@ public class UserThriftRpcServiceImpl implements UserThriftRpcService.Iface {
     private IUserService userService;
     @Resource
     private IUserThirdBindService userThirdBindService;
+    @Resource
+    private IUserErpService userErpService;
 
     @Override
     public int saveUser(String user) throws TException {
@@ -154,5 +150,16 @@ public class UserThriftRpcServiceImpl implements UserThriftRpcService.Iface {
     public String getUserThirdBind(String thirdId, int type) throws TException {
         UserThirdBind userThirdBind = userThirdBindService.getUserThirdBind(thirdId, type);
         return JSON.toJSONString(userThirdBind);
+    }
+
+    @Override
+    public int saveUserErp(int erpUid, String phone) throws TException {
+        return userErpService.saveUserErp(erpUid, phone);
+    }
+
+    @Override
+    public String findUserErpByPhone(String phone) throws TException {
+        UserErp userErp = userErpService.findUserErpByPhone(phone);
+        return JSON.toJSONString(userErp);
     }
 }

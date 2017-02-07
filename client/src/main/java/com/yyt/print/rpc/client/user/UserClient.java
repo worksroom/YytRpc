@@ -408,4 +408,44 @@ public class UserClient implements UserThriftRpcService.Iface {
             }
         }
     }
+
+    @Override
+    public int saveUserErp(int erpUid, String phone) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(UserThriftRpcService.Client.class).saveUserErp(erpUid, phone);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public String findUserErpByPhone(String phone) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(UserThriftRpcService.Client.class).findUserErpByPhone(phone);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
 }
