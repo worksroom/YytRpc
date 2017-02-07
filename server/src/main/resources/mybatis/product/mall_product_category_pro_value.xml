@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MallProductCategoryProValue">
+    <resultMap type="MallProductCategoryProValue" id="MallProductCategoryProValueMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="classId" column="class_id"/>
+        <result property="classProId" column="class_pro_id"/>
+        <result property="used" column="used"/>
+        <result property="rank" column="rank"/>
+        <result property="pic" column="pic"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <insert id="insertList">
+        insert into mall_product_category_pro_value
+        (name,class_id,class_pro_id,used,rank,pic,update_time,create_time)
+        VALUES
+        <foreach collection="list"  item="temp" separator=",">
+        (#{temp.name},#{temp.classId},#{temp.classProId},#{temp.used},#{temp.rank},#{temp.pic},#{temp.updateTime},#{temp.createTime})
+
+        </foreach>
+    </insert>
+
+
+
+    <select id="findByClass" parameterType="int"  resultMap="MallProductCategoryProValueMap">
+       SELECT  id,name,class_id,class_pro_id,used,rank,pic,update_time,create_time from mall_product_category_pro_value
+       where  class_id=#{classId} order by class_pro_id , rank
+
+    </select>
+
+    <select id="findByPro" parameterType="int"  resultMap="MallProductCategoryProValueMap">
+        SELECT  id,name,class_id,class_pro_id,used,rank,pic,update_time,create_time from mall_product_category_pro_value
+        where  class_pro_id=#{classProId} order by class_pro_id , rank
+
+    </select>
+
+
+
+</mapper>

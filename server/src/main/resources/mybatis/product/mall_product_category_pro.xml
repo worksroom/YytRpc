@@ -23,4 +23,18 @@
         </selectKey>
     </insert>
 
+    <update id="update" parameterType="MallProductCategoryPro">
+        update mall_product_category_pro set name=#{name} , type=#{type},is_need=#{isNeed},is_search=#{isSearch},
+                                             rank=#{rank}, update_time=#{updateTime}
+        where id=#{id}
+    </update>
+
+
+    <select id="findByClass" parameterType="int"  resultMap="MallProductCategoryProMap">
+        select id,name,class_id,type,is_need,is_search,rank,update_time,create_time
+        from mall_product_category_pro where class_id = #{classId} order by rank
+    </select>
+
+
+
 </mapper>

@@ -28,6 +28,8 @@
 
 		<!--产品分类-->
 		<typeAlias alias="MallProductCategory" type="com.yyt.print.product.pojo.MallProductCategory" />
+		<typeAlias alias="MallProductCategoryPro" type="com.yyt.print.product.pojo.MallProductCategoryPro" />
+		<typeAlias alias="MallProductCategoryProValue" type="com.yyt.print.product.pojo.MallProductCategoryProValue" />
 	</typeAliases>
 
 	<typeHandlers>
@@ -60,5 +62,7 @@
 
 		<!--产品分类-->
 		<mapper resource="mybatis/product/mall_product_category.xml" />
+		<mapper resource="mybatis/product/mall_product_category_pro.xml" />
+		<mapper resource="mybatis/product/mall_product_category_pro_value.xml" />
 	</mappers>
 </configuration>

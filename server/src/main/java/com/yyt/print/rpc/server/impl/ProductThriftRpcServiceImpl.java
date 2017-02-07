@@ -2,14 +2,18 @@ package com.yyt.print.rpc.server.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.yyt.print.product.pojo.CategoryPro;
 import com.yyt.print.product.pojo.MallProductCategory;
-import com.yyt.print.product.service.IMallProductCategoryProService;
+import com.yyt.print.product.pojo.MallProductCategoryPro;
+import com.yyt.print.product.pojo.MallProductCategoryProValue;
+import com.yyt.print.product.service.ICategoryProService;
 import com.yyt.print.product.service.IMallProductCategoryService;
 import com.yyt.print.rpc.thrift.gen.ProductThriftRpcService;
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,6 +24,9 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
 
     @Resource
     private IMallProductCategoryService mallProductCategoryService;
+
+    @Resource
+    private ICategoryProService categoryProService;
 
     @Override
     public String queryAllMallProductCategory() throws TException {
@@ -60,5 +67,19 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     @Override
     public String getMallProductCategory(int id) throws TException {
         return JSON.toJSONString(mallProductCategoryService.getMallProductCategory(id));
+    }
+
+    @Override
+    public String findProValueByClassId(int classId) throws TException {
+
+        List<CategoryPro> cpro = categoryProService.findProValueByClassId(classId);
+
+        return JSON.toJSONString(cpro);
+    }
+
+    @Override
+    public int addProAndValues(int classId, String pro, String values) throws TException {
+        List<MallProductCategoryProValue> list = JSONArray.parseArray(values,MallProductCategoryProValue.class);
+        return categoryProService.addProAndValues(classId,JSON.parseObject(pro, MallProductCategoryPro.class),list);
     }
 }
