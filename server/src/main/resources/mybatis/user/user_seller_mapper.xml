@@ -3,6 +3,7 @@
 <mapper namespace="UserSeller">
     <resultMap type="UserSeller" id="UserSellerResultMap">
         <result property="userId" column="user_id"/>
+        <result property="name" column="name"/>
         <result property="cardNumber" column="card_number"/>
         <result property="cardFPhoto" column="card_f_photo" typeHandler="com.yyt.print.base.BlobTypeHandler"/>
         <result property="cardBPhoto" column="card_b_photo" typeHandler="com.yyt.print.base.BlobTypeHandler"/>
@@ -16,20 +17,70 @@
 
     <insert id="insert" parameterType="UserSeller">
         insert into user_seller
-        (user_id,card_number,card_f_photo,card_b_photo,user_card_photo,licence_phone,status,msg,create_time,update_time)
+        (user_id,name,card_number,card_f_photo,card_b_photo,user_card_photo,licence_phone,status,msg,create_time,update_time)
         VALUES
-        (#{userId},#{cardNumber},#{cardFPhoto},#{cardBPhoto},#{userCardPhoto},#{licencePhone},#{status},#{msg},#{createTime},#{updateTime})
+        (#{userId},#{name},#{cardNumber},#{cardFPhoto},#{cardBPhoto},#{userCardPhoto},#{licencePhone},#{status},#{msg},#{createTime},#{updateTime})
     </insert>
 
     <update id="update" parameterType="UserSeller">
-        update user_seller set card_number=#{cardNumber}, card_f_photo=#{cardFPhoto}, card_b_photo=#{cardBPhoto}, user_card_photo=#{userCardPhoto},licence_phone=#{licencePhone}, status=#{status}
+        update user_seller set name=#{name}, card_number=#{cardNumber}, card_f_photo=#{cardFPhoto}, card_b_photo=#{cardBPhoto}, user_card_photo=#{userCardPhoto},licence_phone=#{licencePhone}, status=#{status}
         , update_time=#{updateTime}, msg=#{msg}
         where user_id=#{userId}
     </update>
 
     <select id="findUserBuyerByUserId" parameterType="int" resultMap="UserSellerResultMap">
-        select user_id,card_number,card_f_photo,card_b_photo,user_card_photo,licence_phone,status,msg,create_time,update_time
+        select user_id,name,card_number,card_f_photo,card_b_photo,user_card_photo,licence_phone,status,msg,create_time,update_time
         from user_seller
         where user_id=#{userId}
+    </select>
+
+    <sql id="sql_show">
+        select a.user_id,a.name,a.card_number,a.card_f_photo,a.card_b_photo,a.user_card_photo,a.status,a.msg,a.create_time,a.update_time
+    </sql>
+
+    <sql id="sql_where">
+        from user_seller a, user b
+        <trim prefix="where" prefixOverrides="AND|OR">
+            a.user_id = b.user_id
+            <if test=" userId != null and userId != 0 ">
+                AND a.user_id = #{userId}
+            </if>
+            <if test=" userName != null and userName != '' ">
+                AND b.user_name = #{userName}
+            </if>
+            <if test=" nickName != null and  nickName != '' ">
+                AND b.nick_name = #{nickName}
+            </if>
+            <if test=" phone != null and  phone != '' ">
+                AND b.phone = #{phone}
+            </if>
+            <if test="cardNumber !=null and  cardNumber != '' ">
+                AND a.card_number = #{cardNumber}
+            </if>
+            <if test="name !=null and  name != '' ">
+                AND a.name = #{name}
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="sql_count">
+        select count(1)
+    </sql>
+
+    <sql id="sql_order">
+        <if test="cols!=null">
+            ORDER BY ${cols}
+        </if>
+    </sql>
+
+    <select id="queryUserSellerByPage_count" parameterType="map" resultType="int">
+        <include refid="sql_count"/>
+        <include refid="sql_where"/>
+    </select>
+
+    <select id="queryUserSellerByPage" parameterType="map" resultMap="UserSellerResultMap">
+        <include refid="sql_show"/>
+        <include refid="sql_where"/>
+        <include refid="sql_order"/>
     </select>
 </mapper>

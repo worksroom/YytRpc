@@ -1,6 +1,8 @@
 package com.yyt.print.user.service.impl;
 
+import com.youguu.core.util.PageHolder;
 import com.yyt.print.user.dao.IUserSellerDAO;
+import com.yyt.print.user.pojo.UserBuyer;
 import com.yyt.print.user.pojo.UserSeller;
 import com.yyt.print.user.service.IUserSellerService;
 import org.springframework.stereotype.Service;
@@ -29,5 +31,10 @@ public class UserSellerService implements IUserSellerService {
     @Override
     public int updateUserSeller(UserSeller userSeller) {
         return userSellerDAO.updateUserSeller(userSeller);
+    }
+
+    @Override
+    public PageHolder<UserSeller> queryUserSellerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize) {
+        return userSellerDAO.queryUserSellerByPage(userId, userName, nickName, phone, cardNumber, name, pageIndex, pageSize);
     }
 }

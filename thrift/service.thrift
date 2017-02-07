@@ -223,6 +223,7 @@ service UserThriftRpcService {
 
     string getUserMap(1:list<i32> userIdList);
 
+    string queryUserByPage(1:i32 userId, 2:string userName, 3:string nickName, 4:string phone, 5:i32 pageIndex, 6:i32 pageSize);
 
 
     i32 saveUserBuyer(1:string userBuyer);
@@ -231,6 +232,7 @@ service UserThriftRpcService {
 
     i32 updateUserBuyer(1:string userBuyer);
 
+    string queryUserBuyerByPage(1:i32 userId, 2:string userName, 3:string nickName, 4:string phone, 5:string cardNumber, 6:string name, 7:i32 pageIndex, 8:i32 pageSize);
 
     i32 saveUserSeller(1:string userSeller);
 
@@ -238,6 +240,7 @@ service UserThriftRpcService {
 
     i32 updateUserSeller(1:string userSeller);
 
+    string queryUserSellerByPage(1:i32 userId, 2:string userName, 3:string nickName, 4:string phone, 5:string cardNumber, 6:string name, 7:i32 pageIndex, 8:i32 pageSize);
 
     i32 saveUserThirdBind(1:string thirdBind);
 
