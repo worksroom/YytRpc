@@ -150,6 +150,66 @@ public class UserClient implements UserThriftRpcService.Iface {
     }
 
     @Override
+    public String login(String username, String password, int type, String ip) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(UserThriftRpcService.Client.class).login(username, password, type, ip);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public String auth(String username, String session, String token, int type) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(UserThriftRpcService.Client.class).auth(username, session, token, type);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public String regist(String username, String password, int type, String nickname, String headImgUrl, String signature, String ip) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(UserThriftRpcService.Client.class).regist(username, password, type, nickname, headImgUrl, signature, ip);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
     public int saveUserBuyer(String userBuyer) throws TException {
         RPCMultiplexConnection client = null;
         try {

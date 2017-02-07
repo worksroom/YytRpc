@@ -58,4 +58,10 @@ public interface IUserDAO {
      */
     public PageHolder<User> queryUserByPage(int userId, String userName, String nickName, String phone, int pageIndex, int pageSize);
 
+    /**
+     * 根据用户名查询
+     * @param userName
+     * @return
+     */
+    public User findUserByUsername(String userName);
 }
