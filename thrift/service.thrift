@@ -176,6 +176,12 @@ service ProductThriftRpcService {
     /** 获取商品分类 **/
     string getMallProductCategory(1:i32 id);
 
+    /** 通过产品分类查询属性和属性值 **/
+    string findProValueByClassId(1:i32 classId);
+
+    /** 添加属性和属性值 **/
+    i32 addProAndValues(1:i32 classId,2:string pro,3:string values);
+
 
 }
 
