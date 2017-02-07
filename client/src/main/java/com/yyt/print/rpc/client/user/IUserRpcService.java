@@ -1,10 +1,7 @@
 package com.yyt.print.rpc.client.user;
 
 import com.youguu.core.util.PageHolder;
-import com.yyt.print.user.pojo.User;
-import com.yyt.print.user.pojo.UserBuyer;
-import com.yyt.print.user.pojo.UserSeller;
-import com.yyt.print.user.pojo.UserThirdBind;
+import com.yyt.print.user.pojo.*;
 import com.yyt.print.user.response.AuthResponse;
 
 import java.util.List;
@@ -149,4 +146,9 @@ public interface IUserRpcService {
      * @return
      */
     public PageHolder<UserSeller> queryUserSellerByPage(int userId, String userName, String nickName, String phone, String cardNumber, String name, int pageIndex, int pageSize);
+
+
+    public int saveUserErp(int erpUid, String phone);
+
+    public UserErp findUserErpByPhone(String phone);
 }

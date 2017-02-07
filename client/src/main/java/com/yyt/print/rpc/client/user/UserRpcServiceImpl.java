@@ -10,10 +10,7 @@ import com.youguu.core.logging.LogFactory;
 import com.youguu.core.util.PageHolder;
 import com.yyt.print.parser.PageHolderDeserializer;
 import com.yyt.print.rpc.common.Constants;
-import com.yyt.print.user.pojo.User;
-import com.yyt.print.user.pojo.UserBuyer;
-import com.yyt.print.user.pojo.UserSeller;
-import com.yyt.print.user.pojo.UserThirdBind;
+import com.yyt.print.user.pojo.*;
 import com.yyt.print.user.response.AuthResponse;
 import org.apache.thrift.TException;
 
@@ -230,6 +227,27 @@ public class UserRpcServiceImpl implements IUserRpcService {
             String json = getClient().queryUserSellerByPage(userId, userName, nickName, phone, cardNumber, name, pageIndex, pageSize);
             ParserConfig.getGlobalInstance().putDeserializer(PageHolder.class, new PageHolderDeserializer());
             return JSON.parseObject(json, new TypeReference<PageHolder<UserSeller>>(){});
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public int saveUserErp(int erpUid, String phone) {
+        try {
+            return getClient().saveUserErp(erpUid, phone);
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public UserErp findUserErpByPhone(String phone) {
+        try {
+            String json = getClient().findUserErpByPhone(phone);
+            return JSONObject.parseObject(json, UserErp.class);
         } catch (TException e) {
             logger.error(e.getMessage(), e);
         }

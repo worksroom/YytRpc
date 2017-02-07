@@ -284,4 +284,8 @@ service UserThriftRpcService {
     i32 saveUserThirdBind(1:string thirdBind);
 
     string getUserThirdBind(1:string thirdId, 2:i32 type);
+
+    i32 saveUserErp(1:i32 erpUid, 2:string phone);
+
+    string findUserErpByPhone(1:string phone);
 }

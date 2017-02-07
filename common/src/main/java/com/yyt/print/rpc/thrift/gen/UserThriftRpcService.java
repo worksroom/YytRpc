@@ -128,6 +128,10 @@ public class UserThriftRpcService {
 
     public String getUserThirdBind(String thirdId, int type) throws org.apache.thrift.TException;
 
+    public int saveUserErp(int erpUid, String phone) throws org.apache.thrift.TException;
+
+    public String findUserErpByPhone(String phone) throws org.apache.thrift.TException;
+
   }
 
   public interface AsyncIface {
@@ -169,6 +173,10 @@ public class UserThriftRpcService {
     public void saveUserThirdBind(String thirdBind, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.saveUserThirdBind_call> resultHandler) throws org.apache.thrift.TException;
 
     public void getUserThirdBind(String thirdId, int type, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserThirdBind_call> resultHandler) throws org.apache.thrift.TException;
+
+    public void saveUserErp(int erpUid, String phone, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.saveUserErp_call> resultHandler) throws org.apache.thrift.TException;
+
+    public void findUserErpByPhone(String phone, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.findUserErpByPhone_call> resultHandler) throws org.apache.thrift.TException;
 
   }
 
@@ -659,6 +667,53 @@ public class UserThriftRpcService {
         return result.success;
       }
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getUserThirdBind failed: unknown result");
+    }
+
+    public int saveUserErp(int erpUid, String phone) throws org.apache.thrift.TException
+    {
+      send_saveUserErp(erpUid, phone);
+      return recv_saveUserErp();
+    }
+
+    public void send_saveUserErp(int erpUid, String phone) throws org.apache.thrift.TException
+    {
+      saveUserErp_args args = new saveUserErp_args();
+      args.setErpUid(erpUid);
+      args.setPhone(phone);
+      sendBase("saveUserErp", args);
+    }
+
+    public int recv_saveUserErp() throws org.apache.thrift.TException
+    {
+      saveUserErp_result result = new saveUserErp_result();
+      receiveBase(result, "saveUserErp");
+      if (result.isSetSuccess()) {
+        return result.success;
+      }
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "saveUserErp failed: unknown result");
+    }
+
+    public String findUserErpByPhone(String phone) throws org.apache.thrift.TException
+    {
+      send_findUserErpByPhone(phone);
+      return recv_findUserErpByPhone();
+    }
+
+    public void send_findUserErpByPhone(String phone) throws org.apache.thrift.TException
+    {
+      findUserErpByPhone_args args = new findUserErpByPhone_args();
+      args.setPhone(phone);
+      sendBase("findUserErpByPhone", args);
+    }
+
+    public String recv_findUserErpByPhone() throws org.apache.thrift.TException
+    {
+      findUserErpByPhone_result result = new findUserErpByPhone_result();
+      receiveBase(result, "findUserErpByPhone");
+      if (result.isSetSuccess()) {
+        return result.success;
+      }
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "findUserErpByPhone failed: unknown result");
     }
 
   }
@@ -1383,6 +1438,73 @@ public class UserThriftRpcService {
       }
     }
 
+    public void saveUserErp(int erpUid, String phone, org.apache.thrift.async.AsyncMethodCallback<saveUserErp_call> resultHandler) throws org.apache.thrift.TException {
+      checkReady();
+      saveUserErp_call method_call = new saveUserErp_call(erpUid, phone, resultHandler, this, ___protocolFactory, ___transport);
+      this.___currentMethod = method_call;
+      ___manager.call(method_call);
+    }
+
+    public static class saveUserErp_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private int erpUid;
+      private String phone;
+      public saveUserErp_call(int erpUid, String phone, org.apache.thrift.async.AsyncMethodCallback<saveUserErp_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+        super(client, protocolFactory, transport, resultHandler, false);
+        this.erpUid = erpUid;
+        this.phone = phone;
+      }
+
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("saveUserErp", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        saveUserErp_args args = new saveUserErp_args();
+        args.setErpUid(erpUid);
+        args.setPhone(phone);
+        args.write(prot);
+        prot.writeMessageEnd();
+      }
+
+      public int getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
+          throw new IllegalStateException("Method call not finished!");
+        }
+        org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
+        org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
+        return (new Client(prot)).recv_saveUserErp();
+      }
+    }
+
+    public void findUserErpByPhone(String phone, org.apache.thrift.async.AsyncMethodCallback<findUserErpByPhone_call> resultHandler) throws org.apache.thrift.TException {
+      checkReady();
+      findUserErpByPhone_call method_call = new findUserErpByPhone_call(phone, resultHandler, this, ___protocolFactory, ___transport);
+      this.___currentMethod = method_call;
+      ___manager.call(method_call);
+    }
+
+    public static class findUserErpByPhone_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private String phone;
+      public findUserErpByPhone_call(String phone, org.apache.thrift.async.AsyncMethodCallback<findUserErpByPhone_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+        super(client, protocolFactory, transport, resultHandler, false);
+        this.phone = phone;
+      }
+
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("findUserErpByPhone", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        findUserErpByPhone_args args = new findUserErpByPhone_args();
+        args.setPhone(phone);
+        args.write(prot);
+        prot.writeMessageEnd();
+      }
+
+      public String getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
+          throw new IllegalStateException("Method call not finished!");
+        }
+        org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
+        org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
+        return (new Client(prot)).recv_findUserErpByPhone();
+      }
+    }
+
   }
 
   public static class Processor<I extends Iface> extends org.apache.thrift.TBaseProcessor<I> implements org.apache.thrift.TProcessor {
@@ -1415,6 +1537,8 @@ public class UserThriftRpcService {
       processMap.put("queryUserSellerByPage", new queryUserSellerByPage());
       processMap.put("saveUserThirdBind", new saveUserThirdBind());
       processMap.put("getUserThirdBind", new getUserThirdBind());
+      processMap.put("saveUserErp", new saveUserErp());
+      processMap.put("findUserErpByPhone", new findUserErpByPhone());
       return processMap;
     }
 
@@ -1801,6 +1925,47 @@ public class UserThriftRpcService {
       public getUserThirdBind_result getResult(I iface, getUserThirdBind_args args) throws org.apache.thrift.TException {
         getUserThirdBind_result result = new getUserThirdBind_result();
         result.success = iface.getUserThirdBind(args.thirdId, args.type);
+        return result;
+      }
+    }
+
+    public static class saveUserErp<I extends Iface> extends org.apache.thrift.ProcessFunction<I, saveUserErp_args> {
+      public saveUserErp() {
+        super("saveUserErp");
+      }
+
+      public saveUserErp_args getEmptyArgsInstance() {
+        return new saveUserErp_args();
+      }
+
+      protected boolean isOneway() {
+        return false;
+      }
+
+      public saveUserErp_result getResult(I iface, saveUserErp_args args) throws org.apache.thrift.TException {
+        saveUserErp_result result = new saveUserErp_result();
+        result.success = iface.saveUserErp(args.erpUid, args.phone);
+        result.setSuccessIsSet(true);
+        return result;
+      }
+    }
+
+    public static class findUserErpByPhone<I extends Iface> extends org.apache.thrift.ProcessFunction<I, findUserErpByPhone_args> {
+      public findUserErpByPhone() {
+        super("findUserErpByPhone");
+      }
+
+      public findUserErpByPhone_args getEmptyArgsInstance() {
+        return new findUserErpByPhone_args();
+      }
+
+      protected boolean isOneway() {
+        return false;
+      }
+
+      public findUserErpByPhone_result getResult(I iface, findUserErpByPhone_args args) throws org.apache.thrift.TException {
+        findUserErpByPhone_result result = new findUserErpByPhone_result();
+        result.success = iface.findUserErpByPhone(args.phone);
         return result;
       }
     }
@@ -18496,6 +18661,1520 @@ public class UserThriftRpcService {
 
       @Override
       public void read(org.apache.thrift.protocol.TProtocol prot, getUserThirdBind_result struct) throws org.apache.thrift.TException {
+        TTupleProtocol iprot = (TTupleProtocol) prot;
+        BitSet incoming = iprot.readBitSet(1);
+        if (incoming.get(0)) {
+          struct.success = iprot.readString();
+          struct.setSuccessIsSet(true);
+        }
+      }
+    }
+
+  }
+
+  public static class saveUserErp_args implements org.apache.thrift.TBase<saveUserErp_args, saveUserErp_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("saveUserErp_args");
+
+    private static final org.apache.thrift.protocol.TField ERP_UID_FIELD_DESC = new org.apache.thrift.protocol.TField("erpUid", org.apache.thrift.protocol.TType.I32, (short)1);
+    private static final org.apache.thrift.protocol.TField PHONE_FIELD_DESC = new org.apache.thrift.protocol.TField("phone", org.apache.thrift.protocol.TType.STRING, (short)2);
+
+    private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+    static {
+      schemes.put(StandardScheme.class, new saveUserErp_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new saveUserErp_argsTupleSchemeFactory());
+    }
+
+    public int erpUid; // required
+    public String phone; // required
+
+    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+    public enum _Fields implements org.apache.thrift.TFieldIdEnum {
+      ERP_UID((short)1, "erpUid"),
+      PHONE((short)2, "phone");
+
+      private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
+
+      static {
+        for (_Fields field : EnumSet.allOf(_Fields.class)) {
+          byName.put(field.getFieldName(), field);
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, or null if its not found.
+       */
+      public static _Fields findByThriftId(int fieldId) {
+        switch(fieldId) {
+          case 1: // ERP_UID
+            return ERP_UID;
+          case 2: // PHONE
+            return PHONE;
+          default:
+            return null;
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, throwing an exception
+       * if it is not found.
+       */
+      public static _Fields findByThriftIdOrThrow(int fieldId) {
+        _Fields fields = findByThriftId(fieldId);
+        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        return fields;
+      }
+
+      /**
+       * Find the _Fields constant that matches name, or null if its not found.
+       */
+      public static _Fields findByName(String name) {
+        return byName.get(name);
+      }
+
+      private final short _thriftId;
+      private final String _fieldName;
+
+      _Fields(short thriftId, String fieldName) {
+        _thriftId = thriftId;
+        _fieldName = fieldName;
+      }
+
+      public short getThriftFieldId() {
+        return _thriftId;
+      }
+
+      public String getFieldName() {
+        return _fieldName;
+      }
+    }
+
+    // isset id assignments
+    private static final int __ERPUID_ISSET_ID = 0;
+    private byte __isset_bitfield = 0;
+    public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
+    static {
+      Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.ERP_UID, new org.apache.thrift.meta_data.FieldMetaData("erpUid", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+      tmpMap.put(_Fields.PHONE, new org.apache.thrift.meta_data.FieldMetaData("phone", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+      metaDataMap = Collections.unmodifiableMap(tmpMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(saveUserErp_args.class, metaDataMap);
+    }
+
+    public saveUserErp_args() {
+    }
+
+    public saveUserErp_args(
+      int erpUid,
+      String phone)
+    {
+      this();
+      this.erpUid = erpUid;
+      setErpUidIsSet(true);
+      this.phone = phone;
+    }
+
+    /**
+     * Performs a deep copy on <i>other</i>.
+     */
+    public saveUserErp_args(saveUserErp_args other) {
+      __isset_bitfield = other.__isset_bitfield;
+      this.erpUid = other.erpUid;
+      if (other.isSetPhone()) {
+        this.phone = other.phone;
+      }
+    }
+
+    public saveUserErp_args deepCopy() {
+      return new saveUserErp_args(this);
+    }
+
+    @Override
+    public void clear() {
+      setErpUidIsSet(false);
+      this.erpUid = 0;
+      this.phone = null;
+    }
+
+    public int getErpUid() {
+      return this.erpUid;
+    }
+
+    public saveUserErp_args setErpUid(int erpUid) {
+      this.erpUid = erpUid;
+      setErpUidIsSet(true);
+      return this;
+    }
+
+    public void unsetErpUid() {
+      __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __ERPUID_ISSET_ID);
+    }
+
+    /** Returns true if field erpUid is set (has been assigned a value) and false otherwise */
+    public boolean isSetErpUid() {
+      return EncodingUtils.testBit(__isset_bitfield, __ERPUID_ISSET_ID);
+    }
+
+    public void setErpUidIsSet(boolean value) {
+      __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __ERPUID_ISSET_ID, value);
+    }
+
+    public String getPhone() {
+      return this.phone;
+    }
+
+    public saveUserErp_args setPhone(String phone) {
+      this.phone = phone;
+      return this;
+    }
+
+    public void unsetPhone() {
+      this.phone = null;
+    }
+
+    /** Returns true if field phone is set (has been assigned a value) and false otherwise */
+    public boolean isSetPhone() {
+      return this.phone != null;
+    }
+
+    public void setPhoneIsSet(boolean value) {
+      if (!value) {
+        this.phone = null;
+      }
+    }
+
+    public void setFieldValue(_Fields field, Object value) {
+      switch (field) {
+      case ERP_UID:
+        if (value == null) {
+          unsetErpUid();
+        } else {
+          setErpUid((Integer)value);
+        }
+        break;
+
+      case PHONE:
+        if (value == null) {
+          unsetPhone();
+        } else {
+          setPhone((String)value);
+        }
+        break;
+
+      }
+    }
+
+    public Object getFieldValue(_Fields field) {
+      switch (field) {
+      case ERP_UID:
+        return Integer.valueOf(getErpUid());
+
+      case PHONE:
+        return getPhone();
+
+      }
+      throw new IllegalStateException();
+    }
+
+    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    public boolean isSet(_Fields field) {
+      if (field == null) {
+        throw new IllegalArgumentException();
+      }
+
+      switch (field) {
+      case ERP_UID:
+        return isSetErpUid();
+      case PHONE:
+        return isSetPhone();
+      }
+      throw new IllegalStateException();
+    }
+
+    @Override
+    public boolean equals(Object that) {
+      if (that == null)
+        return false;
+      if (that instanceof saveUserErp_args)
+        return this.equals((saveUserErp_args)that);
+      return false;
+    }
+
+    public boolean equals(saveUserErp_args that) {
+      if (that == null)
+        return false;
+
+      boolean this_present_erpUid = true;
+      boolean that_present_erpUid = true;
+      if (this_present_erpUid || that_present_erpUid) {
+        if (!(this_present_erpUid && that_present_erpUid))
+          return false;
+        if (this.erpUid != that.erpUid)
+          return false;
+      }
+
+      boolean this_present_phone = true && this.isSetPhone();
+      boolean that_present_phone = true && that.isSetPhone();
+      if (this_present_phone || that_present_phone) {
+        if (!(this_present_phone && that_present_phone))
+          return false;
+        if (!this.phone.equals(that.phone))
+          return false;
+      }
+
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      return 0;
+    }
+
+    public int compareTo(saveUserErp_args other) {
+      if (!getClass().equals(other.getClass())) {
+        return getClass().getName().compareTo(other.getClass().getName());
+      }
+
+      int lastComparison = 0;
+      saveUserErp_args typedOther = (saveUserErp_args)other;
+
+      lastComparison = Boolean.valueOf(isSetErpUid()).compareTo(typedOther.isSetErpUid());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetErpUid()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.erpUid, typedOther.erpUid);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetPhone()).compareTo(typedOther.isSetPhone());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetPhone()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.phone, typedOther.phone);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      return 0;
+    }
+
+    public _Fields fieldForId(int fieldId) {
+      return _Fields.findByThriftId(fieldId);
+    }
+
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+      schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
+    }
+
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+      schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
+    }
+
+    @Override
+    public String toString() {
+      StringBuilder sb = new StringBuilder("saveUserErp_args(");
+      boolean first = true;
+
+      sb.append("erpUid:");
+      sb.append(this.erpUid);
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("phone:");
+      if (this.phone == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.phone);
+      }
+      first = false;
+      sb.append(")");
+      return sb.toString();
+    }
+
+    public void validate() throws org.apache.thrift.TException {
+      // check for required fields
+      // check for sub-struct validity
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
+      try {
+        write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
+      try {
+        // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
+        __isset_bitfield = 0;
+        read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private static class saveUserErp_argsStandardSchemeFactory implements SchemeFactory {
+      public saveUserErp_argsStandardScheme getScheme() {
+        return new saveUserErp_argsStandardScheme();
+      }
+    }
+
+    private static class saveUserErp_argsStandardScheme extends StandardScheme<saveUserErp_args> {
+
+      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUserErp_args struct) throws org.apache.thrift.TException {
+        org.apache.thrift.protocol.TField schemeField;
+        iprot.readStructBegin();
+        while (true)
+        {
+          schemeField = iprot.readFieldBegin();
+          if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
+            break;
+          }
+          switch (schemeField.id) {
+            case 1: // ERP_UID
+              if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                struct.erpUid = iprot.readI32();
+                struct.setErpUidIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 2: // PHONE
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                struct.phone = iprot.readString();
+                struct.setPhoneIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            default:
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+          }
+          iprot.readFieldEnd();
+        }
+        iprot.readStructEnd();
+
+        // check for required fields of primitive type, which can't be checked in the validate method
+        struct.validate();
+      }
+
+      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUserErp_args struct) throws org.apache.thrift.TException {
+        struct.validate();
+
+        oprot.writeStructBegin(STRUCT_DESC);
+        oprot.writeFieldBegin(ERP_UID_FIELD_DESC);
+        oprot.writeI32(struct.erpUid);
+        oprot.writeFieldEnd();
+        if (struct.phone != null) {
+          oprot.writeFieldBegin(PHONE_FIELD_DESC);
+          oprot.writeString(struct.phone);
+          oprot.writeFieldEnd();
+        }
+        oprot.writeFieldStop();
+        oprot.writeStructEnd();
+      }
+
+    }
+
+    private static class saveUserErp_argsTupleSchemeFactory implements SchemeFactory {
+      public saveUserErp_argsTupleScheme getScheme() {
+        return new saveUserErp_argsTupleScheme();
+      }
+    }
+
+    private static class saveUserErp_argsTupleScheme extends TupleScheme<saveUserErp_args> {
+
+      @Override
+      public void write(org.apache.thrift.protocol.TProtocol prot, saveUserErp_args struct) throws org.apache.thrift.TException {
+        TTupleProtocol oprot = (TTupleProtocol) prot;
+        BitSet optionals = new BitSet();
+        if (struct.isSetErpUid()) {
+          optionals.set(0);
+        }
+        if (struct.isSetPhone()) {
+          optionals.set(1);
+        }
+        oprot.writeBitSet(optionals, 2);
+        if (struct.isSetErpUid()) {
+          oprot.writeI32(struct.erpUid);
+        }
+        if (struct.isSetPhone()) {
+          oprot.writeString(struct.phone);
+        }
+      }
+
+      @Override
+      public void read(org.apache.thrift.protocol.TProtocol prot, saveUserErp_args struct) throws org.apache.thrift.TException {
+        TTupleProtocol iprot = (TTupleProtocol) prot;
+        BitSet incoming = iprot.readBitSet(2);
+        if (incoming.get(0)) {
+          struct.erpUid = iprot.readI32();
+          struct.setErpUidIsSet(true);
+        }
+        if (incoming.get(1)) {
+          struct.phone = iprot.readString();
+          struct.setPhoneIsSet(true);
+        }
+      }
+    }
+
+  }
+
+  public static class saveUserErp_result implements org.apache.thrift.TBase<saveUserErp_result, saveUserErp_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("saveUserErp_result");
+
+    private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.I32, (short)0);
+
+    private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+    static {
+      schemes.put(StandardScheme.class, new saveUserErp_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new saveUserErp_resultTupleSchemeFactory());
+    }
+
+    public int success; // required
+
+    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+    public enum _Fields implements org.apache.thrift.TFieldIdEnum {
+      SUCCESS((short)0, "success");
+
+      private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
+
+      static {
+        for (_Fields field : EnumSet.allOf(_Fields.class)) {
+          byName.put(field.getFieldName(), field);
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, or null if its not found.
+       */
+      public static _Fields findByThriftId(int fieldId) {
+        switch(fieldId) {
+          case 0: // SUCCESS
+            return SUCCESS;
+          default:
+            return null;
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, throwing an exception
+       * if it is not found.
+       */
+      public static _Fields findByThriftIdOrThrow(int fieldId) {
+        _Fields fields = findByThriftId(fieldId);
+        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        return fields;
+      }
+
+      /**
+       * Find the _Fields constant that matches name, or null if its not found.
+       */
+      public static _Fields findByName(String name) {
+        return byName.get(name);
+      }
+
+      private final short _thriftId;
+      private final String _fieldName;
+
+      _Fields(short thriftId, String fieldName) {
+        _thriftId = thriftId;
+        _fieldName = fieldName;
+      }
+
+      public short getThriftFieldId() {
+        return _thriftId;
+      }
+
+      public String getFieldName() {
+        return _fieldName;
+      }
+    }
+
+    // isset id assignments
+    private static final int __SUCCESS_ISSET_ID = 0;
+    private byte __isset_bitfield = 0;
+    public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
+    static {
+      Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+      metaDataMap = Collections.unmodifiableMap(tmpMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(saveUserErp_result.class, metaDataMap);
+    }
+
+    public saveUserErp_result() {
+    }
+
+    public saveUserErp_result(
+      int success)
+    {
+      this();
+      this.success = success;
+      setSuccessIsSet(true);
+    }
+
+    /**
+     * Performs a deep copy on <i>other</i>.
+     */
+    public saveUserErp_result(saveUserErp_result other) {
+      __isset_bitfield = other.__isset_bitfield;
+      this.success = other.success;
+    }
+
+    public saveUserErp_result deepCopy() {
+      return new saveUserErp_result(this);
+    }
+
+    @Override
+    public void clear() {
+      setSuccessIsSet(false);
+      this.success = 0;
+    }
+
+    public int getSuccess() {
+      return this.success;
+    }
+
+    public saveUserErp_result setSuccess(int success) {
+      this.success = success;
+      setSuccessIsSet(true);
+      return this;
+    }
+
+    public void unsetSuccess() {
+      __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __SUCCESS_ISSET_ID);
+    }
+
+    /** Returns true if field success is set (has been assigned a value) and false otherwise */
+    public boolean isSetSuccess() {
+      return EncodingUtils.testBit(__isset_bitfield, __SUCCESS_ISSET_ID);
+    }
+
+    public void setSuccessIsSet(boolean value) {
+      __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
+    }
+
+    public void setFieldValue(_Fields field, Object value) {
+      switch (field) {
+      case SUCCESS:
+        if (value == null) {
+          unsetSuccess();
+        } else {
+          setSuccess((Integer)value);
+        }
+        break;
+
+      }
+    }
+
+    public Object getFieldValue(_Fields field) {
+      switch (field) {
+      case SUCCESS:
+        return Integer.valueOf(getSuccess());
+
+      }
+      throw new IllegalStateException();
+    }
+
+    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    public boolean isSet(_Fields field) {
+      if (field == null) {
+        throw new IllegalArgumentException();
+      }
+
+      switch (field) {
+      case SUCCESS:
+        return isSetSuccess();
+      }
+      throw new IllegalStateException();
+    }
+
+    @Override
+    public boolean equals(Object that) {
+      if (that == null)
+        return false;
+      if (that instanceof saveUserErp_result)
+        return this.equals((saveUserErp_result)that);
+      return false;
+    }
+
+    public boolean equals(saveUserErp_result that) {
+      if (that == null)
+        return false;
+
+      boolean this_present_success = true;
+      boolean that_present_success = true;
+      if (this_present_success || that_present_success) {
+        if (!(this_present_success && that_present_success))
+          return false;
+        if (this.success != that.success)
+          return false;
+      }
+
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      return 0;
+    }
+
+    public int compareTo(saveUserErp_result other) {
+      if (!getClass().equals(other.getClass())) {
+        return getClass().getName().compareTo(other.getClass().getName());
+      }
+
+      int lastComparison = 0;
+      saveUserErp_result typedOther = (saveUserErp_result)other;
+
+      lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetSuccess()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.success, typedOther.success);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      return 0;
+    }
+
+    public _Fields fieldForId(int fieldId) {
+      return _Fields.findByThriftId(fieldId);
+    }
+
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+      schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
+    }
+
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+      schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
+      }
+
+    @Override
+    public String toString() {
+      StringBuilder sb = new StringBuilder("saveUserErp_result(");
+      boolean first = true;
+
+      sb.append("success:");
+      sb.append(this.success);
+      first = false;
+      sb.append(")");
+      return sb.toString();
+    }
+
+    public void validate() throws org.apache.thrift.TException {
+      // check for required fields
+      // check for sub-struct validity
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
+      try {
+        write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
+      try {
+        // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
+        __isset_bitfield = 0;
+        read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private static class saveUserErp_resultStandardSchemeFactory implements SchemeFactory {
+      public saveUserErp_resultStandardScheme getScheme() {
+        return new saveUserErp_resultStandardScheme();
+      }
+    }
+
+    private static class saveUserErp_resultStandardScheme extends StandardScheme<saveUserErp_result> {
+
+      public void read(org.apache.thrift.protocol.TProtocol iprot, saveUserErp_result struct) throws org.apache.thrift.TException {
+        org.apache.thrift.protocol.TField schemeField;
+        iprot.readStructBegin();
+        while (true)
+        {
+          schemeField = iprot.readFieldBegin();
+          if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
+            break;
+          }
+          switch (schemeField.id) {
+            case 0: // SUCCESS
+              if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                struct.success = iprot.readI32();
+                struct.setSuccessIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            default:
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+          }
+          iprot.readFieldEnd();
+        }
+        iprot.readStructEnd();
+
+        // check for required fields of primitive type, which can't be checked in the validate method
+        struct.validate();
+      }
+
+      public void write(org.apache.thrift.protocol.TProtocol oprot, saveUserErp_result struct) throws org.apache.thrift.TException {
+        struct.validate();
+
+        oprot.writeStructBegin(STRUCT_DESC);
+        if (struct.isSetSuccess()) {
+          oprot.writeFieldBegin(SUCCESS_FIELD_DESC);
+          oprot.writeI32(struct.success);
+          oprot.writeFieldEnd();
+        }
+        oprot.writeFieldStop();
+        oprot.writeStructEnd();
+      }
+
+    }
+
+    private static class saveUserErp_resultTupleSchemeFactory implements SchemeFactory {
+      public saveUserErp_resultTupleScheme getScheme() {
+        return new saveUserErp_resultTupleScheme();
+      }
+    }
+
+    private static class saveUserErp_resultTupleScheme extends TupleScheme<saveUserErp_result> {
+
+      @Override
+      public void write(org.apache.thrift.protocol.TProtocol prot, saveUserErp_result struct) throws org.apache.thrift.TException {
+        TTupleProtocol oprot = (TTupleProtocol) prot;
+        BitSet optionals = new BitSet();
+        if (struct.isSetSuccess()) {
+          optionals.set(0);
+        }
+        oprot.writeBitSet(optionals, 1);
+        if (struct.isSetSuccess()) {
+          oprot.writeI32(struct.success);
+        }
+      }
+
+      @Override
+      public void read(org.apache.thrift.protocol.TProtocol prot, saveUserErp_result struct) throws org.apache.thrift.TException {
+        TTupleProtocol iprot = (TTupleProtocol) prot;
+        BitSet incoming = iprot.readBitSet(1);
+        if (incoming.get(0)) {
+          struct.success = iprot.readI32();
+          struct.setSuccessIsSet(true);
+        }
+      }
+    }
+
+  }
+
+  public static class findUserErpByPhone_args implements org.apache.thrift.TBase<findUserErpByPhone_args, findUserErpByPhone_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("findUserErpByPhone_args");
+
+    private static final org.apache.thrift.protocol.TField PHONE_FIELD_DESC = new org.apache.thrift.protocol.TField("phone", org.apache.thrift.protocol.TType.STRING, (short)1);
+
+    private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+    static {
+      schemes.put(StandardScheme.class, new findUserErpByPhone_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new findUserErpByPhone_argsTupleSchemeFactory());
+    }
+
+    public String phone; // required
+
+    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+    public enum _Fields implements org.apache.thrift.TFieldIdEnum {
+      PHONE((short)1, "phone");
+
+      private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
+
+      static {
+        for (_Fields field : EnumSet.allOf(_Fields.class)) {
+          byName.put(field.getFieldName(), field);
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, or null if its not found.
+       */
+      public static _Fields findByThriftId(int fieldId) {
+        switch(fieldId) {
+          case 1: // PHONE
+            return PHONE;
+          default:
+            return null;
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, throwing an exception
+       * if it is not found.
+       */
+      public static _Fields findByThriftIdOrThrow(int fieldId) {
+        _Fields fields = findByThriftId(fieldId);
+        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        return fields;
+      }
+
+      /**
+       * Find the _Fields constant that matches name, or null if its not found.
+       */
+      public static _Fields findByName(String name) {
+        return byName.get(name);
+      }
+
+      private final short _thriftId;
+      private final String _fieldName;
+
+      _Fields(short thriftId, String fieldName) {
+        _thriftId = thriftId;
+        _fieldName = fieldName;
+      }
+
+      public short getThriftFieldId() {
+        return _thriftId;
+      }
+
+      public String getFieldName() {
+        return _fieldName;
+      }
+    }
+
+    // isset id assignments
+    public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
+    static {
+      Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.PHONE, new org.apache.thrift.meta_data.FieldMetaData("phone", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+      metaDataMap = Collections.unmodifiableMap(tmpMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(findUserErpByPhone_args.class, metaDataMap);
+    }
+
+    public findUserErpByPhone_args() {
+    }
+
+    public findUserErpByPhone_args(
+      String phone)
+    {
+      this();
+      this.phone = phone;
+    }
+
+    /**
+     * Performs a deep copy on <i>other</i>.
+     */
+    public findUserErpByPhone_args(findUserErpByPhone_args other) {
+      if (other.isSetPhone()) {
+        this.phone = other.phone;
+      }
+    }
+
+    public findUserErpByPhone_args deepCopy() {
+      return new findUserErpByPhone_args(this);
+    }
+
+    @Override
+    public void clear() {
+      this.phone = null;
+    }
+
+    public String getPhone() {
+      return this.phone;
+    }
+
+    public findUserErpByPhone_args setPhone(String phone) {
+      this.phone = phone;
+      return this;
+    }
+
+    public void unsetPhone() {
+      this.phone = null;
+    }
+
+    /** Returns true if field phone is set (has been assigned a value) and false otherwise */
+    public boolean isSetPhone() {
+      return this.phone != null;
+    }
+
+    public void setPhoneIsSet(boolean value) {
+      if (!value) {
+        this.phone = null;
+      }
+    }
+
+    public void setFieldValue(_Fields field, Object value) {
+      switch (field) {
+      case PHONE:
+        if (value == null) {
+          unsetPhone();
+        } else {
+          setPhone((String)value);
+        }
+        break;
+
+      }
+    }
+
+    public Object getFieldValue(_Fields field) {
+      switch (field) {
+      case PHONE:
+        return getPhone();
+
+      }
+      throw new IllegalStateException();
+    }
+
+    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    public boolean isSet(_Fields field) {
+      if (field == null) {
+        throw new IllegalArgumentException();
+      }
+
+      switch (field) {
+      case PHONE:
+        return isSetPhone();
+      }
+      throw new IllegalStateException();
+    }
+
+    @Override
+    public boolean equals(Object that) {
+      if (that == null)
+        return false;
+      if (that instanceof findUserErpByPhone_args)
+        return this.equals((findUserErpByPhone_args)that);
+      return false;
+    }
+
+    public boolean equals(findUserErpByPhone_args that) {
+      if (that == null)
+        return false;
+
+      boolean this_present_phone = true && this.isSetPhone();
+      boolean that_present_phone = true && that.isSetPhone();
+      if (this_present_phone || that_present_phone) {
+        if (!(this_present_phone && that_present_phone))
+          return false;
+        if (!this.phone.equals(that.phone))
+          return false;
+      }
+
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      return 0;
+    }
+
+    public int compareTo(findUserErpByPhone_args other) {
+      if (!getClass().equals(other.getClass())) {
+        return getClass().getName().compareTo(other.getClass().getName());
+      }
+
+      int lastComparison = 0;
+      findUserErpByPhone_args typedOther = (findUserErpByPhone_args)other;
+
+      lastComparison = Boolean.valueOf(isSetPhone()).compareTo(typedOther.isSetPhone());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetPhone()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.phone, typedOther.phone);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      return 0;
+    }
+
+    public _Fields fieldForId(int fieldId) {
+      return _Fields.findByThriftId(fieldId);
+    }
+
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+      schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
+    }
+
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+      schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
+    }
+
+    @Override
+    public String toString() {
+      StringBuilder sb = new StringBuilder("findUserErpByPhone_args(");
+      boolean first = true;
+
+      sb.append("phone:");
+      if (this.phone == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.phone);
+      }
+      first = false;
+      sb.append(")");
+      return sb.toString();
+    }
+
+    public void validate() throws org.apache.thrift.TException {
+      // check for required fields
+      // check for sub-struct validity
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
+      try {
+        write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
+      try {
+        read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private static class findUserErpByPhone_argsStandardSchemeFactory implements SchemeFactory {
+      public findUserErpByPhone_argsStandardScheme getScheme() {
+        return new findUserErpByPhone_argsStandardScheme();
+      }
+    }
+
+    private static class findUserErpByPhone_argsStandardScheme extends StandardScheme<findUserErpByPhone_args> {
+
+      public void read(org.apache.thrift.protocol.TProtocol iprot, findUserErpByPhone_args struct) throws org.apache.thrift.TException {
+        org.apache.thrift.protocol.TField schemeField;
+        iprot.readStructBegin();
+        while (true)
+        {
+          schemeField = iprot.readFieldBegin();
+          if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
+            break;
+          }
+          switch (schemeField.id) {
+            case 1: // PHONE
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                struct.phone = iprot.readString();
+                struct.setPhoneIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            default:
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+          }
+          iprot.readFieldEnd();
+        }
+        iprot.readStructEnd();
+
+        // check for required fields of primitive type, which can't be checked in the validate method
+        struct.validate();
+      }
+
+      public void write(org.apache.thrift.protocol.TProtocol oprot, findUserErpByPhone_args struct) throws org.apache.thrift.TException {
+        struct.validate();
+
+        oprot.writeStructBegin(STRUCT_DESC);
+        if (struct.phone != null) {
+          oprot.writeFieldBegin(PHONE_FIELD_DESC);
+          oprot.writeString(struct.phone);
+          oprot.writeFieldEnd();
+        }
+        oprot.writeFieldStop();
+        oprot.writeStructEnd();
+      }
+
+    }
+
+    private static class findUserErpByPhone_argsTupleSchemeFactory implements SchemeFactory {
+      public findUserErpByPhone_argsTupleScheme getScheme() {
+        return new findUserErpByPhone_argsTupleScheme();
+      }
+    }
+
+    private static class findUserErpByPhone_argsTupleScheme extends TupleScheme<findUserErpByPhone_args> {
+
+      @Override
+      public void write(org.apache.thrift.protocol.TProtocol prot, findUserErpByPhone_args struct) throws org.apache.thrift.TException {
+        TTupleProtocol oprot = (TTupleProtocol) prot;
+        BitSet optionals = new BitSet();
+        if (struct.isSetPhone()) {
+          optionals.set(0);
+        }
+        oprot.writeBitSet(optionals, 1);
+        if (struct.isSetPhone()) {
+          oprot.writeString(struct.phone);
+        }
+      }
+
+      @Override
+      public void read(org.apache.thrift.protocol.TProtocol prot, findUserErpByPhone_args struct) throws org.apache.thrift.TException {
+        TTupleProtocol iprot = (TTupleProtocol) prot;
+        BitSet incoming = iprot.readBitSet(1);
+        if (incoming.get(0)) {
+          struct.phone = iprot.readString();
+          struct.setPhoneIsSet(true);
+        }
+      }
+    }
+
+  }
+
+  public static class findUserErpByPhone_result implements org.apache.thrift.TBase<findUserErpByPhone_result, findUserErpByPhone_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("findUserErpByPhone_result");
+
+    private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.STRING, (short)0);
+
+    private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+    static {
+      schemes.put(StandardScheme.class, new findUserErpByPhone_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new findUserErpByPhone_resultTupleSchemeFactory());
+    }
+
+    public String success; // required
+
+    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+    public enum _Fields implements org.apache.thrift.TFieldIdEnum {
+      SUCCESS((short)0, "success");
+
+      private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
+
+      static {
+        for (_Fields field : EnumSet.allOf(_Fields.class)) {
+          byName.put(field.getFieldName(), field);
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, or null if its not found.
+       */
+      public static _Fields findByThriftId(int fieldId) {
+        switch(fieldId) {
+          case 0: // SUCCESS
+            return SUCCESS;
+          default:
+            return null;
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, throwing an exception
+       * if it is not found.
+       */
+      public static _Fields findByThriftIdOrThrow(int fieldId) {
+        _Fields fields = findByThriftId(fieldId);
+        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        return fields;
+      }
+
+      /**
+       * Find the _Fields constant that matches name, or null if its not found.
+       */
+      public static _Fields findByName(String name) {
+        return byName.get(name);
+      }
+
+      private final short _thriftId;
+      private final String _fieldName;
+
+      _Fields(short thriftId, String fieldName) {
+        _thriftId = thriftId;
+        _fieldName = fieldName;
+      }
+
+      public short getThriftFieldId() {
+        return _thriftId;
+      }
+
+      public String getFieldName() {
+        return _fieldName;
+      }
+    }
+
+    // isset id assignments
+    public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
+    static {
+      Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+      metaDataMap = Collections.unmodifiableMap(tmpMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(findUserErpByPhone_result.class, metaDataMap);
+    }
+
+    public findUserErpByPhone_result() {
+    }
+
+    public findUserErpByPhone_result(
+      String success)
+    {
+      this();
+      this.success = success;
+    }
+
+    /**
+     * Performs a deep copy on <i>other</i>.
+     */
+    public findUserErpByPhone_result(findUserErpByPhone_result other) {
+      if (other.isSetSuccess()) {
+        this.success = other.success;
+      }
+    }
+
+    public findUserErpByPhone_result deepCopy() {
+      return new findUserErpByPhone_result(this);
+    }
+
+    @Override
+    public void clear() {
+      this.success = null;
+    }
+
+    public String getSuccess() {
+      return this.success;
+    }
+
+    public findUserErpByPhone_result setSuccess(String success) {
+      this.success = success;
+      return this;
+    }
+
+    public void unsetSuccess() {
+      this.success = null;
+    }
+
+    /** Returns true if field success is set (has been assigned a value) and false otherwise */
+    public boolean isSetSuccess() {
+      return this.success != null;
+    }
+
+    public void setSuccessIsSet(boolean value) {
+      if (!value) {
+        this.success = null;
+      }
+    }
+
+    public void setFieldValue(_Fields field, Object value) {
+      switch (field) {
+      case SUCCESS:
+        if (value == null) {
+          unsetSuccess();
+        } else {
+          setSuccess((String)value);
+        }
+        break;
+
+      }
+    }
+
+    public Object getFieldValue(_Fields field) {
+      switch (field) {
+      case SUCCESS:
+        return getSuccess();
+
+      }
+      throw new IllegalStateException();
+    }
+
+    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    public boolean isSet(_Fields field) {
+      if (field == null) {
+        throw new IllegalArgumentException();
+      }
+
+      switch (field) {
+      case SUCCESS:
+        return isSetSuccess();
+      }
+      throw new IllegalStateException();
+    }
+
+    @Override
+    public boolean equals(Object that) {
+      if (that == null)
+        return false;
+      if (that instanceof findUserErpByPhone_result)
+        return this.equals((findUserErpByPhone_result)that);
+      return false;
+    }
+
+    public boolean equals(findUserErpByPhone_result that) {
+      if (that == null)
+        return false;
+
+      boolean this_present_success = true && this.isSetSuccess();
+      boolean that_present_success = true && that.isSetSuccess();
+      if (this_present_success || that_present_success) {
+        if (!(this_present_success && that_present_success))
+          return false;
+        if (!this.success.equals(that.success))
+          return false;
+      }
+
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      return 0;
+    }
+
+    public int compareTo(findUserErpByPhone_result other) {
+      if (!getClass().equals(other.getClass())) {
+        return getClass().getName().compareTo(other.getClass().getName());
+      }
+
+      int lastComparison = 0;
+      findUserErpByPhone_result typedOther = (findUserErpByPhone_result)other;
+
+      lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetSuccess()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.success, typedOther.success);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      return 0;
+    }
+
+    public _Fields fieldForId(int fieldId) {
+      return _Fields.findByThriftId(fieldId);
+    }
+
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+      schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
+    }
+
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+      schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
+      }
+
+    @Override
+    public String toString() {
+      StringBuilder sb = new StringBuilder("findUserErpByPhone_result(");
+      boolean first = true;
+
+      sb.append("success:");
+      if (this.success == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.success);
+      }
+      first = false;
+      sb.append(")");
+      return sb.toString();
+    }
+
+    public void validate() throws org.apache.thrift.TException {
+      // check for required fields
+      // check for sub-struct validity
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
+      try {
+        write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
+      try {
+        read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private static class findUserErpByPhone_resultStandardSchemeFactory implements SchemeFactory {
+      public findUserErpByPhone_resultStandardScheme getScheme() {
+        return new findUserErpByPhone_resultStandardScheme();
+      }
+    }
+
+    private static class findUserErpByPhone_resultStandardScheme extends StandardScheme<findUserErpByPhone_result> {
+
+      public void read(org.apache.thrift.protocol.TProtocol iprot, findUserErpByPhone_result struct) throws org.apache.thrift.TException {
+        org.apache.thrift.protocol.TField schemeField;
+        iprot.readStructBegin();
+        while (true)
+        {
+          schemeField = iprot.readFieldBegin();
+          if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
+            break;
+          }
+          switch (schemeField.id) {
+            case 0: // SUCCESS
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                struct.success = iprot.readString();
+                struct.setSuccessIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            default:
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+          }
+          iprot.readFieldEnd();
+        }
+        iprot.readStructEnd();
+
+        // check for required fields of primitive type, which can't be checked in the validate method
+        struct.validate();
+      }
+
+      public void write(org.apache.thrift.protocol.TProtocol oprot, findUserErpByPhone_result struct) throws org.apache.thrift.TException {
+        struct.validate();
+
+        oprot.writeStructBegin(STRUCT_DESC);
+        if (struct.success != null) {
+          oprot.writeFieldBegin(SUCCESS_FIELD_DESC);
+          oprot.writeString(struct.success);
+          oprot.writeFieldEnd();
+        }
+        oprot.writeFieldStop();
+        oprot.writeStructEnd();
+      }
+
+    }
+
+    private static class findUserErpByPhone_resultTupleSchemeFactory implements SchemeFactory {
+      public findUserErpByPhone_resultTupleScheme getScheme() {
+        return new findUserErpByPhone_resultTupleScheme();
+      }
+    }
+
+    private static class findUserErpByPhone_resultTupleScheme extends TupleScheme<findUserErpByPhone_result> {
+
+      @Override
+      public void write(org.apache.thrift.protocol.TProtocol prot, findUserErpByPhone_result struct) throws org.apache.thrift.TException {
+        TTupleProtocol oprot = (TTupleProtocol) prot;
+        BitSet optionals = new BitSet();
+        if (struct.isSetSuccess()) {
+          optionals.set(0);
+        }
+        oprot.writeBitSet(optionals, 1);
+        if (struct.isSetSuccess()) {
+          oprot.writeString(struct.success);
+        }
+      }
+
+      @Override
+      public void read(org.apache.thrift.protocol.TProtocol prot, findUserErpByPhone_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
