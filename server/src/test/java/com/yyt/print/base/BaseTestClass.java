@@ -14,6 +14,11 @@ public abstract class BaseTestClass {
         return ctx.getBean(name);
     }
 
+    protected  static <T> T getBean(Class<T> clazz) {
+        return ctx.getBean(clazz);
+    }
+
+
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
     }

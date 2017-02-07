@@ -1,7 +1,10 @@
 package com.yyt.print.product.service;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.yyt.print.base.BaseTestClass;
 import com.yyt.print.product.dao.IMallProductCategoryProValueDAO;
+import com.yyt.print.product.pojo.CategoryPro;
 import com.yyt.print.product.pojo.MallProductCategoryProValue;
 import org.junit.Test;
 
@@ -14,33 +17,19 @@ import java.util.List;
  */
 public class ICategoryProServiceTest extends BaseTestClass {
 
-    IMallProductCategoryProValueDAO dao =  getBean(IMallProductCategoryProValueDAO.class);
-
-    private List<MallProductCategoryProValue> getBeans(){
-        List<MallProductCategoryProValue> list = new ArrayList<>();
-        for(int i=0;i<10;i++){
-            MallProductCategoryProValue pv = new MallProductCategoryProValue();
-            pv.setName("尺寸_"+i);
-            pv.setUpdateTime(new Date());
-            pv.setRank(i);
-            pv.setClassId(1);
-            pv.setClassProId(1);
-            pv.setCreateTime(new Date());
-            pv.setPic(null);
-            pv.setUsed(0);
-            list.add(pv);
-        }
-        return list;
-
-    }
+    ICategoryProService service =  getBean(ICategoryProService.class);
 
     @Test
-    public void batchSaveMallProductCategoryProValue() {
-        System.out.println(dao.batchSaveMallProductCategoryProValue(this.getBeans()));
+    public void findProValueByClassId(){
+        List<CategoryPro> list = service.findProValueByClassId(1);
+        String str = JSON.toJSONString(list);
+        List<CategoryPro> list1 = JSONArray.parseArray(str,CategoryPro.class);
+        System.out.println(list1);
+
+
     }
 
-    @Test
-    public void findByClass(){
-        System.out.println(dao.findByClass(1));
-    }
+
+
+
 }

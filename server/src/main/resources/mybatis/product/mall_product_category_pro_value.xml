@@ -25,9 +25,15 @@
 
 
 
+    <select id="findByClass" parameterType="int"  resultMap="MallProductCategoryProValueMap">
+       SELECT  id,name,class_id,class_pro_id,used,rank,pic,update_time,create_time from mall_product_category_pro_value
+       where  class_id=#{classId} order by class_pro_id , rank
+
+    </select>
+
     <select id="findByPro" parameterType="int"  resultMap="MallProductCategoryProValueMap">
-       SELECT  id,name,class_id,class_pro_id,used,rank,pic,update_time,create_time from mall_product_category_pro_value a,
-       mall_product_category_pro b where a.class_pro_id = b.id and b.class_id = #(classId) order by class_pro_id , rank
+        SELECT  id,name,class_id,class_pro_id,used,rank,pic,update_time,create_time from mall_product_category_pro_value
+        where  class_pro_id=#{classProId} order by class_pro_id , rank
 
     </select>
 

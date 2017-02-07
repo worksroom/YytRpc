@@ -22,4 +22,12 @@ public interface IMallProductCategoryProValueDAO {
      * @return
      */
     List<MallProductCategoryProValue> findByClass(int classId);
+
+
+    /**
+     * 根据分类查询所有的属性
+     * @param proId
+     * @return
+     */
+    List<MallProductCategoryProValue> findByPro(int proId);
 }

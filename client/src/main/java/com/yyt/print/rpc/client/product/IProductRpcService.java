@@ -1,6 +1,9 @@
 package com.yyt.print.rpc.client.product;
 
+import com.yyt.print.product.pojo.CategoryPro;
 import com.yyt.print.product.pojo.MallProductCategory;
+import com.yyt.print.product.pojo.MallProductCategoryPro;
+import com.yyt.print.product.pojo.MallProductCategoryProValue;
 
 import java.util.List;
 
@@ -48,4 +51,21 @@ public interface IProductRpcService {
      * @return
      */
     public List<MallProductCategory> findMallProductCategoryList(int parentId);
+
+
+    /**
+     * 通过分类id查询分类属性和值
+     * @param classId
+     * @return
+     */
+    List<CategoryPro> findProValueByClassId(int classId);
+
+    /**
+     * 添加属性和属性值
+     * @param classId
+     * @param pro
+     * @param values
+     * @return
+     */
+    int addProAndValues(int classId,MallProductCategoryPro pro,List<MallProductCategoryProValue> values);
 }

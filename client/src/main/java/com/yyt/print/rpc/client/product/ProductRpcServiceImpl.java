@@ -3,7 +3,10 @@ package com.yyt.print.rpc.client.product;
 import com.alibaba.fastjson.JSON;
 import com.youguu.core.logging.Log;
 import com.youguu.core.logging.LogFactory;
+import com.yyt.print.product.pojo.CategoryPro;
 import com.yyt.print.product.pojo.MallProductCategory;
+import com.yyt.print.product.pojo.MallProductCategoryPro;
+import com.yyt.print.product.pojo.MallProductCategoryProValue;
 import com.yyt.print.rpc.common.Constants;
 
 import java.util.List;
@@ -87,5 +90,25 @@ public class ProductRpcServiceImpl implements IProductRpcService {
             logger.error(e.getMessage(), e);
         }
         return null;
+    }
+
+    @Override
+    public List<CategoryPro> findProValueByClassId(int classId) {
+        try {
+            return JSON.parseArray(getClient().findProValueByClassId(classId), CategoryPro.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public int addProAndValues(int classId, MallProductCategoryPro pro, List<MallProductCategoryProValue> values) {
+        try {
+            return getClient().addProAndValues(classId,JSON.toJSONString(pro),JSON.toJSONString(values));
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
     }
 }
