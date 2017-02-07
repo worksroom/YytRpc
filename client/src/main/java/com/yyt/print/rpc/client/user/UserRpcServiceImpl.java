@@ -14,6 +14,7 @@ import com.yyt.print.user.pojo.User;
 import com.yyt.print.user.pojo.UserBuyer;
 import com.yyt.print.user.pojo.UserSeller;
 import com.yyt.print.user.pojo.UserThirdBind;
+import com.yyt.print.user.response.AuthResponse;
 import org.apache.thrift.TException;
 
 import java.util.List;
@@ -89,6 +90,39 @@ public class UserRpcServiceImpl implements IUserRpcService {
             String json = getClient().queryUserByPage(userId, userName, nickName, phone, pageIndex, pageSize);
             ParserConfig.getGlobalInstance().putDeserializer(PageHolder.class, new PageHolderDeserializer());
             return JSON.parseObject(json, new TypeReference<PageHolder<User>>(){});
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public AuthResponse login(String username, String password, int type, String ip) {
+        try {
+            String json = getClient().login(username, password, type, ip);
+            return JSONObject.parseObject(json, AuthResponse.class);
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public AuthResponse auth(String username, String session, String token, int type) {
+        try {
+            String json = getClient().auth(username, session, token, type);
+            return JSONObject.parseObject(json, AuthResponse.class);
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public AuthResponse regist(String username, String password, int type, String nickname, String headImgUrl, String signature, String ip) {
+        try {
+            String json = getClient().regist(username, password, type, nickname, headImgUrl, signature, ip);
+            return JSONObject.parseObject(json, AuthResponse.class);
         } catch (TException e) {
             logger.error(e.getMessage(), e);
         }

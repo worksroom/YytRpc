@@ -56,4 +56,9 @@ public class UserDAO extends YytBaseDAO<User> implements IUserDAO {
         map.put("phone", phone);
         return this.pagedQuery("queryUserByPage", map, pageIndex, pageSize);
     }
+
+    @Override
+    public User findUserByUsername(String userName) {
+        return this.findUniqueBy("findUserByUsername", userName);
+    }
 }

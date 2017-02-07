@@ -7,6 +7,13 @@ import java.util.Date;
  * Created by SomeBody on 2016/9/22.
  */
 public class User {
+
+    public static final int REGIST_WE_CHAT = 1;//微信注册
+    public static final int REGIST_QQ = 2;//QQ注册
+    public static final int REGIST_SINA_WEIBO = 3;//微博注册
+    public static final int REGIST_PHONE = 4;//手机注册
+    public static final int REGIST_GENERAL = 5;//普通账号注册
+
     private int userId;
     private Date createTime;
     private Date updateTime;

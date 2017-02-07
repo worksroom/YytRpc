@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserLoginLog">
+    <resultMap type="UserLoginLog" id="UserLoginLogResultMap">
+        <result property="userId" column="user_id"/>
+        <result property="lastTime" column="last_time"/>
+        <result property="ip" column="ip"/>
+        <result property="type" column="type"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="UserLoginLog">
+        insert into user_login_log
+        (user_id,last_time,ip,type)
+        VALUES
+        (#{userId},#{lastTime},#{ip},#{type})
+    </insert>
+
+</mapper>

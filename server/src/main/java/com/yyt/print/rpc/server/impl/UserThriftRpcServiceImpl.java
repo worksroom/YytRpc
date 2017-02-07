@@ -10,6 +10,7 @@ import com.yyt.print.user.pojo.User;
 import com.yyt.print.user.pojo.UserBuyer;
 import com.yyt.print.user.pojo.UserSeller;
 import com.yyt.print.user.pojo.UserThirdBind;
+import com.yyt.print.user.response.AuthResponse;
 import com.yyt.print.user.service.IUserBuyerService;
 import com.yyt.print.user.service.IUserSellerService;
 import com.yyt.print.user.service.IUserService;
@@ -71,6 +72,24 @@ public class UserThriftRpcServiceImpl implements UserThriftRpcService.Iface {
         SerializeConfig config = new SerializeConfig();
         config.put(PageHolder.class, new PageHolderSerializer());
         return JSON.toJSONString(pageHolder, config);
+    }
+
+    @Override
+    public String login(String username, String password, int type, String ip) throws TException {
+        AuthResponse rs = userService.login(username, password, type, ip);
+        return JSON.toJSONString(rs);
+    }
+
+    @Override
+    public String auth(String username, String session, String token, int type) throws TException {
+        AuthResponse rs = userService.auth(username, session, token, type);
+        return JSON.toJSONString(rs);
+    }
+
+    @Override
+    public String regist(String username, String password, int type, String nickname, String headImgUrl, String signature, String ip) throws TException {
+        AuthResponse rs = userService.regist(username, password, type, nickname, headImgUrl, signature, ip);
+        return JSON.toJSONString(rs);
     }
 
     @Override

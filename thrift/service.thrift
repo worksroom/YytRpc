@@ -225,6 +225,39 @@ service UserThriftRpcService {
 
     string queryUserByPage(1:i32 userId, 2:string userName, 3:string nickName, 4:string phone, 5:i32 pageIndex, 6:i32 pageSize);
 
+    /**
+     * 用户注册接口
+     * @param username 用户名，三方注册时此字段代表openid
+     * @param password 密码，三方注册时此字段代表token令牌
+     * @param type 三方类型 {@link com.yyt.print.user.pojo.User}
+     * @param ip IP地址
+     * @return
+     */
+    string login(1:string username, 2:string password, 3:i32 type, 4:string ip);
+
+    /**
+     * session验证接口
+     * @param username 用户名，第三方登录时此字段代表openid
+     * @param session 系统生成的会话ID
+     * @param type 三方类型 {@link com.yyt.print.user.pojo.User}
+     * @param token 第三方token
+     * @return
+     */
+    string auth(1:string username, 2:string session, 3:string token, 4:i32 type);
+
+    /**
+     * 用户注册接口
+     * @param username 用户名，三方注册时此字段代表openid
+     * @param password 密码，三方注册时此字段代表token令牌
+     * @param type 三方类型 {@link com.yyt.print.user.pojo.User}
+     * @param nickname 昵称，三方注册时使用第三方的昵称
+     * @param headImgUrl 头像地址
+     * @param signature 签名
+     * @param ip IP地址
+     * @return
+     */
+    string regist(1:string username, 2:string password, 3:i32 type, 4:string nickname, 5:string headImgUrl, 6:string signature, 7:string ip);
+
 
     i32 saveUserBuyer(1:string userBuyer);
 
