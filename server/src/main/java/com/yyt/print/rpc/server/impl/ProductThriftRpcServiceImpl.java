@@ -82,4 +82,45 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
         List<MallProductCategoryProValue> list = JSONArray.parseArray(values,MallProductCategoryProValue.class);
         return categoryProService.addProAndValues(classId,JSON.parseObject(pro, MallProductCategoryPro.class),list);
     }
+
+    @Override
+    public String findProList(int classId) throws TException {
+        return JSON.toJSONString(categoryProService.findProByClassId(classId));
+    }
+
+    @Override
+    public String findProValueList(int proId) throws TException {
+        return JSON.toJSONString(categoryProService.findProValueByProId(proId));
+    }
+
+    @Override
+    public int addPro(String pro) throws TException {
+        return categoryProService.addPro(JSON.parseObject(pro,MallProductCategoryPro.class));
+    }
+
+    @Override
+    public int addProValue(String values) throws TException {
+        return categoryProService.addProValue(JSONArray.parseArray(values,MallProductCategoryProValue.class));
+    }
+
+    @Override
+    public String delPros(List<Integer> proIds) throws TException {
+
+        return JSON.toJSONString(categoryProService.delPros(proIds));
+    }
+
+    @Override
+    public String delProValues(List<Integer> proValueIds) throws TException {
+        return JSON.toJSONString(categoryProService.delProValues(proValueIds));
+    }
+
+    @Override
+    public int modifyPro(String pro) throws TException {
+        return categoryProService.modifyPro(JSON.parseObject(pro,MallProductCategoryPro.class));
+    }
+
+    @Override
+    public int modifyProValue(String value) throws TException {
+        return categoryProService.modifyProValue(JSON.parseObject(value,MallProductCategoryProValue.class));
+    }
 }

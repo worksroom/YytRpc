@@ -5,6 +5,7 @@ import com.yyt.print.product.dao.IMallProductCategoryProValueDAO;
 import com.yyt.print.product.pojo.MallProductCategoryProValue;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,7 +20,20 @@ public class MallProductCategoryProValueDAOImpl extends YytBaseDAO<MallProductCa
 
     @Override
     public int batchSaveMallProductCategoryProValue(List<MallProductCategoryProValue> list) {
+        for(MallProductCategoryProValue value:list){
+            value.setCreateTime(new Date());
+        }
         return super.batchInsert(list,"insertList");
+    }
+
+    @Override
+    public int updateMallProductCategoryProValue(MallProductCategoryProValue value) {
+        return super.update(value);
+    }
+
+    @Override
+    public int deleteMallProductCategoryProValue(int id) {
+        return super.delete(id);
     }
 
     @Override

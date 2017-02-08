@@ -29,6 +29,10 @@
         where id=#{id}
     </update>
 
+    <delete id="delete" parameterType="int">
+        delete from mall_product_category_pro where id=#{id}
+    </delete>
+
 
     <select id="findByClass" parameterType="int"  resultMap="MallProductCategoryProMap">
         select id,name,class_id,type,is_need,is_search,rank,update_time,create_time

@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.yyt.print.base.BaseTestClass;
 import com.yyt.print.product.dao.IMallProductCategoryProValueDAO;
 import com.yyt.print.product.pojo.CategoryPro;
+import com.yyt.print.product.pojo.MallProductCategoryPro;
 import com.yyt.print.product.pojo.MallProductCategoryProValue;
 import org.junit.Test;
 
@@ -27,6 +28,12 @@ public class ICategoryProServiceTest extends BaseTestClass {
         System.out.println(list1);
 
 
+    }
+
+    @Test
+    public void findProByClassId(){
+        List<MallProductCategoryPro> list = service.findProByClassId(1);
+        System.out.println(list);
     }
 
 

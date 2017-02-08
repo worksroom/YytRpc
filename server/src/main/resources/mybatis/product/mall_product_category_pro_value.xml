@@ -23,6 +23,16 @@
         </foreach>
     </insert>
 
+    <update id="update" parameterType="MallProductCategoryProValue">
+        update mall_product_category_pro_value set name=#{name} , class_pro_id=#{classProId},
+                class_id=#{classId},   used=#{used} , rank=#{rank} , pic=#{pic} ,   update_time=#{updateTime}
+        where id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from mall_product_category_pro_value where id=#{id}
+    </delete>
+
 
 
     <select id="findByClass" parameterType="int"  resultMap="MallProductCategoryProValueMap">

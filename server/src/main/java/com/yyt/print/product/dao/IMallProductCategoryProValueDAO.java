@@ -15,7 +15,19 @@ public interface IMallProductCategoryProValueDAO {
      */
     int batchSaveMallProductCategoryProValue(List<MallProductCategoryProValue> list);
 
+    /**
+     * 修改属性值
+     * @param value
+     * @return
+     */
+    int updateMallProductCategoryProValue(MallProductCategoryProValue value);
 
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
+    int deleteMallProductCategoryProValue(int id);
     /**
      * 根据分类查询所有的属性
      * @param classId

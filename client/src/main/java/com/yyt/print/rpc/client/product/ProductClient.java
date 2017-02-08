@@ -9,6 +9,8 @@ import com.yyt.print.rpc.common.Constants;
 import com.yyt.print.rpc.thrift.gen.ProductThriftRpcService;
 import org.apache.thrift.TException;
 
+import java.util.List;
+
 /**
  * Created by lenovo on 2016/12/29.
  */
@@ -171,6 +173,166 @@ public class ProductClient implements ProductThriftRpcService.Iface {
         try {
             client = getConnection();
             return client.getClient(ProductThriftRpcService.Client.class).addProAndValues(classId,pro,values);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public String findProList(int classId) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(ProductThriftRpcService.Client.class).findProList(classId);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public String findProValueList(int proId) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(ProductThriftRpcService.Client.class).findProValueList(proId);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public int addPro(String pro) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(ProductThriftRpcService.Client.class).addPro(pro);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public int addProValue(String values) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(ProductThriftRpcService.Client.class).addProValue(values);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public String delPros(List<Integer> proIds) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(ProductThriftRpcService.Client.class).delPros(proIds);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public String delProValues(List<Integer> proValueIds) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(ProductThriftRpcService.Client.class).delProValues(proValueIds);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public int modifyPro(String pro) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(ProductThriftRpcService.Client.class).modifyPro(pro);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public int modifyProValue(String value) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(ProductThriftRpcService.Client.class).modifyProValue(value);
         } catch(TException e){
             client.setIdle(false);
             throw e;

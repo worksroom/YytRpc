@@ -15,6 +15,7 @@ import java.util.List;
 public class MallProductCategoryProDAOImpl  extends YytBaseDAO<MallProductCategoryPro> implements IMallProductCategoryProDAO {
     @Override
     public int saveMallProductCategoryPro(MallProductCategoryPro pro) {
+        pro.setCreateTime(new Date());
         return super.insert(pro);
     }
 
@@ -32,7 +33,7 @@ public class MallProductCategoryProDAOImpl  extends YytBaseDAO<MallProductCatego
 
     @Override
     public int deleteMallProductCategoryPro(int id) {
-        //TODO 暂不实现删除
-        return 0;
+
+        return super.delete(id);
     }
 }

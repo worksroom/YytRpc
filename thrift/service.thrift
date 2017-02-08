@@ -182,6 +182,32 @@ service ProductThriftRpcService {
     /** 添加属性和属性值 **/
     i32 addProAndValues(1:i32 classId,2:string pro,3:string values);
 
+    /** 通过分类查询属性列表 **/
+    string findProList(1:i32 classId);
+
+    /** 通过分类属性查询分类属性值 **/
+    string findProValueList(1:i32 proId);
+
+    /** 增加分类属性 **/
+    i32 addPro(1:string pro);
+
+    /** 批量增加分类属性 **/
+    i32 addProValue(1:string values);
+
+    /** 批量删除分类属性 **/
+    string delPros(1:list<i32> proIds);
+
+    /** 批量产出分类属性值 **/
+    string delProValues(1:list<i32> proValueIds);
+
+    /** 修改属性 **/
+    i32 modifyPro(1:string pro);
+
+    /** 修改属性值 **/
+    i32 modifyProValue(1:string value);
+
+
+
 
 }
 
