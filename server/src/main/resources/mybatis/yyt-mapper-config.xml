@@ -25,7 +25,9 @@
 		<typeAlias alias="UserSeller" type="com.yyt.print.user.pojo.UserSeller" />
 		<typeAlias alias="UserBuyer" type="com.yyt.print.user.pojo.UserBuyer" />
 		<typeAlias alias="UserThirdBind" type="com.yyt.print.user.pojo.UserThirdBind" />
-
+		<typeAlias alias="UserSession" type="com.yyt.print.user.pojo.UserSession" />
+		<typeAlias alias="UserLoginLog" type="com.yyt.print.user.pojo.UserLoginLog" />
+		<typeAlias alias="UserErp" type="com.yyt.print.user.pojo.UserErp" />
 		<!--产品分类-->
 		<typeAlias alias="MallProductCategory" type="com.yyt.print.product.pojo.MallProductCategory" />
 		<typeAlias alias="MallProductCategoryPro" type="com.yyt.print.product.pojo.MallProductCategoryPro" />
@@ -58,7 +60,9 @@
 		<mapper resource="mybatis/user/user_buyer_mapper.xml" />
 		<mapper resource="mybatis/user/user_seller_mapper.xml" />
 		<mapper resource="mybatis/user/user_third_mapper.xml" />
-
+		<mapper resource="mybatis/user/user_login_log_mapper.xml" />
+		<mapper resource="mybatis/user/user_session_mapper.xml" />
+		<mapper resource="mybatis/user/user_erp_mapper.xml" />
 
 		<!--产品分类-->
 		<mapper resource="mybatis/product/mall_product_category.xml" />

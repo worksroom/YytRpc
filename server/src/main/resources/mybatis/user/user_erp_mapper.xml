@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserErp">
+    <resultMap type="UserErp" id="UserErpResultMap">
+        <result property="id" column="id"/>
+        <result property="erpUid" column="erp_uid"/>
+        <result property="phone" column="phone"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="UserErp">
+        insert into user_erp
+        (erp_uid,phone,create_time)
+        VALUES
+        (#{erpUid},#{phone},#{createTime})
+    </insert>
+
+    <select id="findUserErpByPhone" parameterType="String" resultMap="UserErpResultMap">
+		select id,erp_uid,phone,create_time
+		from user_erp
+		where phone=#{phone}
+	</select>
+
+</mapper>

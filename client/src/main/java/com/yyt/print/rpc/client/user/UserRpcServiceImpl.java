@@ -10,10 +10,8 @@ import com.youguu.core.logging.LogFactory;
 import com.youguu.core.util.PageHolder;
 import com.yyt.print.parser.PageHolderDeserializer;
 import com.yyt.print.rpc.common.Constants;
-import com.yyt.print.user.pojo.User;
-import com.yyt.print.user.pojo.UserBuyer;
-import com.yyt.print.user.pojo.UserSeller;
-import com.yyt.print.user.pojo.UserThirdBind;
+import com.yyt.print.user.pojo.*;
+import com.yyt.print.user.response.AuthResponse;
 import org.apache.thrift.TException;
 
 import java.util.List;
@@ -89,6 +87,39 @@ public class UserRpcServiceImpl implements IUserRpcService {
             String json = getClient().queryUserByPage(userId, userName, nickName, phone, pageIndex, pageSize);
             ParserConfig.getGlobalInstance().putDeserializer(PageHolder.class, new PageHolderDeserializer());
             return JSON.parseObject(json, new TypeReference<PageHolder<User>>(){});
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public AuthResponse login(String username, String password, int type, String ip) {
+        try {
+            String json = getClient().login(username, password, type, ip);
+            return JSONObject.parseObject(json, AuthResponse.class);
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public AuthResponse auth(String username, String session, String token, int type) {
+        try {
+            String json = getClient().auth(username, session, token, type);
+            return JSONObject.parseObject(json, AuthResponse.class);
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public AuthResponse regist(String username, String password, int type, String nickname, String headImgUrl, String signature, String ip) {
+        try {
+            String json = getClient().regist(username, password, type, nickname, headImgUrl, signature, ip);
+            return JSONObject.parseObject(json, AuthResponse.class);
         } catch (TException e) {
             logger.error(e.getMessage(), e);
         }
@@ -196,6 +227,27 @@ public class UserRpcServiceImpl implements IUserRpcService {
             String json = getClient().queryUserSellerByPage(userId, userName, nickName, phone, cardNumber, name, pageIndex, pageSize);
             ParserConfig.getGlobalInstance().putDeserializer(PageHolder.class, new PageHolderDeserializer());
             return JSON.parseObject(json, new TypeReference<PageHolder<UserSeller>>(){});
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public int saveUserErp(int erpUid, String phone) {
+        try {
+            return getClient().saveUserErp(erpUid, phone);
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public UserErp findUserErpByPhone(String phone) {
+        try {
+            String json = getClient().findUserErpByPhone(phone);
+            return JSONObject.parseObject(json, UserErp.class);
         } catch (TException e) {
             logger.error(e.getMessage(), e);
         }

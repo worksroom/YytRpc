@@ -27,11 +27,19 @@
         where user_id=#{userId}
     </update>
 
+    <!-- 根据用户ID查询 -->
     <select id="findByUserId" parameterType="int" resultMap="UserResultMap">
 		select user_id,create_time,update_time,user_name,password,nick_name,email,phone
 		from user
 		where user_id=#{userId}
 	</select>
+
+    <!-- 根据用户名查询 -->
+    <select id="findUserByUsername" parameterType="String" resultMap="UserResultMap">
+        select user_id,create_time,update_time,user_name,password,nick_name,email,phone
+        from user
+        where user_name=#{userName}
+    </select>
 
     <select id="findByUserIdList" parameterType="List" resultMap="UserResultMap">
         select user_id,create_time,update_time,user_name,password,nick_name,email,phone
