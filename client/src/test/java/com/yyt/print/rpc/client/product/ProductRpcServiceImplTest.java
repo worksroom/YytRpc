@@ -74,7 +74,8 @@ public class ProductRpcServiceImplTest {
         return pro;
     }
 
-    void testFindProByClassId(){
+    @Test
+    public void testFindProByClassId(){
         List<MallProductCategoryPro> list =  productRpcService.findProByClassId(1);
         System.out.println(list);
     }
@@ -84,7 +85,11 @@ public class ProductRpcServiceImplTest {
 //     * @param proId
 //     * @return
 //     */
-//    List<MallProductCategoryProValue> findProValueByProId(int proId);
+    @Test
+    public void  findProValueByProId(){
+        List<MallProductCategoryProValue> list = productRpcService.findProValueByProId(1);
+        System.out.println(list);
+    }
 //
 //    /**
 //     * 增加分类属性

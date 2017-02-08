@@ -54,8 +54,9 @@ public class BootStrap {
 
 
         try {
-            server.start();
             logger.info("start on port:{}", hostPort);
+            server.start();
+
         } catch (TTransportException e) {
             e.printStackTrace();
         }
