@@ -1,10 +1,9 @@
 package com.yyt.print.rpc.client.product;
 
 import com.youguu.core.pojo.Response;
-import com.yyt.print.product.pojo.CategoryPro;
-import com.yyt.print.product.pojo.MallProductCategory;
-import com.yyt.print.product.pojo.MallProductCategoryPro;
-import com.yyt.print.product.pojo.MallProductCategoryProValue;
+import com.youguu.core.util.PageHolder;
+import com.yyt.print.product.pojo.*;
+import com.yyt.print.product.query.MallGoodsQuery;
 
 import java.util.List;
 
@@ -125,4 +124,18 @@ public interface IProductRpcService {
      * @return
      */
     Response<String> delProValues(List<Integer> list);
+
+    /**
+     * 查询未审核的货品
+     * @param query -1 代表查询全部
+     * @return
+     */
+    PageHolder<MallGoods> findMallGoods(MallGoodsQuery query);
+
+    /**
+     * 审核货品
+     * @param status
+     * @return
+     */
+    int reviewMallGoods(int id,boolean status);
 }

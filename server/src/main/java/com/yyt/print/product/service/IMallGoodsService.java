@@ -1,6 +1,8 @@
 package com.yyt.print.product.service;
 
+import com.youguu.core.util.PageHolder;
 import com.yyt.print.product.pojo.MallGoods;
+import com.yyt.print.product.query.MallGoodsQuery;
 
 import java.util.List;
 
@@ -38,10 +40,19 @@ public interface IMallGoodsService {
     public MallGoods getMallGoods(int id);
 
     /**
-     * 根据分类ID查询货品列表
-     * @param classId
+     * 查询未审核的货品
+     * @param query -1 代表查询全部
      * @return
      */
-    public List<MallGoods> findMallGoods(int classId);
+    public PageHolder<MallGoods> findMallGoods(MallGoodsQuery query);
+
+    /**
+     * 审核货品
+     * @param status
+     * @return
+     */
+    int reviewMallGoods(int id,boolean status);
+
+
 
 }

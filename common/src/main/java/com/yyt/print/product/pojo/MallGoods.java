@@ -9,8 +9,15 @@ import java.util.Date;
 public class MallGoods {
     private int id;
     private String name;
+    private int shopId;
+    private String shopName;
     private String des;
     private int classId;
+    /**
+     * 0 待审核
+     * 1 已发布
+     */
+    private int status;
     private Date createTime;
     private Date updateTime;
     private String img;
@@ -69,6 +76,30 @@ public class MallGoods {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public int getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(int shopId) {
+        this.shopId = shopId;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 }
 

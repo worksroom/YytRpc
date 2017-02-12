@@ -206,8 +206,11 @@ service ProductThriftRpcService {
     /** 修改属性值 **/
     i32 modifyProValue(1:string value);
 
+    /** 货品查询 可通过多个参数查询 **/
+    string findMallGoods(1:string value);
 
-
+    /** 审核货品 **/
+    i32 reviewMallGoods(1:i32 id, 2:bool status);
 
 }
 

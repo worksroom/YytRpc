@@ -2,11 +2,13 @@ package com.yyt.print.rpc.server.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.yyt.print.product.pojo.CategoryPro;
-import com.yyt.print.product.pojo.MallProductCategory;
-import com.yyt.print.product.pojo.MallProductCategoryPro;
-import com.yyt.print.product.pojo.MallProductCategoryProValue;
+import com.alibaba.fastjson.serializer.SerializeConfig;
+import com.youguu.core.util.PageHolder;
+import com.yyt.print.parser.PageHolderSerializer;
+import com.yyt.print.product.pojo.*;
+import com.yyt.print.product.query.MallGoodsQuery;
 import com.yyt.print.product.service.ICategoryProService;
+import com.yyt.print.product.service.IMallGoodsService;
 import com.yyt.print.product.service.IMallProductCategoryService;
 import com.yyt.print.rpc.thrift.gen.ProductThriftRpcService;
 import org.apache.thrift.TException;
@@ -27,6 +29,9 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
 
     @Resource
     private ICategoryProService categoryProService;
+
+    @Resource
+    private IMallGoodsService mallGoodsService;
 
     @Override
     public String queryAllMallProductCategory() throws TException {
@@ -122,5 +127,19 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     @Override
     public int modifyProValue(String value) throws TException {
         return categoryProService.modifyProValue(JSON.parseObject(value,MallProductCategoryProValue.class));
+    }
+
+    @Override
+    public String findMallGoods(String value) throws TException {
+        PageHolder<MallGoods> list = mallGoodsService.findMallGoods(JSON.parseObject(value, MallGoodsQuery.class));
+
+        SerializeConfig config = new SerializeConfig();
+        config.put(PageHolder.class, new PageHolderSerializer());
+        return JSON.toJSONString(list, config);
+    }
+
+    @Override
+    public int reviewMallGoods(int id, boolean status) throws TException {
+        return mallGoodsService.reviewMallGoods(id,status);
     }
 }

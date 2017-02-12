@@ -346,4 +346,45 @@ public class ProductClient implements ProductThriftRpcService.Iface {
             }
         }
     }
+
+
+    @Override
+    public String findMallGoods(String value) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(ProductThriftRpcService.Client.class).findMallGoods(value);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public int reviewMallGoods(int id, boolean status) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(ProductThriftRpcService.Client.class).reviewMallGoods(id,status);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
 }
