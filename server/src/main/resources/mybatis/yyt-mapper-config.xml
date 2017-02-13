@@ -35,6 +35,9 @@
 
 		<!--货品-->
 		<typeAlias alias="MallGoods" type="com.yyt.print.product.pojo.MallGoods" />
+
+		<!-- 店铺 -->
+		<typeAlias alias="UserShop" type="com.yyt.print.product.pojo.UserShop" />
 	</typeAliases>
 
 	<typeHandlers>
@@ -74,5 +77,8 @@
 
 		<!--货品-->
 		<mapper resource="mybatis/product/mall_goods.xml" />
+
+		<!--店铺-->
+		<mapper resource="mybatis/product/user_shop.xml" />
 	</mappers>
 </configuration>

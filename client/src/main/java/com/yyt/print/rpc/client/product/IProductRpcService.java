@@ -4,6 +4,7 @@ import com.youguu.core.pojo.Response;
 import com.youguu.core.util.PageHolder;
 import com.yyt.print.product.pojo.*;
 import com.yyt.print.product.query.MallGoodsQuery;
+import com.yyt.print.product.query.UserShopQuery;
 
 import java.util.List;
 
@@ -138,4 +139,19 @@ public interface IProductRpcService {
      * @return
      */
     int reviewMallGoods(int id,boolean status);
+
+
+    /**
+     * 查询未审核的货品
+     * @param query -1 代表查询全部
+     * @return
+     */
+    PageHolder<UserShop> findUserShops(UserShopQuery query);
+
+    /**
+     * 审核货品
+     * @param status
+     * @return
+     */
+    int reviewUserShop(int id, boolean status);
 }

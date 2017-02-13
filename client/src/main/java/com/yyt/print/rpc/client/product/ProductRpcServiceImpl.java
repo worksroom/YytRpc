@@ -11,6 +11,7 @@ import com.yyt.print.ad.pojo.AdCategory;
 import com.yyt.print.parser.PageHolderDeserializer;
 import com.yyt.print.product.pojo.*;
 import com.yyt.print.product.query.MallGoodsQuery;
+import com.yyt.print.product.query.UserShopQuery;
 import com.yyt.print.rpc.common.Constants;
 
 import java.util.List;
@@ -212,6 +213,28 @@ public class ProductRpcServiceImpl implements IProductRpcService {
     public int reviewMallGoods(int id, boolean status) {
         try {
             return getClient().reviewMallGoods(id,status);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public PageHolder<UserShop> findUserShops(UserShopQuery query) {
+        try {
+            String result = getClient().findUserShop(JSON.toJSONString(query));
+            ParserConfig.getGlobalInstance().putDeserializer(PageHolder.class, new PageHolderDeserializer());
+            return JSON.parseObject(result, new TypeReference<PageHolder<UserShop>>(){});
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public int reviewUserShop(int id, boolean status) {
+        try {
+            return getClient().reviewUserShop(id,status);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }

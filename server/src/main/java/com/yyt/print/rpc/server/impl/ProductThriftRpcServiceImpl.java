@@ -5,11 +5,14 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.youguu.core.util.PageHolder;
 import com.yyt.print.parser.PageHolderSerializer;
+import com.yyt.print.product.dao.IUserShopDAO;
 import com.yyt.print.product.pojo.*;
 import com.yyt.print.product.query.MallGoodsQuery;
+import com.yyt.print.product.query.UserShopQuery;
 import com.yyt.print.product.service.ICategoryProService;
 import com.yyt.print.product.service.IMallGoodsService;
 import com.yyt.print.product.service.IMallProductCategoryService;
+import com.yyt.print.product.service.IUserShopService;
 import com.yyt.print.rpc.thrift.gen.ProductThriftRpcService;
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Service;
@@ -32,6 +35,9 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
 
     @Resource
     private IMallGoodsService mallGoodsService;
+
+    @Resource
+    private IUserShopService userShopService;
 
     @Override
     public String queryAllMallProductCategory() throws TException {
@@ -141,5 +147,19 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     @Override
     public int reviewMallGoods(int id, boolean status) throws TException {
         return mallGoodsService.reviewMallGoods(id,status);
+    }
+
+    @Override
+    public String findUserShop(String value) throws TException {
+        PageHolder<UserShop> list = userShopService.findUserShops(JSON.parseObject(value, UserShopQuery.class));
+
+        SerializeConfig config = new SerializeConfig();
+        config.put(PageHolder.class, new PageHolderSerializer());
+        return JSON.toJSONString(list, config);
+    }
+
+    @Override
+    public int reviewUserShop(int id, boolean status) throws TException {
+        return userShopService.reviewUserShop(id,status);
     }
 }
