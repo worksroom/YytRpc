@@ -2,21 +2,21 @@
 ```
 
 alter table `yyt`.`mall_product_category` 
-   change `id` `id` int(11) NOT NULL AUTO_INCREMENT comment '·ÖÀàID',
+   change `id` `id` int(11) NOT NULL AUTO_INCREMENT comment 'åˆ†ç±»ID',
    add primary key(`id`);
 
 alter table `yyt`.`mall_product_category_pro` 
-   change `id` `id` int(11) NOT NULL AUTO_INCREMENT comment '·ÖÀàÊôÐÔID',
+   change `id` `id` int(11) NOT NULL AUTO_INCREMENT comment 'åˆ†ç±»å±žæ€§ID',
    add primary key(`id`);
    
 alter table `yyt`.`mall_product_category_pro_value` 
-   change `id` `id` int(11) NOT NULL AUTO_INCREMENT comment '·ÖÀàÊôÐÔÖµID',
+   change `id` `id` int(11) NOT NULL AUTO_INCREMENT comment 'åˆ†ç±»å±žæ€§å€¼ID',
    add primary key(`id`);
 
 
 ```
 
-# »õÆ·
+# è´§å“
 ```
 alter table `yyt`.`mall_goods` 
    add column `shop_id` int(11) NULL after `name`, 
@@ -25,22 +25,30 @@ alter table `yyt`.`mall_goods`
    add primary key(`id`);
 
 alter table `yyt`.`mall_goods` 
-   add column `status` int(11) NOT NULL COMMENT '0 ´ýÉó 1 ÉóºËÍ¨¹ý' after `name`
+   add column `status` int(11) NOT NULL COMMENT '0 å¾…å®¡ 1 å®¡æ ¸é€šè¿‡' after `name`
   
 ```
 
 
-# µêÆÌ
+# åº—é“º
 ```
 CREATE TABLE `user_shop` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sell_user_id` int(11) NOT NULL ,
   `name` varchar(100) COLLATE utf8_bin DEFAULT NULL,
-  `status` int(11) NOT NULL COMMENT '0 ´ýÉó 1 ÉóºËÍ¨¹ý',
+  `status` int(11) NOT NULL COMMENT '0 å¾…å®¡ 1 å®¡æ ¸é€šè¿‡',
   `main_product` varchar(200) COLLATE utf8_bin DEFAULT NULL,
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '´´½¨Ê±¼ä',
-  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'ÐÞ¸ÄÊ±¼ä',
-  `logo` varchar(200) COLLATE utf8_bin DEFAULT NULL COMMENT 'Í¼Æ¬',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'åˆ›å»ºæ—¶é—´',
+  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'ä¿®æ”¹æ—¶é—´',
+  `logo` varchar(200) COLLATE utf8_bin DEFAULT NULL COMMENT 'å›¾ç‰‡',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+```
+
+
+```
+
+alter table `yyt`.`mall_index` 
+   add column `status` int(4) NULL COMMENT '0 æ— æ•ˆ  1æœ‰æ•ˆ' after `type`,
+   change `id` `id` int(11) NOT NULL AUTO_INCREMENT comment 'Ã—Ã”Ã”Ã¶id'
 ```

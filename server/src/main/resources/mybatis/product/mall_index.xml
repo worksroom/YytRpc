@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MallIndex">
+    <resultMap type="MallIndex" id="MallIndexMap">
+        <result property="id" column="id"/>
+        <result property="rank" column="rank"/>
+        <result property="type" column="type"/>
+        <result property="status" column="status"/>
+        <result property="name" column="name"/>
+        <result property="content" column="content"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="MallIndex">
+        insert into mall_index
+        (name,rank,type,status,content,update_time,create_time)
+        VALUES
+        (#{name},#{rank},#{type},#{status},#{content},#{updateTime},#{createTime})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+
+    <update id="update" parameterType="MallIndex">
+        update mall_index set name=#{name},rank=#{rank},type=#{type},status=#{status},content=#{content},
+                              update_time=#{updateTime}
+        where id=#{id}
+    </update>
+
+    <update id="updateStatus" parameterType="map">
+        update mall_index set status=#{status}
+        where id=#{id}
+    </update>
+
+
+
+    <select id="select" parameterType="int" resultMap="MallIndexMap">
+        select id,name,rank,type,status,content,update_time,create_time
+        from mall_index where id=#{id}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from mall_index where id=#{id}
+    </delete>
+
+    <select id="sql_select_front" resultMap="MallIndexMap">
+        select id,name,rank,type,status,content,update_time,create_time
+        from mall_index where status = 1 order by rank
+    </select>
+
+    <!--管理平台使用-->
+    <!-- 动态sql -->
+    <sql id="sql_count">
+        select count(1)
+    </sql>
+
+    <sql id="sql_select">
+        select id,name,rank,type,status,content,update_time,create_time
+    </sql>
+
+    <sql id="sql_where">
+        from mall_index
+        <where>
+            <if test="status != null and status >= 0">
+                AND status = #{status}
+            </if>
+        </where>
+    </sql>
+
+    <sql id="sql_order">
+        order by create_time desc
+    </sql>
+    <select id="findByParams_count" parameterType="java.util.HashMap" resultType="int">
+        <include refid="sql_count" />
+        <include refid="sql_where" />
+    </select>
+    <select id="findByParams" parameterType="java.util.HashMap" resultMap="MallIndexMap">
+        <include refid="sql_select" />
+        <include refid="sql_where" />
+    </select>
+
+
+
+</mapper>

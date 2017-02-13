@@ -41,7 +41,7 @@ public class MallGoodsService implements IMallGoodsService {
 
     @Override
     public PageHolder<MallGoods> findMallGoods(MallGoodsQuery query) {
-        return null;
+        return dao.findMallGoods(query);
     }
 
     @Override

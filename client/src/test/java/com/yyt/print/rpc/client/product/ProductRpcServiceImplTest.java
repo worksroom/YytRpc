@@ -1,12 +1,14 @@
 package com.yyt.print.rpc.client.product;
 
 import com.youguu.core.pojo.Response;
-import com.yyt.print.product.pojo.MallProductCategory;
-import com.yyt.print.product.pojo.MallProductCategoryPro;
-import com.yyt.print.product.pojo.MallProductCategoryProValue;
+import com.youguu.core.util.PageHolder;
+import com.yyt.print.product.pojo.*;
+import com.yyt.print.product.query.MallGoodsQuery;
+import com.yyt.print.product.query.UserShopQuery;
 import com.yyt.print.rpc.client.YytRpcClientFactory;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -133,5 +135,88 @@ public class ProductRpcServiceImplTest {
 //     */
 //    Response<String> delProValues(List<Integer> list);
 
+      @Test
+      public void findMallGoods(){
+          MallGoodsQuery query = new MallGoodsQuery();
+          query.setName("裤子1");
+          PageHolder<MallGoods> list = productRpcService.findMallGoods(query);
+          System.out.println(list.size());
+      }
+
+    @Test
+    public void reviewMallGoods(){
+        productRpcService.reviewMallGoods(1,true);
+    }
+
+    @Test
+    public void findUserShops(){
+        UserShopQuery query = new UserShopQuery();
+        query.setName("他的小店");
+        PageHolder<UserShop> list = productRpcService.findUserShops(query);
+        System.out.println(list.size());
+    }
+
+    @Test
+    public void reviewUserShop(){
+        productRpcService.reviewUserShop(1,true);
+    }
+
+    @Test
+    public void addMallIndex(){
+        MallIndex index = new MallIndex();
+        index.setName("第一排");
+        index.setType(0);
+        index.setRank(1);
+        index.setStatus(0);
+
+        List<MallIndexContent> list = new ArrayList<>();
+        MallIndexContent content = new MallIndexContent();
+        content.setName("油桶");
+        content.setImg("http://www.youguu.com/cms/attached/image/20170213/sp/20170213121338_2.jpg");
+        list.add(content);
+        productRpcService.addMallIndex(index,list);
+
+    }
+
+    @Test
+    public void updateMallIndex(){
+        MallIndex index = new MallIndex();
+        index.setName("第2排");
+        index.setType(0);
+        index.setRank(1);
+        index.setStatus(0);
+        index.setId(1);
+
+        List<MallIndexContent> list = new ArrayList<>();
+        MallIndexContent content = new MallIndexContent();
+        content.setName("纸张");
+        content.setImg("http://www.youguu.com/cms/attached/image/20170213/sp/20170213121338_2.jpg");
+
+        list.add(content);
+
+        content = new MallIndexContent();
+        content.setName("墨水");
+        content.setImg("http://www.youguu.com/cms/attached/image/20170213/sp/20170213121338_2.jpg");
+        list.add(content);
+
+        productRpcService.updateMallIndex(index,list);
+    }
+
+    @Test
+    public void updateStatus(){
+        productRpcService.updateStatus(1,true);
+    }
+
+    @Test
+    public void queryMallIndex(){
+        PageHolder<MallIndex> list = productRpcService.queryMallIndex(-1,1,10);
+        System.out.println(list.size());
+    }
+
+    @Test
+    public void queryUserMallIndex(){
+        List<MallIndex> list = productRpcService.queryUserMallIndex();
+        System.out.println(list.get(0).transContent());
+    }
 
 }
