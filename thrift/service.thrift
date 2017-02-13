@@ -217,6 +217,21 @@ service ProductThriftRpcService {
 
     /** 审核店铺 **/
     i32 reviewUserShop(1:i32 id, 2:bool status);
+    
+    /** 添加首页碎片 **/
+    i32 addMallIndex(1:string mallIndex 2:string mallindexContent);
+
+    /** 修改首页碎片 **/
+    i32 updateMallIndex(1:string mallIndex 2:string mallindexContent);
+
+    /** 修改首页碎片状态 **/
+    i32 updateStatus(1:i32 id, 2:bool status);
+
+    /** 查询首页碎片 管理平台使用 **/
+    string queryMallIndex(1:i32 status, 2:i32 pageIndex , 3:i32 pageSize);
+
+    /** 查询首页碎片 前端使用 **/
+    string queryUserMallIndex();
 
 }
 

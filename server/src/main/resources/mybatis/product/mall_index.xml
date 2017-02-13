@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MallGoods">
+    <resultMap type="MallGoods" id="MallGoodsMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="des" column="des"/>
+        <result property="shopId" column="shop_id"/>
+        <result property="shopName" column="shop_name"/>
+        <result property="classId" column="class_id"/>
+        <result property="status" column="status"/>
+        <result property="img" column="img"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="MallGoods">
+        insert into mall_goods
+        (name,des,shop_id,shop_name,class_id,status,img,update_time,create_time)
+        VALUES
+        (#{name},#{des},#{shopId},,#{shopName},#{classId},#{status},#{img},#{updateTime},#{createTime})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+
+    <update id="update" parameterType="MallGoods">
+        update mall_goods set name=#{name},des=#{des},shop_id=#{shopId},shop_name=#{shopName},class_id=#{classId},
+                              status=#{status},img=#{img},update_time=#{updateTime}
+        where id=#{id}
+    </update>
+
+    <update id="updateStatus" parameterType="map">
+        update mall_goods set status=#{status}
+        where id=#{id}
+    </update>
+
+
+
+    <select id="select" parameterType="int" resultMap="MallGoodsMap">
+        select id,name,des,shop_id,class_id,status,img,update_time,create_time
+        from mall_goods where id=#{id}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from mall_goods where id=#{id}
+    </delete>
+
+    <!--管理平台使用-->
+    <!-- 动态sql -->
+    <sql id="sql_count">
+        select count(1)
+    </sql>
+
+    <sql id="sql_select">
+        select id,name,des,shop_id,class_id,status,img,update_time,create_time
+    </sql>
+
+    <sql id="sql_where">
+        from mall_goods
+        <where>
+            <if test="name != null and name !=''">
+                AND name =#{name}
+            </if>
+            <if test="classId != null and classId !=''">
+                AND class_id =#{classId}
+            </if>
+            <if test="shopId != null and shopId !=''">
+                AND shop_id =#{shopId}
+            </if>
+            <if test="shopName != null and shopName !=''">
+                AND shop_name = #{shopName}
+            </if>
+            <if test="status != null and status >= 0">
+                AND status = #{status}
+            </if>
+        </where>
+    </sql>
+
+    <sql id="sql_order">
+        order by create_time desc
+    </sql>
+    <select id="findByParams_count" parameterType="java.util.HashMap" resultType="int">
+        <include refid="sql_count" />
+        <include refid="sql_where" />
+    </select>
+    <select id="findByParams" parameterType="java.util.HashMap" resultMap="MallGoodsMap">
+        <include refid="sql_select" />
+        <include refid="sql_where" />
+    </select>
+
+
+
+</mapper>
