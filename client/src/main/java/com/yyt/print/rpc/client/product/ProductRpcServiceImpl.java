@@ -240,4 +240,56 @@ public class ProductRpcServiceImpl implements IProductRpcService {
         }
         return 0;
     }
+
+    @Override
+    public int addMallIndex(MallIndex index, List<MallIndexContent> content) {
+        try {
+            return getClient().addMallIndex(JSON.toJSONString(index), JSON.toJSONString(content));
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public int updateMallIndex(MallIndex index, List<MallIndexContent> content) {
+        try {
+            return getClient().updateMallIndex(JSON.toJSONString(index), JSON.toJSONString(content));
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public int updateStatus(int id, boolean status) {
+        try {
+            return getClient().updateStatus(id, status);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public PageHolder<MallIndex> queryMallIndex(int status, int pageIndex, int pageSize) {
+        try {
+            String result = getClient().queryMallIndex(status,pageIndex,pageSize);
+            ParserConfig.getGlobalInstance().putDeserializer(PageHolder.class, new PageHolderDeserializer());
+            return JSON.parseObject(result, new TypeReference<PageHolder<MallIndex>>(){});
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public List<MallIndex> queryUserMallIndex() {
+        try {
+            return JSON.parseArray(getClient().queryUserMallIndex(), MallIndex.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
 }

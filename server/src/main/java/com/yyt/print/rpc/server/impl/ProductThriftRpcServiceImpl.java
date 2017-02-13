@@ -9,10 +9,7 @@ import com.yyt.print.product.dao.IUserShopDAO;
 import com.yyt.print.product.pojo.*;
 import com.yyt.print.product.query.MallGoodsQuery;
 import com.yyt.print.product.query.UserShopQuery;
-import com.yyt.print.product.service.ICategoryProService;
-import com.yyt.print.product.service.IMallGoodsService;
-import com.yyt.print.product.service.IMallProductCategoryService;
-import com.yyt.print.product.service.IUserShopService;
+import com.yyt.print.product.service.*;
 import com.yyt.print.rpc.thrift.gen.ProductThriftRpcService;
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Service;
@@ -38,6 +35,9 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
 
     @Resource
     private IUserShopService userShopService;
+
+    @Resource
+    private IMallIndexService mallIndexService;
 
     @Override
     public String queryAllMallProductCategory() throws TException {
@@ -161,5 +161,37 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     @Override
     public int reviewUserShop(int id, boolean status) throws TException {
         return userShopService.reviewUserShop(id,status);
+    }
+
+    @Override
+    public int addMallIndex(String mallIndex, String mallindexContent) throws TException {
+        List<MallIndexContent> list = JSONArray.parseArray(mallindexContent,MallIndexContent.class);
+        MallIndex index = JSON.parseObject(mallIndex,MallIndex.class);
+        return mallIndexService.addMallIndex(index,list);
+    }
+
+    @Override
+    public int updateMallIndex(String mallIndex, String mallindexContent) throws TException {
+        List<MallIndexContent> list = JSONArray.parseArray(mallindexContent,MallIndexContent.class);
+        MallIndex index = JSON.parseObject(mallIndex,MallIndex.class);
+        return mallIndexService.updateMallIndex(index, list);
+    }
+
+    @Override
+    public int updateStatus(int id, boolean status) throws TException {
+        return mallIndexService.updateStatus(id,status);
+    }
+
+    @Override
+    public String queryMallIndex(int status, int pageIndex, int pageSize) throws TException {
+        PageHolder<MallIndex> list = mallIndexService.queryMallIndex(status, pageIndex, pageSize);
+        SerializeConfig config = new SerializeConfig();
+        config.put(PageHolder.class, new PageHolderSerializer());
+        return JSON.toJSONString(list, config);
+    }
+
+    @Override
+    public String queryUserMallIndex() throws TException {
+        return JSON.toJSONString(mallIndexService.queryUserMallIndex());
     }
 }

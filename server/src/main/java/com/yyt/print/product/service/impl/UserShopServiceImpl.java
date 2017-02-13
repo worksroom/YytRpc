@@ -5,12 +5,14 @@ import com.yyt.print.product.dao.IUserShopDAO;
 import com.yyt.print.product.pojo.UserShop;
 import com.yyt.print.product.query.UserShopQuery;
 import com.yyt.print.product.service.IUserShopService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
 /**
  * Created by lenovo on 2017/2/13.
  */
+@Service("userShopService")
 public class UserShopServiceImpl implements IUserShopService {
     @Resource
     private IUserShopDAO userShopDAO;

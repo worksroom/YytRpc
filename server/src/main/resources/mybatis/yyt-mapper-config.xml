@@ -38,6 +38,9 @@
 
 		<!-- 店铺 -->
 		<typeAlias alias="UserShop" type="com.yyt.print.product.pojo.UserShop" />
+
+		<!-- 首页碎片 -->
+		<typeAlias alias="MallIndex" type="com.yyt.print.product.pojo.MallIndex" />
 	</typeAliases>
 
 	<typeHandlers>
@@ -80,5 +83,8 @@
 
 		<!--店铺-->
 		<mapper resource="mybatis/product/user_shop.xml" />
+
+		<!--首页碎片-->
+		<mapper resource="mybatis/product/mall_index.xml" />
 	</mappers>
 </configuration>
