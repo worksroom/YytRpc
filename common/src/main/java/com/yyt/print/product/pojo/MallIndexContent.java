@@ -58,4 +58,16 @@ public class MallIndexContent {
     public void setDiscount(String discount) {
         this.discount = discount;
     }
+
+    @Override
+    public String toString() {
+        return "MallIndexContent{" +
+                "name='" + name + '\'' +
+                ", img='" + img + '\'' +
+                ", url='" + url + '\'' +
+                ", price='" + price + '\'' +
+                ", salePrice='" + salePrice + '\'' +
+                ", discount='" + discount + '\'' +
+                '}';
+    }
 }
