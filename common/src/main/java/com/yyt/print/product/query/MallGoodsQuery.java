@@ -19,6 +19,7 @@ public class MallGoodsQuery extends BaseQuery {
     private String name;
     private String shopName;
     private Integer classId;
+    private Integer shopId;
 
     public int getStatus() {
         return status;
@@ -44,6 +45,22 @@ public class MallGoodsQuery extends BaseQuery {
         this.shopName = shopName;
     }
 
+    public Integer getClassId() {
+        return classId;
+    }
+
+    public void setClassId(Integer classId) {
+        this.classId = classId;
+    }
+
+    public Integer getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(Integer shopId) {
+        this.shopId = shopId;
+    }
+
     public Map<String,Object> getMap(){
         Map<String,Object> map = new HashMap<>();
         map.put("status",this.status);
@@ -55,6 +72,10 @@ public class MallGoodsQuery extends BaseQuery {
         }
         if(this.classId!=null){
             map.put("classId",classId);
+        }
+
+        if(this.shopId!=null){
+            map.put("shopId",shopId);
         }
         return map;
     }

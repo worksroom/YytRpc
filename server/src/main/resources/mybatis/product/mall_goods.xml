@@ -65,6 +65,9 @@
             <if test="classId != null and classId !=''">
                 AND class_id =#{classId}
             </if>
+            <if test="shopId != null and shopId !=''">
+                AND shop_id =#{shopId}
+            </if>
             <if test="shopName != null and shopName !=''">
                 AND shop_name = #{shopName}
             </if>

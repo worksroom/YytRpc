@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserShop">
+    <resultMap type="UserShop" id="UserShopMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sellUserId" column="sell_user_id"/>
+        <result property="mainProduct" column="main_product"/>
+        <result property="status" column="status"/>
+        <result property="logo" column="logo"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="UserShop">
+        insert into user_shop
+        (name,sell_user_id,main_product,status,logo,update_time,create_time)
+        VALUES
+        (#{name},#{sellUserId},#{mainProduct},#{status},#{logo},#{updateTime},#{createTime})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+
+    <update id="update" parameterType="UserShop">
+        update user_shop set name=#{name},main_product=#{mainProduct},logo=#{logo},update_time=#{updateTime}
+        where id=#{id}
+    </update>
+
+    <update id="updateStatus" parameterType="map">
+        update user_shop set status=#{status}
+        where id=#{id}
+    </update>
+
+
+
+    <select id="select" parameterType="int" resultMap="UserShopMap">
+        select id,name,sell_user_id,main_product,status,logo,update_time,create_time
+        from user_shop where id=#{id}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from user_shop where id=#{id}
+    </delete>
+
+    <!--管理平台使用-->
+    <!-- 动态sql -->
+    <sql id="sql_count">
+        select count(1)
+    </sql>
+
+    <sql id="sql_select">
+        select id,name,sell_user_id,main_product,status,logo,update_time,create_time
+    </sql>
+
+    <sql id="sql_where">
+        from user_shop
+        <where>
+            <if test="name != null and name !=''">
+                AND name =#{name}
+            </if>
+
+            <if test="status != null and status >= 0">
+                AND status = #{status}
+            </if>
+        </where>
+    </sql>
+
+    <sql id="sql_order">
+        order by create_time desc
+    </sql>
+    <select id="findByParams_count" parameterType="java.util.HashMap" resultType="int">
+        <include refid="sql_count" />
+        <include refid="sql_where" />
+    </select>
+    <select id="findByParams" parameterType="java.util.HashMap" resultMap="UserShopMap">
+        <include refid="sql_select" />
+        <include refid="sql_where" />
+    </select>
+
+
+
+</mapper>

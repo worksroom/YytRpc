@@ -212,6 +212,12 @@ service ProductThriftRpcService {
     /** 审核货品 **/
     i32 reviewMallGoods(1:i32 id, 2:bool status);
 
+    /** 店铺查询 可通过多个参数查询 **/
+    string findUserShop(1:string value);
+
+    /** 审核店铺 **/
+    i32 reviewUserShop(1:i32 id, 2:bool status);
+
 }
 
 /**
