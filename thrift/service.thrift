@@ -224,6 +224,8 @@ service ProductThriftRpcService {
     /** 修改首页碎片 **/
     i32 updateMallIndex(1:string mallIndex 2:string mallindexContent);
 
+
+
     /** 修改首页碎片状态 **/
     i32 updateStatus(1:i32 id, 2:bool status);
 
@@ -232,6 +234,9 @@ service ProductThriftRpcService {
 
     /** 查询首页碎片 前端使用 **/
     string queryUserMallIndex();
+
+    /** 获取首页碎片明细 **/
+    string getMallIndex(1:i32 id);
 
 }
 
