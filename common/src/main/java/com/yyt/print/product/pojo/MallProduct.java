@@ -18,6 +18,7 @@ public class MallProduct {
     private Double	sincePrice;
     private int	saleNum;//销售数量
     private int	storeNum;//库存
+    private int rank;
     private Date createTime;
     private Date	updateTime;
 
@@ -123,5 +124,13 @@ public class MallProduct {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 }

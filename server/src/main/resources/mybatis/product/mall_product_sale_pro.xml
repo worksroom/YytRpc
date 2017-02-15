@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MallProductSalePro">
+    <resultMap type="MallProductSalePro" id="MallProductSaleProMap">
+        <result property="id" column="id"/>
+        <result property="goodsId" column="goods_id"/>
+        <result property="productId" column="product_id"/>
+        <result property="classProId" column="class_pro_id"/>
+        <result property="classProValueId" column="class_pro_value_id"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <insert id="insertList">
+        insert into mall_product_sale_pro
+        (goods_id,product_id,class_pro_id,class_pro_value_id,update_time,create_time)
+        VALUES
+        <foreach collection="list"  item="temp" separator=",">
+        (#{temp.goodsId},#{temp.productId},#{temp.classProId},#{temp.classProValueId},
+            #{temp.updateTime},#{temp.createTime})
+
+        </foreach>
+    </insert>
+
+    <select id="findByGood" parameterType="int"  resultMap="MallProductSaleProMap">
+       SELECT  id,goods_id,product_id,class_pro_id,
+       class_pro_value_id,update_time,create_time from mall_product_sale_pro
+       where  goods_id=#{goodsId} order by product_id
+    </select>
+
+
+
+</mapper>

@@ -10,6 +10,7 @@ public class MallProductSalePro {
     private int id;
     private int goodsId;//货品ID
     private int productId;
+    private int classProId; //分类属性id
     private int classProValueId;
     private Date createTime;
     private Date updateTime;
@@ -60,5 +61,13 @@ public class MallProductSalePro {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public int getClassProId() {
+        return classProId;
+    }
+
+    public void setClassProId(int classProId) {
+        this.classProId = classProId;
     }
 }

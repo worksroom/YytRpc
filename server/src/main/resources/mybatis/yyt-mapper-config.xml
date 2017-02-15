@@ -35,9 +35,12 @@
 
 		<!--货品-->
 		<typeAlias alias="MallGoods" type="com.yyt.print.product.pojo.MallGoods" />
+		<typeAlias alias="MallProduct" type="com.yyt.print.product.pojo.MallProduct" />
+		<typeAlias alias="MallProductSalePro" type="com.yyt.print.product.pojo.MallProductSalePro" />
 
 		<!-- 店铺 -->
 		<typeAlias alias="UserShop" type="com.yyt.print.product.pojo.UserShop" />
+
 
 		<!-- 首页碎片 -->
 		<typeAlias alias="MallIndex" type="com.yyt.print.product.pojo.MallIndex" />
@@ -80,6 +83,8 @@
 
 		<!--货品-->
 		<mapper resource="mybatis/product/mall_goods.xml" />
+		<mapper resource="mybatis/product/mall_product.xml" />
+		<mapper resource="mybatis/product/mall_product_sale_pro.xml" />
 
 		<!--店铺-->
 		<mapper resource="mybatis/product/user_shop.xml" />
