@@ -27,7 +27,7 @@ public class IMallGoodsDAOTest extends BaseTestClass {
 
     @Test
     public void testSaveMallGoods(){
-        dao.saveMallGoods(getBean());
+        System.out.println(dao.saveMallGoods(getBean()));
     }
 
     @Test

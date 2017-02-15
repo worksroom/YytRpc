@@ -18,7 +18,7 @@
         insert into mall_goods
         (name,des,shop_id,shop_name,class_id,status,img,update_time,create_time)
         VALUES
-        (#{name},#{des},#{shopId},,#{shopName},#{classId},#{status},#{img},#{updateTime},#{createTime})
+        (#{name},#{des},#{shopId},#{shopName},#{classId},#{status},#{img},#{updateTime},#{createTime})
         <selectKey resultType="int" keyProperty="id">
             select LAST_INSERT_ID() AS id
         </selectKey>
