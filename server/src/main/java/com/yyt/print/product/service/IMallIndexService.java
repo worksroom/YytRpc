@@ -34,6 +34,14 @@ public interface IMallIndexService {
      */
     int updateStatus(int id,boolean status);
 
+
+    /**
+     * 获取首页碎片
+     * @param id
+     * @return
+     */
+    MallIndex getMallIndex(int id);
+
     /**
      * 管理平台使用
      * @param status

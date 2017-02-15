@@ -528,4 +528,24 @@ public class ProductClient implements ProductThriftRpcService.Iface {
             }
         }
     }
+
+    @Override
+    public String getMallIndex(int id) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(ProductThriftRpcService.Client.class).getMallIndex(id);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
 }

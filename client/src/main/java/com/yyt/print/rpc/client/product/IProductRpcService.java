@@ -180,6 +180,9 @@ public interface IProductRpcService {
      */
     int updateStatus(int id,boolean status);
 
+
+    MallIndex getMallIndex(int id);
+
     /**
      * 管理平台使用
      * @param status

@@ -219,4 +219,9 @@ public class ProductRpcServiceImplTest {
         System.out.println(list.get(0).transContent());
     }
 
+    @Test
+    public void getMallIndex(){
+        System.out.println(productRpcService.getMallIndex(1));
+    }
+
 }

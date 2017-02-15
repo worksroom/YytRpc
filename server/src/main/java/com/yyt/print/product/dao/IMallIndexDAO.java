@@ -16,6 +16,8 @@ public interface IMallIndexDAO {
 
     int updateStatus(int id,boolean isUsed);
 
+    MallIndex getMallIndex(int id);
+
     /**
      * 管理平台使用
      * status < 0 查询全部

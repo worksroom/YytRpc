@@ -46,4 +46,9 @@ public class MallIndexServiceImpl implements IMallIndexService {
     public List<MallIndex> queryUserMallIndex() {
         return mallIndexDAO.queryUserMallIndex();
     }
+
+    @Override
+    public MallIndex getMallIndex(int id) {
+        return mallIndexDAO.getMallIndex(id);
+    }
 }

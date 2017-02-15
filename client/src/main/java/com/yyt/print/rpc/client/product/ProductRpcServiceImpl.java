@@ -292,4 +292,14 @@ public class ProductRpcServiceImpl implements IProductRpcService {
         }
         return null;
     }
+
+    @Override
+    public MallIndex getMallIndex(int id) {
+        try {
+            return JSON.parseObject(getClient().getMallIndex(id), MallIndex.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
 }

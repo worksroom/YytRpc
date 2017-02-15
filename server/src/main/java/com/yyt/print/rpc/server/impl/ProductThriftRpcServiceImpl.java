@@ -194,4 +194,9 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     public String queryUserMallIndex() throws TException {
         return JSON.toJSONString(mallIndexService.queryUserMallIndex());
     }
+
+    @Override
+    public String getMallIndex(int id) throws TException {
+        return JSON.toJSONString(mallIndexService.getMallIndex(id));
+    }
 }

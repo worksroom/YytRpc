@@ -30,6 +30,11 @@ public class MallIndexDAOImpl extends YytBaseDAO<MallIndex> implements IMallInde
     }
 
     @Override
+    public MallIndex getMallIndex(int id) {
+        return super.get(id);
+    }
+
+    @Override
     public int updateStatus(int id,boolean isUsed) {
         int status = 1;
         if(!isUsed){
@@ -52,4 +57,5 @@ public class MallIndexDAOImpl extends YytBaseDAO<MallIndex> implements IMallInde
     public List<MallIndex> queryUserMallIndex() {
         return super.findBy("sql_select_front",null);
     }
+
 }
