@@ -31,9 +31,12 @@ public class MallProductService implements IMallProductService {
     @Resource
     private IFareMouldDAO fareMouldDAO;
 
+    @Resource
+    private IMallProductExtDAO mallProductExtDAO;
+
     @Transactional
     @Override
-    public int shelves(MallGoods mallGoods, List<MallProductSet> list) {
+    public int shelves(MallGoods mallGoods, List<MallProductSet> list,List<MallProductExt> exts) {
         int result = mallGoodsDAO.saveMallGoods(mallGoods);
         if(result <= 0 ){
             throw new RuntimeException("add error ");
@@ -56,45 +59,52 @@ public class MallProductService implements IMallProductService {
             if(result <= 0 ){
                 throw new RuntimeException("add error ");
             }
-
-            return 1;
-
-
         }
-        return 0;
+
+        for(MallProductExt ext:exts){
+            ext.setGoodsId(mallGoods.getId());
+        }
+        mallProductExtDAO.batchSaveMallProductEx(exts);
+
+        return 1;
     }
 
     @Transactional
     @Override
-    public int goodAddProduct(int goodsId, List<MallProductSet> list) {
+    public int goodAddProduct(int goodsId, List<MallProductSet> list,List<MallProductExt> exts) {
         MallGoods mallGoods = mallGoodsDAO.getMallGoods(goodsId);
         if(mallGoods==null){
             return -1;
         }
-        for (MallProductSet mallProductSet:list){
-            MallProduct product = mallProductSet.getMallProduct();
-            product.setClassId(mallGoods.getClassId());
-            product.setGoodsId(mallGoods.getId());
-            int result = mallProductDAO.saveSaveMallProduct(product);
-            if(result <= 0 ){
-                throw new RuntimeException("add error ");
+        if(list!=null){
+            for (MallProductSet mallProductSet:list){
+                MallProduct product = mallProductSet.getMallProduct();
+                product.setClassId(mallGoods.getClassId());
+                product.setGoodsId(mallGoods.getId());
+                int result = mallProductDAO.saveSaveMallProduct(product);
+                if(result <= 0 ){
+                    throw new RuntimeException("add error ");
+                }
+                for(MallProductSalePro  pro:mallProductSet.getSalePro()){
+                    pro.setGoodsId(mallGoods.getId());
+                    pro.setProductId(product.getId());
+                    pro.setClassProId(mallGoods.getClassId());
+
+                }
+                result = mallProductSaleProDAO.batchSaveMallProductSalePro(mallProductSet.getSalePro());
+                if(result <= 0 ){
+                    throw new RuntimeException("add error ");
+                }
             }
-            for(MallProductSalePro  pro:mallProductSet.getSalePro()){
-                pro.setGoodsId(mallGoods.getId());
-                pro.setProductId(product.getId());
-                pro.setClassProId(mallGoods.getClassId());
-
-            }
-            result = mallProductSaleProDAO.batchSaveMallProductSalePro(mallProductSet.getSalePro());
-            if(result <= 0 ){
-                throw new RuntimeException("add error ");
-            }
-
-            return 1;
-
-
         }
-        return 0;
+        if(exts!=null && exts.size()>0){
+            for(MallProductExt ext:exts){
+                ext.setGoodsId(mallGoods.getId());
+            }
+            mallProductExtDAO.batchSaveMallProductEx(exts);
+        }
+
+        return 1;
     }
 
     @Override
@@ -123,6 +133,9 @@ public class MallProductService implements IMallProductService {
             mps.add(mpSet);
         }
         set.setList(mps);
+
+        List<MallProductExt> exts = mallProductExtDAO.findMallProductExt(goodsId);
+        set.setExts(exts);
         return set;
     }
 

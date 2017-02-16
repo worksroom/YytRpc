@@ -8,6 +8,7 @@ import java.util.List;
 public class MallGoodsSet {
     private MallGoods mallGoods;
     private List<MallProductSet> list;
+    private List<MallProductExt> exts;
 
     public MallGoods getMallGoods() {
         return mallGoods;
@@ -23,5 +24,13 @@ public class MallGoodsSet {
 
     public void setList(List<MallProductSet> list) {
         this.list = list;
+    }
+
+    public List<MallProductExt> getExts() {
+        return exts;
+    }
+
+    public void setExts(List<MallProductExt> exts) {
+        this.exts = exts;
     }
 }

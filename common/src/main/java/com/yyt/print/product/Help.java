@@ -1,7 +1,6 @@
 package com.yyt.print.product;
 
-import com.yyt.print.product.pojo.FareMould;
-import com.yyt.print.product.pojo.StoreLocation;
+import com.yyt.print.product.pojo.MallProductExt;
 
 import java.lang.reflect.Field;
 
@@ -30,7 +29,7 @@ public class Help {
 
     private static String getresultMap(Class clazz){
         StringBuilder sb = new StringBuilder("<resultMap type=\""+clazz.getSimpleName()+"\" id=\""+clazz.getSimpleName()+"Map\">").append(LINE);
-        Field[] fields = FareMould.class.getDeclaredFields();
+        Field[] fields = clazz.getDeclaredFields();
         for(Field field:fields){
             sb.append("<result property=\""+field.getName()+"\" column=\""+toDbCol(field.getName())+"\"/>").append(LINE);
         }
@@ -40,7 +39,7 @@ public class Help {
 
     private static String getDbCol(Class clazz){
         StringBuilder sb = new StringBuilder();
-        Field[] fields = FareMould.class.getDeclaredFields();
+        Field[] fields = clazz.getDeclaredFields();
         for(int i=0;i<fields.length;i++){
             Field field = fields[i];
             if(field.getName().equals("id")) continue;
@@ -55,7 +54,7 @@ public class Help {
 
     private static String getBeanCol(Class clazz){
         StringBuilder sb = new StringBuilder();
-        Field[] fields = FareMould.class.getDeclaredFields();
+        Field[] fields = clazz.getDeclaredFields();
         for(int i=0;i<fields.length;i++){
             Field field = fields[i];
             if(field.getName().equals("id")) continue;
@@ -93,7 +92,7 @@ public class Help {
         StringBuilder sb = new StringBuilder();
         sb.append("<update id=\"update\" parameterType=\""+clazz.getSimpleName()+"\">").append(LINE);
         sb.append("update " + toDbCol(clazz.getSimpleName()) + " set ");
-        Field[] fields = FareMould.class.getDeclaredFields();
+        Field[] fields = clazz.getDeclaredFields();
         for(int i=0;i<fields.length;i++){
             Field field = fields[i];
             if(field.getName().equals("id")) continue;
@@ -189,7 +188,7 @@ public class Help {
     }
 
     public static void main(String[] args) {
-        Class clazz = StoreLocation.class;
+        Class clazz = MallProductExt.class;
         System.out.println(getXML(clazz));
         System.out.println(getDAO(clazz));
         System.out.println(getDAOImpl(clazz));

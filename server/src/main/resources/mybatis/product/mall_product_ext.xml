@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MallProductExt">
+    <resultMap type="MallProductExt" id="MallProductExtMap">
+        <result property="id" column="id"/>
+        <result property="type" column="type"/>
+        <result property="goodsId" column="goods_id"/>
+        <result property="productId" column="product_id"/>
+        <result property="thridId" column="thrid_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <insert id="insertList">
+        insert into mall_product_ext
+        ( type, goods_id, product_id, thrid_id, create_time, update_time)
+        VALUES
+        <foreach collection="list"  item="temp" separator=",">
+            (#{temp.type}, #{temp.goodsId}, #{temp.productId}, #{temp.thridId},
+            #{temp.updateTime},#{temp.createTime})
+
+        </foreach>
+    </insert>
+
+
+    <insert id="insert" parameterType="MallProductExt">
+        insert into mall_product_ext (
+        type, goods_id, product_id, thrid_id, create_time, update_time)
+        VALUES
+        ( #{type}, #{goodsId}, #{productId}, #{thridId}, #{createTime}, #{updateTime})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+    <update id="update" parameterType="MallProductExt">
+        update mall_product_ext set type = #{type},goods_id = #{goodsId},product_id = #{productId},thrid_id = #{thridId},create_time = #{createTime},update_time = #{updateTime}where id=#{id}
+    </update>
+    <select id="select" parameterType="int" resultMap="MallProductExtMap">
+        select id ,  type, goods_id, product_id, thrid_id, create_time, update_time from mall_product_ext where id=#{id}
+    </select>
+    <delete id="delete" parameterType="int">
+        delete from mall_product_ext where id=#{id}
+    </delete>
+
+
+    <select id="selectByGoods" parameterType="int" resultMap="MallProductExtMap">
+        select id ,  type, goods_id, product_id, thrid_id, create_time, update_time from mall_product_ext where goods_id=#{goodsId}
+    </select>
+</mapper>

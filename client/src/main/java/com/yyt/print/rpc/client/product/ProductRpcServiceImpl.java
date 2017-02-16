@@ -303,9 +303,9 @@ public class ProductRpcServiceImpl implements IProductRpcService {
     }
 
     @Override
-    public int shelves(MallGoods mallGoods, List<MallProductSet> list) {
+    public int shelves(MallGoods mallGoods, List<MallProductSet> list,List<MallProductExt> exts) {
         try {
-            return getClient().shelves(JSON.toJSONString(mallGoods), JSON.toJSONString(list),"");
+            return getClient().shelves(JSON.toJSONString(mallGoods), JSON.toJSONString(list),JSON.toJSONString(exts));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
@@ -313,9 +313,9 @@ public class ProductRpcServiceImpl implements IProductRpcService {
     }
 
     @Override
-    public int goodAddProduct(int goodsId, List<MallProductSet> list) {
+    public int goodAddProduct(int goodsId, List<MallProductSet> list,List<MallProductExt> exts) {
         try {
-            return getClient().goodAddProduct(goodsId, JSON.toJSONString(list),"");
+            return getClient().goodAddProduct(goodsId, JSON.toJSONString(list),JSON.toJSONString(exts));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }

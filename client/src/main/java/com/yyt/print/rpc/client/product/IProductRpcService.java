@@ -205,7 +205,7 @@ public interface IProductRpcService {
      * @param list  商品以及销售属性集合
      * @return
      */
-    int shelves(MallGoods mallGoods,List<MallProductSet> list);
+    int shelves(MallGoods mallGoods,List<MallProductSet> list,List<MallProductExt> exts);
 
 
     /**
@@ -214,7 +214,7 @@ public interface IProductRpcService {
      * @param list
      * @return
      */
-    int goodAddProduct(int goodsId,List<MallProductSet> list);
+    int goodAddProduct(int goodsId,List<MallProductSet> list,List<MallProductExt> exts);
 
     /**
      * 获取货品明细
