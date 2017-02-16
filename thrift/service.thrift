@@ -238,6 +238,18 @@ service ProductThriftRpcService {
     /** 获取首页碎片明细 **/
     string getMallIndex(1:i32 id);
 
+    /** 上架货品 **/
+    i32 shelves(1:string mallGoods,2:string mallProductSets,3:string other);
+
+    /** 更新单个商品 **/
+    i32 goodAddProduct(1:i32 goodsId,2:string mallProductSets,3:string other);
+
+    /** 根据货品id获取货品 **/
+    string getMallGoodsSetByGood(1:i32 goods);
+
+    /** 根据商品id获取货品 **/
+    string getMallGoodsSetByProduct(1:i32 productId);
+
 }
 
 /**

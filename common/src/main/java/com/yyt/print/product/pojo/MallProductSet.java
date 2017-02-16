@@ -15,4 +15,20 @@ public class MallProductSet {
      * 商品销售属性
      */
     private List<MallProductSalePro> salePro;
+
+    public MallProduct getMallProduct() {
+        return mallProduct;
+    }
+
+    public void setMallProduct(MallProduct mallProduct) {
+        this.mallProduct = mallProduct;
+    }
+
+    public List<MallProductSalePro> getSalePro() {
+        return salePro;
+    }
+
+    public void setSalePro(List<MallProductSalePro> salePro) {
+        this.salePro = salePro;
+    }
 }

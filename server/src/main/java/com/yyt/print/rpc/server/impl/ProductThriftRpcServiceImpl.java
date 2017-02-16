@@ -39,6 +39,9 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     @Resource
     private IMallIndexService mallIndexService;
 
+    @Resource
+    private IMallProductService mallProductService;
+
     @Override
     public String queryAllMallProductCategory() throws TException {
         List<MallProductCategory> list = mallProductCategoryService.queryAllMallProductCategory();
@@ -198,5 +201,28 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     @Override
     public String getMallIndex(int id) throws TException {
         return JSON.toJSONString(mallIndexService.getMallIndex(id));
+    }
+
+    @Override
+    public int shelves(String mallGoods, String mallProductSets, String other) throws TException {
+        MallGoods goods = JSON.parseObject(mallGoods,MallGoods.class);
+        List<MallProductSet> list = JSONArray.parseArray(mallProductSets,MallProductSet.class);
+        return mallProductService.shelves(goods,list);
+    }
+
+    @Override
+    public int goodAddProduct(int goodsId, String mallProductSets, String other) throws TException {
+        List<MallProductSet> list = JSONArray.parseArray(mallProductSets,MallProductSet.class);
+        return mallProductService.goodAddProduct(goodsId,list);
+    }
+
+    @Override
+    public String getMallGoodsSetByGood(int goods) throws TException {
+        return JSON.toJSONString(mallProductService.getMallGoodsSetByGood(goods));
+    }
+
+    @Override
+    public String getMallGoodsSetByProduct(int productId) throws TException {
+        return JSON.toJSONString(mallProductService.getMallGoodsSetByProduct(productId));
     }
 }

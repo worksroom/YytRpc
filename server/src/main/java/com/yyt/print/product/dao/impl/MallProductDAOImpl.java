@@ -14,9 +14,20 @@ import java.util.Map;
  */
 @Repository("mallProductDAO")
 public class MallProductDAOImpl extends YytBaseDAO<MallProduct> implements IMallProductDAO {
+
+    @Override
+    public int saveSaveMallProduct(MallProduct mallProduct) {
+        return super.insert(mallProduct);
+    }
+
     @Override
     public int batchSaveMallProduct(List<MallProduct> list) {
         return super.batchInsert(list, "insertList");
+    }
+
+    @Override
+    public MallProduct getMallProduct(int id) {
+        return super.get(id);
     }
 
     @Override

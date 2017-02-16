@@ -133,4 +133,6 @@ public class MallProduct {
     public void setRank(int rank) {
         this.rank = rank;
     }
+
+
 }

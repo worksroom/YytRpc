@@ -8,12 +8,22 @@ import java.util.List;
  * Created by leo on 2016/11/23.
  */
 public interface IMallProductDAO {
+
+
+    int saveSaveMallProduct(MallProduct mallProduct);
     /**
      * 添加货品
      * @param list
      * @return
      */
     int batchSaveMallProduct(List<MallProduct> list);
+
+    /**
+     * 获取产品
+     * @param id
+     * @return
+     */
+    MallProduct getMallProduct(int id);
 
     /**
      * 查询货品下的商品

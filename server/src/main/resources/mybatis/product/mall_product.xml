@@ -18,6 +18,23 @@
         <result property="createTime" column="create_time"/>
     </resultMap>
 
+    <insert id="insert">
+        insert into mall_product
+        (name,rank,sell_user_id,goods_id,class_id,pic,price,
+        sale_price,since_price,sale_num,store_num,update_time,create_time)
+        VALUES
+
+            (#{name},#{rank},#{sellUserId},#{goodsId},#{classId},
+            #{pic},#{price},#{salePrice},
+            #{sincePrice},#{saleNum},#{storeNum},
+            #{updateTime},#{createTime})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+
+
+    </insert>
+
     <insert id="insertList">
         insert into mall_product
         (name,rank,sell_user_id,goods_id,class_id,pic,price,
@@ -52,7 +69,12 @@
         delete from mall_product where id=#{id}
     </delete>
 
+    <select id="select" parameterType="int"  resultMap="MallProductMap">
+        SELECT  id,name,rank,sell_user_id,goods_id,class_id,pic,price,
+        sale_price,since_price,sale_num,store_num,update_time,create_time from mall_product
+        where  id=#{id}
 
+    </select>
 
     <select id="findByGood" parameterType="int"  resultMap="MallProductMap">
        SELECT  id,name,rank,sell_user_id,goods_id,class_id,pic,price,

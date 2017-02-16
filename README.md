@@ -52,3 +52,15 @@ alter table `yyt`.`mall_index`
    add column `status` int(4) NULL COMMENT '0 无效  1有效' after `type`,
    change `id` `id` int(11) NOT NULL AUTO_INCREMENT comment '×ÔÔöid'
 ```
+```
+alter table `yyt`.`mall_product` 
+   change `id` `id` int(11) NOT NULL AUTO_INCREMENT comment 'ID';
+alter table `yyt`.`mall_product` 
+   add column `rank` int(11) NULL after `class_id`;
+   alter table `yyt`.`mall_product_sale_pro` 
+   change `id` `id` int(11) NOT NULL AUTO_INCREMENT comment 'id',
+   add primary key(`id`);
+   alter table `yyt`.`mall_product_sale_pro` 
+   add column `class_pro_id` int(11) NULL after `goods_id`,
+   change `deliver_id` `goods_id` int(11) NULL  comment '货品ID';
+```

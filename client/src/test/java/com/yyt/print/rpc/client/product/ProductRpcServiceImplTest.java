@@ -224,4 +224,76 @@ public class ProductRpcServiceImplTest {
         System.out.println(productRpcService.getMallIndex(1));
     }
 
+    private MallGoods getMallGoods(){
+        MallGoods good = new MallGoods();
+        good.setName("墨水");
+        good.setShopId(1);
+        good.setShopName("leo小店");
+        good.setCreateTime(new Date());
+        good.setClassId(1);
+        good.setDes("墨水");
+        good.setStatus(0);
+        good.setUpdateTime(new Date());
+        return good;
+    }
+
+    private MallProductSet getMallProductSet(){
+        MallProductSet set = new MallProductSet();
+        MallProduct product = new MallProduct();
+        product.setName("黑色墨水");
+        product.setPrice(128.00);
+        product.setSalePrice(128.00);
+
+        List<MallProductSalePro> list = new ArrayList<>();
+        MallProductSalePro pro = new MallProductSalePro();
+        pro.setClassProId(1);
+        pro.setClassProValueId(1);
+        list.add(pro);
+
+        pro = new MallProductSalePro();
+        pro.setClassProId(1);
+        pro.setClassProValueId(2);
+        list.add(pro);
+
+        pro = new MallProductSalePro();
+        pro.setClassProId(1);
+        pro.setClassProValueId(3);
+        list.add(pro);
+
+        pro = new MallProductSalePro();
+        pro.setClassProId(1);
+        pro.setClassProValueId(4);
+        list.add(pro);
+
+        set.setMallProduct(product);
+        set.setSalePro(list);
+        return set;
+    }
+
+    @Test
+    public void shelves(){
+        List<MallProductSet> list = new ArrayList<>();
+        list.add(getMallProductSet());
+        productRpcService.shelves(getMallGoods(),list);
+    }
+
+    @Test
+    public void goodAddProduct(){
+        List<MallProductSet> list = new ArrayList<>();
+        list.add(getMallProductSet());
+        productRpcService.goodAddProduct(10,list);
+    }
+
+    @Test
+    public void getMallGoodsSetByGood(){
+        MallGoodsSet set = productRpcService.getMallGoodsSetByGood(10);
+        System.out.println(set);
+    }
+
+    @Test
+    public void getMallGoodsSetByProduct(){
+        MallGoodsSet set = productRpcService.getMallGoodsSetByProduct(4);
+        System.out.println(set);
+
+    }
 }

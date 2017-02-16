@@ -197,4 +197,36 @@ public interface IProductRpcService {
      * @return
      */
     List<MallIndex> queryUserMallIndex();
+
+
+    /**
+     * 上架货品 ，
+     * @param mallGoods
+     * @param list  商品以及销售属性集合
+     * @return
+     */
+    int shelves(MallGoods mallGoods,List<MallProductSet> list);
+
+
+    /**
+     * 为货品增加新的商品
+     * @param goodsId
+     * @param list
+     * @return
+     */
+    int goodAddProduct(int goodsId,List<MallProductSet> list);
+
+    /**
+     * 获取货品明细
+     * @param goodsId
+     * @return
+     */
+    MallGoodsSet getMallGoodsSetByGood(int goodsId);
+
+    /**
+     * 获取货品明细
+     * @param productId
+     * @return
+     */
+    MallGoodsSet getMallGoodsSetByProduct(int productId);
 }

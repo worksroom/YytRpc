@@ -302,4 +302,44 @@ public class ProductRpcServiceImpl implements IProductRpcService {
         }
         return null;
     }
+
+    @Override
+    public int shelves(MallGoods mallGoods, List<MallProductSet> list) {
+        try {
+            return getClient().shelves(JSON.toJSONString(mallGoods), JSON.toJSONString(list),"");
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public int goodAddProduct(int goodsId, List<MallProductSet> list) {
+        try {
+            return getClient().goodAddProduct(goodsId, JSON.toJSONString(list),"");
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public MallGoodsSet getMallGoodsSetByGood(int goodsId) {
+        try {
+            return JSON.parseObject(getClient().getMallGoodsSetByGood(goodsId), MallGoodsSet.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public MallGoodsSet getMallGoodsSetByProduct(int productId) {
+        try {
+            return JSON.parseObject(getClient().getMallGoodsSetByProduct(productId), MallGoodsSet.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
 }

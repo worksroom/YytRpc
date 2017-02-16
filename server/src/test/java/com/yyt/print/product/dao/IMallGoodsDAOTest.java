@@ -5,6 +5,7 @@ import com.yyt.print.product.pojo.MallGoods;
 
 import java.util.Date;
 
+import com.yyt.print.product.pojo.MallIndex;
 import com.yyt.print.product.query.MallGoodsQuery;
 import org.junit.Test;
 /**
@@ -27,7 +28,9 @@ public class IMallGoodsDAOTest extends BaseTestClass {
 
     @Test
     public void testSaveMallGoods(){
-        System.out.println(dao.saveMallGoods(getBean()));
+        MallGoods mallGoods = getBean();
+        System.out.println(dao.saveMallGoods(mallGoods));
+        System.out.println(mallGoods.getId());
     }
 
     @Test
