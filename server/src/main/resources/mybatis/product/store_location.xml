@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="StoreLocation">
+    <resultMap type="StoreLocation" id="StoreLocationMap">
+        <result property="id" column="id"/>
+        <result property="shopId" column="shop_id"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="price" column="price"/>
+        <result property="num" column="num"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+    <insert id="insert" parameterType="StoreLocation">
+        insert into store_location (
+        shop_id, name, type, price, num, create_time, update_time)
+        VALUES
+        ( #{shopId}, #{name}, #{type}, #{price}, #{num}, #{createTime}, #{updateTime})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+    <update id="update" parameterType="StoreLocation">
+        update store_location set shop_id = #{shopId},name = #{name},type = #{type},price = #{price},num = #{num},create_time = #{createTime},update_time = #{updateTime}where id=#{id}
+    </update>
+    <select id="select" parameterType="int" resultMap="StoreLocationMap">
+        select id ,  shop_id, name, type, price, num, create_time, update_time from store_location where id=#{id}
+    </select>
+
+    <select id="selectByShopId" parameterType="int" resultMap="StoreLocationMap">
+        select id ,  shop_id, name, type, price, num, create_time, update_time from store_location where shop_id=#{shopId}
+    </select>
+    <delete id="delete" parameterType="int">
+        delete from store_location where id=#{id}
+    </delete>
+</mapper>

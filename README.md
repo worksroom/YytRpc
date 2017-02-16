@@ -63,4 +63,33 @@ alter table `yyt`.`mall_product`
    alter table `yyt`.`mall_product_sale_pro` 
    add column `class_pro_id` int(11) NULL after `goods_id`,
    change `deliver_id` `goods_id` int(11) NULL  comment '货品ID';
+
+
+
+CREATE TABLE `store_location` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `shop_id` int(11) NOT NULL ,
+  `f_code` int(11) NOT NULL ,
+  `f_name` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `s_code` int(11) NOT NULL COMMENT '二级地址编码',
+  `s_name` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE `fare_mould` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL ,
+  `shop_id` int(11) NOT NULL ,
+  `type` int(11) NOT NULL ,
+  `price` decimal(11,2) not null DEFAULT 0,
+  `num` int(11) NOT NULL DEFAULT 1,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 ```
+
+
