@@ -229,4 +229,52 @@ public interface IProductRpcService {
      * @return
      */
     MallGoodsSet getMallGoodsSetByProduct(int productId);
+
+
+    /**
+     * 添加库存为止
+     * @param storeLocation
+     * @return
+     */
+    int saveStoreLocation(StoreLocation storeLocation);
+
+    /**
+     * 获取库存位置
+     * @param id
+     * @return
+     */
+    StoreLocation getStoreLocation(int id);
+
+    /**
+     * 删除库存位置
+     * @param id
+     * @return
+     */
+    int delStoreLocation(int id);
+
+    /**
+     * 修改库存位置
+     * @param storeLocation
+     * @return
+     */
+    int updateStoreLocation(StoreLocation storeLocation);
+
+    /**
+     * 查询商铺的所有库存位置
+     * @param shopId
+     * @return
+     */
+    List<StoreLocation> findStoreLocations(int shopId);
+
+
+    //=====================运费模板=============================
+    int saveFareMould(FareMould fareMould);
+
+    FareMould getFareMould(int id);
+
+    int updateFareMould(FareMould fareMould);
+
+    int delFareMould(int id);
+
+    List<FareMould> findFareMoulds(int shopId);
 }

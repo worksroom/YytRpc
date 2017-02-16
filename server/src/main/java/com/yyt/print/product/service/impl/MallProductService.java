@@ -1,9 +1,6 @@
 package com.yyt.print.product.service.impl;
 
-import com.youguu.core.util.PageHolder;
-import com.yyt.print.product.dao.IMallGoodsDAO;
-import com.yyt.print.product.dao.IMallProductDAO;
-import com.yyt.print.product.dao.IMallProductSaleProDAO;
+import com.yyt.print.product.dao.*;
 import com.yyt.print.product.pojo.*;
 import com.yyt.print.product.service.IMallProductService;
 import org.springframework.stereotype.Service;
@@ -27,6 +24,12 @@ public class MallProductService implements IMallProductService {
 
     @Resource
     private IMallProductSaleProDAO mallProductSaleProDAO;
+
+    @Resource
+    private IStoreLocationDAO storeLocationDAO;
+
+    @Resource
+    private IFareMouldDAO fareMouldDAO;
 
     @Transactional
     @Override
@@ -127,5 +130,56 @@ public class MallProductService implements IMallProductService {
     public MallGoodsSet getMallGoodsSetByProduct(int productId) {
         MallProduct product = mallProductDAO.getMallProduct(productId);
         return this.getMallGoodsSetByGood(product.getGoodsId());
+    }
+
+
+    @Override
+    public int saveStoreLocation(StoreLocation storeLocation) {
+        return storeLocationDAO.saveStoreLocation(storeLocation);
+    }
+
+    @Override
+    public StoreLocation getStoreLocation(int id) {
+        return storeLocationDAO.getStoreLocation(id);
+    }
+
+    @Override
+    public int delStoreLocation(int id) {
+        return storeLocationDAO.delStoreLocation(id);
+    }
+
+    @Override
+    public int updateStoreLocation(StoreLocation storeLocation) {
+        return storeLocationDAO.updateStoreLocation(storeLocation);
+    }
+
+    @Override
+    public List<StoreLocation> findStoreLocations(int shopId) {
+        return storeLocationDAO.findStoreLocations(shopId);
+    }
+
+    @Override
+    public int saveFareMould(FareMould fareMould) {
+        return fareMouldDAO.saveFareMould(fareMould);
+    }
+
+    @Override
+    public FareMould getFareMould(int id) {
+        return fareMouldDAO.getFareMould(id);
+    }
+
+    @Override
+    public int updateFareMould(FareMould fareMould) {
+        return fareMouldDAO.updateFareMould(fareMould);
+    }
+
+    @Override
+    public int delFareMould(int id) {
+        return fareMouldDAO.delFareMould(id);
+    }
+
+    @Override
+    public List<FareMould> findFareMoulds(int shopId) {
+        return fareMouldDAO.findFareMoulds(shopId);
     }
 }

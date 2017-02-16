@@ -250,6 +250,56 @@ service ProductThriftRpcService {
     /** 根据商品id获取货品 **/
     string getMallGoodsSetByProduct(1:i32 productId);
 
+    /** 保存运费模板 **/
+    i32 saveFareMould(1:string fareMould);
+
+    /** 获取运费模板 **/
+    string getFareMould(1:i32 id);
+
+    /** 修改运费模板 **/
+    i32 updateFareMould(1:string fareMould);
+
+    /** 删除运费模板 **/
+    i32 delFareMould(1:i32 id);
+
+    /** 获取商铺下的运费模板 **/
+    string findFareMoulds(1:i32 shopId);
+
+    /**
+     * 添加库存为止
+     * @param storeLocation
+     * @return
+     */
+    i32 saveStoreLocation(1:string storeLocation);
+
+    /**
+     * 获取库存位置
+     * @param id
+     * @return
+     */
+    string getStoreLocation(1:i32 id);
+
+    /**
+     * 删除库存位置
+     * @param id
+     * @return
+     */
+    i32 delStoreLocation(1:i32 id);
+
+    /**
+     * 修改库存位置
+     * @param storeLocation
+     * @return
+     */
+    i32 updateStoreLocation(1:string storeLocation);
+
+    /**
+     * 查询商铺的所有库存位置
+     * @param shopId
+     * @return
+     */
+    string findStoreLocations(1:i32 shopId);
+
 }
 
 /**

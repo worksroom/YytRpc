@@ -7,7 +7,6 @@ import com.youguu.core.logging.Log;
 import com.youguu.core.logging.LogFactory;
 import com.youguu.core.pojo.Response;
 import com.youguu.core.util.PageHolder;
-import com.yyt.print.ad.pojo.AdCategory;
 import com.yyt.print.parser.PageHolderDeserializer;
 import com.yyt.print.product.pojo.*;
 import com.yyt.print.product.query.MallGoodsQuery;
@@ -337,6 +336,107 @@ public class ProductRpcServiceImpl implements IProductRpcService {
     public MallGoodsSet getMallGoodsSetByProduct(int productId) {
         try {
             return JSON.parseObject(getClient().getMallGoodsSetByProduct(productId), MallGoodsSet.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+
+    @Override
+    public int saveStoreLocation(StoreLocation storeLocation) {
+        try {
+            return getClient().saveStoreLocation(JSON.toJSONString(storeLocation));
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public StoreLocation getStoreLocation(int id) {
+        try {
+            return JSON.parseObject(getClient().getStoreLocation(id), StoreLocation.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public int delStoreLocation(int id) {
+        try {
+            return getClient().delStoreLocation(id);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public int updateStoreLocation(StoreLocation storeLocation) {
+        try {
+            return getClient().updateStoreLocation(JSON.toJSONString(storeLocation));
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public List<StoreLocation> findStoreLocations(int shopId) {
+        try {
+            return JSON.parseArray(getClient().findStoreLocations(shopId), StoreLocation.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public int saveFareMould(FareMould fareMould) {
+        try {
+            return getClient().saveFareMould(JSON.toJSONString(fareMould));
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public FareMould getFareMould(int id) {
+        try {
+            return JSON.parseObject(getClient().getFareMould(id), FareMould.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public int updateFareMould(FareMould fareMould) {
+        try {
+            return getClient().updateFareMould(JSON.toJSONString(fareMould));
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public int delFareMould(int id) {
+        try {
+            return getClient().delFareMould(id);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public List<FareMould> findFareMoulds(int shopId) {
+        try {
+            return JSON.parseArray(getClient().findFareMoulds(shopId), FareMould.class);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }

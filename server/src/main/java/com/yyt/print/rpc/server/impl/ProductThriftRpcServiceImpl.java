@@ -5,7 +5,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.youguu.core.util.PageHolder;
 import com.yyt.print.parser.PageHolderSerializer;
-import com.yyt.print.product.dao.IUserShopDAO;
 import com.yyt.print.product.pojo.*;
 import com.yyt.print.product.query.MallGoodsQuery;
 import com.yyt.print.product.query.UserShopQuery;
@@ -15,7 +14,6 @@ import org.apache.thrift.TException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -224,5 +222,55 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     @Override
     public String getMallGoodsSetByProduct(int productId) throws TException {
         return JSON.toJSONString(mallProductService.getMallGoodsSetByProduct(productId));
+    }
+
+    @Override
+    public int saveFareMould(String fareMould) throws TException {
+        return mallProductService.saveFareMould(JSON.parseObject(fareMould,FareMould.class));
+    }
+
+    @Override
+    public String getFareMould(int id) throws TException {
+        return JSON.toJSONString(mallProductService.getFareMould(id));
+    }
+
+    @Override
+    public int updateFareMould(String fareMould) throws TException {
+        return mallProductService.updateFareMould(JSON.parseObject(fareMould,FareMould.class));
+    }
+
+    @Override
+    public int delFareMould(int id) throws TException {
+        return mallProductService.delFareMould(id);
+    }
+
+    @Override
+    public String findFareMoulds(int shopId) throws TException {
+        return JSON.toJSONString(mallProductService.findFareMoulds(shopId));
+    }
+
+    @Override
+    public int saveStoreLocation(String storeLocation) throws TException {
+        return mallProductService.saveStoreLocation(JSON.parseObject(storeLocation,StoreLocation.class));
+    }
+
+    @Override
+    public String getStoreLocation(int id) throws TException {
+        return JSON.toJSONString(mallProductService.getStoreLocation(id));
+    }
+
+    @Override
+    public int delStoreLocation(int id) throws TException {
+        return mallProductService.delStoreLocation(id);
+    }
+
+    @Override
+    public int updateStoreLocation(String storeLocation) throws TException {
+        return mallProductService.updateStoreLocation(JSON.parseObject(storeLocation,StoreLocation.class));
+    }
+
+    @Override
+    public String findStoreLocations(int shopId) throws TException {
+        return JSON.toJSONString(mallProductService.findStoreLocations(shopId));
     }
 }
