@@ -1,9 +1,11 @@
 package com.yyt.print.product.service.impl;
 
 import com.youguu.core.pojo.Response;
+import com.yyt.print.product.dao.IMallProductCategoryDAO;
 import com.yyt.print.product.dao.IMallProductCategoryProDAO;
 import com.yyt.print.product.dao.IMallProductCategoryProValueDAO;
 import com.yyt.print.product.pojo.CategoryPro;
+import com.yyt.print.product.pojo.MallProductCategory;
 import com.yyt.print.product.pojo.MallProductCategoryPro;
 import com.yyt.print.product.pojo.MallProductCategoryProValue;
 import com.yyt.print.product.service.ICategoryProService;
@@ -28,32 +30,44 @@ public class CategoryProServiceImpl implements ICategoryProService {
     @Resource
     private IMallProductCategoryProValueDAO mallProductCategoryProValueDAO;
 
+    @Resource
+    private IMallProductCategoryDAO mallProductCategoryDAO;
+
+
     @Override
     public List<CategoryPro> findProValueByClassId(int id) {
 
         List<CategoryPro> list = new ArrayList<>();
 
-        List<MallProductCategoryPro> pros = mallProductCategoryProDAO.findByClass(id);
-
-        if( pros!=null && pros.size()>0){
-            List<MallProductCategoryProValue> values =  mallProductCategoryProValueDAO.findByClass(id);
-            Map<Integer,List<MallProductCategoryProValue>> map = new HashMap<>();
-            for(MallProductCategoryProValue value:values){
-                List<MallProductCategoryProValue> l = map.get(value.getClassProId());
-                if(l==null){
-                    l = new ArrayList<>();
-                    map.put(value.getClassProId(),l);
+        int classId = id;
+        while (classId>0){
+            MallProductCategory mpc =mallProductCategoryDAO.getMallProductCategory(classId);
+            List<MallProductCategoryPro> pros = mallProductCategoryProDAO.findByClass(classId);
+            if( pros!=null && pros.size()>0){
+                List<MallProductCategoryProValue> values =  mallProductCategoryProValueDAO.findByClass(classId);
+                Map<Integer,List<MallProductCategoryProValue>> map = new HashMap<>();
+                for(MallProductCategoryProValue value:values){
+                    List<MallProductCategoryProValue> l = map.get(value.getClassProId());
+                    if(l==null){
+                        l = new ArrayList<>();
+                        map.put(value.getClassProId(),l);
+                    }
+                    l.add(value);
                 }
-                l.add(value);
-            }
 
-            for(MallProductCategoryPro pro:pros){
-                CategoryPro cp = new CategoryPro();
-                cp.setPro(pro);
-                cp.setValues(map.get(pro.getId()));
-                list.add(cp);
+                for(MallProductCategoryPro pro:pros){
+                    CategoryPro cp = new CategoryPro();
+                    cp.setPro(pro);
+                    cp.setValues(map.get(pro.getId()));
+                    list.add(cp);
+                }
             }
+            classId = mpc.getParentId();
         }
+
+
+
+
 
         return list;
     }

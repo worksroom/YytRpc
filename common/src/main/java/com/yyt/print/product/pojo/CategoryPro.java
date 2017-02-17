@@ -4,6 +4,8 @@ import java.util.List;
 
 /**
  * Created by lenovo on 2017/2/7.
+ *
+ * 分类属性和分类属性值
  */
 public class CategoryPro {
 

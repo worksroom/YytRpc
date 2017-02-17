@@ -16,6 +16,11 @@ public class MallProductCategoryPro {
      * 3 输入
      */
     private int type;
+    /**
+     * 0 单选
+     * 1 多选
+     */
+    private int isMultiple;
     private int isNeed;
     private int isSearch;
     private int rank;
@@ -92,5 +97,13 @@ public class MallProductCategoryPro {
 
     public void setIsSearch(int isSearch) {
         this.isSearch = isSearch;
+    }
+
+    public int getIsMultiple() {
+        return isMultiple;
+    }
+
+    public void setIsMultiple(int isMultiple) {
+        this.isMultiple = isMultiple;
     }
 }

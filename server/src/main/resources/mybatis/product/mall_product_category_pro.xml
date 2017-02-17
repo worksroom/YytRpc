@@ -6,6 +6,7 @@
         <result property="name" column="name"/>
         <result property="classId" column="class_id"/>
         <result property="type" column="type"/>
+        <result property="isMultiple" column="is_mltiple"/>
         <result property="isNeed" column="is_need"/>
         <result property="isSearch" column="is_search"/>
         <result property="rank" column="rank"/>
@@ -15,16 +16,16 @@
 
     <insert id="insert" parameterType="MallProductCategoryPro">
         insert into mall_product_category_pro
-        (name,class_id,type,is_need,is_search,rank,update_time,create_time)
+        (name,class_id,type,is_mltiple,is_need,is_search,rank,update_time,create_time)
         VALUES
-        (#{name},#{classId},#{type},#{isNeed},#{isSearch},#{rank},#{updateTime},#{createTime})
+        (#{name},#{classId},#{type},#{isMultiple},#{isNeed},#{isSearch},#{rank},#{updateTime},#{createTime})
         <selectKey resultType="int" keyProperty="id">
             select LAST_INSERT_ID() AS id
         </selectKey>
     </insert>
 
     <update id="update" parameterType="MallProductCategoryPro">
-        update mall_product_category_pro set name=#{name} , type=#{type},is_need=#{isNeed},is_search=#{isSearch},
+        update mall_product_category_pro set name=#{name} ,is_multiple=#{isMultiple}, type=#{type},is_need=#{isNeed},is_search=#{isSearch},
                                              rank=#{rank}, update_time=#{updateTime}
         where id=#{id}
     </update>
@@ -35,9 +36,11 @@
 
 
     <select id="findByClass" parameterType="int"  resultMap="MallProductCategoryProMap">
-        select id,name,class_id,type,is_need,is_search,rank,update_time,create_time
+        select id,name,class_id,type,is_multiple,is_need,is_search,rank,update_time,create_time
         from mall_product_category_pro where class_id = #{classId} order by rank
     </select>
+
+
 
 
 

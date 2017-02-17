@@ -102,6 +102,9 @@ CREATE TABLE `mall_product_ext` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+
+alter table `yyt`.`mall_product_category_pro` 
+   add column `is_multiple` int(11) DEFAULT 0 after `type`;
 ```
 
 
