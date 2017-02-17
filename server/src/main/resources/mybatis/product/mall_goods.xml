@@ -62,10 +62,10 @@
             <if test="name != null and name !=''">
                 AND name =#{name}
             </if>
-            <if test="classId != null and classId !=''">
+            <if test="classId != null and classId >0">
                 AND class_id =#{classId}
             </if>
-            <if test="shopId != null and shopId !=''">
+            <if test="shopId != null and shopId >0">
                 AND shop_id =#{shopId}
             </if>
             <if test="shopName != null and shopName !=''">
