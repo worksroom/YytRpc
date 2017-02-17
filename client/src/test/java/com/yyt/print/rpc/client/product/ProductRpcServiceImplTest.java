@@ -1,6 +1,5 @@
 package com.yyt.print.rpc.client.product;
 
-import com.youguu.core.pojo.Response;
 import com.youguu.core.util.PageHolder;
 import com.yyt.print.product.pojo.*;
 import com.yyt.print.product.query.MallGoodsQuery;
@@ -11,8 +10,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class ProductRpcServiceImplTest {
 
@@ -236,7 +233,19 @@ public class ProductRpcServiceImplTest {
         good.setUpdateTime(new Date());
         return good;
     }
+    private List<MallProductExt> getMallProductExts(){
+        List<MallProductExt> list = new ArrayList<>();
+        MallProductExt mpe = new MallProductExt();
+        mpe.setType(0);
+        mpe.setThridId(2);
+        list.add(mpe);
 
+        mpe = new MallProductExt();
+        mpe.setType(1);
+        mpe.setThridId(2);
+        list.add(mpe);
+        return list;
+    }
     private MallProductSet getMallProductSet(){
         MallProductSet set = new MallProductSet();
         MallProduct product = new MallProduct();
@@ -274,14 +283,14 @@ public class ProductRpcServiceImplTest {
     public void shelves(){
         List<MallProductSet> list = new ArrayList<>();
         list.add(getMallProductSet());
-        productRpcService.shelves(getMallGoods(),list);
+        productRpcService.shelves(getMallGoods(),list,getMallProductExts());
     }
 
     @Test
     public void goodAddProduct(){
         List<MallProductSet> list = new ArrayList<>();
         list.add(getMallProductSet());
-        productRpcService.goodAddProduct(10,list);
+        productRpcService.goodAddProduct(10,list,getMallProductExts());
     }
 
     @Test

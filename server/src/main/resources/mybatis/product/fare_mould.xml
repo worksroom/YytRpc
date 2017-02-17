@@ -21,7 +21,7 @@
         </selectKey>
     </insert>
     <update id="update" parameterType="FareMould">
-        update fare_mould set shop_id = #{shopId},name = #{name},type = #{type},price = #{price},num = #{num},create_time = #{createTime},update_time = #{updateTime}where id=#{id}
+        update fare_mould set shop_id = #{shopId},name = #{name},type = #{type},price = #{price},num = #{num},create_time = #{createTime},update_time = #{updateTime} where id=#{id}
     </update>
     <select id="select" parameterType="int" resultMap="FareMouldMap">
         select id ,  shop_id, name, type, price, num, create_time, update_time from fare_mould where id=#{id}

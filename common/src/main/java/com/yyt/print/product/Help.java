@@ -1,6 +1,6 @@
 package com.yyt.print.product;
 
-import com.yyt.print.product.pojo.MallProductExt;
+import com.yyt.print.product.pojo.StoreLocation;
 
 import java.lang.reflect.Field;
 
@@ -101,7 +101,7 @@ public class Help {
                 sb.append(",");
             }
         }
-        sb.append("where id=#{id}").append(LINE);
+        sb.append(" where id=#{id}").append(LINE);
         sb.append("</update>").append(LINE);
         return sb.toString();
 
@@ -188,7 +188,7 @@ public class Help {
     }
 
     public static void main(String[] args) {
-        Class clazz = MallProductExt.class;
+        Class clazz = StoreLocation.class;
         System.out.println(getXML(clazz));
         System.out.println(getDAO(clazz));
         System.out.println(getDAOImpl(clazz));

@@ -27,7 +27,19 @@ public class MallProductServiceTest extends BaseTestClass {
         good.setUpdateTime(new Date());
         return good;
     }
+    private List<MallProductExt> getMallProductExts(){
+        List<MallProductExt> list = new ArrayList<>();
+        MallProductExt mpe = new MallProductExt();
+        mpe.setType(0);
+        mpe.setThridId(2);
+        list.add(mpe);
 
+        mpe = new MallProductExt();
+        mpe.setType(1);
+        mpe.setThridId(2);
+        list.add(mpe);
+        return list;
+    }
     private MallProductSet getMallProductSet(){
         MallProductSet set = new MallProductSet();
         MallProduct product = new MallProduct();
@@ -65,14 +77,14 @@ public class MallProductServiceTest extends BaseTestClass {
     public void shelves(){
         List<MallProductSet> list = new ArrayList<>();
         list.add(getMallProductSet());
-        service.shelves(getBean(),list);
+        service.shelves(getBean(),list,getMallProductExts());
     }
 
     @Test
     public void goodAddProduct(){
         List<MallProductSet> list = new ArrayList<>();
         list.add(getMallProductSet());
-        service.goodAddProduct(9,list);
+        service.goodAddProduct(9,list,getMallProductExts());
     }
 
     @Test
