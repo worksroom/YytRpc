@@ -105,6 +105,9 @@ CREATE TABLE `mall_product_ext` (
 
 alter table `yyt`.`mall_product_category_pro` 
    add column `is_multiple` int(11) DEFAULT 0 after `type`;
+
+alter table `yyt`.`mall_product_category_pro` 
+   add column `is_sku` int(4) DEFAULT '0' NULL COMMENT '是否销售属性 0 非 1是' after `is_multiple`;
 ```
 
 

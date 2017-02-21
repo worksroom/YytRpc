@@ -24,6 +24,11 @@ public class MallProductCategoryPro {
     private int isNeed;
     private int isSearch;
     private int rank;
+    /**
+     * 0 非销售属性
+     * 1 销售属性
+     */
+    private int isSku;
     private Date createTime;
     private Date updateTime;
 
@@ -105,5 +110,13 @@ public class MallProductCategoryPro {
 
     public void setIsMultiple(int isMultiple) {
         this.isMultiple = isMultiple;
+    }
+
+    public int getIsSku() {
+        return isSku;
+    }
+
+    public void setIsSku(int isSku) {
+        this.isSku = isSku;
     }
 }
