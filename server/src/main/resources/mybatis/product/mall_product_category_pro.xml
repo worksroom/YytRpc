@@ -6,7 +6,7 @@
         <result property="name" column="name"/>
         <result property="classId" column="class_id"/>
         <result property="type" column="type"/>
-        <result property="isMultiple" column="is_mltiple"/>
+        <result property="isMultiple" column="is_multiple"/>
         <result property="isNeed" column="is_need"/>
         <result property="isSku" column="is_sku"/>
         <result property="isSearch" column="is_search"/>
@@ -17,7 +17,7 @@
 
     <insert id="insert" parameterType="MallProductCategoryPro">
         insert into mall_product_category_pro
-        (name,class_id,type,is_sku,is_mltiple,is_need,is_search,rank,update_time,create_time)
+        (name,class_id,type,is_sku,is_multiple,is_need,is_search,rank,update_time,create_time)
         VALUES
         (#{name},#{classId},#{type},#{isSku},#{isMultiple},#{isNeed},#{isSearch},#{rank},#{updateTime},#{createTime})
         <selectKey resultType="int" keyProperty="id">
