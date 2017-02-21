@@ -20,6 +20,9 @@ public class MallProductCategory {
     private Date createTime;
     private Date updateTime;
 
+    //extends
+    private String parentName;
+
     public int getId() {
         return id;
     }
@@ -90,5 +93,13 @@ public class MallProductCategory {
 
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
     }
 }
