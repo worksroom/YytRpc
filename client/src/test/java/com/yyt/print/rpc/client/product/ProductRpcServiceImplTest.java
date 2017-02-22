@@ -305,4 +305,26 @@ public class ProductRpcServiceImplTest {
         System.out.println(set);
 
     }
+
+    private ProductEvaluateRecord getProductEvaluateRecord(){
+        ProductEvaluateRecord record = new ProductEvaluateRecord();
+        record.setGoodsId(1);
+        record.setBuyUserId(224);
+        record.setContent("不错呀");
+        record.setDes("tinghao");
+        record.setOrderId("099018981");
+        record.setStar(5);
+        record.setSellUserId(23);
+        return record;
+    }
+
+    @Test
+    public void commentGoods(){
+        productRpcService.commentGoods(getProductEvaluateRecord());
+    }
+
+    @Test
+    public void findProductEvaluateList(){
+        System.out.println(productRpcService.findProductEvaluateList(1,1000,10));
+    }
 }

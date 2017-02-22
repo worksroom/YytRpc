@@ -300,6 +300,12 @@ service ProductThriftRpcService {
      */
     string findStoreLocations(1:i32 shopId);
 
+    /** 评论货品 **/
+    i32 commentGoods(1:string comment);
+
+    /** 查询货品评论 **/
+    string findProductEvaluateList(1:i32 goodIds,2:i32 seq,3:i32 num);
+
 }
 
 /**

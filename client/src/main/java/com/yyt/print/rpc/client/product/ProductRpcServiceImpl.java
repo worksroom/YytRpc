@@ -442,4 +442,24 @@ public class ProductRpcServiceImpl implements IProductRpcService {
         }
         return null;
     }
+
+    @Override
+    public int commentGoods(ProductEvaluateRecord pvr) {
+        try {
+            return getClient().commentGoods(JSON.toJSONString(pvr));
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public List<ProductEvaluateRecord> findProductEvaluateList(int goodIds, int seq, int num) {
+        try {
+            return JSON.parseArray(getClient().findProductEvaluateList(goodIds, seq, num), ProductEvaluateRecord.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
 }

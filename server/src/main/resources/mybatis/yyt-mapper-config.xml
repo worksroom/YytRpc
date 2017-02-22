@@ -40,6 +40,8 @@
 		<typeAlias alias="StoreLocation" type="com.yyt.print.product.pojo.StoreLocation" />
 		<typeAlias alias="FareMould" type="com.yyt.print.product.pojo.FareMould" />
 		<typeAlias alias="MallProductExt" type="com.yyt.print.product.pojo.MallProductExt" />
+		<typeAlias alias="ProductEvaluateRecord" type="com.yyt.print.product.pojo.ProductEvaluateRecord" />
+		<typeAlias alias="ProductEvaluate" type="com.yyt.print.product.pojo.ProductEvaluate" />
 
 		<!-- 店铺 -->
 		<typeAlias alias="UserShop" type="com.yyt.print.product.pojo.UserShop" />
@@ -91,6 +93,8 @@
 		<mapper resource="mybatis/product/store_location.xml" />
 		<mapper resource="mybatis/product/fare_mould.xml" />
 		<mapper resource="mybatis/product/mall_product_ext.xml" />
+		<mapper resource="mybatis/product/product_evaluate.xml" />
+		<mapper resource="mybatis/product/product_evaluate_record.xml" />
 
 		<!--店铺-->
 		<mapper resource="mybatis/product/user_shop.xml" />

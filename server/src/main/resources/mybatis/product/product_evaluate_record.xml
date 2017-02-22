@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductEvaluateRecord">
+    <resultMap type="ProductEvaluateRecord" id="ProductEvaluateRecordMap">
+        <result property="id" column="id"/>
+        <result property="goodsId" column="goods_id"/>
+        <result property="sellUserId" column="sell_user_id"/>
+        <result property="buyUserId" column="buy_user_id"/>
+        <result property="orderId" column="order_id"/>
+        <result property="des" column="des"/>
+        <result property="star" column="star"/>
+        <result property="content" column="content"/>
+        <result property="img" column="img"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+    <insert id="insert" parameterType="ProductEvaluateRecord">
+        insert into product_evaluate_record (
+        goods_id, sell_user_id, buy_user_id, order_id, des, star, content, img, create_time)
+        VALUES
+        ( #{goodsId}, #{sellUserId}, #{buyUserId}, #{orderId}, #{des}, #{star}, #{content}, #{img}, #{createTime})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+    <update id="update" parameterType="ProductEvaluateRecord">
+        update product_evaluate_record set goods_id = #{goodsId},sell_user_id = #{sellUserId},buy_user_id = #{buyUserId},order_id = #{orderId},des = #{des},star = #{star},content = #{content},img = #{img},create_time = #{createTime} where id=#{id}
+    </update>
+    <select id="select" parameterType="int" resultMap="ProductEvaluateRecordMap">
+        select id ,  goods_id, sell_user_id, buy_user_id, order_id, des, star, content, img, create_time from product_evaluate_record where id=#{id}
+    </select>
+    <delete id="delete" parameterType="int">
+        delete from product_evaluate_record where id=#{id}
+    </delete>
+
+
+    <select id="selectByinc" parameterType="map" resultMap="ProductEvaluateRecordMap">
+        select id ,  goods_id, sell_user_id, buy_user_id, order_id, des, star, content, img, create_time from
+        product_evaluate_record where goods_id=#{goodsId} and id &lt; #{seq} order by id desc limit #{num}
+    </select>
+</mapper>

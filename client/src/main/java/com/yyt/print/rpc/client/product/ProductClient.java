@@ -829,4 +829,45 @@ public class ProductClient implements ProductThriftRpcService.Iface {
             }
         }
     }
+
+
+    @Override
+    public int commentGoods(String comment) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(ProductThriftRpcService.Client.class).commentGoods(comment);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public String findProductEvaluateList(int goodIds, int seq, int num) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(ProductThriftRpcService.Client.class).findProductEvaluateList(goodIds, seq, num);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
 }

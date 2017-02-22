@@ -40,6 +40,9 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     @Resource
     private IMallProductService mallProductService;
 
+    @Resource
+    private IProductEvaluateService iProductEvaluateService;
+
     @Override
     public String queryAllMallProductCategory() throws TException {
         List<MallProductCategory> list = mallProductCategoryService.queryAllMallProductCategory();
@@ -274,5 +277,15 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     @Override
     public String findStoreLocations(int shopId) throws TException {
         return JSON.toJSONString(mallProductService.findStoreLocations(shopId));
+    }
+
+    @Override
+    public int commentGoods(String comment) throws TException {
+        return iProductEvaluateService.commentGoods(JSON.parseObject(comment,ProductEvaluateRecord.class));
+    }
+
+    @Override
+    public String findProductEvaluateList(int goodIds, int seq, int num) throws TException {
+        return JSON.toJSONString(iProductEvaluateService.findProductEvaluateList(goodIds,seq,num));
     }
 }

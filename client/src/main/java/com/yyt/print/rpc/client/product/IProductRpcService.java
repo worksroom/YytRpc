@@ -277,4 +277,20 @@ public interface IProductRpcService {
     int delFareMould(int id);
 
     List<FareMould> findFareMoulds(int shopId);
+
+
+    /**
+     * 增加一条评论
+     * @return
+     */
+    int commentGoods(ProductEvaluateRecord pvr);
+
+    /**
+     * 查询货品的评论
+     * @param goodIds
+     * @param seq
+     * @param num
+     * @return
+     */
+    List<ProductEvaluateRecord> findProductEvaluateList(int goodIds,int seq,int num);
 }
