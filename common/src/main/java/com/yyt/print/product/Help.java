@@ -1,6 +1,6 @@
 package com.yyt.print.product;
 
-import com.yyt.print.product.pojo.ProductEvaluateRecord;
+import com.yyt.print.product.pojo.ShopUser;
 
 import java.lang.reflect.Field;
 
@@ -188,7 +188,7 @@ public class Help {
     }
 
     public static void main(String[] args) {
-        Class clazz = ProductEvaluateRecord.class;
+        Class clazz = ShopUser.class;
         System.out.println(getXML(clazz));
         System.out.println(getDAO(clazz));
         System.out.println(getDAOImpl(clazz));

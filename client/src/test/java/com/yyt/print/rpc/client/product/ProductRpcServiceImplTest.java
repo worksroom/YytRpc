@@ -327,4 +327,33 @@ public class ProductRpcServiceImplTest {
     public void findProductEvaluateList(){
         System.out.println(productRpcService.findProductEvaluateList(1,1000,10));
     }
+
+    private ShopUser getShopUser(){
+        ShopUser su = new ShopUser();
+        su.setUserId(6);
+        su.setShopId(1);
+        su.setType(2);
+        return su;
+    }
+
+    @Test
+    public void addShopUser(){
+        productRpcService.addShopUser(getShopUser());
+    }
+
+    @Test
+    public void getShopIdFromUid(){
+        System.out.println(productRpcService.getShopIdFromUid(2));
+    }
+
+    @Test
+    public void getCreateShopUid(){
+        System.out.println(productRpcService.getCreateShopUid(1));
+    }
+
+    @Test
+    public void findShopUids(){
+        System.out.println(productRpcService.findShopUids(1));
+    }
+
 }

@@ -288,4 +288,24 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     public String findProductEvaluateList(int goodIds, int seq, int num) throws TException {
         return JSON.toJSONString(iProductEvaluateService.findProductEvaluateList(goodIds,seq,num));
     }
+
+    @Override
+    public int addShopUser(String shopUser) throws TException {
+        return mallProductService.addShopUser(JSON.parseObject(shopUser,ShopUser.class));
+    }
+
+    @Override
+    public String getShopIdFromUid(int uid) throws TException {
+        return JSON.toJSONString(mallProductService.getShopIdFromUid(uid));
+    }
+
+    @Override
+    public String getCreateShopUid(int shopId) throws TException {
+        return JSON.toJSONString(mallProductService.getCreateShopUid(shopId));
+    }
+
+    @Override
+    public String findShopUids(int shopId) throws TException {
+        return JSON.toJSONString(mallProductService.findShopUids(shopId));
+    }
 }

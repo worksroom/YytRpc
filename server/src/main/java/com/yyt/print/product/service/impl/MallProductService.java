@@ -34,6 +34,9 @@ public class MallProductService implements IMallProductService {
     @Resource
     private IMallProductExtDAO mallProductExtDAO;
 
+    @Resource
+    private IShopUserDAO shopUserDAO;
+
     @Transactional
     @Override
     public int shelves(MallGoods mallGoods, List<MallProductSet> list,List<MallProductExt> exts) {
@@ -194,5 +197,25 @@ public class MallProductService implements IMallProductService {
     @Override
     public List<FareMould> findFareMoulds(int shopId) {
         return fareMouldDAO.findFareMoulds(shopId);
+    }
+
+    @Override
+    public int addShopUser(ShopUser shopUser) {
+        return shopUserDAO.saveShopUser(shopUser);
+    }
+
+    @Override
+    public ShopUser getShopIdFromUid(int uid) {
+        return shopUserDAO.getShopIdFromUid(uid);
+    }
+
+    @Override
+    public ShopUser getCreateShopUid(int shopId) {
+        return shopUserDAO.getCreateShopUid(shopId);
+    }
+
+    @Override
+    public List<ShopUser> findShopUids(int shopId) {
+        return shopUserDAO.findShopUids(shopId);
     }
 }

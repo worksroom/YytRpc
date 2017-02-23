@@ -462,4 +462,44 @@ public class ProductRpcServiceImpl implements IProductRpcService {
         }
         return null;
     }
+
+    @Override
+    public int addShopUser(ShopUser shopUser) {
+        try {
+            return getClient().addShopUser(JSON.toJSONString(shopUser));
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public ShopUser getShopIdFromUid(int uid) {
+        try {
+            return JSON.parseObject(getClient().getShopIdFromUid(uid), ShopUser.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public ShopUser getCreateShopUid(int shopId) {
+        try {
+            return JSON.parseObject(getClient().getCreateShopUid(shopId), ShopUser.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public List<ShopUser> findShopUids(int shopId) {
+        try {
+            return JSON.parseArray(getClient().findShopUids(shopId), ShopUser.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
 }

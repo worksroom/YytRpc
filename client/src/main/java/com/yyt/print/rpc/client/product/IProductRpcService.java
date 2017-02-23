@@ -293,4 +293,34 @@ public interface IProductRpcService {
      * @return
      */
     List<ProductEvaluateRecord> findProductEvaluateList(int goodIds,int seq,int num);
+
+
+    /**
+     * 店铺设置用户
+     * @param shopUser
+     * @return
+     */
+    int addShopUser(ShopUser shopUser);
+
+    /**
+     * 获取用户的店铺id
+     * @param uid
+     * @return
+     */
+    ShopUser getShopIdFromUid(int uid);
+
+    /**
+     * 获取店铺的创建者
+     * @param shopId
+     * @return
+     */
+    ShopUser getCreateShopUid(int shopId);
+
+    /**
+     * 获取店铺的所有员工
+     * @param shopId
+     * @return
+     */
+    List<ShopUser> findShopUids(int shopId);
+
 }

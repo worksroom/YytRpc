@@ -112,7 +112,21 @@ alter table `yyt`.`mall_product_category_pro`
 
 alter table `yyt`.`product_evaluate_record` 
    change `id` `id` int(11) NOT NULL AUTO_INCREMENT,
-   add primary key(`id`)
+   add primary key(`id`);
+
+
+
+
+   CREATE TABLE `shop_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `shop_id` int(11) NOT NULL ,
+  `user_id` int(11) NOT NULL ,
+  `type` int(11) NOT NULL ,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE INDEX idx_shopid_userid ON shop_user(shop_id,user_id);
 ```
 
 

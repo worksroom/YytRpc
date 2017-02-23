@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ShopUser">
+    <resultMap type="ShopUser" id="ShopUserMap">
+        <result property="id" column="id"/>
+        <result property="shopId" column="shop_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="type" column="type"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+    <insert id="insert" parameterType="ShopUser">
+        insert into shop_user (
+        shop_id, user_id, type, create_time)
+        VALUES
+        ( #{shopId}, #{userId}, #{type}, #{createTime})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+    <update id="update" parameterType="ShopUser">
+        update shop_user set shop_id = #{shopId},user_id = #{userId},type = #{type},create_time = #{createTime} where id=#{id}
+    </update>
+    <select id="select" parameterType="int" resultMap="ShopUserMap">
+        select id ,  shop_id, user_id, type, create_time from shop_user where id=#{id}
+    </select>
+
+    <select id="selectByUid" parameterType="int" resultMap="ShopUserMap">
+        select id ,  shop_id, user_id, type, create_time from shop_user where user_id=#{userId}
+    </select>
+
+    <select id="selectCreate" parameterType="int" resultMap="ShopUserMap">
+        select id ,  shop_id, user_id, type, create_time from shop_user where shop_id=#{shopId} and type=1
+    </select>
+
+    <select id="selectByShopId" parameterType="int" resultMap="ShopUserMap">
+        select id ,  shop_id, user_id, type, create_time from shop_user where shop_id=#{shopId}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from shop_user where id=#{id}
+    </delete>
+</mapper>
