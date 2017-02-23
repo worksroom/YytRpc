@@ -306,6 +306,34 @@ service ProductThriftRpcService {
     /** 查询货品评论 **/
     string findProductEvaluateList(1:i32 goodIds,2:i32 seq,3:i32 num);
 
+    /**
+     * 店铺设置用户
+     * @param shopUser
+     * @return
+     */
+    i32 addShopUser(1:string shopUser);
+
+    /**
+     * 获取用户的店铺id
+     * @param uid
+     * @return
+     */
+    string getShopIdFromUid(1:i32 uid);
+
+    /**
+     * 获取店铺的创建者
+     * @param shopId
+     * @return
+     */
+    string getCreateShopUid(1:i32 shopId);
+
+    /**
+     * 获取店铺的所有员工
+     * @param shopId
+     * @return
+     */
+    string findShopUids(1:i32 shopId);
+
 }
 
 /**
@@ -411,4 +439,6 @@ service UserThriftRpcService {
     i32 saveUserErp(1:i32 erpUid, 2:string phone);
 
     string findUserErpByPhone(1:string phone);
+
+
 }
