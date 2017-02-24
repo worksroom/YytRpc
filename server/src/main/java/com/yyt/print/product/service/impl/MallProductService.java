@@ -55,7 +55,6 @@ public class MallProductService implements IMallProductService {
             for(MallProductSalePro  pro:mallProductSet.getSalePro()){
                 pro.setGoodsId(mallGoods.getId());
                 pro.setProductId(product.getId());
-                pro.setClassProId(mallGoods.getClassId());
 
             }
             result = mallProductSaleProDAO.batchSaveMallProductSalePro(mallProductSet.getSalePro());
@@ -91,7 +90,6 @@ public class MallProductService implements IMallProductService {
                 for(MallProductSalePro  pro:mallProductSet.getSalePro()){
                     pro.setGoodsId(mallGoods.getId());
                     pro.setProductId(product.getId());
-                    pro.setClassProId(mallGoods.getClassId());
 
                 }
                 result = mallProductSaleProDAO.batchSaveMallProductSalePro(mallProductSet.getSalePro());
