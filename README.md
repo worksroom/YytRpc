@@ -129,4 +129,9 @@ alter table `yyt`.`product_evaluate_record`
 CREATE INDEX idx_shopid_userid ON shop_user(shop_id,user_id);
 ```
 
+ALTER TABLE `mall_goods`
+MODIFY COLUMN `img`  varchar(3000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片的结果集\r\n            {[\r\n               img\r\n            ]}' AFTER `update_time`;
+
+
+
 
