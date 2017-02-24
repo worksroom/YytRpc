@@ -13,6 +13,7 @@
         (user_id,session,create_time,expire_time)
         VALUES
         (#{userId},#{session},#{createTime},#{expireTime})
+        ON DUPLICATE KEY UPDATE session=#{session}, create_time=#{createTime}, expire_time=#{expireTime}
     </insert>
 
     <select id="getSession" parameterType="Map" resultMap="UserSessionResultMap">

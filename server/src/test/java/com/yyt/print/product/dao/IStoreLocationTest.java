@@ -13,10 +13,10 @@ public class IStoreLocationTest extends BaseTestClass {
 
     private StoreLocation getBean(){
         StoreLocation s = new StoreLocation();
-        s.setfCode(1);
-        s.setfName("北京");
-        s.setsCode(12);
-        s.setsName("朝阳区");
+        s.setFCode(1);
+        s.setFName("北京");
+        s.setSCode(12);
+        s.setSName("朝阳区");
         s.setShopId(1);
         return s;
     }
@@ -40,7 +40,7 @@ public class IStoreLocationTest extends BaseTestClass {
     public void updateStoreLocation(){
         StoreLocation s = this.getBean();
         s.setId(2);
-        s.setsName("海淀区");
+        s.setSName("海淀区");
         dao.updateStoreLocation(s);
     }
 
