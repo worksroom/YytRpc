@@ -31,35 +31,35 @@ public class StoreLocation {
         this.shopId = shopId;
     }
 
-    public int getfCode() {
+    public int getFCode() {
         return fCode;
     }
 
-    public void setfCode(int fCode) {
+    public void setFCode(int fCode) {
         this.fCode = fCode;
     }
 
-    public String getfName() {
+    public String getFName() {
         return fName;
     }
 
-    public void setfName(String fName) {
+    public void setFName(String fName) {
         this.fName = fName;
     }
 
-    public int getsCode() {
+    public int getSCode() {
         return sCode;
     }
 
-    public void setsCode(int sCode) {
+    public void setSCode(int sCode) {
         this.sCode = sCode;
     }
 
-    public String getsName() {
+    public String getSName() {
         return sName;
     }
 
-    public void setsName(String sName) {
+    public void setSName(String sName) {
         this.sName = sName;
     }
 
@@ -78,4 +78,5 @@ public class StoreLocation {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
 }
