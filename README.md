@@ -142,4 +142,9 @@ CREATE TABLE `mall_good_base_pro` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 ```
 
+ALTER TABLE `mall_goods`
+MODIFY COLUMN `img`  varchar(3000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片的结果集\r\n            {[\r\n               img\r\n            ]}' AFTER `update_time`;
+
+
+
 
