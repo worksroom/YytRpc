@@ -127,6 +127,19 @@ alter table `yyt`.`product_evaluate_record`
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE INDEX idx_shopid_userid ON shop_user(shop_id,user_id);
+
+
+
+
+CREATE TABLE `mall_good_base_pro` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `goods_id` int(11) NOT NULL DEFAULT 0,
+  `class_pro_id` int(11) NOT NULL DEFAULT 0,
+  `class_pro_value_id` int(11) NOT NULL DEFAULT 0,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 ```
 
 
