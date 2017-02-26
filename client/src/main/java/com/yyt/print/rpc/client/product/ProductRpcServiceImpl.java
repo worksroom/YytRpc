@@ -502,4 +502,15 @@ public class ProductRpcServiceImpl implements IProductRpcService {
         }
         return null;
     }
+
+
+    @Override
+    public int updateSku(MallProduct mallProduct) {
+        try {
+            return getClient().updateSku(JSON.toJSONString(mallProduct));
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
 }

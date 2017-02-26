@@ -313,7 +313,7 @@ public class ProductRpcServiceImplTest {
         list.add(getMallProductSet());
         MallGoodsSet mallGoodsSet = new MallGoodsSet();
         MallGoods goods = getMallGoods();
-        goods.setId(9);
+        goods.setId(14);
         mallGoodsSet.setMallGoods(goods);
         mallGoodsSet.setList(list);
         mallGoodsSet.setExts(getMallProductExts());
@@ -384,4 +384,11 @@ public class ProductRpcServiceImplTest {
         System.out.println(productRpcService.findShopUids(1));
     }
 
+    @Test
+    public void updateSku(){
+        MallProduct mallProduct = new MallProduct();
+        mallProduct.setId(12);
+        mallProduct.setPrice(199.99);
+        productRpcService.updateSku(mallProduct);
+    }
 }

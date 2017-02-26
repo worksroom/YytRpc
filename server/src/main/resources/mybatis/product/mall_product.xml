@@ -57,6 +57,15 @@
         where id=#{id}
     </update>
 
+    <update id="updateBasic" parameterType="MallProduct">
+        update mall_product set price=#{price},
+        sale_price=#{salePrice},since_price=#{sincePrice},store_num=#{storeNum},
+        update_time=#{updateTime}
+        where id=#{id}
+    </update>
+
+
+
     <update id="updateStore" parameterType="map">
         update mall_product set store_num = store_num + #{num} where id=#{id}
     </update>

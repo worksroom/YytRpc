@@ -47,6 +47,12 @@ public interface IMallProductDAO {
      */
     int updateSellNum(int id, int num);
 
+    /**
+     * 修改价格 库存基本属性
+     * @param mallProduct
+     * @return
+     */
+    int updateBasic(MallProduct mallProduct);
 
 
 }

@@ -117,4 +117,11 @@ public interface IMallProductService {
      */
     List<ShopUser> findShopUids(int shopId);
 
+    /**
+     * 修改sku基本属性(价格 和 库存)
+     * @param mallProduct
+     * @return
+     */
+    int updateSku(MallProduct mallProduct);
+
 }

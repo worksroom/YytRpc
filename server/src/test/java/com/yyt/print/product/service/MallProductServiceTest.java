@@ -107,7 +107,7 @@ public class MallProductServiceTest extends BaseTestClass {
         list.add(getMallProductSet());
         MallGoodsSet mallGoodsSet = new MallGoodsSet();
         MallGoods goods = getBean();
-        goods.setId(9);
+        goods.setId(13);
         mallGoodsSet.setMallGoods(goods);
         mallGoodsSet.setList(list);
         mallGoodsSet.setExts(getMallProductExts());
@@ -117,7 +117,7 @@ public class MallProductServiceTest extends BaseTestClass {
 
     @Test
     public void getMallGoodsSetByGood(){
-        MallGoodsSet set = service.getMallGoodsSetByGood(9);
+        MallGoodsSet set = service.getMallGoodsSetByGood(13);
         System.out.println(set);
         String json = JSON.toJSONString(set);
         System.out.println(json);
@@ -125,6 +125,14 @@ public class MallProductServiceTest extends BaseTestClass {
         System.out.println(set1);
 
 
+    }
+
+    @Test
+    public void updateSku(){
+        MallProduct mallProduct = new MallProduct();
+        mallProduct.setId(12);
+        mallProduct.setPrice(99.99);
+        service.updateSku(mallProduct);
     }
 
     @Test

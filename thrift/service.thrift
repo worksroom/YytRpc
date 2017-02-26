@@ -334,6 +334,8 @@ service ProductThriftRpcService {
      */
     string findShopUids(1:i32 shopId);
 
+    i32 updateSku(1:string sku);
+
 }
 
 /**

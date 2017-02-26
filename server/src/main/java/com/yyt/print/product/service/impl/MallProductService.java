@@ -244,4 +244,9 @@ public class MallProductService implements IMallProductService {
     public List<ShopUser> findShopUids(int shopId) {
         return shopUserDAO.findShopUids(shopId);
     }
+
+    @Override
+    public int updateSku(MallProduct mallProduct) {
+        return mallProductDAO.updateBasic(mallProduct);
+    }
 }

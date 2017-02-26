@@ -950,4 +950,24 @@ public class ProductClient implements ProductThriftRpcService.Iface {
             }
         }
     }
+
+    @Override
+    public int updateSku(String sku) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(ProductThriftRpcService.Client.class).updateSku(sku);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
 }

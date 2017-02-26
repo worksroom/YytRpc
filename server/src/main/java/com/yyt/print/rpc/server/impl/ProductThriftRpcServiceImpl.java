@@ -306,4 +306,9 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     public String findShopUids(int shopId) throws TException {
         return JSON.toJSONString(mallProductService.findShopUids(shopId));
     }
+
+    @Override
+    public int updateSku(String sku) throws TException {
+        return mallProductService.updateSku(JSON.parseObject(sku,MallProduct.class));
+    }
 }
