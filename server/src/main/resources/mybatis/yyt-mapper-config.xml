@@ -43,6 +43,7 @@
 		<typeAlias alias="ProductEvaluateRecord" type="com.yyt.print.product.pojo.ProductEvaluateRecord" />
 		<typeAlias alias="ProductEvaluate" type="com.yyt.print.product.pojo.ProductEvaluate" />
 		<typeAlias alias="ShopUser" type="com.yyt.print.product.pojo.ShopUser" />
+		<typeAlias alias="MallGoodBasePro" type="com.yyt.print.product.pojo.MallGoodBasePro" />
 
 		<!-- 店铺 -->
 		<typeAlias alias="UserShop" type="com.yyt.print.product.pojo.UserShop" />
@@ -97,6 +98,7 @@
 		<mapper resource="mybatis/product/product_evaluate.xml" />
 		<mapper resource="mybatis/product/product_evaluate_record.xml" />
 		<mapper resource="mybatis/product/shop_user.xml" />
+		<mapper resource="mybatis/product/mall_good_base_pro.xml" />
 
 		<!--店铺-->
 		<mapper resource="mybatis/product/user_shop.xml" />

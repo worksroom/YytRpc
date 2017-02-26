@@ -205,18 +205,16 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     }
 
     @Override
-    public int shelves(String mallGoods, String mallProductSets, String other) throws TException {
-        MallGoods goods = JSON.parseObject(mallGoods,MallGoods.class);
-        List<MallProductSet> list = JSONArray.parseArray(mallProductSets,MallProductSet.class);
-        List<MallProductExt> exts = JSONArray.parseArray(other,MallProductExt.class);
-        return mallProductService.shelves(goods,list,exts);
+    public int shelves(String mallGoodSet) throws TException {
+        MallGoodsSet goodsSet = JSON.parseObject(mallGoodSet,MallGoodsSet.class);
+
+        return mallProductService.shelves(goodsSet);
     }
 
     @Override
-    public int goodAddProduct(int goodsId, String mallProductSets, String other) throws TException {
-        List<MallProductSet> list = JSONArray.parseArray(mallProductSets,MallProductSet.class);
-        List<MallProductExt> exts = JSONArray.parseArray(other,MallProductExt.class);
-        return mallProductService.goodAddProduct(goodsId,list,exts);
+    public int goodAddProduct(String mallGoodSet) throws TException {
+        MallGoodsSet goodsSet = JSON.parseObject(mallGoodSet, MallGoodsSet.class);
+        return mallProductService.goodAddProduct(goodsSet);
     }
 
     @Override

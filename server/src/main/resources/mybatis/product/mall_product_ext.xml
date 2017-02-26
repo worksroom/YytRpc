@@ -42,6 +42,10 @@
         delete from mall_product_ext where id=#{id}
     </delete>
 
+    <delete id="deleteByGoodsId" parameterType="int">
+        delete from mall_product_ext where goods_id=#{goodsId}
+    </delete>
+
 
     <select id="selectByGoods" parameterType="int" resultMap="MallProductExtMap">
         select id ,  type, goods_id, product_id, thrid_id, create_time, update_time from mall_product_ext where goods_id=#{goodsId}

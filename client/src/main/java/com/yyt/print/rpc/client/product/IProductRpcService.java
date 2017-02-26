@@ -201,20 +201,18 @@ public interface IProductRpcService {
 
     /**
      * 上架货品 ，
-     * @param mallGoods
-     * @param list  商品以及销售属性集合
+     * @param sets
      * @return
      */
-    int shelves(MallGoods mallGoods,List<MallProductSet> list,List<MallProductExt> exts);
+    int shelves(MallGoodsSet sets);
 
 
     /**
      * 为货品增加新的商品
-     * @param goodsId
-     * @param list
+     * @param sets
      * @return
      */
-    int goodAddProduct(int goodsId,List<MallProductSet> list,List<MallProductExt> exts);
+    int goodAddProduct(MallGoodsSet sets);
 
     /**
      * 获取货品明细

@@ -7,7 +7,20 @@ import java.util.List;
  */
 public class MallGoodsSet {
     private MallGoods mallGoods;
+
+    /**
+     * 基本属性
+     */
+    private List<MallGoodBasePro> bpro;
+
+    /**
+     * SKU
+     */
     private List<MallProductSet> list;
+
+    /**
+     * 扩展属性
+     */
     private List<MallProductExt> exts;
 
     public MallGoods getMallGoods() {
@@ -32,5 +45,13 @@ public class MallGoodsSet {
 
     public void setExts(List<MallProductExt> exts) {
         this.exts = exts;
+    }
+
+    public List<MallGoodBasePro> getBpro() {
+        return bpro;
+    }
+
+    public void setBpro(List<MallGoodBasePro> bpro) {
+        this.bpro = bpro;
     }
 }

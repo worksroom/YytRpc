@@ -239,10 +239,10 @@ service ProductThriftRpcService {
     string getMallIndex(1:i32 id);
 
     /** 上架货品 **/
-    i32 shelves(1:string mallGoods,2:string mallProductSets,3:string other);
+    i32 shelves(1:string mallGoodSet);
 
     /** 更新单个商品 **/
-    i32 goodAddProduct(1:i32 goodsId,2:string mallProductSets,3:string other);
+    i32 goodAddProduct(1:string mallGoodSet);
 
     /** 根据货品id获取货品 **/
     string getMallGoodsSetByGood(1:i32 goods);

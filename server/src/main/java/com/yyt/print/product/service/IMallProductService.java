@@ -11,20 +11,18 @@ public interface IMallProductService {
 
     /**
      * 上架货品 ，
-     * @param mallGoods
-     * @param list  商品以及销售属性集合
+     * @param goodsSet
      * @return
      */
-    int shelves(MallGoods mallGoods,List<MallProductSet> list,List<MallProductExt> exts);
+    int shelves(MallGoodsSet goodsSet);
 
 
     /**
-     * 为货品增加新的商品
-     * @param goodsId
-     * @param list
+     * 修改货品 ， 包括基本属性  新增sku 修改货运信息等
+     * @param goodsSet
      * @return
      */
-    int goodAddProduct(int goodsId,List<MallProductSet> list,List<MallProductExt> exts);
+    int goodAddProduct(MallGoodsSet goodsSet);
 
     /**
      * 获取货品明细

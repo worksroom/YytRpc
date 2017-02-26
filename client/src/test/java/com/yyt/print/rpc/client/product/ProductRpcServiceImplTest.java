@@ -279,18 +279,46 @@ public class ProductRpcServiceImplTest {
         return set;
     }
 
+    private List<MallGoodBasePro> getMallGoodBasePros(){
+        List<MallGoodBasePro> list = new ArrayList<>();
+        MallGoodBasePro mpe = new MallGoodBasePro();
+        mpe.setClassProId(1);
+        mpe.setClassProValueId(2);
+        list.add(mpe);
+
+        mpe = new MallGoodBasePro();
+        mpe.setClassProId(2);
+        mpe.setClassProValueId(3);
+        list.add(mpe);
+        return list;
+    }
+
     @Test
     public void shelves(){
         List<MallProductSet> list = new ArrayList<>();
         list.add(getMallProductSet());
-        productRpcService.shelves(getMallGoods(),list,getMallProductExts());
+        MallGoodsSet mallGoodsSet = new MallGoodsSet();
+        mallGoodsSet.setMallGoods(getMallGoods());
+        mallGoodsSet.setList(list);
+        mallGoodsSet.setExts(getMallProductExts());
+        mallGoodsSet.setBpro(getMallGoodBasePros());
+
+
+        productRpcService.shelves(mallGoodsSet);
     }
 
     @Test
     public void goodAddProduct(){
         List<MallProductSet> list = new ArrayList<>();
         list.add(getMallProductSet());
-        productRpcService.goodAddProduct(10,list,getMallProductExts());
+        MallGoodsSet mallGoodsSet = new MallGoodsSet();
+        MallGoods goods = getMallGoods();
+        goods.setId(9);
+        mallGoodsSet.setMallGoods(goods);
+        mallGoodsSet.setList(list);
+        mallGoodsSet.setExts(getMallProductExts());
+        mallGoodsSet.setBpro(getMallGoodBasePros());
+        productRpcService.goodAddProduct(mallGoodsSet);
     }
 
     @Test

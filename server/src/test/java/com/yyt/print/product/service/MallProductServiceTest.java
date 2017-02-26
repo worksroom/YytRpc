@@ -39,6 +39,22 @@ public class MallProductServiceTest extends BaseTestClass {
         list.add(mpe);
         return list;
     }
+
+
+    private List<MallGoodBasePro> getMallGoodBasePros(){
+        List<MallGoodBasePro> list = new ArrayList<>();
+        MallGoodBasePro mpe = new MallGoodBasePro();
+        mpe.setClassProId(1);
+        mpe.setClassProValueId(2);
+        list.add(mpe);
+
+        mpe = new MallGoodBasePro();
+        mpe.setClassProId(2);
+        mpe.setClassProValueId(3);
+        list.add(mpe);
+        return list;
+    }
+
     private MallProductSet getMallProductSet(){
         MallProductSet set = new MallProductSet();
         MallProduct product = new MallProduct();
@@ -76,14 +92,27 @@ public class MallProductServiceTest extends BaseTestClass {
     public void shelves(){
         List<MallProductSet> list = new ArrayList<>();
         list.add(getMallProductSet());
-        service.shelves(getBean(),list,getMallProductExts());
+        MallGoodsSet mallGoodsSet = new MallGoodsSet();
+        mallGoodsSet.setMallGoods(getBean());
+        mallGoodsSet.setList(list);
+        mallGoodsSet.setExts(getMallProductExts());
+        mallGoodsSet.setBpro(getMallGoodBasePros());
+
+        service.shelves(mallGoodsSet);
     }
 
     @Test
     public void goodAddProduct(){
         List<MallProductSet> list = new ArrayList<>();
         list.add(getMallProductSet());
-        service.goodAddProduct(9,list,getMallProductExts());
+        MallGoodsSet mallGoodsSet = new MallGoodsSet();
+        MallGoods goods = getBean();
+        goods.setId(9);
+        mallGoodsSet.setMallGoods(goods);
+        mallGoodsSet.setList(list);
+        mallGoodsSet.setExts(getMallProductExts());
+        mallGoodsSet.setBpro(getMallGoodBasePros());
+        service.goodAddProduct(mallGoodsSet);
     }
 
     @Test

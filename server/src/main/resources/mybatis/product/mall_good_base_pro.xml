@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MallGoodBasePro">
+    <resultMap type="MallGoodBasePro" id="MallGoodBaseProMap">
+        <result property="id" column="id"/>
+        <result property="goodsId" column="goods_id"/>
+        <result property="classProId" column="class_pro_id"/>
+        <result property="classProValueId" column="class_pro_value_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <insert id="insertList">
+        insert into mall_good_base_pro (
+        goods_id, class_pro_id, class_pro_value_id, create_time, update_time)
+        VALUES
+        <foreach collection="list"  item="temp" separator=",">
+            ( #{temp.goodsId}, #{temp.classProId}, #{temp.classProValueId}, #{temp.createTime}, #{temp.updateTime})
+
+        </foreach>
+    </insert>
+
+
+    <insert id="insert" parameterType="MallGoodBasePro">
+        insert into mall_good_base_pro (
+        goods_id, class_pro_id, class_pro_value_id, create_time, update_time)
+        VALUES
+        ( #{goodsId}, #{classProId}, #{classProValueId}, #{createTime}, #{updateTime})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+    <update id="update" parameterType="MallGoodBasePro">
+        update mall_good_base_pro set goods_id = #{goodsId},class_pro_id = #{classProId},class_pro_value_id = #{classProValueId},create_time = #{createTime},update_time = #{updateTime} where id=#{id}
+    </update>
+    <select id="select" parameterType="int" resultMap="MallGoodBaseProMap">
+        select id ,  goods_id, class_pro_id, class_pro_value_id, create_time, update_time from mall_good_base_pro where id=#{id}
+    </select>
+
+
+    <select id="selectByGoodsId" parameterType="int" resultMap="MallGoodBaseProMap">
+        select id ,  goods_id, class_pro_id, class_pro_value_id, create_time, update_time from mall_good_base_pro
+        where goods_id=#{goodsId}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from mall_good_base_pro where id=#{id}
+    </delete>
+
+    <delete id="deleteByGoodsId" parameterType="int">
+        delete from mall_good_base_pro where goods_id=#{goodsId}
+    </delete>
+</mapper>

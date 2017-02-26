@@ -10,7 +10,7 @@ public class MallGoodBasePro {
      *
      * @mbg.generated Sun Feb 26 07:52:36 CST 2017
      */
-    private Integer id;
+    private int id;
 
     /**
      *
@@ -19,7 +19,7 @@ public class MallGoodBasePro {
      *
      * @mbg.generated Sun Feb 26 07:52:36 CST 2017
      */
-    private Integer goodsId;
+    private int goodsId;
 
     /**
      *
@@ -28,7 +28,7 @@ public class MallGoodBasePro {
      *
      * @mbg.generated Sun Feb 26 07:52:36 CST 2017
      */
-    private Integer classProId;
+    private int classProId;
 
     /**
      *
@@ -37,7 +37,7 @@ public class MallGoodBasePro {
      *
      * @mbg.generated Sun Feb 26 07:52:36 CST 2017
      */
-    private Integer classProValueId;
+    private int classProValueId;
 
     /**
      *
@@ -65,7 +65,7 @@ public class MallGoodBasePro {
      *
      * @mbg.generated Sun Feb 26 07:52:36 CST 2017
      */
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
@@ -77,7 +77,7 @@ public class MallGoodBasePro {
      *
      * @mbg.generated Sun Feb 26 07:52:36 CST 2017
      */
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -89,7 +89,7 @@ public class MallGoodBasePro {
      *
      * @mbg.generated Sun Feb 26 07:52:36 CST 2017
      */
-    public Integer getGoodsId() {
+    public int getGoodsId() {
         return goodsId;
     }
 
@@ -101,7 +101,7 @@ public class MallGoodBasePro {
      *
      * @mbg.generated Sun Feb 26 07:52:36 CST 2017
      */
-    public void setGoodsId(Integer goodsId) {
+    public void setGoodsId(int goodsId) {
         this.goodsId = goodsId;
     }
 
@@ -113,7 +113,7 @@ public class MallGoodBasePro {
      *
      * @mbg.generated Sun Feb 26 07:52:36 CST 2017
      */
-    public Integer getClassProId() {
+    public int getClassProId() {
         return classProId;
     }
 
@@ -125,7 +125,7 @@ public class MallGoodBasePro {
      *
      * @mbg.generated Sun Feb 26 07:52:36 CST 2017
      */
-    public void setClassProId(Integer classProId) {
+    public void setClassProId(int classProId) {
         this.classProId = classProId;
     }
 
@@ -137,7 +137,7 @@ public class MallGoodBasePro {
      *
      * @mbg.generated Sun Feb 26 07:52:36 CST 2017
      */
-    public Integer getClassProValueId() {
+    public int getClassProValueId() {
         return classProValueId;
     }
 

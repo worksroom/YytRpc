@@ -16,6 +16,8 @@ public interface IMallProductExtDAO{
     MallProductExt getMallProductExt(int id);
     int delMallProductExt(int id);
 
+    int delExts(int goodsId);
+
     /**
      * 货品id查询
      * @param goods

@@ -37,9 +37,16 @@ public class MallProductService implements IMallProductService {
     @Resource
     private IShopUserDAO shopUserDAO;
 
+    @Resource
+    private IMallGoodBaseProDAO mallGoodBaseProDAO;
+
     @Transactional
     @Override
-    public int shelves(MallGoods mallGoods, List<MallProductSet> list,List<MallProductExt> exts) {
+    public int shelves(MallGoodsSet goodsSet) {
+        MallGoods mallGoods = goodsSet.getMallGoods();
+        List<MallProductSet> list = goodsSet.getList();
+        List<MallProductExt> exts = goodsSet.getExts();
+        List<MallGoodBasePro> bpro = goodsSet.getBpro();
         int result = mallGoodsDAO.saveMallGoods(mallGoods);
         if(result <= 0 ){
             throw new RuntimeException("add error ");
@@ -67,17 +74,23 @@ public class MallProductService implements IMallProductService {
             ext.setGoodsId(mallGoods.getId());
         }
         mallProductExtDAO.batchSaveMallProductEx(exts);
+        mallGoodBaseProDAO.batchSaveMallGoodBasePro(bpro);
 
         return 1;
     }
 
     @Transactional
     @Override
-    public int goodAddProduct(int goodsId, List<MallProductSet> list,List<MallProductExt> exts) {
-        MallGoods mallGoods = mallGoodsDAO.getMallGoods(goodsId);
+    public int goodAddProduct(MallGoodsSet goodsSet) {
+        MallGoods mallGoods = goodsSet.getMallGoods();
+        List<MallProductSet> list = goodsSet.getList();
+        List<MallProductExt> exts = goodsSet.getExts();
+        List<MallGoodBasePro> bpro = goodsSet.getBpro();
         if(mallGoods==null){
             return -1;
         }
+        mallGoodsDAO.updateMallGoods(mallGoods);
+        //SKU
         if(list!=null){
             for (MallProductSet mallProductSet:list){
                 MallProduct product = mallProductSet.getMallProduct();
@@ -98,11 +111,23 @@ public class MallProductService implements IMallProductService {
                 }
             }
         }
+
+        //扩展属性
         if(exts!=null && exts.size()>0){
+            mallProductExtDAO.delExts(mallGoods.getId());
             for(MallProductExt ext:exts){
                 ext.setGoodsId(mallGoods.getId());
             }
             mallProductExtDAO.batchSaveMallProductEx(exts);
+        }
+
+        //基本属性
+        if(bpro!=null && bpro.size()>0){
+            mallGoodBaseProDAO.delPros(mallGoods.getId());
+            for(MallGoodBasePro pro:bpro){
+                pro.setGoodsId(mallGoods.getId());
+            }
+            mallGoodBaseProDAO.batchSaveMallGoodBasePro(bpro);
         }
 
         return 1;
@@ -137,6 +162,9 @@ public class MallProductService implements IMallProductService {
 
         List<MallProductExt> exts = mallProductExtDAO.findMallProductExt(goodsId);
         set.setExts(exts);
+
+        List<MallGoodBasePro> bpros = mallGoodBaseProDAO.findByGoodsId(goodsId);
+        set.setBpro(bpros);
         return set;
     }
 

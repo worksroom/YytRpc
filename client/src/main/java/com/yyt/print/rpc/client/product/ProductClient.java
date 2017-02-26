@@ -551,11 +551,11 @@ public class ProductClient implements ProductThriftRpcService.Iface {
 
 
     @Override
-    public int shelves(String mallGoods, String mallProductSets, String other) throws TException {
+    public int shelves(String mallGoodsSet) throws TException {
         RPCMultiplexConnection client = null;
         try {
             client = getConnection();
-            return client.getClient(ProductThriftRpcService.Client.class).shelves(mallGoods, mallProductSets,other);
+            return client.getClient(ProductThriftRpcService.Client.class).shelves(mallGoodsSet);
         } catch(TException e){
             client.setIdle(false);
             throw e;
@@ -571,11 +571,11 @@ public class ProductClient implements ProductThriftRpcService.Iface {
     }
 
     @Override
-    public int goodAddProduct(int goodsId, String mallProductSets, String other) throws TException {
+    public int goodAddProduct(String mallGoodsSet) throws TException {
         RPCMultiplexConnection client = null;
         try {
             client = getConnection();
-            return client.getClient(ProductThriftRpcService.Client.class).goodAddProduct(goodsId, mallProductSets, other);
+            return client.getClient(ProductThriftRpcService.Client.class).goodAddProduct(mallGoodsSet);
         } catch(TException e){
             client.setIdle(false);
             throw e;

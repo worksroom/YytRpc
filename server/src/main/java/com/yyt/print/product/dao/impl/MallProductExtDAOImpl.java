@@ -31,4 +31,9 @@ public class MallProductExtDAOImpl extends YytBaseDAO<MallProductExt> implements
     public List<MallProductExt> findMallProductExt(int goods) {
         return super.findBy("selectByGoods",goods);
     }
+
+    @Override
+    public int delExts(int goodsId) {
+        return super.deleteBy("deleteByGoodsId",goodsId);
+    }
 }
