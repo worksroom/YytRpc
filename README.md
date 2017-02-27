@@ -147,4 +147,9 @@ MODIFY COLUMN `img`  varchar(3000) CHARACTER SET utf8 COLLATE utf8_general_ci NU
 
 
 
+alter table `yyt`.`mall_good_base_pro` 
+   change `class_pro_value_id` `class_pro_value` varchar(400) default '0' NOT NULL;
+
+
+
 
