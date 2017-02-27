@@ -153,7 +153,7 @@ MODIFY COLUMN `ad_type`  int(11) NULL DEFAULT NULL COMMENT '广告类别' AFTER 
 MODIFY COLUMN `img`  varchar(500) NULL DEFAULT NULL COMMENT '广告图片' AFTER `ad_type`;
 
 alter table `yyt`.`mall_good_base_pro` 
-   change `class_pro_value_id` `class_pro_value` varchar(400) default '0' NOT NULL;
+   change `class_pro_value_id` `class_pro_value` varchar(400) ;
 
 
 
