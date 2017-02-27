@@ -8,12 +8,14 @@ import java.util.Date;
  */
 public class Ad {
     private int id;
-    private String adType;
+    private int adType;
     private String img;//base64编码
     private String des;
     private String url;
     private int used;
     private Date createTime;
+
+    private String adCategoryName;
 
     public int getId() {
         return id;
@@ -23,14 +25,13 @@ public class Ad {
         this.id = id;
     }
 
-    public String getAdType() {
+    public int getAdType() {
         return adType;
     }
 
-    public void setAdType(String adType) {
+    public void setAdType(int adType) {
         this.adType = adType;
     }
-
 
     public String getImg() {
         return img;
@@ -70,5 +71,13 @@ public class Ad {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getAdCategoryName() {
+        return adCategoryName;
+    }
+
+    public void setAdCategoryName(String adCategoryName) {
+        this.adCategoryName = adCategoryName;
     }
 }

@@ -15,7 +15,7 @@ public class AdServiceTest extends BaseTestClass {
     @Test
     public void testSaveAd() throws Exception {
         Ad ad = new Ad();
-        ad.setAdType("0002");
+        ad.setAdType(1);
         ad.setDes("这是广告");
         ad.setCreateTime(new Date());
         ad.setImg(ImgUtils.imageToString("E:\\集体照\\身份证\\zheng.jpg"));

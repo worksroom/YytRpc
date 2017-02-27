@@ -110,11 +110,11 @@ public class AdClient implements AdThriftRpcService.Iface {
     }
 
     @Override
-    public String queryAdByPage(Map<String, String> paramMap, int pageIndex, int pageSize) throws TException {
+    public String queryAdByPage(int adType, int used, int pageIndex, int pageSize) throws TException {
         RPCMultiplexConnection client = null;
         try {
             client = getConnection();
-            return client.getClient(AdThriftRpcService.Client.class).queryAdByPage(paramMap, pageIndex, pageSize);
+            return client.getClient(AdThriftRpcService.Client.class).queryAdByPage(adType, used, pageIndex, pageSize);
         } catch(TException e){
             client.setIdle(false);
             throw e;
@@ -170,7 +170,7 @@ public class AdClient implements AdThriftRpcService.Iface {
     }
 
     @Override
-    public int deleteAdCategory(String id) throws TException {
+    public int deleteAdCategory(int id) throws TException {
         RPCMultiplexConnection client = null;
         try {
             client = getConnection();
@@ -190,7 +190,7 @@ public class AdClient implements AdThriftRpcService.Iface {
     }
 
     @Override
-    public String getAdCategory(String id) throws TException {
+    public String getAdCategory(int id) throws TException {
         RPCMultiplexConnection client = null;
         try {
             client = getConnection();
@@ -210,11 +210,11 @@ public class AdClient implements AdThriftRpcService.Iface {
     }
 
     @Override
-    public String queryAdCategoryByPage(Map<String, String> paramMap, int pageIndex, int pageSize) throws TException {
+    public String queryAdCategoryByPage(String name, int pageIndex, int pageSize) throws TException {
         RPCMultiplexConnection client = null;
         try {
             client = getConnection();
-            return client.getClient(AdThriftRpcService.Client.class).queryAdCategoryByPage(paramMap, pageIndex, pageSize);
+            return client.getClient(AdThriftRpcService.Client.class).queryAdCategoryByPage(name, pageIndex, pageSize);
         } catch(TException e){
             client.setIdle(false);
             throw e;

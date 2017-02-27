@@ -25,12 +25,12 @@ public class AdCategoryDAO extends YytBaseDAO<AdCategory> implements IAdCategory
     }
 
     @Override
-    public int deleteAdCategory(String id) {
+    public int deleteAdCategory(int id) {
         return this.delete(id);
     }
 
     @Override
-    public AdCategory getAdCategory(String id) {
+    public AdCategory getAdCategory(int id) {
         return this.get(id);
     }
 

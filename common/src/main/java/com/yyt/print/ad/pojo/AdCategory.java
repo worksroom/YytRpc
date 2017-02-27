@@ -7,15 +7,15 @@ import java.util.Date;
  * Created by SomeBody on 2016/9/23.
  */
 public class AdCategory {
-    private String id;
+    private int id;
     private String name;
     private Date createTime;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

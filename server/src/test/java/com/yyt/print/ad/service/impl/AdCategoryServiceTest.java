@@ -21,7 +21,6 @@ public class AdCategoryServiceTest extends BaseTestClass {
     @Test
     public void testSaveAdCategory() throws Exception {
         AdCategory category = new AdCategory();
-        category.setId("0002");
         category.setName("纸张");
         category.setCreateTime(new Date());
         adCategoryService.saveAdCategory(category);
@@ -29,19 +28,19 @@ public class AdCategoryServiceTest extends BaseTestClass {
 
     @Test
     public void testUpdateAdCategory() throws Exception {
-        AdCategory category = adCategoryService.getAdCategory("0001");
+        AdCategory category = adCategoryService.getAdCategory(1);
         category.setName("油墨");
         adCategoryService.updateAdCategory(category);
     }
 
     @Test
     public void testDeleteAdCategory() throws Exception {
-        adCategoryService.deleteAdCategory("0001");
+        adCategoryService.deleteAdCategory(1);
     }
 
     @Test
     public void testGetAdCategory() throws Exception {
-        AdCategory category = adCategoryService.getAdCategory("0001");
+        AdCategory category = adCategoryService.getAdCategory(1);
         System.out.println(category);
     }
 
