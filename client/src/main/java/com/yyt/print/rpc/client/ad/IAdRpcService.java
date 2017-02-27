@@ -14,11 +14,11 @@ public interface IAdRpcService {
 
     public int updateAdCategory(AdCategory category);
 
-    public int deleteAdCategory(String id);
+    public int deleteAdCategory(int id);
 
-    public AdCategory getAdCategory(String id);
+    public AdCategory getAdCategory(int id);
 
-    public PageHolder<AdCategory> queryAdCategoryByPage(HashMap<String, Object> paramMap, int pageIndex, int pageSize);
+    public PageHolder<AdCategory> queryAdCategoryByPage(String name, int pageIndex, int pageSize);
 
     public int saveAd(Ad ad);
 
@@ -28,6 +28,6 @@ public interface IAdRpcService {
 
     public Ad getAd(int id);
 
-    public PageHolder<Ad> queryAdByPage(HashMap<String, Object> paramMap, int pageIndex, int pageSize);
+    public PageHolder<Ad> queryAdByPage(int adType, int used, int pageIndex, int pageSize);
 
 }

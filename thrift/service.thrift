@@ -348,17 +348,17 @@ service AdThriftRpcService {
 
     string getAd(1:i32 id);
 
-    string queryAdByPage(1:map<string, string> paramMap, 2:i32 pageIndex, 3:i32 pageSize);
+    string queryAdByPage(1:i32 adType, 2:i32 used, 3:i32 pageIndex, 4:i32 pageSize);
 
     i32 saveAdCategory(1:string category);
 
-    i32 updateAdCategory(2:string category);
+    i32 updateAdCategory(1:string category);
 
-    i32 deleteAdCategory(1:string id);
+    i32 deleteAdCategory(1:i32 id);
 
-    string getAdCategory(2:string id);
+    string getAdCategory(1:i32 id);
 
-    string queryAdCategoryByPage(1:map<string, string> paramMap, 2:i32 pageIndex, 3:i32 pageSize);
+    string queryAdCategoryByPage(1:string name, 2:i32 pageIndex, 3:i32 pageSize);
 }
 
 /**

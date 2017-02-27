@@ -4,7 +4,7 @@
     <resultMap type="Ad" id="AdResultMap">
         <result property="id" column="id"/>
         <result property="adType" column="ad_type"/>
-        <result property="img" column="img" typeHandler="com.yyt.print.base.BlobTypeHandler"/>
+        <result property="img" column="img"/>
         <result property="des" column="des"/>
         <result property="url" column="url"/>
         <result property="used" column="used"/>
@@ -45,10 +45,10 @@
     <sql id="sql_where">
         from ad
         <where>
-            <if test="adType != null and adType !=''">
+            <if test="adType != null and adType !=0">
                 AND ad_type = #{adType}
             </if>
-            <if test="used != null and used !=''">
+            <if test="used != null and used !=0">
                 AND used = #{used}
             </if>
         </where>

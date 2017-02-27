@@ -132,6 +132,11 @@ CREATE INDEX idx_shopid_userid ON shop_user(shop_id,user_id);
 ALTER TABLE `mall_goods`
 MODIFY COLUMN `img`  varchar(3000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片的结果集\r\n            {[\r\n               img\r\n            ]}' AFTER `update_time`;
 
+ALTER TABLE `ad_category`
+MODIFY COLUMN `id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '广告类别ID' FIRST ;
 
+ALTER TABLE `ad`
+MODIFY COLUMN `ad_type`  int(11) NULL DEFAULT NULL COMMENT '广告类别' AFTER `id`,
+MODIFY COLUMN `img`  varchar(500) NULL DEFAULT NULL COMMENT '广告图片' AFTER `ad_type`;
 
 
