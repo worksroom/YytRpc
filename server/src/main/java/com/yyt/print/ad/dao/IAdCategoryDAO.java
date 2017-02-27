@@ -13,9 +13,9 @@ public interface IAdCategoryDAO {
 
     public int updateAdCategory(AdCategory category);
 
-    public int deleteAdCategory(String id);
+    public int deleteAdCategory(int id);
 
-    public AdCategory getAdCategory(String id);
+    public AdCategory getAdCategory(int id);
 
     public PageHolder<AdCategory> queryAdCategoryByPage(HashMap<String, Object> paramMap, int pageIndex, int pageSize);
 

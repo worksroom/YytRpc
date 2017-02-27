@@ -53,11 +53,11 @@ public class AdThriftRpcServiceImpl implements AdThriftRpcService.Iface {
     }
 
     @Override
-    public String queryAdByPage(Map<String, String> paramMap, int pageIndex, int pageSize) throws TException {
+    public String queryAdByPage(int adType, int used, int pageIndex, int pageSize) throws TException {
         HashMap<String, Object> map = new HashMap<>();
-        for (Map.Entry<String, String> entry : paramMap.entrySet()) {
-            map.put(entry.getKey(), entry.getValue());
-        }
+        map.put("adType", adType);
+        map.put("used", used);
+
         PageHolder<Ad> pageHolder = adService.queryAdByPage(map, pageIndex, pageSize);
         SerializeConfig config = new SerializeConfig();
         config.put(PageHolder.class, new PageHolderSerializer());
@@ -77,12 +77,12 @@ public class AdThriftRpcServiceImpl implements AdThriftRpcService.Iface {
     }
 
     @Override
-    public int deleteAdCategory(String id) throws TException {
+    public int deleteAdCategory(int id) throws TException {
         return adCategoryService.deleteAdCategory(id);
     }
 
     @Override
-    public String getAdCategory(String id) throws TException {
+    public String getAdCategory(int id) throws TException {
         AdCategory adCategory = adCategoryService.getAdCategory(id);
         if(adCategory!=null){
             return JSON.toJSONString(adCategory);
@@ -91,11 +91,10 @@ public class AdThriftRpcServiceImpl implements AdThriftRpcService.Iface {
     }
 
     @Override
-    public String queryAdCategoryByPage(Map<String, String> paramMap, int pageIndex, int pageSize) throws TException {
+    public String queryAdCategoryByPage(String name, int pageIndex, int pageSize) throws TException {
         HashMap<String, Object> map = new HashMap<>();
-        for (Map.Entry<String, String> entry : paramMap.entrySet()) {
-            map.put(entry.getKey(), entry.getValue());
-        }
+        map.put("name", name);
+
         PageHolder<AdCategory> pageHolder = adCategoryService.queryAdCategoryByPage(map, pageIndex, pageSize);
 
         SerializeConfig config = new SerializeConfig();

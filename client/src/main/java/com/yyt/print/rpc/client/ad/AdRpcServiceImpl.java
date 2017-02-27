@@ -47,7 +47,7 @@ public class AdRpcServiceImpl implements IAdRpcService {
     }
 
     @Override
-    public int deleteAdCategory(String id) {
+    public int deleteAdCategory(int id) {
         try {
             return getClient().deleteAdCategory(id);
         } catch (TException e) {
@@ -57,7 +57,7 @@ public class AdRpcServiceImpl implements IAdRpcService {
     }
 
     @Override
-    public AdCategory getAdCategory(String id) {
+    public AdCategory getAdCategory(int id) {
         try {
             String json = getClient().getAdCategory(id);
             return JSONObject.parseObject(json, AdCategory.class);
@@ -68,13 +68,9 @@ public class AdRpcServiceImpl implements IAdRpcService {
     }
 
     @Override
-    public PageHolder<AdCategory> queryAdCategoryByPage(HashMap<String, Object> paramMap, int pageIndex, int pageSize) {
+    public PageHolder<AdCategory> queryAdCategoryByPage(String name, int pageIndex, int pageSize) {
         try {
-            HashMap<String, String> map = new HashMap<>();
-            for (Map.Entry<String, Object> entry : paramMap.entrySet()) {
-                map.put(entry.getKey(), (String)entry.getValue());
-            }
-            String json = getClient().queryAdCategoryByPage(map, pageIndex, pageSize);
+            String json = getClient().queryAdCategoryByPage(name, pageIndex, pageSize);
             ParserConfig.getGlobalInstance().putDeserializer(PageHolder.class, new PageHolderDeserializer());
             return JSON.parseObject(json, new TypeReference<PageHolder<AdCategory>>(){});
         } catch (TException e) {
@@ -125,13 +121,9 @@ public class AdRpcServiceImpl implements IAdRpcService {
     }
 
     @Override
-    public PageHolder<Ad> queryAdByPage(HashMap<String, Object> paramMap, int pageIndex, int pageSize) {
+    public PageHolder<Ad> queryAdByPage(int adType, int used, int pageIndex, int pageSize) {
         try {
-            HashMap<String, String> map = new HashMap<>();
-            for (Map.Entry<String, Object> entry : paramMap.entrySet()) {
-                map.put(entry.getKey(), (String)entry.getValue());
-            }
-            String json = getClient().queryAdByPage(map, pageIndex, pageSize);
+            String json = getClient().queryAdByPage(adType, used, pageIndex, pageSize);
             ParserConfig.getGlobalInstance().putDeserializer(PageHolder.class, new PageHolderDeserializer());
             return JSON.parseObject(json, new TypeReference<PageHolder<Ad>>(){});
         } catch (TException e) {

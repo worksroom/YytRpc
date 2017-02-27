@@ -28,12 +28,12 @@ public class AdCategoryService implements IAdCategoryService {
     }
 
     @Override
-    public int deleteAdCategory(String id) {
+    public int deleteAdCategory(int id) {
         return adCategoryDAO.deleteAdCategory(id);
     }
 
     @Override
-    public AdCategory getAdCategory(String id) {
+    public AdCategory getAdCategory(int id) {
         return adCategoryDAO.getAdCategory(id);
     }
 
