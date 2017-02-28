@@ -156,5 +156,6 @@ alter table `yyt`.`mall_good_base_pro`
    change `class_pro_value_id` `class_pro_value` varchar(400) ;
 
 
-
+alter table `yyt`.`delivery_addr` 
+   change `id` `id` int(11) NOT NULL AUTO_INCREMENT comment '收货地址id'
 

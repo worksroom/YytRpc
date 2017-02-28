@@ -30,7 +30,13 @@ public enum MultiplexProp {
             AdThriftRpcService.Client.class,
             AdThriftRpcService.Processor.class,
             AdThriftRpcService.Iface.class,
-            AdThriftRpcServiceImpl.class);
+            AdThriftRpcServiceImpl.class),
+
+    OrderThriftRpcService("AdThriftRpcService",
+            OrderThriftRpcService.Client.class,
+            OrderThriftRpcService.Processor.class,
+            OrderThriftRpcService.Iface.class,
+            OrderThriftRpcServiceImpl.class);
 
     Class<?> processor;
 

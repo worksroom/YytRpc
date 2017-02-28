@@ -151,4 +151,20 @@ public interface IUserRpcService {
     public int saveUserErp(int erpUid, String phone);
 
     public UserErp findUserErpByPhone(String phone);
+
+
+    /** 添加收货地址 **/
+    int addUserAddr(DeliveryAddr UserAddr);
+
+    /** 修改收货地址 **/
+    int updateUserAddr(DeliveryAddr UserAddr);
+
+    /** 删除收货地址 **/
+    int delUserAddr(int id);
+
+    /** 获取收货地址 **/
+    DeliveryAddr getUserAddr(int id);
+
+    /** 查询收货地址 **/
+    List<DeliveryAddr> findUserAddr(int uid);
 }

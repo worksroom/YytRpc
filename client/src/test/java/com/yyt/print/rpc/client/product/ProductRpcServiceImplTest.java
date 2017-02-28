@@ -283,12 +283,12 @@ public class ProductRpcServiceImplTest {
         List<MallGoodBasePro> list = new ArrayList<>();
         MallGoodBasePro mpe = new MallGoodBasePro();
         mpe.setClassProId(1);
-        mpe.setClassProValueId(2);
+        mpe.setClassProValue("2");
         list.add(mpe);
 
         mpe = new MallGoodBasePro();
         mpe.setClassProId(2);
-        mpe.setClassProValueId(3);
+        mpe.setClassProValue("3");
         list.add(mpe);
         return list;
     }

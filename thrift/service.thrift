@@ -442,5 +442,27 @@ service UserThriftRpcService {
 
     string findUserErpByPhone(1:string phone);
 
+    /** 添加收货地址 **/
+    i32 addUserAddr(1:string UserAddr);
+
+    /** 修改收货地址 **/
+    i32 updateUserAddr(1:string UserAddr);
+
+    /** 删除收货地址 **/
+    i32 delUserAddr(1:i32 id);
+
+    /** 获取收货地址 **/
+    string getUserAddr(1:i32 id);
+
+    /** 查询收货地址 **/
+    string findUserAddr(1:i32 uid);
+
+
+}
+
+/**
+* 订单 Service
+**/
+service OrderThriftRpcService {
 
 }

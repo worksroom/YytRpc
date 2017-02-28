@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderAddr">
+    <resultMap type="OrderAddr" id="OrderAddrMap">
+        <result property="orderId" column="order_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="name" column="name"/>
+        <result property="phone" column="phone"/>
+        <result property="tel" column="tel"/>
+        <result property="region" column="region"/>
+        <result property="addr" column="addr"/>
+        <result property="code" column="code"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+    <insert id="insert" parameterType="OrderAddr">
+        insert into order_addr (
+        order_id, user_id, name, phone, tel, region, addr, code, create_time, update_time)
+        VALUES
+        ( #{orderId}, #{userId}, #{name}, #{phone}, #{tel}, #{region}, #{addr}, #{code}, #{createTime}, #{updateTime})
+
+    </insert>
+
+    <select id="select" parameterType="string" resultMap="OrderAddrMap">
+        select   order_id, user_id, name, phone, tel, region, addr, code, create_time, update_time from order_addr where order_id=#{orderId}
+    </select>
+
+
+
+</mapper>

@@ -1,6 +1,7 @@
 package com.yyt.print.order.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.yyt.print.order.pojo.OrderAddr;
 import com.yyt.print.order.pojo.Orders;
 
 import java.util.List;
@@ -65,4 +66,6 @@ public interface IOrderService {
      * @return
      */
     public int queryExpress(int buyUserId, String orderId);
+
+
 }

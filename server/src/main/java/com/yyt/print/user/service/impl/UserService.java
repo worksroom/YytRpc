@@ -4,10 +4,8 @@ import com.youguu.core.util.PageHolder;
 import com.yyt.print.thirdparty.wx.TokenUtil;
 import com.yyt.print.thirdparty.wx.WxResponse;
 import com.yyt.print.thirdparty.wx.WxUserInfo;
-import com.yyt.print.user.dao.IUserDAO;
-import com.yyt.print.user.dao.IUserLoginLogDAO;
-import com.yyt.print.user.dao.IUserSessionDAO;
-import com.yyt.print.user.dao.IUserThirdBindDAO;
+import com.yyt.print.user.dao.*;
+import com.yyt.print.user.pojo.DeliveryAddr;
 import com.yyt.print.user.pojo.User;
 import com.yyt.print.user.pojo.UserLoginLog;
 import com.yyt.print.user.pojo.UserThirdBind;
@@ -34,6 +32,9 @@ public class UserService implements IUserService {
     private IUserLoginLogDAO userLoginLogDAO;
     @Resource
     private IUserThirdBindDAO userThirdBindDAO;
+
+    @Resource
+    private IDeliveryAddrDAO deliveryAddrDAO;
 
     @Override
     public int saveUser(User user) {
@@ -269,5 +270,31 @@ public class UserService implements IUserService {
      */
     private String genPassword(){
         return null;
+    }
+
+
+    @Override
+    public int addUserAddr(DeliveryAddr userAddr) {
+        return deliveryAddrDAO.saveDeliveryAddr(userAddr);
+    }
+
+    @Override
+    public int updateUserAddr(DeliveryAddr userAddr) {
+        return deliveryAddrDAO.updateDeliveryAddr(userAddr);
+    }
+
+    @Override
+    public int delUserAddr(int id) {
+        return deliveryAddrDAO.delDeliveryAddr(id);
+    }
+
+    @Override
+    public DeliveryAddr getUserAddr(int id) {
+        return deliveryAddrDAO.getDeliveryAddr(id);
+    }
+
+    @Override
+    public List<DeliveryAddr> findUserAddr(int uid) {
+        return deliveryAddrDAO.findUserAddr(uid);
     }
 }

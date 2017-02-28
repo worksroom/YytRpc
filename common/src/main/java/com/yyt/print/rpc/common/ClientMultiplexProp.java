@@ -24,7 +24,11 @@ public enum ClientMultiplexProp {
     AdThriftRpcService("AdThriftRpcService",
             AdThriftRpcService.Client.class,
             AdThriftRpcService.Processor.class,
-            AdThriftRpcService.Iface.class);
+            AdThriftRpcService.Iface.class),
+    OrderThriftRpcService("OrderThriftRpcService",
+            OrderThriftRpcService.Client.class,
+            OrderThriftRpcService.Processor.class,
+            OrderThriftRpcService.Iface.class);
 
 
     Class<?> processor;

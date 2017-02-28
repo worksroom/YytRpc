@@ -1,10 +1,12 @@
 package com.yyt.print.order.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.yyt.print.order.dao.IOrderAddrDAO;
 import com.yyt.print.order.pojo.Orders;
 import com.yyt.print.order.service.IOrderService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -12,6 +14,9 @@ import java.util.List;
  */
 @Service("orderService")
 public class OrderService implements IOrderService {
+
+    @Resource
+    private IOrderAddrDAO orderAddrDAO;
     @Override
     public Orders makeOrder(int buyUserId, int sellUserId, int payType, Double totalMoney, JSONObject ext) {
         return null;
@@ -41,4 +46,6 @@ public class OrderService implements IOrderService {
     public int queryExpress(int buyUserId, String orderId) {
         return 0;
     }
+
+
 }

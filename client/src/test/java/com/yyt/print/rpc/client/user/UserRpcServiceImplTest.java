@@ -2,6 +2,7 @@ package com.yyt.print.rpc.client.user;
 
 import com.youguu.core.util.PageHolder;
 import com.yyt.print.rpc.client.YytRpcClientFactory;
+import com.yyt.print.user.pojo.DeliveryAddr;
 import com.yyt.print.user.pojo.User;
 import com.yyt.print.user.pojo.UserBuyer;
 import com.yyt.print.user.pojo.UserSeller;
@@ -170,5 +171,46 @@ public class UserRpcServiceImplTest {
                 System.out.println(seller);
             }
         }
+    }
+
+    private DeliveryAddr getDeliveryAddr(){
+        DeliveryAddr d = new DeliveryAddr();
+        d.setName("测试");
+        d.setAddr("大道1号");
+        d.setPhone("13810436365");
+        d.setRegion("{\"chengshi:11\"}");
+        d.setCode("100000");
+        d.setTel("");
+        d.setUserId(224);
+        return d;
+    }
+
+
+    @Test
+    /** 添加收货地址 **/
+    public void addUserAddr( ){
+        userRpcService.addUserAddr(getDeliveryAddr());
+    }
+    @Test
+    /** 修改收货地址 **/
+    public void updateUserAddrr( ){
+        DeliveryAddr d = userRpcService.getUserAddr(2);
+        d.setName("01");
+        userRpcService.updateUserAddr(d);
+    }
+    @Test
+    /** 删除收货地址 **/
+    public void delUserAddrr( ){
+        userRpcService.delUserAddr(2);
+    }
+    @Test
+    /** 获取收货地址 **/
+    public void getUserAddrr( ){
+
+    }
+    @Test
+    /** 查询收货地址 **/
+    public void findUserAddrr( ){
+        System.out.println(userRpcService.findUserAddr(224));
     }
 }

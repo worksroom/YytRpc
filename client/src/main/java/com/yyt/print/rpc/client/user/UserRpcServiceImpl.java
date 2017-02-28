@@ -253,4 +253,54 @@ public class UserRpcServiceImpl implements IUserRpcService {
         }
         return null;
     }
+
+    @Override
+    public int addUserAddr(DeliveryAddr userAddr) {
+        try {
+            return getClient().addUserAddr(JSON.toJSONString(userAddr));
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public int updateUserAddr(DeliveryAddr userAddr) {
+        try {
+            return getClient().updateUserAddr(JSON.toJSONString(userAddr));
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public int delUserAddr(int id) {
+        try {
+            return getClient().delUserAddr(id);
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public DeliveryAddr getUserAddr(int id) {
+        try {
+            return JSON.parseObject(getClient().getUserAddr(id),DeliveryAddr.class);
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public List<DeliveryAddr> findUserAddr(int uid) {
+        try {
+            return JSON.parseArray(getClient().findUserAddr(uid),DeliveryAddr.class);
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
 }

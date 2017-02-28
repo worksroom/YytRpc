@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DeliveryAddr">
+    <resultMap type="DeliveryAddr" id="DeliveryAddrMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="name" column="name"/>
+        <result property="phone" column="phone"/>
+        <result property="tel" column="tel"/>
+        <result property="region" column="region"/>
+        <result property="addr" column="addr"/>
+        <result property="code" column="code"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+    <insert id="insert" parameterType="DeliveryAddr">
+        insert into delivery_addr (
+        user_id, name, phone, tel, region, addr, code, create_time, update_time)
+        VALUES
+        ( #{userId}, #{name}, #{phone}, #{tel}, #{region}, #{addr}, #{code}, #{createTime}, #{updateTime})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+    <update id="update" parameterType="DeliveryAddr">
+        update delivery_addr set user_id = #{userId},name = #{name},phone = #{phone},tel = #{tel},region = #{region},addr = #{addr},code = #{code},create_time = #{createTime},update_time = #{updateTime} where id=#{id}
+    </update>
+    <select id="select" parameterType="int" resultMap="DeliveryAddrMap">
+        select id ,  user_id, name, phone, tel, region, addr, code, create_time, update_time from delivery_addr where id=#{id}
+    </select>
+    <delete id="delete" parameterType="int">
+        delete from delivery_addr where id=#{id}
+    </delete>
+
+    <select id="selectByUid" parameterType="int" resultMap="DeliveryAddrMap">
+        select id ,  user_id, name, phone, tel, region, addr, code, create_time, update_time from delivery_addr where user_id=#{userId}
+    </select>
+</mapper>

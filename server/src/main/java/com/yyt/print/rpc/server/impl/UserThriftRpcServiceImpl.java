@@ -162,4 +162,29 @@ public class UserThriftRpcServiceImpl implements UserThriftRpcService.Iface {
         UserErp userErp = userErpService.findUserErpByPhone(phone);
         return JSON.toJSONString(userErp);
     }
+
+    @Override
+    public int addUserAddr(String userAddr) throws TException {
+        return userService.addUserAddr(JSON.parseObject(userAddr,DeliveryAddr.class));
+    }
+
+    @Override
+    public int updateUserAddr(String userAddr) throws TException {
+        return userService.updateUserAddr(JSON.parseObject(userAddr, DeliveryAddr.class));
+    }
+
+    @Override
+    public int delUserAddr(int id) throws TException {
+        return userService.delUserAddr(id);
+    }
+
+    @Override
+    public String getUserAddr(int id) throws TException {
+        return JSON.toJSONString(userService.getUserAddr(id));
+    }
+
+    @Override
+    public String findUserAddr(int uid) throws TException {
+        return JSON.toJSONString(userService.findUserAddr(uid));
+    }
 }

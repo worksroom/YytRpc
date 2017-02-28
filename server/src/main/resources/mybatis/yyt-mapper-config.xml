@@ -28,6 +28,7 @@
 		<typeAlias alias="UserSession" type="com.yyt.print.user.pojo.UserSession" />
 		<typeAlias alias="UserLoginLog" type="com.yyt.print.user.pojo.UserLoginLog" />
 		<typeAlias alias="UserErp" type="com.yyt.print.user.pojo.UserErp" />
+		<typeAlias alias="DeliveryAddr" type="com.yyt.print.user.pojo.DeliveryAddr" />
 		<!--产品分类-->
 		<typeAlias alias="MallProductCategory" type="com.yyt.print.product.pojo.MallProductCategory" />
 		<typeAlias alias="MallProductCategoryPro" type="com.yyt.print.product.pojo.MallProductCategoryPro" />
@@ -51,6 +52,11 @@
 
 		<!-- 首页碎片 -->
 		<typeAlias alias="MallIndex" type="com.yyt.print.product.pojo.MallIndex" />
+
+
+		<!-- 订单 -->
+		<typeAlias alias="OrderAddr" type="com.yyt.print.order.pojo.OrderAddr" />
+
 	</typeAliases>
 
 	<typeHandlers>
@@ -82,6 +88,7 @@
 		<mapper resource="mybatis/user/user_login_log_mapper.xml" />
 		<mapper resource="mybatis/user/user_session_mapper.xml" />
 		<mapper resource="mybatis/user/user_erp_mapper.xml" />
+		<mapper resource="mybatis/user/delivery_addr.xml" />
 
 		<!--产品分类-->
 		<mapper resource="mybatis/product/mall_product_category.xml" />
@@ -105,5 +112,9 @@
 
 		<!--首页碎片-->
 		<mapper resource="mybatis/product/mall_index.xml" />
+
+
+		<mapper resource="mybatis/order/order_addr.xml" />
+
 	</mappers>
 </configuration>

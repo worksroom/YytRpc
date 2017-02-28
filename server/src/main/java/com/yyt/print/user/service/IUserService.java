@@ -1,6 +1,7 @@
 package com.yyt.print.user.service;
 
 import com.youguu.core.util.PageHolder;
+import com.yyt.print.user.pojo.DeliveryAddr;
 import com.yyt.print.user.pojo.User;
 import com.yyt.print.user.response.AuthResponse;
 
@@ -70,5 +71,20 @@ public interface IUserService {
      * @return
      */
     public AuthResponse regist(String username, String password, int type, String nickname, String headImgUrl, String signature, String ip);
+
+    /** 添加收货地址 **/
+    int addUserAddr(DeliveryAddr UserAddr);
+
+    /** 修改收货地址 **/
+    int updateUserAddr(DeliveryAddr UserAddr);
+
+    /** 删除收货地址 **/
+    int delUserAddr(int id);
+
+    /** 获取收货地址 **/
+    DeliveryAddr getUserAddr(int id);
+
+    /** 查询收货地址 **/
+    List<DeliveryAddr> findUserAddr(int uid);
 
 }
