@@ -1,6 +1,7 @@
 package com.yyt.print.order.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.yyt.print.order.front.OrderProductFront;
 import com.yyt.print.order.pojo.Orders;
 import com.yyt.print.order.pojo.ShoppingCartSet;
 
@@ -14,14 +15,16 @@ public interface IOrderService {
     /**
      * 生成订单
      * @param buyUserId 买家ID
-     * @param sellUserId 卖家ID
-     * @param payType 支付类型
-     * @param totalMoney 支付总金额
-     * @param ext 订单扩展信息，包括物流，商品，发票，收货人等等
+     * @param ext 订单扩展信息
+     *            [{
+     *            "productId"
+     *            "num"
+     *            "addrId"
+     *
+     *            }]
      * @return 返回订单数据
      */
-    public Orders makeOrder(int buyUserId, int sellUserId, int payType, Double totalMoney,
-                            JSONObject ext);
+    public Orders makeOrder(int buyUserId,int addrId,List<OrderProductFront> product,JSONObject ext);
 
     /**
      * 查询订单列表

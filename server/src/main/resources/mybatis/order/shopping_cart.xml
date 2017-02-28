@@ -37,7 +37,9 @@
 
 
     <select id="selectByUid" parameterType="int" resultMap="ShoppingCartMap">
-        select id ,  user_id, goods_id, shop_id, product_id, sell_user_id, property, price, sale_price, img, product_name, create_time, buy_num from shopping_cart where user_id=#{userId}
+        select id ,  user_id, goods_id, shop_id, product_id,
+        sell_user_id, property, price, sale_price, img, product_name,
+        create_time, buy_num from shopping_cart where user_id=#{userId} order by shop_id
     </select>
 
 </mapper>

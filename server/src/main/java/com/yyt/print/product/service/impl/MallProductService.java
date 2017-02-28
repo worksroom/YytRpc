@@ -74,6 +74,9 @@ public class MallProductService implements IMallProductService {
             ext.setGoodsId(mallGoods.getId());
         }
         mallProductExtDAO.batchSaveMallProductEx(exts);
+        for(MallGoodBasePro mgbp:bpro){
+            mgbp.setGoodsId(mallGoods.getId());
+        }
         mallGoodBaseProDAO.batchSaveMallGoodBasePro(bpro);
 
         return 1;

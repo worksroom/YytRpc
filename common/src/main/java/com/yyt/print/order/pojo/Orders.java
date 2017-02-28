@@ -1,5 +1,6 @@
 package com.yyt.print.order.pojo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -7,9 +8,26 @@ import java.util.Date;
  * Created by leo on 2016/11/21.
  */
 public class Orders {
+
+    private static int  seq = 1;
+    public static String getSeq(int buyUserId){
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+        String result = format.format(new Date());
+        synchronized (Orders.class){
+            seq++;
+            if(seq>=999){
+                seq = 1;
+            }
+        }
+        result = (Long.parseLong(result)*1000 + seq) + String.valueOf(buyUserId);
+
+        return result;
+    }
+
     private String id;//订单ID
     private int buyUserId;
     private int sellUserId;
+    private int shopId;
     private int payType;
     private Double totalMoney;
     private Double productMoney;
@@ -21,6 +39,11 @@ public class Orders {
     private Date createTime;
     private Date updateTime;
     private int addressId;
+
+    public Orders(int buyUserId){
+        this.buyUserId = buyUserId;
+        this.id = getSeq(this.buyUserId);
+    }
 
     public String getId() {
         return id;
@@ -132,5 +155,13 @@ public class Orders {
 
     public void setAddressId(int addressId) {
         this.addressId = addressId;
+    }
+
+    public int getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(int shopId) {
+        this.shopId = shopId;
     }
 }

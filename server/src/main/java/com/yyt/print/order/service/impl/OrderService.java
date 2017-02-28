@@ -3,6 +3,7 @@ package com.yyt.print.order.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.yyt.print.order.dao.IOrderAddrDAO;
 import com.yyt.print.order.dao.IShoppingCartDAO;
+import com.yyt.print.order.front.OrderProductFront;
 import com.yyt.print.order.pojo.Orders;
 import com.yyt.print.order.pojo.ShoppingCart;
 import com.yyt.print.order.pojo.ShoppingCartSet;
@@ -11,6 +12,7 @@ import com.yyt.print.product.dao.IMallGoodsDAO;
 import com.yyt.print.product.dao.IMallProductDAO;
 import com.yyt.print.product.pojo.MallGoods;
 import com.yyt.print.product.pojo.MallProduct;
+import com.yyt.print.product.pojo.MallProductSet;
 import com.yyt.print.product.service.IMallProductService;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +42,15 @@ public class OrderService implements IOrderService {
     private IMallProductService mallProductService;
 
     @Override
-    public Orders makeOrder(int buyUserId, int sellUserId, int payType, Double totalMoney, JSONObject ext) {
+    public Orders makeOrder(int buyUserId,int addrId,List<OrderProductFront> product,JSONObject ext) {
+        Orders order = new Orders(buyUserId);
+        double totalMoney = 0;
+        for(OrderProductFront opf:product){
+            MallProductSet mps = mallProductService.getMallProductSet(opf.getProductId());
+            totalMoney = totalMoney + mps.getMallProduct().getSalePrice();
+
+        }
+
         return null;
     }
 
