@@ -2,7 +2,7 @@ package com.yyt.print.order.dao;
 
 import com.yyt.print.base.BaseTestClass;
 import com.yyt.print.order.pojo.ShoppingCart;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 /**
  * Created by lenovo on 2017/2/28.

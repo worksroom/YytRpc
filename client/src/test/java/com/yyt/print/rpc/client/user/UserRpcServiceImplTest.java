@@ -8,7 +8,10 @@ import com.yyt.print.user.pojo.UserBuyer;
 import com.yyt.print.user.pojo.UserSeller;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 public class UserRpcServiceImplTest {
     IUserRpcService userRpcService = YytRpcClientFactory.getUserRpcService();
@@ -53,7 +56,12 @@ public class UserRpcServiceImplTest {
 
     @Test
     public void testGetUserMap() throws Exception {
+        List<Integer> list = new ArrayList<>();
+        list.add(3);
+        list.add(4);
+        Map<Integer, User> map = userRpcService.getUserMap(list);
 
+        System.out.println(map.get(3));
     }
 
     @Test

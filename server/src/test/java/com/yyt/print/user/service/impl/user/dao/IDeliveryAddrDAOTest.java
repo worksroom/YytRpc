@@ -3,7 +3,7 @@ package com.yyt.print.user.service.impl.user.dao;
 import com.yyt.print.base.BaseTestClass;
 import com.yyt.print.user.dao.IDeliveryAddrDAO;
 import com.yyt.print.user.pojo.DeliveryAddr;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 /**
  * Created by lenovo on 2017/2/28.

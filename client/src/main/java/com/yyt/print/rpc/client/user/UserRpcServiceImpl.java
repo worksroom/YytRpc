@@ -73,8 +73,9 @@ public class UserRpcServiceImpl implements IUserRpcService {
     @Override
     public Map<Integer, User> getUserMap(List<Integer> userIdList) {
         try {
-            String json = getClient().getUserList(userIdList);
-            return (Map<Integer,User>)JSON.parse(json);
+            String json = getClient().getUserMap(userIdList);
+            return JSON.parseObject(json, new TypeReference<Map<Integer, User>>(){});
+//            return (Map<Integer,User>)JSON.parse(json);
         } catch (TException e) {
             logger.error(e.getMessage(), e);
         }
