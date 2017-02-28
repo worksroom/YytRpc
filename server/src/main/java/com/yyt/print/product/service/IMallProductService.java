@@ -39,7 +39,7 @@ public interface IMallProductService {
     MallGoodsSet getMallGoodsSetByProduct(int productId);
 
 
-
+    MallProductSet getMallProductSet(int productId);
 
 
     /**

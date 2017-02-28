@@ -28,6 +28,12 @@
        where  goods_id=#{goodsId} order by product_id
     </select>
 
+    <select id="findByProduct" parameterType="int"  resultMap="MallProductSaleProMap">
+        SELECT  id,goods_id,product_id,class_pro_id,
+        class_pro_value_id,update_time,create_time from mall_product_sale_pro
+        where  product_id=#{productId}
+    </select>
+
 
 
 </mapper>

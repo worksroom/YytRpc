@@ -26,4 +26,83 @@ public class OrderClient implements OrderThriftRpcService.Iface {
         return null;
     }
 
+    @Override
+    public int addShopCart(int uid, int skuId, int buyNum) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(OrderThriftRpcService.Client.class).addShopCart(uid, skuId, buyNum);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public int delShopCart(int id) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(OrderThriftRpcService.Client.class).delShopCart(id);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public int updateShopNum(int id, int num) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(OrderThriftRpcService.Client.class).updateShopNum(id, num);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public String findUserShopCart(int uid) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(OrderThriftRpcService.Client.class).findUserShopCart(uid);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
 }

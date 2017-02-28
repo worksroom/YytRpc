@@ -174,6 +174,18 @@ public class MallProductService implements IMallProductService {
         return this.getMallGoodsSetByGood(product.getGoodsId());
     }
 
+    @Override
+    public MallProductSet getMallProductSet(int productId) {
+        MallProduct pro = mallProductDAO.getMallProduct(productId);
+
+        List<MallProductSalePro> pros = mallProductSaleProDAO.findProByProductId(productId);
+
+        MallProductSet set = new MallProductSet();
+
+        set.setMallProduct(pro);
+        set.setSalePro(pros);
+        return set;
+    }
 
     @Override
     public int saveStoreLocation(StoreLocation storeLocation) {

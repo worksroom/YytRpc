@@ -464,5 +464,33 @@ service UserThriftRpcService {
 * 订单 Service
 **/
 service OrderThriftRpcService {
+    /**
+     * 加入购物车
+     * @param uid
+     * @param skuId
+     * @param buyNum
+     * @return
+     */
+    i32 addShopCart(1:i32 uid,2:i32 skuId,3:i32 buyNum);
 
+    /**
+     * 删除购物车
+     * @param id
+     * @return
+     */
+    i32 delShopCart(1:i32 id);
+
+    /**
+     * 修改数量
+     * @param num
+     * @return
+     */
+    i32 updateShopNum(1:i32 id , 2:i32 num);
+
+    /**
+     * 查询用户的购物车
+     * @param uid
+     * @return
+     */
+    string findUserShopCart(1:i32 uid);
 }

@@ -12,4 +12,6 @@ public interface IMallProductSaleProDAO {
     int batchSaveMallProductSalePro(List<MallProductSalePro> list);
 
     List<MallProductSalePro> findMallProductSalePro(int goods);
+
+    List<MallProductSalePro> findProByProductId(int productId);
 }

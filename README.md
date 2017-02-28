@@ -157,5 +157,15 @@ alter table `yyt`.`mall_good_base_pro`
 
 
 alter table `yyt`.`delivery_addr` 
-   change `id` `id` int(11) NOT NULL AUTO_INCREMENT comment '收货地址id'
+   change `id` `id` int(11) NOT NULL AUTO_INCREMENT comment '收货地址id';
+
+alter table `yyt`.`shopping_cart` 
+   change `id` `id` int(11) NOT NULL AUTO_INCREMENT,
+   add primary key(`id`);
+
+alter table `yyt`.`shopping_cart` 
+   add column `goods_id` int(11) DEFAULT 0 after `user_id`;
+
+
+
 

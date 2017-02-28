@@ -10,6 +10,8 @@ import java.util.Date;
 public class ShoppingCart {
     private int id;
     private int userId;//用户ID
+    private int goodsId;
+    private int shopId;
     private int productId;//商品ID
     private int sellUserId;//卖家ID
     private String property;
@@ -17,8 +19,8 @@ public class ShoppingCart {
     private Double salePrice;
     private String img;
     private String productName;
-    private String shopName;
     private Date createTime;
+    private int buyNum;
 
     public int getId() {
         return id;
@@ -92,13 +94,7 @@ public class ShoppingCart {
         this.productName = productName;
     }
 
-    public String getShopName() {
-        return shopName;
-    }
 
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
-    }
 
     public Date getCreateTime() {
         return createTime;
@@ -106,5 +102,29 @@ public class ShoppingCart {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public int getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(int goodsId) {
+        this.goodsId = goodsId;
+    }
+
+    public int getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(int shopId) {
+        this.shopId = shopId;
+    }
+
+    public int getBuyNum() {
+        return buyNum;
+    }
+
+    public void setBuyNum(int buyNum) {
+        this.buyNum = buyNum;
     }
 }

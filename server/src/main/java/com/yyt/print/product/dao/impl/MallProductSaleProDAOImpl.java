@@ -21,4 +21,10 @@ public class MallProductSaleProDAOImpl extends YytBaseDAO<MallProductSalePro> im
     public List<MallProductSalePro> findMallProductSalePro(int goods) {
         return super.findBy("findByGood",goods);
     }
+
+
+    @Override
+    public List<MallProductSalePro> findProByProductId(int productId) {
+        return super.findBy("findByProduct",productId);
+    }
 }
