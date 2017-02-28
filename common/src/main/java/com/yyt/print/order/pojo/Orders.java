@@ -1,7 +1,11 @@
 package com.yyt.print.order.pojo;
 
+import com.alibaba.fastjson.JSON;
+import com.yyt.print.order.front.OrderProductPojo;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 订单表
@@ -163,5 +167,14 @@ public class Orders {
 
     public void setShopId(int shopId) {
         this.shopId = shopId;
+    }
+
+    public List<OrderProductPojo> transproductDesc(){
+        if(this.productDesc!=null){
+            return JSON.parseArray(this.productDesc, OrderProductPojo.class);
+        }else{
+            return null;
+        }
+
     }
 }

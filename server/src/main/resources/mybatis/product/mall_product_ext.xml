@@ -50,4 +50,9 @@
     <select id="selectByGoods" parameterType="int" resultMap="MallProductExtMap">
         select id ,  type, goods_id, product_id, thrid_id, create_time, update_time from mall_product_ext where goods_id=#{goodsId}
     </select>
+
+    <select id="selectByType" parameterType="map" resultMap="MallProductExtMap">
+        select id ,  type, goods_id, product_id, thrid_id, create_time,
+        update_time from mall_product_ext where goods_id=#{goodsId} and type=#{type}
+    </select>
 </mapper>

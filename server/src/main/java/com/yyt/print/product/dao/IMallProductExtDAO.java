@@ -24,4 +24,6 @@ public interface IMallProductExtDAO{
      * @return
      */
     List<MallProductExt> findMallProductExt(int goods);
+
+    MallProductExt findMallProductExt(int goods,int type);
 }

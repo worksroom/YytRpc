@@ -5,6 +5,7 @@ package com.yyt.print.order.front;
  */
 public class OrderProductFront {
     private int productId;
+    private int shopId;
     private int num;
     private int addr;
 
@@ -30,5 +31,13 @@ public class OrderProductFront {
 
     public void setAddr(int addr) {
         this.addr = addr;
+    }
+
+    public int getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(int shopId) {
+        this.shopId = shopId;
     }
 }

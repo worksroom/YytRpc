@@ -5,7 +5,9 @@ import com.yyt.print.product.dao.IMallProductExtDAO;
 import com.yyt.print.product.pojo.MallProductExt;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lenovo on 2017/2/16.
@@ -35,5 +37,13 @@ public class MallProductExtDAOImpl extends YytBaseDAO<MallProductExt> implements
     @Override
     public int delExts(int goodsId) {
         return super.deleteBy("deleteByGoodsId",goodsId);
+    }
+
+    @Override
+    public MallProductExt findMallProductExt(int goods, int type) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("goodsId",goods);
+        map.put("type",type);
+        return super.findUniqueBy("selectByType",map);
     }
 }

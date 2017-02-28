@@ -1,9 +1,11 @@
 package com.yyt.print.order.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.youguu.core.util.PageHolder;
 import com.yyt.print.order.front.OrderProductFront;
 import com.yyt.print.order.pojo.Orders;
 import com.yyt.print.order.pojo.ShoppingCartSet;
+import com.yyt.print.order.query.OrdersQuery;
 
 import java.util.List;
 
@@ -26,13 +28,31 @@ public interface IOrderService {
      */
     public Orders makeOrder(int buyUserId,int addrId,List<OrderProductFront> product,JSONObject ext);
 
+
+
     /**
-     * 查询订单列表
-     * @param buyUserId 买家ID
-     * @param type 1-待付款；2-待评价；3-待收货；9-全部订单
+     * 查询订单
+     * @param query
      * @return
      */
-    public List<Orders> queryOrders(int buyUserId, int type);
+    PageHolder<Orders> findOrders(OrdersQuery query);
+
+    /**
+     * 确认发货 - 物流信息
+     * @param orderId
+     * @param expressCom
+     * @param expressNum
+     * @return
+     */
+    int confirmExpress(String orderId,int expressCom,String expressNum);
+
+    /**
+     * 确认收货
+     * @param buyUserId 买家ID
+     * @param orderId 订单ID
+     * @return
+     */
+    public int receive(int buyUserId, String orderId);
 
     /**
      * 付款接口，返回支付需要的签名数据
@@ -54,13 +74,7 @@ public interface IOrderService {
      */
     public int rate(int buyUserId, String orderId, String goodsId, int score, String content, String imgs);
 
-    /**
-     * 确认收货
-     * @param buyUserId 买家ID
-     * @param orderId 订单ID
-     * @return
-     */
-    public int receive(int buyUserId, String orderId);
+
 
     /**
      * 查询物流信息

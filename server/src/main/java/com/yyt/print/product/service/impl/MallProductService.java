@@ -264,4 +264,15 @@ public class MallProductService implements IMallProductService {
     public int updateSku(MallProduct mallProduct) {
         return mallProductDAO.updateBasic(mallProduct);
     }
+
+
+    @Override
+    public FareMould getFromGoodsId(int goodsId) {
+        MallProductExt ext = mallProductExtDAO.findMallProductExt(goodsId,MallProductExt.TYPE_FEE);
+        if(ext!=null){
+            FareMould fm = fareMouldDAO.getFareMould(ext.getThridId());
+            return fm;
+        }
+        return null;
+    }
 }

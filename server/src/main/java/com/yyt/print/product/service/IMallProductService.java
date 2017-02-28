@@ -124,4 +124,11 @@ public interface IMallProductService {
      */
     int updateSku(MallProduct mallProduct);
 
+    /**
+     * 通过货品查询运费模板
+     * @param goodsId
+     * @return
+     */
+    FareMould getFromGoodsId(int goodsId);
+
 }
