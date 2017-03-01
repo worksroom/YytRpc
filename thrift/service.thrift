@@ -493,4 +493,13 @@ service OrderThriftRpcService {
      * @return
      */
     string findUserShopCart(1:i32 uid);
+
+    /** ext 暂时无用 **/
+    string makeOrder(1:i32 buyUserId,2:i32 addrId,3:string product,4:string ext);
+
+    string findOrders(1:string query);
+
+    i32 updateOrderPrice(1:string order,2:double price);
+
+    i32 confirmExpress(1:string orderId,2:i32 expressCom,3:string expressNum);
 }

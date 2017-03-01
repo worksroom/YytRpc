@@ -57,6 +57,9 @@
 		<!-- 订单 -->
 		<typeAlias alias="OrderAddr" type="com.yyt.print.order.pojo.OrderAddr" />
 		<typeAlias alias="ShoppingCart" type="com.yyt.print.order.pojo.ShoppingCart" />
+		<typeAlias alias="Orders" type="com.yyt.print.order.pojo.Orders" />
+		<typeAlias alias="PayOrders" type="com.yyt.print.order.pojo.PayOrders" />
+		<typeAlias alias="OrderExpress" type="com.yyt.print.order.pojo.OrderExpress" />
 
 	</typeAliases>
 
@@ -117,6 +120,9 @@
 
 		<mapper resource="mybatis/order/order_addr.xml" />
 		<mapper resource="mybatis/order/shopping_cart.xml" />
+		<mapper resource="mybatis/order/orders.xml" />
+		<mapper resource="mybatis/order/pay_orders.xml" />
+		<mapper resource="mybatis/order/order_express.xml" />
 
 	</mappers>
 </configuration>

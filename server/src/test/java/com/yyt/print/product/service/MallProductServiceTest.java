@@ -35,7 +35,7 @@ public class MallProductServiceTest extends BaseTestClass {
 
         mpe = new MallProductExt();
         mpe.setType(1);
-        mpe.setThridId(2);
+        mpe.setThridId(3);
         list.add(mpe);
         return list;
     }

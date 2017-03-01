@@ -7,7 +7,8 @@ package com.yyt.print.order.pojo;
 public class OrderExpress {
     private String orderId;//订单ID
     private String orgId;//物流公司
-    private int code;//物流编号
+    private int code;//物流公司编号
+    private String num; //物流单号
 
     public String getOrderId() {
         return orderId;
@@ -31,5 +32,13 @@ public class OrderExpress {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
     }
 }

@@ -105,4 +105,85 @@ public class OrderClient implements OrderThriftRpcService.Iface {
             }
         }
     }
+
+
+    @Override
+    public String makeOrder(int buyUserId, int addrId, String product, String ext) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(OrderThriftRpcService.Client.class).makeOrder(buyUserId, addrId, product, ext);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public String findOrders(String query) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(OrderThriftRpcService.Client.class).findOrders(query);
+        } catch (TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public int updateOrderPrice(String order, double price) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(OrderThriftRpcService.Client.class).updateOrderPrice(order,price);
+        } catch (TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public int confirmExpress(String orderId, int expressCom, String expressNum) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(OrderThriftRpcService.Client.class).confirmExpress(orderId, expressCom, expressNum);
+        } catch (TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
 }

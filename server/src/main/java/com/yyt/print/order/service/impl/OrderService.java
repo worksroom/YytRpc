@@ -1,16 +1,13 @@
 package com.yyt.print.order.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.youguu.core.util.PageHolder;
-import com.yyt.print.order.dao.IOrderAddrDAO;
-import com.yyt.print.order.dao.IOrdersDAO;
-import com.yyt.print.order.dao.IShoppingCartDAO;
+import com.yyt.print.order.dao.*;
 import com.yyt.print.order.front.OrderProductFront;
 import com.yyt.print.order.front.OrderProductPojo;
-import com.yyt.print.order.pojo.Orders;
-import com.yyt.print.order.pojo.ShoppingCart;
-import com.yyt.print.order.pojo.ShoppingCartSet;
+import com.yyt.print.order.pojo.*;
 import com.yyt.print.order.query.OrdersQuery;
 import com.yyt.print.order.service.IOrderService;
 import com.yyt.print.order.util.OrderUtil;
@@ -60,10 +57,19 @@ public class OrderService implements IOrderService {
     @Resource
     private IOrdersDAO ordersDAO;
 
+    @Resource
+    private IPayOrdersDAO payOrdersDAO;
+
+    @Resource
+    private IOrderExpressDAO orderExpressDAO;
+
 
     @Transactional
     @Override
-    public Orders makeOrder(int buyUserId,int addrId,List<OrderProductFront> product,JSONObject ext) {
+    public PayOrders makeOrder(int buyUserId,int addrId,List<OrderProductFront> product,JSONObject ext) {
+        PayOrders po = PayOrders.getByIds();
+        JSONArray ja = new JSONArray();
+
         //key为店铺的id list 为这个店铺下的商品
         Map<Integer,List<OrderProductFront>> map = this.resetData(product);
         NumberFormat df = new DecimalFormat("###0.000");
@@ -85,6 +91,8 @@ public class OrderService implements IOrderService {
 
                 //组织 - ProductDesc
                 OrderProductPojo pojo = new OrderProductPojo();
+                //TODO
+                pojo.setProduct_pro_value("红色;大的");
                 pojo.setFee(df.format(temp_fee));
                 pojo.setPrice(df.format(temp_money));
                 pojo.setNum(opf.getNum());
@@ -99,9 +107,11 @@ public class OrderService implements IOrderService {
             order.setAddressId(addrId);
             order.setProductDesc(JSON.toJSONString(pojos));
             ordersDAO.saveOrders(order);
+            ja.add(order.getId());
         }
-
-        return null;
+        po.setOrderIdSet(ja.toJSONString());
+        payOrdersDAO.savePayOrders(po);
+        return po;
     }
 
     private MallGoods getMallGoodsCache(Map<Integer,MallGoods> goodsCache,int goodsId){
@@ -131,8 +141,36 @@ public class OrderService implements IOrderService {
     }
 
     @Override
+    public int updateOrderPrice(String id, double price) {
+        Orders orders = ordersDAO.getOrders(id);
+        if(orders.getStatus()!=0){
+            return -99;
+        }else{
+            return ordersDAO.updateMoney(id, price);
+        }
+
+    }
+
+    @Transactional
+    @Override
     public int confirmExpress(String orderId, int expressCom, String expressNum) {
-        return 0;
+        Orders orders = ordersDAO.getOrders(orderId);
+        if(orders.getStatus()!=1){
+            return -99;
+        }else{
+            ordersDAO.updateExpress(orderId);
+
+            OrderExpress orderExpress = new OrderExpress();
+            orderExpress.setOrderId(orderId);
+            orderExpress.setCode(expressCom);
+            orderExpress.setNum(expressNum);
+            orderExpressDAO.saveOrderExpress(orderExpress);
+
+        }
+
+
+
+        return 1;
     }
 
     @Override

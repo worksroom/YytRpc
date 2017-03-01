@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.youguu.core.util.PageHolder;
 import com.yyt.print.order.front.OrderProductFront;
 import com.yyt.print.order.pojo.Orders;
+import com.yyt.print.order.pojo.PayOrders;
 import com.yyt.print.order.pojo.ShoppingCartSet;
 import com.yyt.print.order.query.OrdersQuery;
 
@@ -17,7 +18,7 @@ public interface IOrderService {
     /**
      * 生成订单
      * @param buyUserId 买家ID
-     * @param ext 订单扩展信息
+     * @param product 订单扩展信息
      *            [{
      *            "productId"
      *            "num"
@@ -26,7 +27,7 @@ public interface IOrderService {
      *            }]
      * @return 返回订单数据
      */
-    public Orders makeOrder(int buyUserId,int addrId,List<OrderProductFront> product,JSONObject ext);
+    public PayOrders makeOrder(int buyUserId,int addrId,List<OrderProductFront> product,JSONObject ext);
 
 
 
@@ -36,6 +37,8 @@ public interface IOrderService {
      * @return
      */
     PageHolder<Orders> findOrders(OrdersQuery query);
+
+    int updateOrderPrice(String order,double price);
 
     /**
      * 确认发货 - 物流信息

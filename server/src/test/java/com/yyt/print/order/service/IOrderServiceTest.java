@@ -1,43 +1,18 @@
-package com.yyt.print.rpc.client.order;
+package com.yyt.print.order.service;
 
+import com.yyt.print.base.BaseTestClass;
 import com.yyt.print.order.front.OrderProductFront;
 import com.yyt.print.order.query.OrdersQuery;
-import com.yyt.print.rpc.client.YytRpcClientFactory;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by lenovo on 2017/2/28.
+ * Created by lenovo on 2017/3/1.
  */
-public class IOrderRPCServiceTest {
-    IOrderRPCService service = YytRpcClientFactory.getOrderRPCService();
-
-    @Test
-    public void addShopCart(){
-        service.addShopCart(22,2,1);
-    }
-
-    @Test
-    public void delShopCart(){
-        service.delShopCart(1);
-    }
-
-    @Test
-    public void updateShopNum(){
-        service.updateShopNum(1,10);
-    }
-
-    @Test
-    public void findUserShopCart(){
-        System.out.println(service.findUserShopCart(22));
-    }
-
-    @Test
-    public void makeOrder(){
-        service.makeOrder(224,3,getlist(),null);
-    }
+public class IOrderServiceTest extends BaseTestClass {
+    IOrderService service  = getBean(IOrderService.class);
 
     private List<OrderProductFront> getlist(){
         List<OrderProductFront> list = new ArrayList<>();
@@ -49,6 +24,12 @@ public class IOrderRPCServiceTest {
         list.add(opf);
         return list;
     }
+
+    @Test
+    public void makeOrder(){
+        service.makeOrder(224,3,getlist(),null);
+    }
+
     @Test
     public void findOrders(){
         OrdersQuery query = new OrdersQuery();

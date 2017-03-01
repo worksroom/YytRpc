@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderExpress">
+    <resultMap type="OrderExpress" id="OrderExpressMap">
+        <result property="orderId" column="order_id"/>
+        <result property="orgId" column="org_id"/>
+        <result property="code" column="code"/>
+        <result property="num" column="num"/>
+    </resultMap>
+    <insert id="insert" parameterType="OrderExpress">
+        insert into order_express (
+        order_id, org_id, code, num)
+        VALUES
+        ( #{orderId}, #{orgId}, #{code}, #{num})
+
+    </insert>
+
+    <select id="select" parameterType="string" resultMap="OrderExpressMap">
+        select   order_id, org_id, code, num from order_express where order_id=#{id}
+    </select>
+
+</mapper>

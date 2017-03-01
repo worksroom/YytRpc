@@ -168,4 +168,19 @@ alter table `yyt`.`shopping_cart`
 
 
 
+CREATE TABLE `pay_orders` (
+  `id` varchar(100) NOT NULL ,
+  `order_id_set` varchar(800) NOT NULL ,
+  `status` int(11) DEFAULT 0,
+  `pay_type` int(11),
+  `total_money` decimal(11,2) not null DEFAULT 0,
+  `fee` decimal(11,2) not null DEFAULT 0,
+  `pay_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '支付时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB   DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+alter table `yyt`.`order_express` 
+   add column `num` varchar(100) NULL after `code`;
 

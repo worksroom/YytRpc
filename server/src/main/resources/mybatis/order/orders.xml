@@ -20,19 +20,24 @@
     </resultMap>
     <insert id="insert" parameterType="Orders">
         insert into orders (
-        id,buy_user_id, shopId,sell_user_id, pay_type, total_money, product_money, status, fee, product_desc, ip, pay_time, create_time, update_time, address_id)
+        id,buy_user_id, shop_id,sell_user_id, pay_type, total_money, product_money, status, fee, product_desc, ip, pay_time, create_time, update_time, address_id)
         VALUES
         ( #{id}, #{buyUserId},#{shopId}, #{sellUserId}, #{payType}, #{totalMoney}, #{productMoney}, #{status}, #{fee}, #{productDesc}, #{ip}, #{payTime}, #{createTime}, #{updateTime}, #{addressId})
 
     </insert>
 
-    <update id="updateMoney" parameterType="string">
+    <update id="updateMoney" parameterType="map">
         update orders set total_money=#{totalMoney} where id=#{id}
     </update>
 
     <update id="updateStatus" parameterType="map">
         update orders set pay_type=#{payType},status=#{status} where id=#{id}
     </update>
+
+    <update id="updateExpress" parameterType="int">
+        update orders set  status=2 where id=#{id}
+    </update>
+
 
     <select id="select" parameterType="string" resultMap="OrdersMap">
         select id ,  buy_user_id,shop_id, sell_user_id, pay_type, total_money, product_money, status, fee, product_desc, ip, pay_time, create_time, update_time, address_id from orders where id=#{id}
@@ -78,7 +83,7 @@
         <include refid="sql_count" />
         <include refid="sql_where" />
     </select>
-    <select id="findByParams" parameterType="java.util.HashMap" resultMap="MallGoodsMap">
+    <select id="findByParams" parameterType="java.util.HashMap" resultMap="OrdersMap">
         <include refid="sql_select" />
         <include refid="sql_where" />
     </select>

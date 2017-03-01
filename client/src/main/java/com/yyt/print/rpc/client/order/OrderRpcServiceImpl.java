@@ -1,9 +1,18 @@
 package com.yyt.print.rpc.client.order;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
+import com.alibaba.fastjson.parser.ParserConfig;
 import com.youguu.core.logging.Log;
 import com.youguu.core.logging.LogFactory;
+import com.youguu.core.util.PageHolder;
+import com.yyt.print.order.front.OrderProductFront;
+import com.yyt.print.order.pojo.Orders;
+import com.yyt.print.order.pojo.PayOrders;
 import com.yyt.print.order.pojo.ShoppingCartSet;
+import com.yyt.print.order.query.OrdersQuery;
+import com.yyt.print.parser.PageHolderDeserializer;
 import com.yyt.print.rpc.common.Constants;
 
 import java.util.List;
@@ -57,5 +66,49 @@ public class OrderRpcServiceImpl implements IOrderRPCService {
             logger.error(e.getMessage(), e);
         }
         return null;
+    }
+
+    @Override
+    public PayOrders makeOrder(int buyUserId, int addrId, List<OrderProductFront> product, JSONObject ext) {
+        try {
+
+            String result = getClient().makeOrder(buyUserId,addrId,JSON.toJSONString(product),ext==null?null:ext.toJSONString());
+            return JSON.parseObject(result,PayOrders.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public PageHolder<Orders> findOrders(OrdersQuery query) {
+        try {
+            String result = getClient().findOrders(JSON.toJSONString(query));
+            ParserConfig.getGlobalInstance().putDeserializer(PageHolder.class, new PageHolderDeserializer());
+            return JSON.parseObject(result, new TypeReference<PageHolder<Orders>>(){});
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public int updateOrderPrice(String order, double price) {
+        try {
+            return getClient().updateOrderPrice(order, price);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public int confirmExpress(String orderId, int expressCom, String expressNum) {
+        try {
+            return getClient().confirmExpress(orderId, expressCom, expressNum);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
     }
 }

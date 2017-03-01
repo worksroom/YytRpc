@@ -35,6 +35,15 @@ public class Orders {
     private int payType;
     private Double totalMoney;
     private Double productMoney;
+    /**
+     * 0待支付
+
+     1 已支付 ， 待发货
+
+     2 已发货
+
+     3.结束
+     */
     private int status;
     private Double fee;
     private String productDesc;
@@ -47,6 +56,10 @@ public class Orders {
     public Orders(int buyUserId){
         this.buyUserId = buyUserId;
         this.id = getSeq(this.buyUserId);
+    }
+
+    public Orders(){
+        super();
     }
 
     public String getId() {

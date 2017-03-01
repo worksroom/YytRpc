@@ -16,5 +16,7 @@ public interface IOrdersDAO {
 
     int updateMoney(String id , double money);
 
+    int updateExpress(String id);
+
     PageHolder<Orders> findOrders(OrdersQuery query);
 }

@@ -35,10 +35,15 @@ public class OrdersDAOImpl extends YytBaseDAO<Orders> implements IOrdersDAO {
     }
 
     @Override
+    public int updateExpress(String id) {
+        return super.updateBy("updateExpress",id);
+    }
+
+    @Override
     public int updateMoney(String id, double money) {
         Map<String,Object> map = new HashMap<>();
         map.put("id",id);
-        map.put("money",money);
+        map.put("totalMoney",money);
         return super.updateBy("updateMoney",map);
     }
 
