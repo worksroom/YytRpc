@@ -42,7 +42,7 @@ public class OrdersQuery extends BaseQuery {
     public Map<String,Object> getMap(){
         Map<String,Object> map = new HashMap<>();
         map.put("status",this.status);
-        map.put("shopId",this.status);
+        map.put("shopId",this.shopId);
         map.put("buyUserId",this.buyUserId);
 
         return map;
