@@ -4,6 +4,8 @@ import com.youguu.core.util.PageHolder;
 import com.yyt.print.fragment.pojo.FragmentHome;
 import com.yyt.print.info.pojo.InfoCategory;
 import com.yyt.print.info.pojo.InfoContent;
+import com.yyt.print.info.pojo.InfoVender;
+import com.yyt.print.info.query.InfoQuery;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,16 +14,6 @@ import java.util.List;
  * Created by SomeBody on 2016/9/27.
  */
 public interface IInfoRpcService {
-    public int saveFragmentHome(FragmentHome fragmentHome);
-
-    public int updateFragmentHome(FragmentHome fragmentHome);
-
-    public int deleteFragmentHome(int id);
-
-    public FragmentHome getFragmentHome(int id);
-
-    public PageHolder<FragmentHome> queryFragmentHomeByPage(HashMap<String, Object> paramMap, int pageIndex, int pageSize);
-
     public int saveInfoCategory(InfoCategory category);
 
     public int updateInfoCategory(InfoCategory category);
@@ -52,7 +44,15 @@ public interface IInfoRpcService {
 
     public InfoContent getInfoContent(int id);
 
-    public PageHolder<InfoContent> queryInfoContentByPage(HashMap<String, Object> paramMap, int pageIndex, int pageSize);
+    public PageHolder<InfoContent> queryInfoContentByPage(InfoQuery query);
+
+    /**
+     * 添加供应商信息
+     * @param infoContent
+     * @param infoVender
+     * @return
+     */
+    public int addSupplyInfo(InfoContent infoContent, InfoVender infoVender);
 
     public List<InfoContent> queryInfoContentList(String title, String des, int id, int limit);
 }

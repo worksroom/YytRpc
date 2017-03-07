@@ -1,5 +1,7 @@
 package com.yyt.print.info.pojo;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.Date;
 
 /**
@@ -12,6 +14,9 @@ public class InfoContent {
     private int userId;
     private int classId;
     private String title;
+    /**
+     * 内容类型：1 内容页 html格式，2.内容页 json格式
+     */
     private int type;
     private String des;
     private String photo;
@@ -105,5 +110,18 @@ public class InfoContent {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    /**
+     * 将content转成供应商信息对象
+     * @return
+     */
+    public InfoVender transContent(){
+        if(this.content!=null && this.type==2){
+            return JSON.parseObject(this.content, InfoVender.class);
+        }else{
+            return null;
+        }
+
     }
 }

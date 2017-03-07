@@ -30,106 +30,6 @@ public class InfoClient implements InfoThriftRpcService.Iface {
     }
 
     @Override
-    public int saveFragmentHome(String fragmentHome) throws TException {
-        RPCMultiplexConnection client = null;
-        try {
-            client = getConnection();
-            return client.getClient(InfoThriftRpcService.Client.class).saveFragmentHome(fragmentHome);
-        } catch(TException e){
-            client.setIdle(false);
-            throw e;
-        }finally {
-            if(client != null){
-                try {
-                    pool.returnObject(client);
-                } catch (Exception e) {
-                    logger.error(e);
-                }
-            }
-        }
-    }
-
-    @Override
-    public int updateFragmentHome(String fragmentHome) throws TException {
-        RPCMultiplexConnection client = null;
-        try {
-            client = getConnection();
-            return client.getClient(InfoThriftRpcService.Client.class).updateFragmentHome(fragmentHome);
-        } catch(TException e){
-            client.setIdle(false);
-            throw e;
-        }finally {
-            if(client != null){
-                try {
-                    pool.returnObject(client);
-                } catch (Exception e) {
-                    logger.error(e);
-                }
-            }
-        }
-    }
-
-    @Override
-    public int deleteFragmentHome(int id) throws TException {
-        RPCMultiplexConnection client = null;
-        try {
-            client = getConnection();
-            return client.getClient(InfoThriftRpcService.Client.class).deleteFragmentHome(id);
-        } catch(TException e){
-            client.setIdle(false);
-            throw e;
-        }finally {
-            if(client != null){
-                try {
-                    pool.returnObject(client);
-                } catch (Exception e) {
-                    logger.error(e);
-                }
-            }
-        }
-    }
-
-    @Override
-    public String getFragmentHome(int id) throws TException {
-        RPCMultiplexConnection client = null;
-        try {
-            client = getConnection();
-            return client.getClient(InfoThriftRpcService.Client.class).getFragmentHome(id);
-        } catch(TException e){
-            client.setIdle(false);
-            throw e;
-        }finally {
-            if(client != null){
-                try {
-                    pool.returnObject(client);
-                } catch (Exception e) {
-                    logger.error(e);
-                }
-            }
-        }
-    }
-
-    @Override
-    public String queryFragmentHomeByPage(Map<String, String> paramMap, int pageIndex, int pageSize) throws TException {
-        RPCMultiplexConnection client = null;
-        try {
-            client = getConnection();
-            return client.getClient(InfoThriftRpcService.Client.class).queryFragmentHomeByPage(paramMap, pageIndex, pageSize);
-        } catch(TException e){
-            client.setIdle(false);
-            throw e;
-        }finally {
-            if(client != null){
-                try {
-                    pool.returnObject(client);
-                } catch (Exception e) {
-                    logger.error(e);
-                }
-            }
-        }
-    }
-
-    @Override
     public int saveInfoCategory(String category) throws TException {
         RPCMultiplexConnection client = null;
         try {
@@ -330,11 +230,31 @@ public class InfoClient implements InfoThriftRpcService.Iface {
     }
 
     @Override
-    public String queryInfoContentByPage(Map<String, String> paramMap, int pageIndex, int pageSize) throws TException {
+    public String queryInfoContentByPage(String query) throws TException {
         RPCMultiplexConnection client = null;
         try {
             client = getConnection();
-            return client.getClient(InfoThriftRpcService.Client.class).queryInfoContentByPage(paramMap, pageIndex, pageSize);
+            return client.getClient(InfoThriftRpcService.Client.class).queryInfoContentByPage(query);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public int addSupplyInfo(String infoContent, String infoVender) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(InfoThriftRpcService.Client.class).addSupplyInfo(infoContent, infoVender);
         } catch(TException e){
             client.setIdle(false);
             throw e;

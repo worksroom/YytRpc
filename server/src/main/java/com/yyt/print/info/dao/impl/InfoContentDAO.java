@@ -1,9 +1,12 @@
 package com.yyt.print.info.dao.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.youguu.core.util.PageHolder;
 import com.yyt.print.base.YytBaseDAO;
 import com.yyt.print.info.dao.IInfoContentDAO;
 import com.yyt.print.info.pojo.InfoContent;
+import com.yyt.print.info.pojo.InfoVender;
+import com.yyt.print.info.query.InfoQuery;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -36,9 +39,21 @@ public class InfoContentDAO extends YytBaseDAO<InfoContent> implements IInfoCont
     }
 
     @Override
-    public PageHolder<InfoContent> queryInfoContentByPage(HashMap<String, Object> paramMap, int pageIndex, int pageSize) {
-        return this.pagedQuery("findByParams", paramMap, pageIndex, pageSize);
+    public PageHolder<InfoContent> queryInfoContentByPage(InfoQuery query) {
+        HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("userId", query.getUserId());
+        paramMap.put("type", query.getType());
+        return this.pagedQuery("findByParams", paramMap, query.getPageIndex(), query.getPageSize());
     }
+
+    @Override
+    public int addSupplyInfo(InfoContent infoContent, InfoVender infoVender) {
+        if(infoContent!=null && infoVender !=null){
+            infoContent.setContent(JSON.toJSONString(infoVender));
+        }
+        return this.insert(infoContent);
+    }
+
 
     @Override
     public List<InfoContent> queryInfoContentList(String title, String des, int id, int limit) {

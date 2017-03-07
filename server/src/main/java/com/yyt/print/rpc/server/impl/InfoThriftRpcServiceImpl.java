@@ -4,10 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.youguu.core.util.PageHolder;
-import com.yyt.print.fragment.pojo.FragmentHome;
 import com.yyt.print.info.pojo.InfoCategory;
 import com.yyt.print.info.pojo.InfoContent;
-import com.yyt.print.info.service.IFragmentHomeService;
+import com.yyt.print.info.pojo.InfoVender;
+import com.yyt.print.info.query.InfoQuery;
 import com.yyt.print.info.service.IInfoCategoryService;
 import com.yyt.print.info.service.IInfoContentService;
 import com.yyt.print.parser.PageHolderSerializer;
@@ -26,46 +26,10 @@ import java.util.Map;
 @Service("infoThriftRpcService")
 public class InfoThriftRpcServiceImpl implements InfoThriftRpcService.Iface {
     @Resource
-    private IFragmentHomeService fragmentHomeService;
-    @Resource
     private IInfoCategoryService infoCategoryService;
     @Resource
     private IInfoContentService infoContentService;
 
-    @Override
-    public int saveFragmentHome(String fragmentHome) throws TException {
-        FragmentHome fragment = JSONObject.parseObject(fragmentHome, FragmentHome.class);
-        return fragmentHomeService.saveFragmentHome(fragment);
-    }
-
-    @Override
-    public int updateFragmentHome(String fragmentHome) throws TException {
-        FragmentHome fragment = JSONObject.parseObject(fragmentHome, FragmentHome.class);
-        return fragmentHomeService.updateFragmentHome(fragment);
-    }
-
-    @Override
-    public int deleteFragmentHome(int id) throws TException {
-        return fragmentHomeService.deleteFragmentHome(id);
-    }
-
-    @Override
-    public String getFragmentHome(int id) throws TException {
-        FragmentHome fragment = fragmentHomeService.getFragmentHome(id);
-        return JSON.toJSONString(fragment);
-    }
-
-    @Override
-    public String queryFragmentHomeByPage(Map<String, String> paramMap, int pageIndex, int pageSize) throws TException {
-        HashMap<String, Object> map = new HashMap<>();
-        for (Map.Entry<String, String> entry : paramMap.entrySet()) {
-            map.put(entry.getKey(), entry.getValue());
-        }
-        PageHolder<FragmentHome> pageHolder = fragmentHomeService.queryFragmentHomeByPage(map, pageIndex, pageSize);
-        SerializeConfig config = new SerializeConfig();
-        config.put(PageHolder.class, new PageHolderSerializer());
-        return JSON.toJSONString(pageHolder, config);
-    }
 
     @Override
     public int saveInfoCategory(String category) throws TException {
@@ -132,15 +96,16 @@ public class InfoThriftRpcServiceImpl implements InfoThriftRpcService.Iface {
     }
 
     @Override
-    public String queryInfoContentByPage(Map<String, String> paramMap, int pageIndex, int pageSize) throws TException {
-        HashMap<String, Object> map = new HashMap<>();
-        for (Map.Entry<String, String> entry : paramMap.entrySet()) {
-            map.put(entry.getKey(), entry.getValue());
-        }
-        PageHolder<InfoContent> pageHolder = infoContentService.queryInfoContentByPage(map, pageIndex, pageSize);
+    public String queryInfoContentByPage(String query) throws TException {
+        PageHolder<InfoContent> pageHolder = infoContentService.queryInfoContentByPage(JSON.parseObject(query, InfoQuery.class));
         SerializeConfig config = new SerializeConfig();
         config.put(PageHolder.class, new PageHolderSerializer());
         return JSON.toJSONString(pageHolder, config);
+    }
+
+    @Override
+    public int addSupplyInfo(String infoContent, String infoVender) throws TException {
+        return infoContentService.addSupplyInfo(JSON.parseObject(infoContent, InfoContent.class), JSON.parseObject(infoVender, InfoVender.class));
     }
 
     @Override

@@ -11,6 +11,9 @@ import com.youguu.core.util.PageHolder;
 import com.yyt.print.fragment.pojo.FragmentHome;
 import com.yyt.print.info.pojo.InfoCategory;
 import com.yyt.print.info.pojo.InfoContent;
+import com.yyt.print.info.pojo.InfoVender;
+import com.yyt.print.info.query.InfoQuery;
+import com.yyt.print.order.pojo.Orders;
 import com.yyt.print.parser.PageHolderDeserializer;
 import com.yyt.print.rpc.common.Constants;
 import org.apache.thrift.TException;
@@ -28,63 +31,6 @@ public class InfoRpcServiceImpl implements IInfoRpcService {
 
     private InfoClient getClient() {
         return new InfoClient();
-    }
-
-    @Override
-    public int saveFragmentHome(FragmentHome fragmentHome) {
-        try {
-            return getClient().saveFragmentHome(JSON.toJSONString(fragmentHome));
-        } catch (TException e) {
-            logger.error(e.getMessage(), e);
-        }
-        return 0;
-    }
-
-    @Override
-    public int updateFragmentHome(FragmentHome fragmentHome) {
-        try {
-            return getClient().updateFragmentHome(JSON.toJSONString(fragmentHome));
-        } catch (TException e) {
-            logger.error(e.getMessage(), e);
-        }
-        return 0;
-    }
-
-    @Override
-    public int deleteFragmentHome(int id) {
-        try {
-            return getClient().deleteFragmentHome(id);
-        } catch (TException e) {
-            logger.error(e.getMessage(), e);
-        }
-        return 0;
-    }
-
-    @Override
-    public FragmentHome getFragmentHome(int id) {
-        try {
-            String json = getClient().getFragmentHome(id);
-            return JSONObject.parseObject(json, FragmentHome.class);
-        } catch (TException e) {
-            logger.error(e.getMessage(), e);
-        }
-        return null;
-    }
-
-    @Override
-    public PageHolder<FragmentHome> queryFragmentHomeByPage(HashMap<String, Object> paramMap, int pageIndex, int pageSize) {
-        try {
-            HashMap<String, String> map = new HashMap<>();
-            for (Map.Entry<String, Object> entry : paramMap.entrySet()) {
-                map.put(entry.getKey(), (String)entry.getValue());
-            }
-            String json = getClient().queryFragmentHomeByPage(map, pageIndex, pageSize);
-            ParserConfig.getGlobalInstance().putDeserializer(PageHolder.class, new PageHolderDeserializer());
-            return JSON.parseObject(json, new TypeReference<PageHolder<FragmentHome>>(){});
-        } catch (TException e) {
-            logger.error(e.getMessage(), e);
-        }
-        return null;
     }
 
     @Override
@@ -197,19 +143,25 @@ public class InfoRpcServiceImpl implements IInfoRpcService {
     }
 
     @Override
-    public PageHolder<InfoContent> queryInfoContentByPage(HashMap<String, Object> paramMap, int pageIndex, int pageSize) {
+    public PageHolder<InfoContent> queryInfoContentByPage(InfoQuery query) {
         try {
-            HashMap<String, String> map = new HashMap<>();
-            for (Map.Entry<String, Object> entry : paramMap.entrySet()) {
-                map.put(entry.getKey(), (String)entry.getValue());
-            }
-            String json = getClient().queryInfoContentByPage(map, pageIndex, pageSize);
+            String result = getClient().queryInfoContentByPage(JSON.toJSONString(query));
             ParserConfig.getGlobalInstance().putDeserializer(PageHolder.class, new PageHolderDeserializer());
-            return JSON.parseObject(json, new TypeReference<PageHolder<InfoContent>>(){});
-        } catch (TException e) {
+            return JSON.parseObject(result, new TypeReference<PageHolder<InfoContent>>(){});
+        } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
         return null;
+    }
+
+    @Override
+    public int addSupplyInfo(InfoContent infoContent, InfoVender infoVender) {
+        try {
+            return getClient().updateInfoContent(JSON.toJSONString(infoContent));
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
     }
 
     @Override
