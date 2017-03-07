@@ -105,17 +105,6 @@ service FriendChatThriftRpcService {
 
 
 service InfoThriftRpcService {
-    i32 saveFragmentHome(1:string fragmentHome);
-
-    i32 updateFragmentHome(2:string fragmentHome);
-
-    i32 deleteFragmentHome(1:i32 id);
-
-    string getFragmentHome(1:i32 id);
-
-    string queryFragmentHomeByPage(1:map<string, string> paramMap, 2:i32 pageIndex, 3:i32 pageSize);
-
-
 
     i32 saveInfoCategory(1:string category);
 
@@ -149,7 +138,9 @@ service InfoThriftRpcService {
 
     string getInfoContent(1:i32 id);
 
-    string queryInfoContentByPage(1:map<string, string> paramMap, 2:i32 pageIndex, 3:i32 pageSize);
+    string queryInfoContentByPage(1:string query);
+
+    i32 addSupplyInfo(1:string infoContent, 2:string infoVender);
 
     string queryInfoContentList(1:string title, 2:string des, 3:i32 id, 4:i32 limit);
 }

@@ -66,13 +66,10 @@
     <sql id="sql_where">
         from info_content
         <where>
-            <if test="userId != null and userId !=''">
+            <if test="userId != null and userId > 0">
                 AND user_id = #{userId}
             </if>
-            <if test="classId != null and classId !=''">
-                AND class_id = #{classId}
-            </if>
-            <if test="type != null and type !=''">
+            <if test="type != null and type >0">
                 AND type = #{type}
             </if>
         </where>

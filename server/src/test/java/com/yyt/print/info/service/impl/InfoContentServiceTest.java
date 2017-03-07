@@ -50,7 +50,7 @@ public class InfoContentServiceTest extends BaseTestClass {
 
     @Test
     public void testQueryInfoContentByPage() throws Exception {
-        PageHolder<InfoContent> pageHolder = infoContentService.queryInfoContentByPage(null, 1, 20);
+        PageHolder<InfoContent> pageHolder = infoContentService.queryInfoContentByPage(null);
         System.out.println(pageHolder.size());
     }
 
