@@ -9,7 +9,7 @@
         <result property="title" column="title"/>
         <result property="type" column="type"/>
         <result property="des" column="des"/>
-        <result property="photo" column="photo" typeHandler="com.yyt.print.base.BlobTypeHandler"/>
+        <result property="photo" column="photo"/>
         <result property="content" column="content"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
