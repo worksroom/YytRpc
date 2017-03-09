@@ -20,6 +20,11 @@ public class MallGoodsQuery extends BaseQuery {
     private String shopName;
     private Integer classId;
     private Integer shopId;
+    //排序字段
+    private String order;
+
+    //是否需要总记录数
+    private boolean needCount = true;
 
     public int getStatus() {
         return status;
@@ -61,6 +66,22 @@ public class MallGoodsQuery extends BaseQuery {
         this.shopId = shopId;
     }
 
+    public String getOrder() {
+        return order;
+    }
+
+    public void setOrder(String order) {
+        this.order = order;
+    }
+
+    public boolean isNeedCount() {
+        return needCount;
+    }
+
+    public void setNeedCount(boolean needCount) {
+        this.needCount = needCount;
+    }
+
     public Map<String,Object> getMap(){
         Map<String,Object> map = new HashMap<>();
         map.put("status",this.status);
@@ -76,6 +97,11 @@ public class MallGoodsQuery extends BaseQuery {
 
         if(this.shopId!=null){
             map.put("shopId",shopId);
+        }
+        if(this.order!=null){
+            map.put("order",shopId);
+        }else{
+            map.put("order","create_time desc");
         }
         return map;
     }

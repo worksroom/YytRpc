@@ -2,12 +2,10 @@ package com.yyt.print.product.dao;
 
 import com.yyt.print.base.BaseTestClass;
 import com.yyt.print.product.pojo.MallGoods;
-
-import java.util.Date;
-
-import com.yyt.print.product.pojo.MallIndex;
 import com.yyt.print.product.query.MallGoodsQuery;
 import org.junit.Test;
+
+import java.util.Date;
 /**
  * Created by lenovo on 2017/2/12.
  */
@@ -37,7 +35,7 @@ public class IMallGoodsDAOTest extends BaseTestClass {
     public void testUpdateMallGoods(){
         MallGoods good = this.getBean();
         good.setId(1);
-        good.setName("裤子");
+        good.setName("不干胶");
         dao.updateMallGoods(good);
     }
 
@@ -49,7 +47,8 @@ public class IMallGoodsDAOTest extends BaseTestClass {
     @Test
     public void findMallGoods(){
         MallGoodsQuery query = new MallGoodsQuery();
-        query.setName("裤子");
+        query.setName("不干胶");
+        query.setNeedCount(false);
         System.out.println(dao.findMallGoods(query).size());
     }
 

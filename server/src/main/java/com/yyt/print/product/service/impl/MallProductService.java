@@ -43,10 +43,26 @@ public class MallProductService implements IMallProductService {
     @Transactional
     @Override
     public int shelves(MallGoodsSet goodsSet) {
+
         MallGoods mallGoods = goodsSet.getMallGoods();
         List<MallProductSet> list = goodsSet.getList();
         List<MallProductExt> exts = goodsSet.getExts();
         List<MallGoodBasePro> bpro = goodsSet.getBpro();
+
+        double minPrice = Double.MAX_VALUE;
+        double maxPrice = Double.MIN_VALUE;
+        for (MallProductSet mallProductSet:list){
+            double price = mallProductSet.getMallProduct().getSalePrice()==0?mallProductSet.getMallProduct().getPrice():mallProductSet.getMallProduct().getSalePrice();
+            if(price > maxPrice){
+                maxPrice = price;
+            }
+            if(price < minPrice){
+                minPrice = price;
+            }
+        }
+        mallGoods.setMaxPrice(maxPrice);
+        mallGoods.setMinPrice(minPrice);
+
         int result = mallGoodsDAO.saveMallGoods(mallGoods);
         if(result <= 0 ){
             throw new RuntimeException("add error ");
@@ -92,6 +108,21 @@ public class MallProductService implements IMallProductService {
         if(mallGoods==null){
             return -1;
         }
+
+        double minPrice = mallGoods.getMinPrice();
+        double maxPrice = mallGoods.getMaxPrice();
+        for (MallProductSet mallProductSet:list){
+            double price = mallProductSet.getMallProduct().getSalePrice()==0?mallProductSet.getMallProduct().getPrice():mallProductSet.getMallProduct().getSalePrice();
+            if(price > maxPrice){
+                maxPrice = price;
+            }
+            if(price < minPrice){
+                minPrice = price;
+            }
+        }
+        mallGoods.setMaxPrice(maxPrice);
+        mallGoods.setMinPrice(minPrice);
+
         mallGoodsDAO.updateMallGoods(mallGoods);
         //SKU
         if(list!=null){

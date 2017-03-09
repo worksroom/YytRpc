@@ -10,15 +10,18 @@
         <result property="classId" column="class_id"/>
         <result property="status" column="status"/>
         <result property="img" column="img"/>
+        <result property="minPrice" column="min_price"/>
+        <result property="maxPrice" column="max_price"/>
+        <result property="saleNum" column="sale_num"/>
         <result property="updateTime" column="update_time"/>
         <result property="createTime" column="create_time"/>
     </resultMap>
 
     <insert id="insert" parameterType="MallGoods">
         insert into mall_goods
-        (name,des,shop_id,shop_name,class_id,status,img,update_time,create_time)
+        (name,des,shop_id,shop_name,class_id,status,img,min_price,max_price,sale_num,update_time,create_time)
         VALUES
-        (#{name},#{des},#{shopId},#{shopName},#{classId},#{status},#{img},#{updateTime},#{createTime})
+        (#{name},#{des},#{shopId},#{shopName},#{classId},#{status},#{img},#{minPrice},#{maxPrice},#{saleNum},#{updateTime},#{createTime})
         <selectKey resultType="int" keyProperty="id">
             select LAST_INSERT_ID() AS id
         </selectKey>
@@ -26,7 +29,7 @@
 
     <update id="update" parameterType="MallGoods">
         update mall_goods set name=#{name},des=#{des},shop_id=#{shopId},shop_name=#{shopName},class_id=#{classId},
-                              status=#{status},img=#{img},update_time=#{updateTime}
+                              status=#{status},img=#{img},min_price=#{minPrice},max_price=#{maxPrice},sale_num=#{saleNum},update_time=#{updateTime}
         where id=#{id}
     </update>
 
@@ -38,7 +41,7 @@
 
 
     <select id="select" parameterType="int" resultMap="MallGoodsMap">
-        select id,name,des,shop_id,class_id,status,img,update_time,create_time
+        select id,name,des,shop_id,class_id,status,img,min_price,max_price,sale_num,update_time,create_time
         from mall_goods where id=#{id}
     </select>
 
@@ -53,7 +56,7 @@
     </sql>
 
     <sql id="sql_select">
-        select id,name,des,shop_id,class_id,status,img,update_time,create_time
+        select id,name,des,shop_id,class_id,status,img,min_price,max_price,sale_num,update_time,create_time
     </sql>
 
     <sql id="sql_where">
@@ -78,15 +81,18 @@
     </sql>
 
     <sql id="sql_order">
-        order by create_time desc
+        order by ${order}
+
     </sql>
     <select id="findByParams_count" parameterType="java.util.HashMap" resultType="int">
         <include refid="sql_count" />
         <include refid="sql_where" />
+
     </select>
     <select id="findByParams" parameterType="java.util.HashMap" resultMap="MallGoodsMap">
         <include refid="sql_select" />
         <include refid="sql_where" />
+        <include refid="sql_order" />
     </select>
 
 

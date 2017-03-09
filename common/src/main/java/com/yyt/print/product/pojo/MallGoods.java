@@ -22,6 +22,34 @@ public class MallGoods {
     private Date updateTime;
     private String img;
 
+    private double minPrice;
+    private double maxPrice;
+    private int saleNum;
+
+    public double getMinPrice() {
+        return minPrice;
+    }
+
+    public void setMinPrice(double minPrice) {
+        this.minPrice = minPrice;
+    }
+
+    public double getMaxPrice() {
+        return maxPrice;
+    }
+
+    public void setMaxPrice(double maxPrice) {
+        this.maxPrice = maxPrice;
+    }
+
+    public int getSaleNum() {
+        return saleNum;
+    }
+
+    public void setSaleNum(int saleNum) {
+        this.saleNum = saleNum;
+    }
+
     public int getId() {
         return id;
     }
