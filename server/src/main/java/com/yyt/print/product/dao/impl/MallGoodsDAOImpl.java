@@ -8,7 +8,6 @@ import com.yyt.print.product.query.MallGoodsQuery;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,7 +37,8 @@ public class MallGoodsDAOImpl extends YytBaseDAO<MallGoods> implements IMallGood
 
     @Override
     public PageHolder<MallGoods> findMallGoods(MallGoodsQuery query) {
-        return super.pagedQuery("findByParams",query.getMap(),query.getPageIndex(),query.getPageSize());
+
+        return super.rawPagedQuery(super.getSqlStatementName("findByParams"), query.getMap(), query.getPageIndex(), query.getPageSize(), query.isNeedCount());
     }
 
     @Override

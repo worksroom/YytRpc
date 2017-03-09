@@ -184,3 +184,14 @@ CREATE TABLE `pay_orders` (
 alter table `yyt`.`order_express` 
    add column `num` varchar(100) NULL after `code`;
 
+
+   alter table `yyt`.`mall_goods` 
+   add column `min_price` decimal(11,2) NOT NULL  DEFAULT 0.0 COMMENT '最低价' after `name`;
+
+   alter table `yyt`.`mall_goods` 
+   add column `max_price` decimal(11,2) NOT NULL DEFAULT 0.0  COMMENT '0 待审 1 审核通过' after `name`
+
+
+   alter table `yyt`.`mall_goods` 
+   add column `sale_num` int(11) NOT NULL DEFAULT 0.0  COMMENT '销售数量' after `name`;
+
