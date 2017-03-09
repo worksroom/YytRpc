@@ -2,6 +2,8 @@ package com.yyt.print.info.dao;
 
 import com.youguu.core.util.PageHolder;
 import com.yyt.print.info.pojo.InfoContent;
+import com.yyt.print.info.pojo.InfoVender;
+import com.yyt.print.info.query.InfoQuery;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +20,15 @@ public interface IInfoContentDAO {
 
     public InfoContent getInfoContent(int id);
 
-    public PageHolder<InfoContent> queryInfoContentByPage(HashMap<String, Object> paramMap, int pageIndex, int pageSize);
+    public PageHolder<InfoContent> queryInfoContentByPage(InfoQuery query);
+
+    /**
+     * 添加供应商信息
+     * @param infoContent
+     * @param infoVender
+     * @return
+     */
+    public int addSupplyInfo(InfoContent infoContent, InfoVender infoVender);
 
     public List<InfoContent> queryInfoContentList(String title, String des, int id, int limit);
 }
