@@ -99,7 +99,7 @@ public class MallGoodsQuery extends BaseQuery {
             map.put("shopId",shopId);
         }
         if(this.order!=null){
-            map.put("order",shopId);
+            map.put("order",this.order);
         }else{
             map.put("order","create_time desc");
         }
