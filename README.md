@@ -195,3 +195,9 @@ alter table `yyt`.`order_express`
    alter table `yyt`.`mall_goods` 
    add column `sale_num` int(11) NOT NULL DEFAULT 0.0  COMMENT '销售数量' after `name`;
 
+
+   ALTER TABLE `info_content`
+   MODIFY COLUMN `id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '资讯ID' FIRST ,
+   ADD PRIMARY KEY (`id`);
+
+
