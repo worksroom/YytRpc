@@ -157,7 +157,7 @@ public class InfoRpcServiceImpl implements IInfoRpcService {
     @Override
     public int addSupplyInfo(InfoContent infoContent, InfoVender infoVender) {
         try {
-            return getClient().updateInfoContent(JSON.toJSONString(infoContent));
+            return getClient().addSupplyInfo(JSON.toJSONString(infoContent), JSON.toJSONString(infoVender));
         } catch (TException e) {
             logger.error(e.getMessage(), e);
         }
