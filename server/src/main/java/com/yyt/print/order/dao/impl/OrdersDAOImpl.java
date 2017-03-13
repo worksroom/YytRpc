@@ -49,6 +49,6 @@ public class OrdersDAOImpl extends YytBaseDAO<Orders> implements IOrdersDAO {
 
     @Override
     public PageHolder<Orders> findOrders(OrdersQuery query) {
-        return super.pagedQuery("findByParams",query.getMap(),query.getPageIndex(),query.getPageSize());
+        return super.rawPagedQuery(super.getSqlStatementName("findByParams"), query.getMap(), query.getPageIndex(), query.getPageSize(), query.isNeedCount());
     }
 }

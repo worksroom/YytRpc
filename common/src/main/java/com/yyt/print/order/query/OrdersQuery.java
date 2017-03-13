@@ -15,6 +15,9 @@ public class OrdersQuery extends BaseQuery {
 
     private int buyUserId = -1;
 
+    //是否需要总记录数
+    private boolean needCount = true;
+
     public int getStatus() {
         return status;
     }
@@ -37,6 +40,14 @@ public class OrdersQuery extends BaseQuery {
 
     public void setBuyUserId(int buyUserId) {
         this.buyUserId = buyUserId;
+    }
+
+    public boolean isNeedCount() {
+        return needCount;
+    }
+
+    public void setNeedCount(boolean needCount) {
+        this.needCount = needCount;
     }
 
     public Map<String,Object> getMap(){
