@@ -19,4 +19,6 @@ public interface IOrdersDAO {
     int updateExpress(String id);
 
     PageHolder<Orders> findOrders(OrdersQuery query);
+
+    int getCount(int uid,int status);
 }

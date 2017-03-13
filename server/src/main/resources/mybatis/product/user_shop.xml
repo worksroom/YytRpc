@@ -39,6 +39,13 @@
         from user_shop where id=#{id}
     </select>
 
+
+    <select id="findCollectShop" parameterType="int" resultMap="UserShopMap">
+        select a.id,a.name,a.sell_user_id,a.main_product,a.status,a.logo,a.update_time,a.create_time
+        from user_shop a , collect_shop b  where a.id=b.shop_id and b.user_id=#{userId} order by b.create_time
+    </select>
+
+
     <delete id="delete" parameterType="int">
         delete from user_shop where id=#{id}
     </delete>

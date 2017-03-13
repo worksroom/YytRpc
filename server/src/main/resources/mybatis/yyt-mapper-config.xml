@@ -60,6 +60,8 @@
 		<typeAlias alias="Orders" type="com.yyt.print.order.pojo.Orders" />
 		<typeAlias alias="PayOrders" type="com.yyt.print.order.pojo.PayOrders" />
 		<typeAlias alias="OrderExpress" type="com.yyt.print.order.pojo.OrderExpress" />
+		<typeAlias alias="CollectShop" type="com.yyt.print.order.pojo.CollectShop" />
+		<typeAlias alias="CollectTreasure" type="com.yyt.print.order.pojo.CollectTreasure" />
 
 	</typeAliases>
 
@@ -123,6 +125,8 @@
 		<mapper resource="mybatis/order/orders.xml" />
 		<mapper resource="mybatis/order/pay_orders.xml" />
 		<mapper resource="mybatis/order/order_express.xml" />
+		<mapper resource="mybatis/order/collect_shop.xml" />
+		<mapper resource="mybatis/order/collect_treasure.xml" />
 
 	</mappers>
 </configuration>

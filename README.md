@@ -195,3 +195,14 @@ alter table `yyt`.`order_express`
    alter table `yyt`.`mall_goods` 
    add column `sale_num` int(11) NOT NULL DEFAULT 0.0  COMMENT '销售数量' after `name`;
 
+
+   alter table `yyt`.`collect_shop` 
+   change `id` `id` int(11) NOT NULL AUTO_INCREMENT, 
+   change `sell_user_id` `shop_id` int(11) NULL ;
+
+   alter table `yyt`.`collect_treasure` 
+   change `id` `id` int(11) NOT NULL AUTO_INCREMENT, 
+   change `product_id` `shop_id` int(11) NULL ;
+
+   alter table `yyt`.`collect_treasure` 
+   change `shop_id` `goods_id` int(11) NULL ;

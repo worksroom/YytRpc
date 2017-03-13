@@ -8,6 +8,7 @@ import com.yyt.print.product.query.MallGoodsQuery;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -52,5 +53,11 @@ public class MallGoodsDAOImpl extends YytBaseDAO<MallGoods> implements IMallGood
         map.put("status",value);
 
         return super.updateBy("updateStatus",map);
+    }
+
+    @Override
+    public List<MallGoods> findCollectGoods(int uid, int pageIndex, int pageSize) {
+        PageHolder<MallGoods> list = super.rawPagedQuery(super.getSqlStatementName("findCollectGoods"), uid, pageIndex,pageSize, false);
+        return list.getList();
     }
 }

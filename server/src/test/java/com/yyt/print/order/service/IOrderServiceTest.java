@@ -45,4 +45,56 @@ public class IOrderServiceTest extends BaseTestClass {
     public void confirmExpress(){
         System.out.println(service.confirmExpress("20170301171212002224", 1, "11111"));
     }
+
+
+    @Test
+    public void addCollectShop(){
+        service.addCollectShop(224,12);
+    }
+
+    @Test
+    public void delCollectShop(){
+        service.delCollectShop(1);
+    }
+
+    @Test
+    public void findCollectShop(){
+        System.out.println(service.findCollectShop(224, 1, 10));
+    }
+
+
+    @Test
+    public void addCollectGoods(){
+        service.addCollectGoods(224, 20);
+    }
+
+    @Test
+    public void delCollectGoods(){
+        service.delCollectGoods(1);
+    }
+
+    @Test
+    public void findCollectGoods(){
+        service.findCollectGoods(224, 1, 10);
+    }
+
+    @Test
+    public void getCollectCount(){
+        System.out.println(service.getCollectCount(224));
+    }
+
+    @Test
+    public void getOrderCount(){
+        System.out.println(service.getOrderCount(1));
+    }
+
+    @Test
+    public void isCollectShop(){
+        System.out.println(service.isCollectShop(224,12));
+    }
+
+    @Test
+    public void isCollectGoods(){
+        System.out.println(service.isCollectGoods(224,2));
+    }
 }

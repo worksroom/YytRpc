@@ -9,7 +9,7 @@ import java.util.Date;
 public class CollectShop {
     private int id;
     private int userId;
-    private int sellUserId;
+    private int shopId;
     private Date createTime;
 
     public int getId() {
@@ -28,12 +28,12 @@ public class CollectShop {
         this.userId = userId;
     }
 
-    public int getSellUserId() {
-        return sellUserId;
+    public int getShopId() {
+        return shopId;
     }
 
-    public void setSellUserId(int sellUserId) {
-        this.sellUserId = sellUserId;
+    public void setShopId(int shopId) {
+        this.shopId = shopId;
     }
 
     public Date getCreateTime() {

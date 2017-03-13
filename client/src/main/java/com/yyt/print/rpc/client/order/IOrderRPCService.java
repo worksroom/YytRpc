@@ -3,12 +3,13 @@ package com.yyt.print.rpc.client.order;
 import com.alibaba.fastjson.JSONObject;
 import com.youguu.core.util.PageHolder;
 import com.yyt.print.order.front.OrderProductFront;
-import com.yyt.print.order.pojo.Orders;
-import com.yyt.print.order.pojo.PayOrders;
-import com.yyt.print.order.pojo.ShoppingCartSet;
+import com.yyt.print.order.pojo.*;
 import com.yyt.print.order.query.OrdersQuery;
+import com.yyt.print.product.pojo.MallGoods;
+import com.yyt.print.product.pojo.UserShop;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lenovo on 2017/2/28.
@@ -77,5 +78,40 @@ public interface IOrderRPCService {
      * @return
      */
     int confirmExpress(String orderId,int expressCom,String expressNum);
+
+    int addCollectShop(int uid,int shopId);
+
+    int delCollectShop(int id);
+
+    List<UserShop> findCollectShop(int uid,int pageIndex,int pageSize);
+
+    int addCollectGoods(int uid,int goodsId);
+
+    int delCollectGoods(int id);
+
+    List<MallGoods> findCollectGoods(int uid,int pageIndex,int pageSize);
+
+    /**
+     * 获取用户收藏的数量
+     * key shop 收藏的店铺
+     * key goods 收藏的货品
+     * @param uid
+     * @return
+     */
+    Map<String,Integer> getCollectCount(int uid);
+
+
+    /**
+     * 获取用户收藏的数量
+     * key 0 待付款
+     * key 1 待发货
+     * @param uid
+     * @return
+     */
+    Map<Integer,Integer> getOrderCount(int uid);
+
+    CollectShop isCollectShop(int uid,int shopId);
+
+    CollectTreasure isCollectGoods(int uid,int goodsId);
 
 }

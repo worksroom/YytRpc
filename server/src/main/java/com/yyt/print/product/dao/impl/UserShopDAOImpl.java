@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -55,5 +56,11 @@ public class UserShopDAOImpl extends YytBaseDAO<UserShop> implements IUserShopDA
         map.put("status",value);
 
         return super.updateBy("updateStatus",map);
+    }
+
+    @Override
+    public List<UserShop> findCollectShop(int uid,int pageIndex,int pageSize) {
+        PageHolder<UserShop> list = super.rawPagedQuery(super.getSqlStatementName("findCollectShop"), uid, pageIndex,pageSize, false);
+        return list.getList();
     }
 }

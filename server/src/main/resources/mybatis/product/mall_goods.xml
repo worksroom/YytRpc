@@ -45,6 +45,11 @@
         from mall_goods where id=#{id}
     </select>
 
+    <select id="findCollectGoods" parameterType="int" resultMap="MallGoodsMap">
+        select a.id,a.name,a.des,a.shop_id,a.class_id,a.status,a.img,a.min_price,a.max_price,a.sale_num,a.update_time,a.create_time
+        from mall_goods a,collect_treasure b where a.id=b.goods_id and user_id=#{userId} order by b.create_time
+    </select>
+
     <delete id="delete" parameterType="int">
         delete from mall_goods where id=#{id}
     </delete>

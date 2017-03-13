@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CollectTreasure">
+    <resultMap type="CollectTreasure" id="CollectTreasureMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="goodsId" column="goods_id"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+    <insert id="insert" parameterType="CollectTreasure">
+        insert into collect_treasure (
+        user_id, goods_id, create_time)
+        VALUES
+        ( #{userId}, #{goodsId}, #{createTime})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+    <update id="update" parameterType="CollectTreasure">
+        update collect_treasure set user_id = #{userId},goods_id = #{goodsId},create_time = #{createTime} where id=#{id}
+    </update>
+
+
+    <select id="getcount" parameterType="int" resultType="int">
+        select count(1) from collect_treasure where user_id=#{userId}
+    </select>
+
+
+    <select id="select" parameterType="int" resultMap="CollectTreasureMap">
+        select id ,  user_id, goods_id, create_time from collect_treasure where id=#{id}
+    </select>
+
+
+    <select id="selectIsCollect" parameterType="map" resultMap="CollectTreasureMap">
+        select id ,  user_id, goods_id, create_time from collect_treasure where user_id=#{userId} and goods_id=#{goodsId}  limit 1
+    </select>
+
+
+    <delete id="delete" parameterType="int">
+        delete from collect_treasure where id=#{id}
+    </delete>
+</mapper>

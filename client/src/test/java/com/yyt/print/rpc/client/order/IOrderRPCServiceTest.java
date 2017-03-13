@@ -64,4 +64,57 @@ public class IOrderRPCServiceTest {
     public void confirmExpress(){
         System.out.println(service.confirmExpress("20170301171212002224", 1, "11111"));
     }
+
+    @Test
+    public void addCollectShop(){
+        service.addCollectShop(224, 1);
+    };
+
+    @Test
+    public void delCollectShop(){
+        service.delCollectShop(2);
+    }
+
+    @Test
+    public void findCollectShop(){
+        System.out.println(service.findCollectShop(224,1,10));
+    }
+
+    @Test
+    public void addCollectGoods(){
+        service.addCollectGoods(224,20);
+    }
+
+    @Test
+    public void delCollectGoods(){
+        service.delCollectGoods(2);
+    }
+
+    @Test
+    public void findCollectGoods(){
+        System.out.println(service.findCollectGoods(224, 1, 10));
+    }
+
+    /**
+     * 获取用户收藏的数量
+     * key shop 收藏的店铺
+     * key goods 收藏的货品
+     * @return
+     */
+    @Test
+    public void getCollectCount(){
+        System.out.println(service.getCollectCount(224));
+    }
+
+
+    /**
+     * 获取用户收藏的数量
+     * key 0 待付款
+     * key 1 待发货
+     * @return
+     */
+    @Test
+    public void getOrderCount(){
+        System.out.println(service.getOrderCount(224));
+    }
 }

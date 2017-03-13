@@ -493,4 +493,39 @@ service OrderThriftRpcService {
     i32 updateOrderPrice(1:string order,2:double price);
 
     i32 confirmExpress(1:string orderId,2:i32 expressCom,3:string expressNum);
+
+    i32 addCollectShop(1:i32 uid,2:i32 shopId);
+
+    i32 delCollectShop(1:i32 id);
+
+    string findCollectShop(1:i32 uid,2:i32 pageIndex,3:i32 pageSize);
+
+    i32 addCollectGoods(1:i32 uid,2:i32 goodsId);
+
+    i32 delCollectGoods(1:i32 id);
+
+    string findCollectGoods(1:i32 uid,2:i32 pageIndex,3:i32 pageSize);
+
+    /**
+     * 获取用户收藏的数量
+     * key shop 收藏的店铺
+     * key goods 收藏的货品
+     * @param uid
+     * @return
+     */
+    map<string,i32> getCollectCount(1:i32 uid);
+
+
+    /**
+     * 获取用户收藏的数量
+     * key 0 待付款
+     * key 1 待发货
+     * @param uid
+     * @return
+     */
+    map<i32,i32> getOrderCount(1:i32 uid);
+
+    string isCollectShop(1:i32 uid,2:i32 shopId);
+
+    string isCollectGoods(1:i32 uid,2:i32 goodsId);
 }

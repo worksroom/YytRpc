@@ -51,4 +51,6 @@ public interface IMallGoodsDAO {
      * @return
      */
     public int reviewMallGoods(int id,boolean status);
+
+    List<MallGoods> findCollectGoods(int uid,int pageIndex,int pageSize);
 }

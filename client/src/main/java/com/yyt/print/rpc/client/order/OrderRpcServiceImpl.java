@@ -8,14 +8,15 @@ import com.youguu.core.logging.Log;
 import com.youguu.core.logging.LogFactory;
 import com.youguu.core.util.PageHolder;
 import com.yyt.print.order.front.OrderProductFront;
-import com.yyt.print.order.pojo.Orders;
-import com.yyt.print.order.pojo.PayOrders;
-import com.yyt.print.order.pojo.ShoppingCartSet;
+import com.yyt.print.order.pojo.*;
 import com.yyt.print.order.query.OrdersQuery;
 import com.yyt.print.parser.PageHolderDeserializer;
+import com.yyt.print.product.pojo.MallGoods;
+import com.yyt.print.product.pojo.UserShop;
 import com.yyt.print.rpc.common.Constants;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lenovo on 2017/2/28.
@@ -110,5 +111,105 @@ public class OrderRpcServiceImpl implements IOrderRPCService {
             logger.error(e.getMessage(), e);
         }
         return 0;
+    }
+
+    @Override
+    public int addCollectShop(int uid, int shopId) {
+        try {
+            return getClient().addCollectShop(uid, shopId);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public int delCollectShop(int id) {
+        try {
+            return getClient().delCollectShop(id);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public List<UserShop> findCollectShop(int uid, int pageIndex, int pageSize) {
+        try {
+            return JSON.parseArray(getClient().findCollectShop(uid, pageIndex, pageSize),UserShop.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public int addCollectGoods(int uid, int goodsId) {
+        try {
+            return getClient().addCollectGoods(uid, goodsId);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public int delCollectGoods(int id) {
+        try {
+            return getClient().delCollectGoods(id);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return 0;
+    }
+
+    @Override
+    public List<MallGoods> findCollectGoods(int uid, int pageIndex, int pageSize) {
+        try {
+            return JSON.parseArray(getClient().findCollectGoods(uid, pageIndex, pageSize),MallGoods.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public Map<String, Integer> getCollectCount(int uid) {
+        try {
+            return  getClient().getCollectCount(uid);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public Map<Integer, Integer> getOrderCount(int uid) {
+        try {
+            return  getClient().getOrderCount(uid);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public CollectShop isCollectShop(int uid, int shopId) {
+        try {
+            return JSON.parseObject(getClient().isCollectShop(uid, shopId), CollectShop.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
+    public CollectTreasure isCollectGoods(int uid, int goodsId) {
+        try {
+            return JSON.parseObject(getClient().isCollectShop(uid, goodsId), CollectTreasure.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
     }
 }

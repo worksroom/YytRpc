@@ -14,10 +14,8 @@ import com.yyt.print.order.util.OrderUtil;
 import com.yyt.print.product.dao.IFareMouldDAO;
 import com.yyt.print.product.dao.IMallGoodsDAO;
 import com.yyt.print.product.dao.IMallProductDAO;
-import com.yyt.print.product.pojo.FareMould;
-import com.yyt.print.product.pojo.MallGoods;
-import com.yyt.print.product.pojo.MallProduct;
-import com.yyt.print.product.pojo.MallProductSet;
+import com.yyt.print.product.dao.IUserShopDAO;
+import com.yyt.print.product.pojo.*;
 import com.yyt.print.product.service.IMallProductService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,6 +60,17 @@ public class OrderService implements IOrderService {
 
     @Resource
     private IOrderExpressDAO orderExpressDAO;
+
+    @Resource
+    private ICollectShopDAO collectShopDAO;
+
+    @Resource
+    private IUserShopDAO userShopDAO;
+
+    @Resource
+    private ICollectTreasureDAO collectTreasureDAO;
+
+
 
 
     @Transactional
@@ -238,5 +247,69 @@ public class OrderService implements IOrderService {
             result.add(set);
         }
         return result;
+    }
+
+
+    @Override
+    public int addCollectShop(int uid, int shopId) {
+        CollectShop collectShop = new CollectShop();
+        collectShop.setShopId(shopId);
+        collectShop.setUserId(uid);
+
+        return collectShopDAO.saveCollectShop(collectShop);
+    }
+
+    @Override
+    public int delCollectShop(int id) {
+        return collectShopDAO.delCollectShop(id);
+    }
+
+    @Override
+    public List<UserShop> findCollectShop(int uid,int pageIndex,int pageSize) {
+        return userShopDAO.findCollectShop(uid, pageIndex, pageSize);
+    }
+
+    @Override
+    public int addCollectGoods(int uid, int goodsId) {
+        CollectTreasure ct = new CollectTreasure();
+        ct.setUserId(uid);
+        ct.setGoodsId(goodsId);
+        return collectTreasureDAO.saveCollectTreasure(ct);
+    }
+
+    @Override
+    public int delCollectGoods(int id) {
+        return collectTreasureDAO.delCollectTreasure(id);
+    }
+
+    @Override
+    public List<MallGoods> findCollectGoods(int uid, int pageIndex, int pageSize) {
+        return mallGoodsDAO.findCollectGoods(uid, pageIndex, pageSize);
+    }
+
+    @Override
+    public Map<String, Integer> getCollectCount(int uid) {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("shop",collectShopDAO.getCount(uid));
+        map.put("goods",collectTreasureDAO.getCount(uid));
+        return map;
+    }
+
+    @Override
+    public Map<Integer, Integer> getOrderCount(int uid) {
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, ordersDAO.getCount(uid, 0));
+        map.put(1,ordersDAO.getCount(uid,1));
+        return map;
+    }
+
+    @Override
+    public CollectShop isCollectShop(int uid, int shopId) {
+        return collectShopDAO.isCollect(uid, shopId);
+    }
+
+    @Override
+    public CollectTreasure isCollectGoods(int uid, int goodsId) {
+        return collectTreasureDAO.isCollect(uid, goodsId);
     }
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CollectShop">
+    <resultMap type="CollectShop" id="CollectShopMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="shopId" column="shop_id"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+    <insert id="insert" parameterType="CollectShop">
+        insert into collect_shop (
+        user_id, shop_id, create_time)
+        VALUES
+        ( #{userId}, #{shopId}, #{createTime})
+        <selectKey resultType="int" keyProperty="id">
+            select LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+    <update id="update" parameterType="CollectShop">
+        update collect_shop set user_id = #{userId},shop_id = #{shopId},create_time = #{createTime} where id=#{id}
+    </update>
+    <select id="select" parameterType="int" resultMap="CollectShopMap">
+        select id ,  user_id, shop_id, create_time from collect_shop where id=#{id}
+    </select>
+
+
+    <select id="selectIsCollect" parameterType="map" resultMap="CollectShopMap">
+        select id ,  user_id, shop_id, create_time from collect_shop where user_id=#{userId} and shop_id=#{shopId} limit 1
+    </select>
+
+
+    <delete id="delete" parameterType="int">
+        delete from collect_shop where id=#{id}
+    </delete>
+
+    <select id="getcount" parameterType="int" resultType="int">
+        select count(1) from collect_shop where user_id=#{userId}
+    </select>
+</mapper>

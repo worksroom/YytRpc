@@ -87,4 +87,9 @@
         <include refid="sql_select" />
         <include refid="sql_where" />
     </select>
+
+
+    <select id="getcount" parameterType="int" resultType="int">
+        select count(1) from orders where buy_user_id=#{buyUserId} and status = #{status}
+    </select>
 </mapper>

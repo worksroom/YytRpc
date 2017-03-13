@@ -51,4 +51,12 @@ public class OrdersDAOImpl extends YytBaseDAO<Orders> implements IOrdersDAO {
     public PageHolder<Orders> findOrders(OrdersQuery query) {
         return super.rawPagedQuery(super.getSqlStatementName("findByParams"), query.getMap(), query.getPageIndex(), query.getPageSize(), query.isNeedCount());
     }
+
+    @Override
+    public int getCount(int uid,int status) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("buyUserId",uid);
+        map.put("status",status);
+        return super.count(super.getSqlStatementName("getcount"),map);
+    }
 }
