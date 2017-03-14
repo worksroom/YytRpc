@@ -20,7 +20,7 @@ public class IOrderServiceTest extends BaseTestClass {
         opf.setShopId(1);
         opf.setAddr(3);
         opf.setNum(1);
-        opf.setProductId(15);
+        opf.setProductId(45);
         list.add(opf);
         return list;
     }
@@ -90,11 +90,16 @@ public class IOrderServiceTest extends BaseTestClass {
 
     @Test
     public void isCollectShop(){
-        System.out.println(service.isCollectShop(224,12));
+        System.out.println(service.isCollectShop(224, 12));
     }
 
     @Test
     public void isCollectGoods(){
-        System.out.println(service.isCollectGoods(224,2));
+        System.out.println(service.isCollectGoods(224, 2));
+    }
+
+    @Test
+    public void addShopCart(){
+        System.out.println(service.addShopCart(224,46,1));
     }
 }

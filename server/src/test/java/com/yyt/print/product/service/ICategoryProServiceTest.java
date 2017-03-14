@@ -18,7 +18,7 @@ public class ICategoryProServiceTest extends BaseTestClass {
 
     @Test
     public void findProValueByClassId(){
-        List<CategoryPro> list = service.findProValueByClassId(1);
+        List<CategoryPro> list = service.findProValueByClassId(32);
         String str = JSON.toJSONString(list);
         List<CategoryPro> list1 = JSONArray.parseArray(str,CategoryPro.class);
         System.out.println(list1);

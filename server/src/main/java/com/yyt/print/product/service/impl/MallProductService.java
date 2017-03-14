@@ -2,6 +2,7 @@ package com.yyt.print.product.service.impl;
 
 import com.yyt.print.product.dao.*;
 import com.yyt.print.product.pojo.*;
+import com.yyt.print.product.service.ICategoryProService;
 import com.yyt.print.product.service.IMallProductService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,6 +40,9 @@ public class MallProductService implements IMallProductService {
 
     @Resource
     private IMallGoodBaseProDAO mallGoodBaseProDAO;
+
+    @Resource
+    private ICategoryProService categoryProService;
 
     @Transactional
     @Override
@@ -305,5 +309,26 @@ public class MallProductService implements IMallProductService {
             return fm;
         }
         return null;
+    }
+
+    @Override
+    public String getLableFromSku(int skuId) {
+        String result = "";
+        MallProductSet sku = this.getMallProductSet(skuId);
+        List<CategoryPro> list =  categoryProService.findProValueByClassId(sku.getMallProduct().getClassId());
+        for(CategoryPro cp:list){
+            List<MallProductCategoryProValue> values = cp.getValues();
+            if(cp.getValues()!=null){
+                for(MallProductCategoryProValue value:values){
+                    for(MallProductSalePro pro:sku.getSalePro()){
+                        if(pro.getClassProValueId()==value.getId()){
+                            result+= value.getName() + " ";
+                        }
+                    }
+                }
+            }
+
+        }
+        return result;
     }
 }

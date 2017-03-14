@@ -72,7 +72,6 @@ public class OrderService implements IOrderService {
 
 
 
-
     @Transactional
     @Override
     public PayOrders makeOrder(int buyUserId,int addrId,List<OrderProductFront> product,JSONObject ext) {
@@ -101,7 +100,7 @@ public class OrderService implements IOrderService {
                 //组织 - ProductDesc
                 OrderProductPojo pojo = new OrderProductPojo();
                 //TODO
-                pojo.setProduct_pro_value("红色;大的");
+                pojo.setProduct_pro_value(mallProductService.getLableFromSku(opf.getProductId()));
                 pojo.setFee(df.format(temp_fee));
                 pojo.setPrice(df.format(temp_money));
                 pojo.setNum(opf.getNum());
@@ -220,6 +219,7 @@ public class OrderService implements IOrderService {
         shoppingCart.setProductName(goods.getName());
         shoppingCart.setShopId(goods.getShopId());
         shoppingCart.setImg(goods.getImg());
+        shoppingCart.setProperty(mallProductService.getLableFromSku(skuId));
         return shoppingCartDAO.saveShoppingCart(shoppingCart);
     }
 

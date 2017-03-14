@@ -20,7 +20,7 @@ public class MallProductServiceTest extends BaseTestClass {
         good.setShopId(1);
         good.setShopName("leo小店");
         good.setCreateTime(new Date());
-        good.setClassId(1);
+        good.setClassId(32);
         good.setDes("保暖");
         good.setStatus(0);
         good.setUpdateTime(new Date());
@@ -58,30 +58,30 @@ public class MallProductServiceTest extends BaseTestClass {
     private MallProductSet getMallProductSet(){
         MallProductSet set = new MallProductSet();
         MallProduct product = new MallProduct();
-        product.setName("名称");
+        product.setName("另一个");
         product.setPrice(128.00);
         product.setSalePrice(128.00);
 
         List<MallProductSalePro> list = new ArrayList<>();
         MallProductSalePro pro = new MallProductSalePro();
-        pro.setClassProId(1);
-        pro.setClassProValueId(1);
+        pro.setClassProId(9);
+        pro.setClassProValueId(10);
         list.add(pro);
 
         pro = new MallProductSalePro();
-        pro.setClassProId(1);
-        pro.setClassProValueId(2);
+        pro.setClassProId(10);
+        pro.setClassProValueId(13);
         list.add(pro);
 
-        pro = new MallProductSalePro();
-        pro.setClassProId(1);
-        pro.setClassProValueId(3);
-        list.add(pro);
-
-        pro = new MallProductSalePro();
-        pro.setClassProId(1);
-        pro.setClassProValueId(4);
-        list.add(pro);
+//        pro = new MallProductSalePro();
+//        pro.setClassProId(1);
+//        pro.setClassProValueId(3);
+//        list.add(pro);
+//
+//        pro = new MallProductSalePro();
+//        pro.setClassProId(1);
+//        pro.setClassProValueId(4);
+//        list.add(pro);
 
         set.setMallProduct(product);
         set.setSalePro(list);
@@ -107,7 +107,7 @@ public class MallProductServiceTest extends BaseTestClass {
         list.add(getMallProductSet());
         MallGoodsSet mallGoodsSet = new MallGoodsSet();
         MallGoods goods = getBean();
-        goods.setId(13);
+        goods.setId(20);
         mallGoodsSet.setMallGoods(goods);
         mallGoodsSet.setList(list);
         mallGoodsSet.setExts(getMallProductExts());

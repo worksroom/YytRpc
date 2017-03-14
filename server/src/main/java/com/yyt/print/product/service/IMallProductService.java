@@ -131,4 +131,11 @@ public interface IMallProductService {
      */
     FareMould getFromGoodsId(int goodsId);
 
+    /**
+     * 根据skuid获取规则描述
+     * @param skuId
+     * @return
+     */
+    String getLableFromSku(int skuId);
+
 }

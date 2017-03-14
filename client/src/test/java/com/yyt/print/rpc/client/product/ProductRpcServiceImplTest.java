@@ -89,6 +89,12 @@ public class ProductRpcServiceImplTest {
         List<MallProductCategoryProValue> list = productRpcService.findProValueByProId(1);
         System.out.println(list);
     }
+    @Test
+    public void  findProValueByClassId(){
+        List<MallProductCategoryProValue> list = productRpcService.findProValueByProId(1);
+        System.out.println(list);
+    }
+
 //
 //    /**
 //     * 增加分类属性

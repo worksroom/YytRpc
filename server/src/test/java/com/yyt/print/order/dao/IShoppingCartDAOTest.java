@@ -13,8 +13,8 @@ public class IShoppingCartDAOTest  extends BaseTestClass {
     private ShoppingCart getShoppingCart(){
         ShoppingCart sc = new ShoppingCart();
         sc.setUserId(224);
-        sc.setGoodsId(1);
-        sc.setProductId(1);
+        sc.setGoodsId(20);
+        sc.setProductId(45);
         sc.setBuyNum(1);
         return sc;
     }
