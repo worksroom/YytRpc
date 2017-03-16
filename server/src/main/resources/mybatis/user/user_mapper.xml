@@ -10,39 +10,40 @@
         <result property="nickName" column="nick_name"/>
         <result property="email" column="email"/>
         <result property="phone" column="phone"/>
+        <result property="headImg" column="head_img"/>
     </resultMap>
 
     <insert id="insert" parameterType="User">
         insert into user
-        (user_id,create_time,update_time,user_name,password,nick_name,email,phone)
+        (user_id,create_time,update_time,user_name,password,nick_name,email,phone,head_img)
         VALUES
-        (#{userId},#{createTime},#{updateTime},#{userName},#{password},#{nickName},#{email},#{phone})
+        (#{userId},#{createTime},#{updateTime},#{userName},#{password},#{nickName},#{email},#{phone},#{headImg})
         <selectKey resultType="int" keyProperty="id">
             select LAST_INSERT_ID() AS id
         </selectKey>
     </insert>
 
     <update id="update" parameterType="User">
-        update user set update_time=#{updateTime}, nick_name=#{nickName}, email=#{email}, phone=#{phone}
+        update user set update_time=#{updateTime}, nick_name=#{nickName}, email=#{email}, phone=#{phone}, head_img=#{headImg}
         where user_id=#{userId}
     </update>
 
     <!-- 根据用户ID查询 -->
     <select id="findByUserId" parameterType="int" resultMap="UserResultMap">
-		select user_id,create_time,update_time,user_name,password,nick_name,email,phone
+		select user_id,create_time,update_time,user_name,password,nick_name,email,phone,head_img
 		from user
 		where user_id=#{userId}
 	</select>
 
     <!-- 根据用户名查询 -->
     <select id="findUserByUsername" parameterType="String" resultMap="UserResultMap">
-        select user_id,create_time,update_time,user_name,password,nick_name,email,phone
+        select user_id,create_time,update_time,user_name,password,nick_name,email,phone,head_img
         from user
         where user_name=#{userName}
     </select>
 
     <select id="findByUserIdList" parameterType="List" resultMap="UserResultMap">
-        select user_id,create_time,update_time,user_name,password,nick_name,email,phone
+        select user_id,create_time,update_time,user_name,password,nick_name,email,phone,head_img
         from user
         where user_id in
         <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
@@ -52,7 +53,7 @@
 
 
     <sql id="sql_show">
-        select user_id,create_time,update_time,user_name,password,nick_name,email,phone
+        select user_id,create_time,update_time,user_name,password,nick_name,email,phone,head_img
     </sql>
 
     <sql id="sql_where">

@@ -193,4 +193,9 @@ public class UserThriftRpcServiceImpl implements UserThriftRpcService.Iface {
     public String findUserAddr(int uid) throws TException {
         return JSON.toJSONString(userService.findUserAddr(uid));
     }
+
+    @Override
+    public String findDefaultDeliveryAddr(int userId) throws TException {
+        return JSON.toJSONString(userService.findDefaultDeliveryAddr(userId));
+    }
 }

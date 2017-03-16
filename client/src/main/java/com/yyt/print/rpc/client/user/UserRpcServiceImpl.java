@@ -315,4 +315,14 @@ public class UserRpcServiceImpl implements IUserRpcService {
         }
         return null;
     }
+
+    @Override
+    public DeliveryAddr findDefaultDeliveryAddr(int userId) {
+        try {
+            return JSON.parseObject(getClient().findDefaultDeliveryAddr(userId),DeliveryAddr.class);
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
 }

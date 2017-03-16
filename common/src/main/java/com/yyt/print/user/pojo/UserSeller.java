@@ -18,6 +18,7 @@ public class UserSeller {
     private String msg;
     private Date createTime;
     private Date updateTime;
+    private String shopName;//店铺名称
 
     public int getUserId() {
         return userId;
@@ -105,6 +106,14 @@ public class UserSeller {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 
     @Override

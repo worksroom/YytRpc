@@ -169,4 +169,11 @@ public interface IUserRpcService {
 
     /** 查询收货地址 **/
     List<DeliveryAddr> findUserAddr(int uid);
+
+    /**
+     * 查询默认收货地址
+     * @param userId
+     * @return
+     */
+    DeliveryAddr findDefaultDeliveryAddr(int userId);
 }

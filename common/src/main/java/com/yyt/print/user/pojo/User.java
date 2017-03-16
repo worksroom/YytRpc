@@ -22,6 +22,7 @@ public class User {
     private String nickName;
     private String email;
     private String phone;
+    private String headImg;//头像地址
 
     public int getUserId() {
         return userId;
@@ -85,6 +86,14 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getHeadImg() {
+        return headImg;
+    }
+
+    public void setHeadImg(String headImg) {
+        this.headImg = headImg;
     }
 
     @Override

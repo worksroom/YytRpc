@@ -5,37 +5,38 @@
         <result property="userId" column="user_id"/>
         <result property="name" column="name"/>
         <result property="cardNumber" column="card_number"/>
-        <result property="cardFPhoto" column="card_f_photo" typeHandler="com.yyt.print.base.BlobTypeHandler"/>
-        <result property="cardBPhoto" column="card_b_photo" typeHandler="com.yyt.print.base.BlobTypeHandler"/>
-        <result property="userCardPhoto" column="user_card_photo" typeHandler="com.yyt.print.base.BlobTypeHandler"/>
-        <result property="licencePhone" column="licence_phone" typeHandler="com.yyt.print.base.BlobTypeHandler"/>
+        <result property="cardFPhoto" column="card_f_photo"/>
+        <result property="cardBPhoto" column="card_b_photo"/>
+        <result property="userCardPhoto" column="user_card_photo"/>
+        <result property="licencePhone" column="licence_phone"/>
         <result property="status" column="status"/>
         <result property="msg" column="msg"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
+        <result property="shopName" column="shop_name"/>
     </resultMap>
 
     <insert id="insert" parameterType="UserSeller">
         insert into user_seller
-        (user_id,name,card_number,card_f_photo,card_b_photo,user_card_photo,licence_phone,status,msg,create_time,update_time)
+        (user_id,name,card_number,card_f_photo,card_b_photo,user_card_photo,licence_phone,status,msg,create_time,update_time,shop_name)
         VALUES
-        (#{userId},#{name},#{cardNumber},#{cardFPhoto},#{cardBPhoto},#{userCardPhoto},#{licencePhone},#{status},#{msg},#{createTime},#{updateTime})
+        (#{userId},#{name},#{cardNumber},#{cardFPhoto},#{cardBPhoto},#{userCardPhoto},#{licencePhone},#{status},#{msg},#{createTime},#{updateTime},#{shopName})
     </insert>
 
     <update id="update" parameterType="UserSeller">
         update user_seller set name=#{name}, card_number=#{cardNumber}, card_f_photo=#{cardFPhoto}, card_b_photo=#{cardBPhoto}, user_card_photo=#{userCardPhoto},licence_phone=#{licencePhone}, status=#{status}
-        , update_time=#{updateTime}, msg=#{msg}
+        , update_time=#{updateTime}, msg=#{msg}, shop_name=#{shopName}
         where user_id=#{userId}
     </update>
 
     <select id="findUserBuyerByUserId" parameterType="int" resultMap="UserSellerResultMap">
-        select user_id,name,card_number,card_f_photo,card_b_photo,user_card_photo,licence_phone,status,msg,create_time,update_time
+        select user_id,name,card_number,card_f_photo,card_b_photo,user_card_photo,licence_phone,status,msg,create_time,update_time,shop_name
         from user_seller
         where user_id=#{userId}
     </select>
 
     <sql id="sql_show">
-        select a.user_id,a.name,a.card_number,a.card_f_photo,a.card_b_photo,a.user_card_photo,a.status,a.msg,a.create_time,a.update_time
+        select a.user_id,a.name,a.card_number,a.card_f_photo,a.card_b_photo,a.user_card_photo,a.status,a.msg,a.create_time,a.update_time,shop_name
     </sql>
 
     <sql id="sql_where">

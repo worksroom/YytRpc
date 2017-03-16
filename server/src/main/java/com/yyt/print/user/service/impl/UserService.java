@@ -297,4 +297,9 @@ public class UserService implements IUserService {
     public List<DeliveryAddr> findUserAddr(int uid) {
         return deliveryAddrDAO.findUserAddr(uid);
     }
+
+    @Override
+    public DeliveryAddr findDefaultDeliveryAddr(int userId) {
+        return deliveryAddrDAO.findDefaultDeliveryAddr(userId);
+    }
 }
