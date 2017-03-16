@@ -10,4 +10,6 @@ public interface IUserThirdBindService {
     public int saveUserThirdBind(UserThirdBind thirdBind);
 
     public UserThirdBind getUserThirdBind(String thirdId, int type);
+
+    public UserThirdBind getUserThirdBind(int userId, int type);
 }

@@ -20,4 +20,10 @@
 		from user_third_bind
 		where third_id=#{thirdId} and type=#{type}
 	</select>
+
+    <select id="getUserThirdBindByUid" parameterType="Map" resultMap="UserThirdBindResultMap">
+        select user_id,third_id,type,create_time
+        from user_third_bind
+        where user_id=#{userId} and type=#{type}
+    </select>
 </mapper>

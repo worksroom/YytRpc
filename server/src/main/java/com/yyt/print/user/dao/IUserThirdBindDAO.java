@@ -20,4 +20,6 @@ public interface IUserThirdBindDAO {
      * @return
      */
     public UserThirdBind getUserThirdBind(String thirdId, int type);
+
+    public UserThirdBind getUserThirdBind(int userId, int type);
 }

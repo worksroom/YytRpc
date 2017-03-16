@@ -25,4 +25,9 @@ public class UserThirdBindService implements IUserThirdBindService {
     public UserThirdBind getUserThirdBind(String thirdId, int type) {
         return userThirdBindDAO.getUserThirdBind(thirdId, type);
     }
+
+    @Override
+    public UserThirdBind getUserThirdBind(int userId, int type) {
+        return userThirdBindDAO.getUserThirdBind(userId, type);
+    }
 }

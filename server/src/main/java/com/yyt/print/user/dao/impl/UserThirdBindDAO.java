@@ -25,4 +25,12 @@ public class UserThirdBindDAO extends YytBaseDAO<UserThirdBind> implements IUser
         map.put("type", type);
         return this.findUniqueBy("getUserThirdBind", map);
     }
+
+    @Override
+    public UserThirdBind getUserThirdBind(int userId, int type) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("userId", userId);
+        map.put("type", type);
+        return this.findUniqueBy("getUserThirdBindByUid", map);
+    }
 }
