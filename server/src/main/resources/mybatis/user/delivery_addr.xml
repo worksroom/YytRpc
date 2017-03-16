@@ -12,27 +12,37 @@
         <result property="code" column="code"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
+        <result property="street" column="street"/>
+        <result property="defaultAddr" column="default_addr"/>
     </resultMap>
     <insert id="insert" parameterType="DeliveryAddr">
         insert into delivery_addr (
-        user_id, name, phone, tel, region, addr, code, create_time, update_time)
+        user_id, name, phone, tel, region, addr, code, create_time, update_time, street, default_addr)
         VALUES
-        ( #{userId}, #{name}, #{phone}, #{tel}, #{region}, #{addr}, #{code}, #{createTime}, #{updateTime})
+        ( #{userId}, #{name}, #{phone}, #{tel}, #{region}, #{addr}, #{code}, #{createTime}, #{updateTime}, #{street},
+        #{defaultAddr})
         <selectKey resultType="int" keyProperty="id">
             select LAST_INSERT_ID() AS id
         </selectKey>
     </insert>
+
     <update id="update" parameterType="DeliveryAddr">
-        update delivery_addr set user_id = #{userId},name = #{name},phone = #{phone},tel = #{tel},region = #{region},addr = #{addr},code = #{code},create_time = #{createTime},update_time = #{updateTime} where id=#{id}
+        update delivery_addr set user_id = #{userId},name = #{name},phone = #{phone},tel = #{tel},region = #{region},addr = #{addr},code = #{code},street = #{street},default_addr = #{defaultAddr},update_time = #{updateTime} where id=#{id}
     </update>
+
     <select id="select" parameterType="int" resultMap="DeliveryAddrMap">
-        select id ,  user_id, name, phone, tel, region, addr, code, create_time, update_time from delivery_addr where id=#{id}
+        select id ,  user_id, name, phone, tel, region, addr, code, create_time, update_time, street, default_addr from delivery_addr where id=#{id}
     </select>
+
     <delete id="delete" parameterType="int">
         delete from delivery_addr where id=#{id}
     </delete>
 
     <select id="selectByUid" parameterType="int" resultMap="DeliveryAddrMap">
-        select id ,  user_id, name, phone, tel, region, addr, code, create_time, update_time from delivery_addr where user_id=#{userId}
+        select id ,  user_id, name, phone, tel, region, addr, code, create_time, update_time, street, default_addr from delivery_addr where user_id=#{userId}
+    </select>
+
+    <select id="findDefaultDeliveryAddr" parameterType="int" resultMap="DeliveryAddrMap">
+        select id , user_id, name, phone, tel, region, addr, code, create_time, update_time, street, default_addr from delivery_addr where user_id=#{userId} and default_addr=1
     </select>
 </mapper>

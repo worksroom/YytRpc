@@ -216,3 +216,16 @@ alter table `yyt`.`order_express`
 ALTER TABLE `delivery_addr`
 MODIFY COLUMN `id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '地址ID' FIRST ;
 
+ALTER TABLE `delivery_addr`
+ADD COLUMN `street`  varchar(255) NULL COMMENT '街道' AFTER `default_addr`;
+
+ALTER TABLE `user`
+ADD COLUMN `head_img`  varchar(500) NULL COMMENT '头像地址' AFTER `create_time`;
+
+ALTER TABLE `user_seller`
+ADD COLUMN `shop_name`  varchar(100) NULL COMMENT '店铺名称' AFTER `update_time`;
+
+
+ALTER TABLE `delivery_addr`
+ADD COLUMN `default_addr`  int(1) NULL COMMENT '是否为默认收货地址，1-是；0-否' AFTER `update_time`;
+

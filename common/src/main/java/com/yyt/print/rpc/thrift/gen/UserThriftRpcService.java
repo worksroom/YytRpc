@@ -169,6 +169,15 @@ public class UserThriftRpcService {
      */
     public String findUserAddr(int uid) throws org.apache.thrift.TException;
 
+    /**
+     * 查询默认收货地址
+     * @param userId
+     * @return
+     * 
+     * @param userId
+     */
+    public String findDefaultDeliveryAddr(int userId) throws org.apache.thrift.TException;
+
   }
 
   public interface AsyncIface {
@@ -226,6 +235,8 @@ public class UserThriftRpcService {
     public void getUserAddr(int id, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getUserAddr_call> resultHandler) throws org.apache.thrift.TException;
 
     public void findUserAddr(int uid, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.findUserAddr_call> resultHandler) throws org.apache.thrift.TException;
+
+    public void findDefaultDeliveryAddr(int userId, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.findDefaultDeliveryAddr_call> resultHandler) throws org.apache.thrift.TException;
 
   }
 
@@ -902,6 +913,29 @@ public class UserThriftRpcService {
         return result.success;
       }
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "findUserAddr failed: unknown result");
+    }
+
+    public String findDefaultDeliveryAddr(int userId) throws org.apache.thrift.TException
+    {
+      send_findDefaultDeliveryAddr(userId);
+      return recv_findDefaultDeliveryAddr();
+    }
+
+    public void send_findDefaultDeliveryAddr(int userId) throws org.apache.thrift.TException
+    {
+      findDefaultDeliveryAddr_args args = new findDefaultDeliveryAddr_args();
+      args.setUserId(userId);
+      sendBase("findDefaultDeliveryAddr", args);
+    }
+
+    public String recv_findDefaultDeliveryAddr() throws org.apache.thrift.TException
+    {
+      findDefaultDeliveryAddr_result result = new findDefaultDeliveryAddr_result();
+      receiveBase(result, "findDefaultDeliveryAddr");
+      if (result.isSetSuccess()) {
+        return result.success;
+      }
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "findDefaultDeliveryAddr failed: unknown result");
     }
 
   }
@@ -1888,6 +1922,38 @@ public class UserThriftRpcService {
       }
     }
 
+    public void findDefaultDeliveryAddr(int userId, org.apache.thrift.async.AsyncMethodCallback<findDefaultDeliveryAddr_call> resultHandler) throws org.apache.thrift.TException {
+      checkReady();
+      findDefaultDeliveryAddr_call method_call = new findDefaultDeliveryAddr_call(userId, resultHandler, this, ___protocolFactory, ___transport);
+      this.___currentMethod = method_call;
+      ___manager.call(method_call);
+    }
+
+    public static class findDefaultDeliveryAddr_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private int userId;
+      public findDefaultDeliveryAddr_call(int userId, org.apache.thrift.async.AsyncMethodCallback<findDefaultDeliveryAddr_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+        super(client, protocolFactory, transport, resultHandler, false);
+        this.userId = userId;
+      }
+
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("findDefaultDeliveryAddr", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        findDefaultDeliveryAddr_args args = new findDefaultDeliveryAddr_args();
+        args.setUserId(userId);
+        args.write(prot);
+        prot.writeMessageEnd();
+      }
+
+      public String getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
+          throw new IllegalStateException("Method call not finished!");
+        }
+        org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
+        org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
+        return (new Client(prot)).recv_findDefaultDeliveryAddr();
+      }
+    }
+
   }
 
   public static class Processor<I extends Iface> extends org.apache.thrift.TBaseProcessor<I> implements org.apache.thrift.TProcessor {
@@ -1928,6 +1994,7 @@ public class UserThriftRpcService {
       processMap.put("delUserAddr", new delUserAddr());
       processMap.put("getUserAddr", new getUserAddr());
       processMap.put("findUserAddr", new findUserAddr());
+      processMap.put("findDefaultDeliveryAddr", new findDefaultDeliveryAddr());
       return processMap;
     }
 
@@ -2478,6 +2545,26 @@ public class UserThriftRpcService {
       public findUserAddr_result getResult(I iface, findUserAddr_args args) throws org.apache.thrift.TException {
         findUserAddr_result result = new findUserAddr_result();
         result.success = iface.findUserAddr(args.uid);
+        return result;
+      }
+    }
+
+    public static class findDefaultDeliveryAddr<I extends Iface> extends org.apache.thrift.ProcessFunction<I, findDefaultDeliveryAddr_args> {
+      public findDefaultDeliveryAddr() {
+        super("findDefaultDeliveryAddr");
+      }
+
+      public findDefaultDeliveryAddr_args getEmptyArgsInstance() {
+        return new findDefaultDeliveryAddr_args();
+      }
+
+      protected boolean isOneway() {
+        return false;
+      }
+
+      public findDefaultDeliveryAddr_result getResult(I iface, findDefaultDeliveryAddr_args args) throws org.apache.thrift.TException {
+        findDefaultDeliveryAddr_result result = new findDefaultDeliveryAddr_result();
+        result.success = iface.findDefaultDeliveryAddr(args.userId);
         return result;
       }
     }
@@ -25021,6 +25108,712 @@ public class UserThriftRpcService {
 
       @Override
       public void read(org.apache.thrift.protocol.TProtocol prot, findUserAddr_result struct) throws org.apache.thrift.TException {
+        TTupleProtocol iprot = (TTupleProtocol) prot;
+        BitSet incoming = iprot.readBitSet(1);
+        if (incoming.get(0)) {
+          struct.success = iprot.readString();
+          struct.setSuccessIsSet(true);
+        }
+      }
+    }
+
+  }
+
+  public static class findDefaultDeliveryAddr_args implements org.apache.thrift.TBase<findDefaultDeliveryAddr_args, findDefaultDeliveryAddr_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("findDefaultDeliveryAddr_args");
+
+    private static final org.apache.thrift.protocol.TField USER_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("userId", org.apache.thrift.protocol.TType.I32, (short)1);
+
+    private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+    static {
+      schemes.put(StandardScheme.class, new findDefaultDeliveryAddr_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new findDefaultDeliveryAddr_argsTupleSchemeFactory());
+    }
+
+    public int userId; // required
+
+    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+    public enum _Fields implements org.apache.thrift.TFieldIdEnum {
+      USER_ID((short)1, "userId");
+
+      private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
+
+      static {
+        for (_Fields field : EnumSet.allOf(_Fields.class)) {
+          byName.put(field.getFieldName(), field);
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, or null if its not found.
+       */
+      public static _Fields findByThriftId(int fieldId) {
+        switch(fieldId) {
+          case 1: // USER_ID
+            return USER_ID;
+          default:
+            return null;
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, throwing an exception
+       * if it is not found.
+       */
+      public static _Fields findByThriftIdOrThrow(int fieldId) {
+        _Fields fields = findByThriftId(fieldId);
+        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        return fields;
+      }
+
+      /**
+       * Find the _Fields constant that matches name, or null if its not found.
+       */
+      public static _Fields findByName(String name) {
+        return byName.get(name);
+      }
+
+      private final short _thriftId;
+      private final String _fieldName;
+
+      _Fields(short thriftId, String fieldName) {
+        _thriftId = thriftId;
+        _fieldName = fieldName;
+      }
+
+      public short getThriftFieldId() {
+        return _thriftId;
+      }
+
+      public String getFieldName() {
+        return _fieldName;
+      }
+    }
+
+    // isset id assignments
+    private static final int __USERID_ISSET_ID = 0;
+    private byte __isset_bitfield = 0;
+    public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
+    static {
+      Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.USER_ID, new org.apache.thrift.meta_data.FieldMetaData("userId", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+      metaDataMap = Collections.unmodifiableMap(tmpMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(findDefaultDeliveryAddr_args.class, metaDataMap);
+    }
+
+    public findDefaultDeliveryAddr_args() {
+    }
+
+    public findDefaultDeliveryAddr_args(
+      int userId)
+    {
+      this();
+      this.userId = userId;
+      setUserIdIsSet(true);
+    }
+
+    /**
+     * Performs a deep copy on <i>other</i>.
+     */
+    public findDefaultDeliveryAddr_args(findDefaultDeliveryAddr_args other) {
+      __isset_bitfield = other.__isset_bitfield;
+      this.userId = other.userId;
+    }
+
+    public findDefaultDeliveryAddr_args deepCopy() {
+      return new findDefaultDeliveryAddr_args(this);
+    }
+
+    @Override
+    public void clear() {
+      setUserIdIsSet(false);
+      this.userId = 0;
+    }
+
+    public int getUserId() {
+      return this.userId;
+    }
+
+    public findDefaultDeliveryAddr_args setUserId(int userId) {
+      this.userId = userId;
+      setUserIdIsSet(true);
+      return this;
+    }
+
+    public void unsetUserId() {
+      __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __USERID_ISSET_ID);
+    }
+
+    /** Returns true if field userId is set (has been assigned a value) and false otherwise */
+    public boolean isSetUserId() {
+      return EncodingUtils.testBit(__isset_bitfield, __USERID_ISSET_ID);
+    }
+
+    public void setUserIdIsSet(boolean value) {
+      __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __USERID_ISSET_ID, value);
+    }
+
+    public void setFieldValue(_Fields field, Object value) {
+      switch (field) {
+      case USER_ID:
+        if (value == null) {
+          unsetUserId();
+        } else {
+          setUserId((Integer)value);
+        }
+        break;
+
+      }
+    }
+
+    public Object getFieldValue(_Fields field) {
+      switch (field) {
+      case USER_ID:
+        return Integer.valueOf(getUserId());
+
+      }
+      throw new IllegalStateException();
+    }
+
+    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    public boolean isSet(_Fields field) {
+      if (field == null) {
+        throw new IllegalArgumentException();
+      }
+
+      switch (field) {
+      case USER_ID:
+        return isSetUserId();
+      }
+      throw new IllegalStateException();
+    }
+
+    @Override
+    public boolean equals(Object that) {
+      if (that == null)
+        return false;
+      if (that instanceof findDefaultDeliveryAddr_args)
+        return this.equals((findDefaultDeliveryAddr_args)that);
+      return false;
+    }
+
+    public boolean equals(findDefaultDeliveryAddr_args that) {
+      if (that == null)
+        return false;
+
+      boolean this_present_userId = true;
+      boolean that_present_userId = true;
+      if (this_present_userId || that_present_userId) {
+        if (!(this_present_userId && that_present_userId))
+          return false;
+        if (this.userId != that.userId)
+          return false;
+      }
+
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      return 0;
+    }
+
+    public int compareTo(findDefaultDeliveryAddr_args other) {
+      if (!getClass().equals(other.getClass())) {
+        return getClass().getName().compareTo(other.getClass().getName());
+      }
+
+      int lastComparison = 0;
+      findDefaultDeliveryAddr_args typedOther = (findDefaultDeliveryAddr_args)other;
+
+      lastComparison = Boolean.valueOf(isSetUserId()).compareTo(typedOther.isSetUserId());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetUserId()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.userId, typedOther.userId);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      return 0;
+    }
+
+    public _Fields fieldForId(int fieldId) {
+      return _Fields.findByThriftId(fieldId);
+    }
+
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+      schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
+    }
+
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+      schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
+    }
+
+    @Override
+    public String toString() {
+      StringBuilder sb = new StringBuilder("findDefaultDeliveryAddr_args(");
+      boolean first = true;
+
+      sb.append("userId:");
+      sb.append(this.userId);
+      first = false;
+      sb.append(")");
+      return sb.toString();
+    }
+
+    public void validate() throws org.apache.thrift.TException {
+      // check for required fields
+      // check for sub-struct validity
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
+      try {
+        write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
+      try {
+        // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
+        __isset_bitfield = 0;
+        read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private static class findDefaultDeliveryAddr_argsStandardSchemeFactory implements SchemeFactory {
+      public findDefaultDeliveryAddr_argsStandardScheme getScheme() {
+        return new findDefaultDeliveryAddr_argsStandardScheme();
+      }
+    }
+
+    private static class findDefaultDeliveryAddr_argsStandardScheme extends StandardScheme<findDefaultDeliveryAddr_args> {
+
+      public void read(org.apache.thrift.protocol.TProtocol iprot, findDefaultDeliveryAddr_args struct) throws org.apache.thrift.TException {
+        org.apache.thrift.protocol.TField schemeField;
+        iprot.readStructBegin();
+        while (true)
+        {
+          schemeField = iprot.readFieldBegin();
+          if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
+            break;
+          }
+          switch (schemeField.id) {
+            case 1: // USER_ID
+              if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                struct.userId = iprot.readI32();
+                struct.setUserIdIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            default:
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+          }
+          iprot.readFieldEnd();
+        }
+        iprot.readStructEnd();
+
+        // check for required fields of primitive type, which can't be checked in the validate method
+        struct.validate();
+      }
+
+      public void write(org.apache.thrift.protocol.TProtocol oprot, findDefaultDeliveryAddr_args struct) throws org.apache.thrift.TException {
+        struct.validate();
+
+        oprot.writeStructBegin(STRUCT_DESC);
+        oprot.writeFieldBegin(USER_ID_FIELD_DESC);
+        oprot.writeI32(struct.userId);
+        oprot.writeFieldEnd();
+        oprot.writeFieldStop();
+        oprot.writeStructEnd();
+      }
+
+    }
+
+    private static class findDefaultDeliveryAddr_argsTupleSchemeFactory implements SchemeFactory {
+      public findDefaultDeliveryAddr_argsTupleScheme getScheme() {
+        return new findDefaultDeliveryAddr_argsTupleScheme();
+      }
+    }
+
+    private static class findDefaultDeliveryAddr_argsTupleScheme extends TupleScheme<findDefaultDeliveryAddr_args> {
+
+      @Override
+      public void write(org.apache.thrift.protocol.TProtocol prot, findDefaultDeliveryAddr_args struct) throws org.apache.thrift.TException {
+        TTupleProtocol oprot = (TTupleProtocol) prot;
+        BitSet optionals = new BitSet();
+        if (struct.isSetUserId()) {
+          optionals.set(0);
+        }
+        oprot.writeBitSet(optionals, 1);
+        if (struct.isSetUserId()) {
+          oprot.writeI32(struct.userId);
+        }
+      }
+
+      @Override
+      public void read(org.apache.thrift.protocol.TProtocol prot, findDefaultDeliveryAddr_args struct) throws org.apache.thrift.TException {
+        TTupleProtocol iprot = (TTupleProtocol) prot;
+        BitSet incoming = iprot.readBitSet(1);
+        if (incoming.get(0)) {
+          struct.userId = iprot.readI32();
+          struct.setUserIdIsSet(true);
+        }
+      }
+    }
+
+  }
+
+  public static class findDefaultDeliveryAddr_result implements org.apache.thrift.TBase<findDefaultDeliveryAddr_result, findDefaultDeliveryAddr_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("findDefaultDeliveryAddr_result");
+
+    private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.STRING, (short)0);
+
+    private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+    static {
+      schemes.put(StandardScheme.class, new findDefaultDeliveryAddr_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new findDefaultDeliveryAddr_resultTupleSchemeFactory());
+    }
+
+    public String success; // required
+
+    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+    public enum _Fields implements org.apache.thrift.TFieldIdEnum {
+      SUCCESS((short)0, "success");
+
+      private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
+
+      static {
+        for (_Fields field : EnumSet.allOf(_Fields.class)) {
+          byName.put(field.getFieldName(), field);
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, or null if its not found.
+       */
+      public static _Fields findByThriftId(int fieldId) {
+        switch(fieldId) {
+          case 0: // SUCCESS
+            return SUCCESS;
+          default:
+            return null;
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, throwing an exception
+       * if it is not found.
+       */
+      public static _Fields findByThriftIdOrThrow(int fieldId) {
+        _Fields fields = findByThriftId(fieldId);
+        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        return fields;
+      }
+
+      /**
+       * Find the _Fields constant that matches name, or null if its not found.
+       */
+      public static _Fields findByName(String name) {
+        return byName.get(name);
+      }
+
+      private final short _thriftId;
+      private final String _fieldName;
+
+      _Fields(short thriftId, String fieldName) {
+        _thriftId = thriftId;
+        _fieldName = fieldName;
+      }
+
+      public short getThriftFieldId() {
+        return _thriftId;
+      }
+
+      public String getFieldName() {
+        return _fieldName;
+      }
+    }
+
+    // isset id assignments
+    public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
+    static {
+      Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+      metaDataMap = Collections.unmodifiableMap(tmpMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(findDefaultDeliveryAddr_result.class, metaDataMap);
+    }
+
+    public findDefaultDeliveryAddr_result() {
+    }
+
+    public findDefaultDeliveryAddr_result(
+      String success)
+    {
+      this();
+      this.success = success;
+    }
+
+    /**
+     * Performs a deep copy on <i>other</i>.
+     */
+    public findDefaultDeliveryAddr_result(findDefaultDeliveryAddr_result other) {
+      if (other.isSetSuccess()) {
+        this.success = other.success;
+      }
+    }
+
+    public findDefaultDeliveryAddr_result deepCopy() {
+      return new findDefaultDeliveryAddr_result(this);
+    }
+
+    @Override
+    public void clear() {
+      this.success = null;
+    }
+
+    public String getSuccess() {
+      return this.success;
+    }
+
+    public findDefaultDeliveryAddr_result setSuccess(String success) {
+      this.success = success;
+      return this;
+    }
+
+    public void unsetSuccess() {
+      this.success = null;
+    }
+
+    /** Returns true if field success is set (has been assigned a value) and false otherwise */
+    public boolean isSetSuccess() {
+      return this.success != null;
+    }
+
+    public void setSuccessIsSet(boolean value) {
+      if (!value) {
+        this.success = null;
+      }
+    }
+
+    public void setFieldValue(_Fields field, Object value) {
+      switch (field) {
+      case SUCCESS:
+        if (value == null) {
+          unsetSuccess();
+        } else {
+          setSuccess((String)value);
+        }
+        break;
+
+      }
+    }
+
+    public Object getFieldValue(_Fields field) {
+      switch (field) {
+      case SUCCESS:
+        return getSuccess();
+
+      }
+      throw new IllegalStateException();
+    }
+
+    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    public boolean isSet(_Fields field) {
+      if (field == null) {
+        throw new IllegalArgumentException();
+      }
+
+      switch (field) {
+      case SUCCESS:
+        return isSetSuccess();
+      }
+      throw new IllegalStateException();
+    }
+
+    @Override
+    public boolean equals(Object that) {
+      if (that == null)
+        return false;
+      if (that instanceof findDefaultDeliveryAddr_result)
+        return this.equals((findDefaultDeliveryAddr_result)that);
+      return false;
+    }
+
+    public boolean equals(findDefaultDeliveryAddr_result that) {
+      if (that == null)
+        return false;
+
+      boolean this_present_success = true && this.isSetSuccess();
+      boolean that_present_success = true && that.isSetSuccess();
+      if (this_present_success || that_present_success) {
+        if (!(this_present_success && that_present_success))
+          return false;
+        if (!this.success.equals(that.success))
+          return false;
+      }
+
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      return 0;
+    }
+
+    public int compareTo(findDefaultDeliveryAddr_result other) {
+      if (!getClass().equals(other.getClass())) {
+        return getClass().getName().compareTo(other.getClass().getName());
+      }
+
+      int lastComparison = 0;
+      findDefaultDeliveryAddr_result typedOther = (findDefaultDeliveryAddr_result)other;
+
+      lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetSuccess()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.success, typedOther.success);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      return 0;
+    }
+
+    public _Fields fieldForId(int fieldId) {
+      return _Fields.findByThriftId(fieldId);
+    }
+
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+      schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
+    }
+
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+      schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
+      }
+
+    @Override
+    public String toString() {
+      StringBuilder sb = new StringBuilder("findDefaultDeliveryAddr_result(");
+      boolean first = true;
+
+      sb.append("success:");
+      if (this.success == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.success);
+      }
+      first = false;
+      sb.append(")");
+      return sb.toString();
+    }
+
+    public void validate() throws org.apache.thrift.TException {
+      // check for required fields
+      // check for sub-struct validity
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
+      try {
+        write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
+      try {
+        read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private static class findDefaultDeliveryAddr_resultStandardSchemeFactory implements SchemeFactory {
+      public findDefaultDeliveryAddr_resultStandardScheme getScheme() {
+        return new findDefaultDeliveryAddr_resultStandardScheme();
+      }
+    }
+
+    private static class findDefaultDeliveryAddr_resultStandardScheme extends StandardScheme<findDefaultDeliveryAddr_result> {
+
+      public void read(org.apache.thrift.protocol.TProtocol iprot, findDefaultDeliveryAddr_result struct) throws org.apache.thrift.TException {
+        org.apache.thrift.protocol.TField schemeField;
+        iprot.readStructBegin();
+        while (true)
+        {
+          schemeField = iprot.readFieldBegin();
+          if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
+            break;
+          }
+          switch (schemeField.id) {
+            case 0: // SUCCESS
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                struct.success = iprot.readString();
+                struct.setSuccessIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            default:
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+          }
+          iprot.readFieldEnd();
+        }
+        iprot.readStructEnd();
+
+        // check for required fields of primitive type, which can't be checked in the validate method
+        struct.validate();
+      }
+
+      public void write(org.apache.thrift.protocol.TProtocol oprot, findDefaultDeliveryAddr_result struct) throws org.apache.thrift.TException {
+        struct.validate();
+
+        oprot.writeStructBegin(STRUCT_DESC);
+        if (struct.success != null) {
+          oprot.writeFieldBegin(SUCCESS_FIELD_DESC);
+          oprot.writeString(struct.success);
+          oprot.writeFieldEnd();
+        }
+        oprot.writeFieldStop();
+        oprot.writeStructEnd();
+      }
+
+    }
+
+    private static class findDefaultDeliveryAddr_resultTupleSchemeFactory implements SchemeFactory {
+      public findDefaultDeliveryAddr_resultTupleScheme getScheme() {
+        return new findDefaultDeliveryAddr_resultTupleScheme();
+      }
+    }
+
+    private static class findDefaultDeliveryAddr_resultTupleScheme extends TupleScheme<findDefaultDeliveryAddr_result> {
+
+      @Override
+      public void write(org.apache.thrift.protocol.TProtocol prot, findDefaultDeliveryAddr_result struct) throws org.apache.thrift.TException {
+        TTupleProtocol oprot = (TTupleProtocol) prot;
+        BitSet optionals = new BitSet();
+        if (struct.isSetSuccess()) {
+          optionals.set(0);
+        }
+        oprot.writeBitSet(optionals, 1);
+        if (struct.isSetSuccess()) {
+          oprot.writeString(struct.success);
+        }
+      }
+
+      @Override
+      public void read(org.apache.thrift.protocol.TProtocol prot, findDefaultDeliveryAddr_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {

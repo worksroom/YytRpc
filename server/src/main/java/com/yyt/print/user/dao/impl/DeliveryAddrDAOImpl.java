@@ -25,4 +25,9 @@ public class DeliveryAddrDAOImpl extends YytBaseDAO<DeliveryAddr> implements IDe
     public List<DeliveryAddr> findUserAddr(int uid) {
         return super.findBy("selectByUid",uid);
     }
+
+    @Override
+    public DeliveryAddr findDefaultDeliveryAddr(int userId) {
+        return super.findUniqueBy("findDefaultDeliveryAddr", userId);
+    }
 }

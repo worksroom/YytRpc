@@ -13,10 +13,12 @@ public class DeliveryAddr {
     private String phone;//手机号
     private String tel;//固定电话
     private String region;//所在地区
+    private String street;//街道
     private String addr;//详细地址
     private String code;//邮政编码
     private Date createTime;
     private Date updateTime;
+    private int defaultAddr;//是否为默认收货地址，1-是；0-否
 
     public int getId() {
         return id;
@@ -96,5 +98,21 @@ public class DeliveryAddr {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public int getDefaultAddr() {
+        return defaultAddr;
+    }
+
+    public void setDefaultAddr(int defaultAddr) {
+        this.defaultAddr = defaultAddr;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
     }
 }

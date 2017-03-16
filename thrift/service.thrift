@@ -450,6 +450,12 @@ service UserThriftRpcService {
     /** 查询收货地址 **/
     string findUserAddr(1:i32 uid);
 
+    /**
+     * 查询默认收货地址
+     * @param userId
+     * @return
+     */
+    string findDefaultDeliveryAddr(1:i32 userId);
 
 }
 

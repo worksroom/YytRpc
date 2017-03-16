@@ -568,4 +568,24 @@ public class UserClient implements UserThriftRpcService.Iface {
             }
         }
     }
+
+    @Override
+    public String findDefaultDeliveryAddr(int userId) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(UserThriftRpcService.Client.class).findDefaultDeliveryAddr(userId);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
 }
