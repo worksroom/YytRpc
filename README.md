@@ -213,3 +213,6 @@ alter table `yyt`.`order_express`
    ADD PRIMARY KEY (`id`);
 
 
+ALTER TABLE `delivery_addr`
+MODIFY COLUMN `id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '地址ID' FIRST ;
+

@@ -153,6 +153,12 @@ public class UserThriftRpcServiceImpl implements UserThriftRpcService.Iface {
     }
 
     @Override
+    public String getUserThirdBindByUid(int userId, int type) throws TException {
+        UserThirdBind userThirdBind = userThirdBindService.getUserThirdBind(userId, type);
+        return JSON.toJSONString(userThirdBind);
+    }
+
+    @Override
     public int saveUserErp(int erpUid, String phone) throws TException {
         return userErpService.saveUserErp(erpUid, phone);
     }

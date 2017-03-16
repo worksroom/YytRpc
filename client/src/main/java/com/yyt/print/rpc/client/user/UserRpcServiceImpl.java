@@ -149,6 +149,17 @@ public class UserRpcServiceImpl implements IUserRpcService {
     }
 
     @Override
+    public UserThirdBind getUserThirdBind(int userId, int type) {
+        try {
+            String json = getClient().getUserThirdBindByUid(userId, type);
+            return JSONObject.parseObject(json, UserThirdBind.class);
+        } catch (TException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
+
+    @Override
     public int saveUserBuyer(UserBuyer userBuyer) {
         try {
             return getClient().saveUserBuyer(JSON.toJSONString(userBuyer));

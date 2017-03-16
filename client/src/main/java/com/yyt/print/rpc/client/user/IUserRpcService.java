@@ -77,6 +77,8 @@ public interface IUserRpcService {
 
     public UserThirdBind getUserThirdBind(String thirdId, int type);
 
+    public UserThirdBind getUserThirdBind(int userId, int type);
+
     /**
      * 保存买家认证信息
      * @param userBuyer

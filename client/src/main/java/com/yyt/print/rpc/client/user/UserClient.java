@@ -410,6 +410,26 @@ public class UserClient implements UserThriftRpcService.Iface {
     }
 
     @Override
+    public String getUserThirdBindByUid(int userId, int type) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(UserThriftRpcService.Client.class).getUserThirdBindByUid(userId, type);
+        } catch(TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
+
+    @Override
     public int saveUserErp(int erpUid, String phone) throws TException {
         RPCMultiplexConnection client = null;
         try {
