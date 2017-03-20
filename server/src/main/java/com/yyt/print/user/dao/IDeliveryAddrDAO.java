@@ -24,4 +24,11 @@ public interface IDeliveryAddrDAO {
      * @return
      */
     DeliveryAddr findDefaultDeliveryAddr(int userId);
+
+    /**
+     * 增加或修改地址为默认地址时先重置所有收货地址为“非默认”
+     * @param userId
+     * @return
+     */
+    int resetDefaultAddr(int userId);
 }

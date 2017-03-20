@@ -45,4 +45,8 @@
     <select id="findDefaultDeliveryAddr" parameterType="int" resultMap="DeliveryAddrMap">
         select id , user_id, name, phone, tel, region, addr, code, create_time, update_time, street, default_addr from delivery_addr where user_id=#{userId} and default_addr=1
     </select>
+
+    <update id="resetDefaultAddr" parameterType="int">
+        update delivery_addr set default_addr = 0 where user_id = #{userId}
+    </update>
 </mapper>

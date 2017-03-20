@@ -273,13 +273,21 @@ public class UserService implements IUserService {
     }
 
 
+    @Transactional
     @Override
     public int addUserAddr(DeliveryAddr userAddr) {
+        if(userAddr.getDefaultAddr()==1){
+            deliveryAddrDAO.resetDefaultAddr(userAddr.getUserId());
+        }
         return deliveryAddrDAO.saveDeliveryAddr(userAddr);
     }
 
+    @Transactional
     @Override
     public int updateUserAddr(DeliveryAddr userAddr) {
+        if(userAddr.getDefaultAddr()==1){
+            deliveryAddrDAO.resetDefaultAddr(userAddr.getUserId());
+        }
         return deliveryAddrDAO.updateDeliveryAddr(userAddr);
     }
 
