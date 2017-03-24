@@ -5,6 +5,7 @@ import com.yyt.print.product.pojo.UserShop;
 import com.yyt.print.product.query.UserShopQuery;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lenovo on 2017/2/12.
@@ -59,4 +60,6 @@ public interface IUserShopDAO {
      * @return
      */
     List<UserShop> findCollectShop(int uid,int pageIndex,int pageSize);
+
+    public Map<Integer,UserShop> findUserShopMap(List<Integer> shopIdList);
 }

@@ -212,4 +212,14 @@ public class OrderRpcServiceImpl implements IOrderRPCService {
         }
         return null;
     }
+
+    @Override
+    public Orders getOrders(String id) {
+        try {
+            return JSON.parseObject(getClient().getOrder(id), Orders.class);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
+    }
 }

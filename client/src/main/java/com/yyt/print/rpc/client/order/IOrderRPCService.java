@@ -114,4 +114,6 @@ public interface IOrderRPCService {
 
     CollectTreasure isCollectGoods(int uid,int goodsId);
 
+    Orders getOrders(String id);
+
 }

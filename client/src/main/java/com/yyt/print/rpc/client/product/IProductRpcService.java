@@ -7,6 +7,7 @@ import com.yyt.print.product.query.MallGoodsQuery;
 import com.yyt.print.product.query.UserShopQuery;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lenovo on 2016/12/29.
@@ -155,6 +156,8 @@ public interface IProductRpcService {
      */
     int reviewUserShop(int id, boolean status);
 
+
+    public Map<Integer,UserShop> findUserShopMap(List<Integer> shopIdList);
 
     /**
      * 添加碎片

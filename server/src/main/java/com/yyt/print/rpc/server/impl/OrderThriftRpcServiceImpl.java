@@ -117,4 +117,9 @@ public class OrderThriftRpcServiceImpl implements OrderThriftRpcService.Iface {
     public String isCollectGoods(int uid, int goodsId) throws TException {
         return JSON.toJSONString(orderService.isCollectGoods(uid, goodsId));
     }
+
+    @Override
+    public String getOrder(String id) throws TException {
+        return JSON.toJSONString(orderService.getOrder(id));
+    }
 }

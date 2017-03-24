@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lenovo on 2017/2/13.
@@ -48,5 +50,10 @@ public class UserShopServiceImpl implements IUserShopService {
             }
         }
         return userShopDAO.reviewUserShop(id,status);
+    }
+
+    @Override
+    public Map<Integer, UserShop> findUserShopMap(List<Integer> shopIdList) {
+        return userShopDAO.findUserShopMap(shopIdList);
     }
 }

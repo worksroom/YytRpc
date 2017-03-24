@@ -85,6 +85,13 @@
         <include refid="sql_where" />
     </select>
 
-
+    <!-- 根据店铺ID批量查询 -->
+    <select id="findUserShopMap" parameterType="List" resultMap="UserShopMap">
+        select id,name,sell_user_id,main_product,status,logo,update_time,create_time
+        from user_shop where id in
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
 
 </mapper>
