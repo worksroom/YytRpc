@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by SomeBody on 2016/9/23.
@@ -165,6 +166,12 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     @Override
     public int reviewUserShop(int id, boolean status) throws TException {
         return userShopService.reviewUserShop(id,status);
+    }
+
+    @Override
+    public String findUserShopMap(List<Integer> shopIdList) throws TException {
+        Map<Integer,UserShop> map = userShopService.findUserShopMap(shopIdList);
+        return JSON.toJSONString(map);
     }
 
     @Override

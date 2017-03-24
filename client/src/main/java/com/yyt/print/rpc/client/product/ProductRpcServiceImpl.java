@@ -14,6 +14,7 @@ import com.yyt.print.product.query.UserShopQuery;
 import com.yyt.print.rpc.common.Constants;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lenovo on 2016/12/29.
@@ -238,6 +239,16 @@ public class ProductRpcServiceImpl implements IProductRpcService {
             logger.error(e.getMessage(), e);
         }
         return 0;
+    }
+
+    @Override
+    public Map<Integer, UserShop> findUserShopMap(List<Integer> shopIdList) {
+        try {
+            return JSON.parseObject(getClient().findUserShopMap(shopIdList), new TypeReference<Map<Integer, UserShop>>(){});
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return null;
     }
 
     @Override

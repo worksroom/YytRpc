@@ -63,4 +63,16 @@ public class UserShopDAOImpl extends YytBaseDAO<UserShop> implements IUserShopDA
         PageHolder<UserShop> list = super.rawPagedQuery(super.getSqlStatementName("findCollectShop"), uid, pageIndex,pageSize, false);
         return list.getList();
     }
+
+    @Override
+    public Map<Integer, UserShop> findUserShopMap(List<Integer> shopIdList) {
+        Map<Integer, UserShop> map = new HashMap<>();
+        List<UserShop> list = super.findBy("findUserShopMap", shopIdList);
+        if(list!=null && !list.isEmpty()){
+            for(UserShop userShop : list){
+                map.put(userShop.getId(), userShop);
+            }
+        }
+        return map;
+    }
 }

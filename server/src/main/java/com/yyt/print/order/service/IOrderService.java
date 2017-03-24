@@ -39,6 +39,13 @@ public interface IOrderService {
      */
     PageHolder<Orders> findOrders(OrdersQuery query);
 
+    /**
+     * 查询订单
+     * @param id 订单ID
+     * @return
+     */
+    Orders getOrder(String id);
+
     int updateOrderPrice(String order,double price);
 
     /**

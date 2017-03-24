@@ -149,6 +149,11 @@ public class OrderService implements IOrderService {
     }
 
     @Override
+    public Orders getOrder(String id) {
+        return ordersDAO.getOrders(id);
+    }
+
+    @Override
     public int updateOrderPrice(String id, double price) {
         Orders orders = ordersDAO.getOrders(id);
         if(orders.getStatus()!=0){

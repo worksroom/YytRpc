@@ -388,4 +388,24 @@ public class OrderClient implements OrderThriftRpcService.Iface {
             }
         }
     }
+
+    @Override
+    public String getOrder(String id) throws TException {
+        RPCMultiplexConnection client = null;
+        try {
+            client = getConnection();
+            return client.getClient(OrderThriftRpcService.Client.class).getOrder(id);
+        } catch (TException e){
+            client.setIdle(false);
+            throw e;
+        }finally {
+            if(client != null){
+                try {
+                    pool.returnObject(client);
+                } catch (Exception e) {
+                    logger.error(e);
+                }
+            }
+        }
+    }
 }

@@ -5002,13 +5002,13 @@ public class UserThriftRpcService {
             case 1: // USER_ID_LIST
               if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
                 {
-                  org.apache.thrift.protocol.TList _list26 = iprot.readListBegin();
-                  struct.userIdList = new ArrayList<Integer>(_list26.size);
-                  for (int _i27 = 0; _i27 < _list26.size; ++_i27)
+                  org.apache.thrift.protocol.TList _list34 = iprot.readListBegin();
+                  struct.userIdList = new ArrayList<Integer>(_list34.size);
+                  for (int _i35 = 0; _i35 < _list34.size; ++_i35)
                   {
-                    int _elem28; // required
-                    _elem28 = iprot.readI32();
-                    struct.userIdList.add(_elem28);
+                    int _elem36; // required
+                    _elem36 = iprot.readI32();
+                    struct.userIdList.add(_elem36);
                   }
                   iprot.readListEnd();
                 }
@@ -5036,9 +5036,9 @@ public class UserThriftRpcService {
           oprot.writeFieldBegin(USER_ID_LIST_FIELD_DESC);
           {
             oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I32, struct.userIdList.size()));
-            for (int _iter29 : struct.userIdList)
+            for (int _iter37 : struct.userIdList)
             {
-              oprot.writeI32(_iter29);
+              oprot.writeI32(_iter37);
             }
             oprot.writeListEnd();
           }
@@ -5069,9 +5069,9 @@ public class UserThriftRpcService {
         if (struct.isSetUserIdList()) {
           {
             oprot.writeI32(struct.userIdList.size());
-            for (int _iter30 : struct.userIdList)
+            for (int _iter38 : struct.userIdList)
             {
-              oprot.writeI32(_iter30);
+              oprot.writeI32(_iter38);
             }
           }
         }
@@ -5083,13 +5083,13 @@ public class UserThriftRpcService {
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
           {
-            org.apache.thrift.protocol.TList _list31 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I32, iprot.readI32());
-            struct.userIdList = new ArrayList<Integer>(_list31.size);
-            for (int _i32 = 0; _i32 < _list31.size; ++_i32)
+            org.apache.thrift.protocol.TList _list39 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I32, iprot.readI32());
+            struct.userIdList = new ArrayList<Integer>(_list39.size);
+            for (int _i40 = 0; _i40 < _list39.size; ++_i40)
             {
-              int _elem33; // required
-              _elem33 = iprot.readI32();
-              struct.userIdList.add(_elem33);
+              int _elem41; // required
+              _elem41 = iprot.readI32();
+              struct.userIdList.add(_elem41);
             }
           }
           struct.setUserIdListIsSet(true);
@@ -5762,13 +5762,13 @@ public class UserThriftRpcService {
             case 1: // USER_ID_LIST
               if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
                 {
-                  org.apache.thrift.protocol.TList _list34 = iprot.readListBegin();
-                  struct.userIdList = new ArrayList<Integer>(_list34.size);
-                  for (int _i35 = 0; _i35 < _list34.size; ++_i35)
+                  org.apache.thrift.protocol.TList _list42 = iprot.readListBegin();
+                  struct.userIdList = new ArrayList<Integer>(_list42.size);
+                  for (int _i43 = 0; _i43 < _list42.size; ++_i43)
                   {
-                    int _elem36; // required
-                    _elem36 = iprot.readI32();
-                    struct.userIdList.add(_elem36);
+                    int _elem44; // required
+                    _elem44 = iprot.readI32();
+                    struct.userIdList.add(_elem44);
                   }
                   iprot.readListEnd();
                 }
@@ -5796,9 +5796,9 @@ public class UserThriftRpcService {
           oprot.writeFieldBegin(USER_ID_LIST_FIELD_DESC);
           {
             oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I32, struct.userIdList.size()));
-            for (int _iter37 : struct.userIdList)
+            for (int _iter45 : struct.userIdList)
             {
-              oprot.writeI32(_iter37);
+              oprot.writeI32(_iter45);
             }
             oprot.writeListEnd();
           }
@@ -5829,9 +5829,9 @@ public class UserThriftRpcService {
         if (struct.isSetUserIdList()) {
           {
             oprot.writeI32(struct.userIdList.size());
-            for (int _iter38 : struct.userIdList)
+            for (int _iter46 : struct.userIdList)
             {
-              oprot.writeI32(_iter38);
+              oprot.writeI32(_iter46);
             }
           }
         }
@@ -5843,13 +5843,13 @@ public class UserThriftRpcService {
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
           {
-            org.apache.thrift.protocol.TList _list39 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I32, iprot.readI32());
-            struct.userIdList = new ArrayList<Integer>(_list39.size);
-            for (int _i40 = 0; _i40 < _list39.size; ++_i40)
+            org.apache.thrift.protocol.TList _list47 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I32, iprot.readI32());
+            struct.userIdList = new ArrayList<Integer>(_list47.size);
+            for (int _i48 = 0; _i48 < _list47.size; ++_i48)
             {
-              int _elem41; // required
-              _elem41 = iprot.readI32();
-              struct.userIdList.add(_elem41);
+              int _elem49; // required
+              _elem49 = iprot.readI32();
+              struct.userIdList.add(_elem49);
             }
           }
           struct.setUserIdListIsSet(true);

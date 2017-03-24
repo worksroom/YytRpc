@@ -6,6 +6,9 @@ import com.yyt.print.product.pojo.UserShop;
 import com.yyt.print.product.query.MallGoodsQuery;
 import com.yyt.print.product.query.UserShopQuery;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by leo on 2016/11/23.
  */
@@ -33,5 +36,6 @@ public interface IUserShopService {
     int reviewUserShop(int id, boolean status);
 
 
+    public Map<Integer,UserShop> findUserShopMap(List<Integer> shopIdList);
 
 }

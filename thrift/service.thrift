@@ -208,6 +208,8 @@ service ProductThriftRpcService {
 
     /** 审核店铺 **/
     i32 reviewUserShop(1:i32 id, 2:bool status);
+
+    string findUserShopMap(1:list<i32> shopIdList);
     
     /** 添加首页碎片 **/
     i32 addMallIndex(1:string mallIndex 2:string mallindexContent);
@@ -536,4 +538,6 @@ service OrderThriftRpcService {
     string isCollectShop(1:i32 uid,2:i32 shopId);
 
     string isCollectGoods(1:i32 uid,2:i32 goodsId);
+
+    string getOrder(1:string id);
 }
