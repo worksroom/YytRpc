@@ -11,10 +11,7 @@ import com.yyt.print.order.pojo.*;
 import com.yyt.print.order.query.OrdersQuery;
 import com.yyt.print.order.service.IOrderService;
 import com.yyt.print.order.util.OrderUtil;
-import com.yyt.print.product.dao.IFareMouldDAO;
-import com.yyt.print.product.dao.IMallGoodsDAO;
-import com.yyt.print.product.dao.IMallProductDAO;
-import com.yyt.print.product.dao.IUserShopDAO;
+import com.yyt.print.product.dao.*;
 import com.yyt.print.product.pojo.*;
 import com.yyt.print.product.service.IMallProductService;
 import org.springframework.stereotype.Service;
@@ -69,6 +66,11 @@ public class OrderService implements IOrderService {
 
     @Resource
     private ICollectTreasureDAO collectTreasureDAO;
+
+    @Resource
+    private IProductEvaluateRecordDAO productEvaluateRecordDAO;
+    @Resource
+    private IProductEvaluateDAO productEvaluateDAO;
 
 
 
@@ -189,11 +191,6 @@ public class OrderService implements IOrderService {
     @Override
     public String payOrder(int buyUserId, String orderId) {
         return null;
-    }
-
-    @Override
-    public int rate(int buyUserId, String orderId, String goodsId, int score, String content, String imgs) {
-        return 0;
     }
 
     @Override

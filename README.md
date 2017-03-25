@@ -229,3 +229,29 @@ ADD COLUMN `shop_name`  varchar(100) NULL COMMENT '店铺名称' AFTER `update_t
 ALTER TABLE `delivery_addr`
 ADD COLUMN `default_addr`  int(1) NULL COMMENT '是否为默认收货地址，1-是；0-否' AFTER `update_time`;
 
+ALTER TABLE `orders`
+MODIFY COLUMN `id`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL FIRST ,
+ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `product_evaluate_record`
+ADD UNIQUE INDEX `uni_buyerId_orderId` USING BTREE (`buy_user_id`, `order_id`) ;
+
+ALTER TABLE `product_evaluate_record`
+ADD COLUMN `anonymous`  int(11) NULL COMMENT '是否匿名购买，1-是；0-否' AFTER `create_time`;
+
+ALTER TABLE `orders`
+MODIFY COLUMN `status`  int(5) NULL DEFAULT NULL COMMENT '0.待支付；1.已支付,待发货；2.已发货；3.结束；4.已收货；5.已评价' AFTER `product_money`;
+
+DROP TABLE product_evaluate;
+CREATE TABLE `product_evaluate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键,自增',
+  `goods_id` int(11) NOT NULL DEFAULT '0' COMMENT '货品ID',
+  `total_num` int(11) DEFAULT '0' COMMENT '评价总数',
+  `total_star` int(11) DEFAULT '0' COMMENT '评价总星级',
+  `rate` decimal(9,2) DEFAULT '0.00' COMMENT '好评率',
+  `product_spec` varchar(100) DEFAULT NULL COMMENT '描述',
+  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uni_goodsId` (`goods_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

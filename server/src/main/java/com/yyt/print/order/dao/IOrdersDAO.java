@@ -12,7 +12,7 @@ public interface IOrdersDAO {
 
     Orders getOrders(String id);
 
-    int updateStatus(String id , int paytype , int status);
+    int updateStatus(String id , int status);
 
     int updateMoney(String id , double money);
 

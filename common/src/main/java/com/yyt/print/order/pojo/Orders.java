@@ -28,6 +28,8 @@ public class Orders {
         return result;
     }
 
+    public static final int STATUS_EVALUATE = 5;
+
     private String id;//订单ID
     private int buyUserId;
     private int sellUserId;
@@ -36,13 +38,7 @@ public class Orders {
     private Double totalMoney;
     private Double productMoney;
     /**
-     * 0待支付
-
-     1 已支付 ， 待发货
-
-     2 已发货
-
-     3.结束
+     * 0.待支付；1.已支付,待发货；2.已发货；3.结束；4.已收货；5.已评价
      */
     private int status;
     private Double fee;

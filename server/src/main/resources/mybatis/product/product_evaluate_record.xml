@@ -13,6 +13,8 @@
         <result property="img" column="img"/>
         <result property="createTime" column="create_time"/>
     </resultMap>
+
+
     <insert id="insert" parameterType="ProductEvaluateRecord">
         insert into product_evaluate_record (
         goods_id, sell_user_id, buy_user_id, order_id, des, star, content, img, create_time)
@@ -22,12 +24,18 @@
             select LAST_INSERT_ID() AS id
         </selectKey>
     </insert>
+
+
     <update id="update" parameterType="ProductEvaluateRecord">
         update product_evaluate_record set goods_id = #{goodsId},sell_user_id = #{sellUserId},buy_user_id = #{buyUserId},order_id = #{orderId},des = #{des},star = #{star},content = #{content},img = #{img},create_time = #{createTime} where id=#{id}
     </update>
+
+
     <select id="select" parameterType="int" resultMap="ProductEvaluateRecordMap">
         select id ,  goods_id, sell_user_id, buy_user_id, order_id, des, star, content, img, create_time from product_evaluate_record where id=#{id}
     </select>
+
+
     <delete id="delete" parameterType="int">
         delete from product_evaluate_record where id=#{id}
     </delete>

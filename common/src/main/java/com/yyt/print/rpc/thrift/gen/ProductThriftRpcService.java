@@ -335,12 +335,7 @@ public class ProductThriftRpcService {
      */
     public String findStoreLocations(int shopId) throws org.apache.thrift.TException;
 
-    /**
-     * 评论货品 *
-     * 
-     * @param comment
-     */
-    public int commentGoods(String comment) throws org.apache.thrift.TException;
+    public int rate(int buyerId, int sellerId, String orderId, int goodsId, int score, String content, String imgs, int anonymous) throws org.apache.thrift.TException;
 
     /**
      * 查询货品评论 *
@@ -475,7 +470,7 @@ public class ProductThriftRpcService {
 
     public void findStoreLocations(int shopId, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.findStoreLocations_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void commentGoods(String comment, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.commentGoods_call> resultHandler) throws org.apache.thrift.TException;
+    public void rate(int buyerId, int sellerId, String orderId, int goodsId, int score, String content, String imgs, int anonymous, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.rate_call> resultHandler) throws org.apache.thrift.TException;
 
     public void findProductEvaluateList(int goodIds, int seq, int num, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.findProductEvaluateList_call> resultHandler) throws org.apache.thrift.TException;
 
@@ -1461,27 +1456,34 @@ public class ProductThriftRpcService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "findStoreLocations failed: unknown result");
     }
 
-    public int commentGoods(String comment) throws org.apache.thrift.TException
+    public int rate(int buyerId, int sellerId, String orderId, int goodsId, int score, String content, String imgs, int anonymous) throws org.apache.thrift.TException
     {
-      send_commentGoods(comment);
-      return recv_commentGoods();
+      send_rate(buyerId, sellerId, orderId, goodsId, score, content, imgs, anonymous);
+      return recv_rate();
     }
 
-    public void send_commentGoods(String comment) throws org.apache.thrift.TException
+    public void send_rate(int buyerId, int sellerId, String orderId, int goodsId, int score, String content, String imgs, int anonymous) throws org.apache.thrift.TException
     {
-      commentGoods_args args = new commentGoods_args();
-      args.setComment(comment);
-      sendBase("commentGoods", args);
+      rate_args args = new rate_args();
+      args.setBuyerId(buyerId);
+      args.setSellerId(sellerId);
+      args.setOrderId(orderId);
+      args.setGoodsId(goodsId);
+      args.setScore(score);
+      args.setContent(content);
+      args.setImgs(imgs);
+      args.setAnonymous(anonymous);
+      sendBase("rate", args);
     }
 
-    public int recv_commentGoods() throws org.apache.thrift.TException
+    public int recv_rate() throws org.apache.thrift.TException
     {
-      commentGoods_result result = new commentGoods_result();
-      receiveBase(result, "commentGoods");
+      rate_result result = new rate_result();
+      receiveBase(result, "rate");
       if (result.isSetSuccess()) {
         return result.success;
       }
-      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "commentGoods failed: unknown result");
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "rate failed: unknown result");
     }
 
     public String findProductEvaluateList(int goodIds, int seq, int num) throws org.apache.thrift.TException
@@ -2975,24 +2977,45 @@ public class ProductThriftRpcService {
       }
     }
 
-    public void commentGoods(String comment, org.apache.thrift.async.AsyncMethodCallback<commentGoods_call> resultHandler) throws org.apache.thrift.TException {
+    public void rate(int buyerId, int sellerId, String orderId, int goodsId, int score, String content, String imgs, int anonymous, org.apache.thrift.async.AsyncMethodCallback<rate_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      commentGoods_call method_call = new commentGoods_call(comment, resultHandler, this, ___protocolFactory, ___transport);
+      rate_call method_call = new rate_call(buyerId, sellerId, orderId, goodsId, score, content, imgs, anonymous, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class commentGoods_call extends org.apache.thrift.async.TAsyncMethodCall {
-      private String comment;
-      public commentGoods_call(String comment, org.apache.thrift.async.AsyncMethodCallback<commentGoods_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+    public static class rate_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private int buyerId;
+      private int sellerId;
+      private String orderId;
+      private int goodsId;
+      private int score;
+      private String content;
+      private String imgs;
+      private int anonymous;
+      public rate_call(int buyerId, int sellerId, String orderId, int goodsId, int score, String content, String imgs, int anonymous, org.apache.thrift.async.AsyncMethodCallback<rate_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.comment = comment;
+        this.buyerId = buyerId;
+        this.sellerId = sellerId;
+        this.orderId = orderId;
+        this.goodsId = goodsId;
+        this.score = score;
+        this.content = content;
+        this.imgs = imgs;
+        this.anonymous = anonymous;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
-        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("commentGoods", org.apache.thrift.protocol.TMessageType.CALL, 0));
-        commentGoods_args args = new commentGoods_args();
-        args.setComment(comment);
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("rate", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        rate_args args = new rate_args();
+        args.setBuyerId(buyerId);
+        args.setSellerId(sellerId);
+        args.setOrderId(orderId);
+        args.setGoodsId(goodsId);
+        args.setScore(score);
+        args.setContent(content);
+        args.setImgs(imgs);
+        args.setAnonymous(anonymous);
         args.write(prot);
         prot.writeMessageEnd();
       }
@@ -3003,7 +3026,7 @@ public class ProductThriftRpcService {
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
         org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        return (new Client(prot)).recv_commentGoods();
+        return (new Client(prot)).recv_rate();
       }
     }
 
@@ -3259,7 +3282,7 @@ public class ProductThriftRpcService {
       processMap.put("delStoreLocation", new delStoreLocation());
       processMap.put("updateStoreLocation", new updateStoreLocation());
       processMap.put("findStoreLocations", new findStoreLocations());
-      processMap.put("commentGoods", new commentGoods());
+      processMap.put("rate", new rate());
       processMap.put("findProductEvaluateList", new findProductEvaluateList());
       processMap.put("addShopUser", new addShopUser());
       processMap.put("getShopIdFromUid", new getShopIdFromUid());
@@ -4110,22 +4133,22 @@ public class ProductThriftRpcService {
       }
     }
 
-    public static class commentGoods<I extends Iface> extends org.apache.thrift.ProcessFunction<I, commentGoods_args> {
-      public commentGoods() {
-        super("commentGoods");
+    public static class rate<I extends Iface> extends org.apache.thrift.ProcessFunction<I, rate_args> {
+      public rate() {
+        super("rate");
       }
 
-      public commentGoods_args getEmptyArgsInstance() {
-        return new commentGoods_args();
+      public rate_args getEmptyArgsInstance() {
+        return new rate_args();
       }
 
       protected boolean isOneway() {
         return false;
       }
 
-      public commentGoods_result getResult(I iface, commentGoods_args args) throws org.apache.thrift.TException {
-        commentGoods_result result = new commentGoods_result();
-        result.success = iface.commentGoods(args.comment);
+      public rate_result getResult(I iface, rate_args args) throws org.apache.thrift.TException {
+        rate_result result = new rate_result();
+        result.success = iface.rate(args.buyerId, args.sellerId, args.orderId, args.goodsId, args.score, args.content, args.imgs, args.anonymous);
         result.setSuccessIsSet(true);
         return result;
       }
@@ -34053,22 +34076,43 @@ public class ProductThriftRpcService {
 
   }
 
-  public static class commentGoods_args implements org.apache.thrift.TBase<commentGoods_args, commentGoods_args._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("commentGoods_args");
+  public static class rate_args implements org.apache.thrift.TBase<rate_args, rate_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("rate_args");
 
-    private static final org.apache.thrift.protocol.TField COMMENT_FIELD_DESC = new org.apache.thrift.protocol.TField("comment", org.apache.thrift.protocol.TType.STRING, (short)1);
+    private static final org.apache.thrift.protocol.TField BUYER_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("buyerId", org.apache.thrift.protocol.TType.I32, (short)1);
+    private static final org.apache.thrift.protocol.TField SELLER_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("sellerId", org.apache.thrift.protocol.TType.I32, (short)2);
+    private static final org.apache.thrift.protocol.TField ORDER_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("orderId", org.apache.thrift.protocol.TType.STRING, (short)3);
+    private static final org.apache.thrift.protocol.TField GOODS_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("goodsId", org.apache.thrift.protocol.TType.I32, (short)4);
+    private static final org.apache.thrift.protocol.TField SCORE_FIELD_DESC = new org.apache.thrift.protocol.TField("score", org.apache.thrift.protocol.TType.I32, (short)5);
+    private static final org.apache.thrift.protocol.TField CONTENT_FIELD_DESC = new org.apache.thrift.protocol.TField("content", org.apache.thrift.protocol.TType.STRING, (short)6);
+    private static final org.apache.thrift.protocol.TField IMGS_FIELD_DESC = new org.apache.thrift.protocol.TField("imgs", org.apache.thrift.protocol.TType.STRING, (short)7);
+    private static final org.apache.thrift.protocol.TField ANONYMOUS_FIELD_DESC = new org.apache.thrift.protocol.TField("anonymous", org.apache.thrift.protocol.TType.I32, (short)8);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new commentGoods_argsStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new commentGoods_argsTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new rate_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new rate_argsTupleSchemeFactory());
     }
 
-    public String comment; // required
+    public int buyerId; // required
+    public int sellerId; // required
+    public String orderId; // required
+    public int goodsId; // required
+    public int score; // required
+    public String content; // required
+    public String imgs; // required
+    public int anonymous; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      COMMENT((short)1, "comment");
+      BUYER_ID((short)1, "buyerId"),
+      SELLER_ID((short)2, "sellerId"),
+      ORDER_ID((short)3, "orderId"),
+      GOODS_ID((short)4, "goodsId"),
+      SCORE((short)5, "score"),
+      CONTENT((short)6, "content"),
+      IMGS((short)7, "imgs"),
+      ANONYMOUS((short)8, "anonymous");
 
       private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -34083,8 +34127,22 @@ public class ProductThriftRpcService {
        */
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
-          case 1: // COMMENT
-            return COMMENT;
+          case 1: // BUYER_ID
+            return BUYER_ID;
+          case 2: // SELLER_ID
+            return SELLER_ID;
+          case 3: // ORDER_ID
+            return ORDER_ID;
+          case 4: // GOODS_ID
+            return GOODS_ID;
+          case 5: // SCORE
+            return SCORE;
+          case 6: // CONTENT
+            return CONTENT;
+          case 7: // IMGS
+            return IMGS;
+          case 8: // ANONYMOUS
+            return ANONYMOUS;
           default:
             return null;
         }
@@ -34125,74 +34183,356 @@ public class ProductThriftRpcService {
     }
 
     // isset id assignments
+    private static final int __BUYERID_ISSET_ID = 0;
+    private static final int __SELLERID_ISSET_ID = 1;
+    private static final int __GOODSID_ISSET_ID = 2;
+    private static final int __SCORE_ISSET_ID = 3;
+    private static final int __ANONYMOUS_ISSET_ID = 4;
+    private byte __isset_bitfield = 0;
     public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.COMMENT, new org.apache.thrift.meta_data.FieldMetaData("comment", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+      tmpMap.put(_Fields.BUYER_ID, new org.apache.thrift.meta_data.FieldMetaData("buyerId", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+      tmpMap.put(_Fields.SELLER_ID, new org.apache.thrift.meta_data.FieldMetaData("sellerId", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+      tmpMap.put(_Fields.ORDER_ID, new org.apache.thrift.meta_data.FieldMetaData("orderId", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+      tmpMap.put(_Fields.GOODS_ID, new org.apache.thrift.meta_data.FieldMetaData("goodsId", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+      tmpMap.put(_Fields.SCORE, new org.apache.thrift.meta_data.FieldMetaData("score", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+      tmpMap.put(_Fields.CONTENT, new org.apache.thrift.meta_data.FieldMetaData("content", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+      tmpMap.put(_Fields.IMGS, new org.apache.thrift.meta_data.FieldMetaData("imgs", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+      tmpMap.put(_Fields.ANONYMOUS, new org.apache.thrift.meta_data.FieldMetaData("anonymous", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(commentGoods_args.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(rate_args.class, metaDataMap);
     }
 
-    public commentGoods_args() {
+    public rate_args() {
     }
 
-    public commentGoods_args(
-      String comment)
+    public rate_args(
+      int buyerId,
+      int sellerId,
+      String orderId,
+      int goodsId,
+      int score,
+      String content,
+      String imgs,
+      int anonymous)
     {
       this();
-      this.comment = comment;
+      this.buyerId = buyerId;
+      setBuyerIdIsSet(true);
+      this.sellerId = sellerId;
+      setSellerIdIsSet(true);
+      this.orderId = orderId;
+      this.goodsId = goodsId;
+      setGoodsIdIsSet(true);
+      this.score = score;
+      setScoreIsSet(true);
+      this.content = content;
+      this.imgs = imgs;
+      this.anonymous = anonymous;
+      setAnonymousIsSet(true);
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public commentGoods_args(commentGoods_args other) {
-      if (other.isSetComment()) {
-        this.comment = other.comment;
+    public rate_args(rate_args other) {
+      __isset_bitfield = other.__isset_bitfield;
+      this.buyerId = other.buyerId;
+      this.sellerId = other.sellerId;
+      if (other.isSetOrderId()) {
+        this.orderId = other.orderId;
       }
+      this.goodsId = other.goodsId;
+      this.score = other.score;
+      if (other.isSetContent()) {
+        this.content = other.content;
+      }
+      if (other.isSetImgs()) {
+        this.imgs = other.imgs;
+      }
+      this.anonymous = other.anonymous;
     }
 
-    public commentGoods_args deepCopy() {
-      return new commentGoods_args(this);
+    public rate_args deepCopy() {
+      return new rate_args(this);
     }
 
     @Override
     public void clear() {
-      this.comment = null;
+      setBuyerIdIsSet(false);
+      this.buyerId = 0;
+      setSellerIdIsSet(false);
+      this.sellerId = 0;
+      this.orderId = null;
+      setGoodsIdIsSet(false);
+      this.goodsId = 0;
+      setScoreIsSet(false);
+      this.score = 0;
+      this.content = null;
+      this.imgs = null;
+      setAnonymousIsSet(false);
+      this.anonymous = 0;
     }
 
-    public String getComment() {
-      return this.comment;
+    public int getBuyerId() {
+      return this.buyerId;
     }
 
-    public commentGoods_args setComment(String comment) {
-      this.comment = comment;
+    public rate_args setBuyerId(int buyerId) {
+      this.buyerId = buyerId;
+      setBuyerIdIsSet(true);
       return this;
     }
 
-    public void unsetComment() {
-      this.comment = null;
+    public void unsetBuyerId() {
+      __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __BUYERID_ISSET_ID);
     }
 
-    /** Returns true if field comment is set (has been assigned a value) and false otherwise */
-    public boolean isSetComment() {
-      return this.comment != null;
+    /** Returns true if field buyerId is set (has been assigned a value) and false otherwise */
+    public boolean isSetBuyerId() {
+      return EncodingUtils.testBit(__isset_bitfield, __BUYERID_ISSET_ID);
     }
 
-    public void setCommentIsSet(boolean value) {
+    public void setBuyerIdIsSet(boolean value) {
+      __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __BUYERID_ISSET_ID, value);
+    }
+
+    public int getSellerId() {
+      return this.sellerId;
+    }
+
+    public rate_args setSellerId(int sellerId) {
+      this.sellerId = sellerId;
+      setSellerIdIsSet(true);
+      return this;
+    }
+
+    public void unsetSellerId() {
+      __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __SELLERID_ISSET_ID);
+    }
+
+    /** Returns true if field sellerId is set (has been assigned a value) and false otherwise */
+    public boolean isSetSellerId() {
+      return EncodingUtils.testBit(__isset_bitfield, __SELLERID_ISSET_ID);
+    }
+
+    public void setSellerIdIsSet(boolean value) {
+      __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SELLERID_ISSET_ID, value);
+    }
+
+    public String getOrderId() {
+      return this.orderId;
+    }
+
+    public rate_args setOrderId(String orderId) {
+      this.orderId = orderId;
+      return this;
+    }
+
+    public void unsetOrderId() {
+      this.orderId = null;
+    }
+
+    /** Returns true if field orderId is set (has been assigned a value) and false otherwise */
+    public boolean isSetOrderId() {
+      return this.orderId != null;
+    }
+
+    public void setOrderIdIsSet(boolean value) {
       if (!value) {
-        this.comment = null;
+        this.orderId = null;
       }
+    }
+
+    public int getGoodsId() {
+      return this.goodsId;
+    }
+
+    public rate_args setGoodsId(int goodsId) {
+      this.goodsId = goodsId;
+      setGoodsIdIsSet(true);
+      return this;
+    }
+
+    public void unsetGoodsId() {
+      __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __GOODSID_ISSET_ID);
+    }
+
+    /** Returns true if field goodsId is set (has been assigned a value) and false otherwise */
+    public boolean isSetGoodsId() {
+      return EncodingUtils.testBit(__isset_bitfield, __GOODSID_ISSET_ID);
+    }
+
+    public void setGoodsIdIsSet(boolean value) {
+      __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __GOODSID_ISSET_ID, value);
+    }
+
+    public int getScore() {
+      return this.score;
+    }
+
+    public rate_args setScore(int score) {
+      this.score = score;
+      setScoreIsSet(true);
+      return this;
+    }
+
+    public void unsetScore() {
+      __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __SCORE_ISSET_ID);
+    }
+
+    /** Returns true if field score is set (has been assigned a value) and false otherwise */
+    public boolean isSetScore() {
+      return EncodingUtils.testBit(__isset_bitfield, __SCORE_ISSET_ID);
+    }
+
+    public void setScoreIsSet(boolean value) {
+      __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SCORE_ISSET_ID, value);
+    }
+
+    public String getContent() {
+      return this.content;
+    }
+
+    public rate_args setContent(String content) {
+      this.content = content;
+      return this;
+    }
+
+    public void unsetContent() {
+      this.content = null;
+    }
+
+    /** Returns true if field content is set (has been assigned a value) and false otherwise */
+    public boolean isSetContent() {
+      return this.content != null;
+    }
+
+    public void setContentIsSet(boolean value) {
+      if (!value) {
+        this.content = null;
+      }
+    }
+
+    public String getImgs() {
+      return this.imgs;
+    }
+
+    public rate_args setImgs(String imgs) {
+      this.imgs = imgs;
+      return this;
+    }
+
+    public void unsetImgs() {
+      this.imgs = null;
+    }
+
+    /** Returns true if field imgs is set (has been assigned a value) and false otherwise */
+    public boolean isSetImgs() {
+      return this.imgs != null;
+    }
+
+    public void setImgsIsSet(boolean value) {
+      if (!value) {
+        this.imgs = null;
+      }
+    }
+
+    public int getAnonymous() {
+      return this.anonymous;
+    }
+
+    public rate_args setAnonymous(int anonymous) {
+      this.anonymous = anonymous;
+      setAnonymousIsSet(true);
+      return this;
+    }
+
+    public void unsetAnonymous() {
+      __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __ANONYMOUS_ISSET_ID);
+    }
+
+    /** Returns true if field anonymous is set (has been assigned a value) and false otherwise */
+    public boolean isSetAnonymous() {
+      return EncodingUtils.testBit(__isset_bitfield, __ANONYMOUS_ISSET_ID);
+    }
+
+    public void setAnonymousIsSet(boolean value) {
+      __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __ANONYMOUS_ISSET_ID, value);
     }
 
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
-      case COMMENT:
+      case BUYER_ID:
         if (value == null) {
-          unsetComment();
+          unsetBuyerId();
         } else {
-          setComment((String)value);
+          setBuyerId((Integer)value);
+        }
+        break;
+
+      case SELLER_ID:
+        if (value == null) {
+          unsetSellerId();
+        } else {
+          setSellerId((Integer)value);
+        }
+        break;
+
+      case ORDER_ID:
+        if (value == null) {
+          unsetOrderId();
+        } else {
+          setOrderId((String)value);
+        }
+        break;
+
+      case GOODS_ID:
+        if (value == null) {
+          unsetGoodsId();
+        } else {
+          setGoodsId((Integer)value);
+        }
+        break;
+
+      case SCORE:
+        if (value == null) {
+          unsetScore();
+        } else {
+          setScore((Integer)value);
+        }
+        break;
+
+      case CONTENT:
+        if (value == null) {
+          unsetContent();
+        } else {
+          setContent((String)value);
+        }
+        break;
+
+      case IMGS:
+        if (value == null) {
+          unsetImgs();
+        } else {
+          setImgs((String)value);
+        }
+        break;
+
+      case ANONYMOUS:
+        if (value == null) {
+          unsetAnonymous();
+        } else {
+          setAnonymous((Integer)value);
         }
         break;
 
@@ -34201,8 +34541,29 @@ public class ProductThriftRpcService {
 
     public Object getFieldValue(_Fields field) {
       switch (field) {
-      case COMMENT:
-        return getComment();
+      case BUYER_ID:
+        return Integer.valueOf(getBuyerId());
+
+      case SELLER_ID:
+        return Integer.valueOf(getSellerId());
+
+      case ORDER_ID:
+        return getOrderId();
+
+      case GOODS_ID:
+        return Integer.valueOf(getGoodsId());
+
+      case SCORE:
+        return Integer.valueOf(getScore());
+
+      case CONTENT:
+        return getContent();
+
+      case IMGS:
+        return getImgs();
+
+      case ANONYMOUS:
+        return Integer.valueOf(getAnonymous());
 
       }
       throw new IllegalStateException();
@@ -34215,8 +34576,22 @@ public class ProductThriftRpcService {
       }
 
       switch (field) {
-      case COMMENT:
-        return isSetComment();
+      case BUYER_ID:
+        return isSetBuyerId();
+      case SELLER_ID:
+        return isSetSellerId();
+      case ORDER_ID:
+        return isSetOrderId();
+      case GOODS_ID:
+        return isSetGoodsId();
+      case SCORE:
+        return isSetScore();
+      case CONTENT:
+        return isSetContent();
+      case IMGS:
+        return isSetImgs();
+      case ANONYMOUS:
+        return isSetAnonymous();
       }
       throw new IllegalStateException();
     }
@@ -34225,21 +34600,84 @@ public class ProductThriftRpcService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof commentGoods_args)
-        return this.equals((commentGoods_args)that);
+      if (that instanceof rate_args)
+        return this.equals((rate_args)that);
       return false;
     }
 
-    public boolean equals(commentGoods_args that) {
+    public boolean equals(rate_args that) {
       if (that == null)
         return false;
 
-      boolean this_present_comment = true && this.isSetComment();
-      boolean that_present_comment = true && that.isSetComment();
-      if (this_present_comment || that_present_comment) {
-        if (!(this_present_comment && that_present_comment))
+      boolean this_present_buyerId = true;
+      boolean that_present_buyerId = true;
+      if (this_present_buyerId || that_present_buyerId) {
+        if (!(this_present_buyerId && that_present_buyerId))
           return false;
-        if (!this.comment.equals(that.comment))
+        if (this.buyerId != that.buyerId)
+          return false;
+      }
+
+      boolean this_present_sellerId = true;
+      boolean that_present_sellerId = true;
+      if (this_present_sellerId || that_present_sellerId) {
+        if (!(this_present_sellerId && that_present_sellerId))
+          return false;
+        if (this.sellerId != that.sellerId)
+          return false;
+      }
+
+      boolean this_present_orderId = true && this.isSetOrderId();
+      boolean that_present_orderId = true && that.isSetOrderId();
+      if (this_present_orderId || that_present_orderId) {
+        if (!(this_present_orderId && that_present_orderId))
+          return false;
+        if (!this.orderId.equals(that.orderId))
+          return false;
+      }
+
+      boolean this_present_goodsId = true;
+      boolean that_present_goodsId = true;
+      if (this_present_goodsId || that_present_goodsId) {
+        if (!(this_present_goodsId && that_present_goodsId))
+          return false;
+        if (this.goodsId != that.goodsId)
+          return false;
+      }
+
+      boolean this_present_score = true;
+      boolean that_present_score = true;
+      if (this_present_score || that_present_score) {
+        if (!(this_present_score && that_present_score))
+          return false;
+        if (this.score != that.score)
+          return false;
+      }
+
+      boolean this_present_content = true && this.isSetContent();
+      boolean that_present_content = true && that.isSetContent();
+      if (this_present_content || that_present_content) {
+        if (!(this_present_content && that_present_content))
+          return false;
+        if (!this.content.equals(that.content))
+          return false;
+      }
+
+      boolean this_present_imgs = true && this.isSetImgs();
+      boolean that_present_imgs = true && that.isSetImgs();
+      if (this_present_imgs || that_present_imgs) {
+        if (!(this_present_imgs && that_present_imgs))
+          return false;
+        if (!this.imgs.equals(that.imgs))
+          return false;
+      }
+
+      boolean this_present_anonymous = true;
+      boolean that_present_anonymous = true;
+      if (this_present_anonymous || that_present_anonymous) {
+        if (!(this_present_anonymous && that_present_anonymous))
+          return false;
+        if (this.anonymous != that.anonymous)
           return false;
       }
 
@@ -34251,20 +34689,90 @@ public class ProductThriftRpcService {
       return 0;
     }
 
-    public int compareTo(commentGoods_args other) {
+    public int compareTo(rate_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      commentGoods_args typedOther = (commentGoods_args)other;
+      rate_args typedOther = (rate_args)other;
 
-      lastComparison = Boolean.valueOf(isSetComment()).compareTo(typedOther.isSetComment());
+      lastComparison = Boolean.valueOf(isSetBuyerId()).compareTo(typedOther.isSetBuyerId());
       if (lastComparison != 0) {
         return lastComparison;
       }
-      if (isSetComment()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.comment, typedOther.comment);
+      if (isSetBuyerId()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.buyerId, typedOther.buyerId);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetSellerId()).compareTo(typedOther.isSetSellerId());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetSellerId()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.sellerId, typedOther.sellerId);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetOrderId()).compareTo(typedOther.isSetOrderId());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetOrderId()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.orderId, typedOther.orderId);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetGoodsId()).compareTo(typedOther.isSetGoodsId());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetGoodsId()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.goodsId, typedOther.goodsId);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetScore()).compareTo(typedOther.isSetScore());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetScore()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.score, typedOther.score);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetContent()).compareTo(typedOther.isSetContent());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetContent()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.content, typedOther.content);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetImgs()).compareTo(typedOther.isSetImgs());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetImgs()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.imgs, typedOther.imgs);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetAnonymous()).compareTo(typedOther.isSetAnonymous());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetAnonymous()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.anonymous, typedOther.anonymous);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -34286,15 +34794,51 @@ public class ProductThriftRpcService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("commentGoods_args(");
+      StringBuilder sb = new StringBuilder("rate_args(");
       boolean first = true;
 
-      sb.append("comment:");
-      if (this.comment == null) {
+      sb.append("buyerId:");
+      sb.append(this.buyerId);
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("sellerId:");
+      sb.append(this.sellerId);
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("orderId:");
+      if (this.orderId == null) {
         sb.append("null");
       } else {
-        sb.append(this.comment);
+        sb.append(this.orderId);
       }
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("goodsId:");
+      sb.append(this.goodsId);
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("score:");
+      sb.append(this.score);
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("content:");
+      if (this.content == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.content);
+      }
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("imgs:");
+      if (this.imgs == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.imgs);
+      }
+      first = false;
+      if (!first) sb.append(", ");
+      sb.append("anonymous:");
+      sb.append(this.anonymous);
       first = false;
       sb.append(")");
       return sb.toString();
@@ -34315,21 +34859,23 @@ public class ProductThriftRpcService {
 
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
+        // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
+        __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
       } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
       }
     }
 
-    private static class commentGoods_argsStandardSchemeFactory implements SchemeFactory {
-      public commentGoods_argsStandardScheme getScheme() {
-        return new commentGoods_argsStandardScheme();
+    private static class rate_argsStandardSchemeFactory implements SchemeFactory {
+      public rate_argsStandardScheme getScheme() {
+        return new rate_argsStandardScheme();
       }
     }
 
-    private static class commentGoods_argsStandardScheme extends StandardScheme<commentGoods_args> {
+    private static class rate_argsStandardScheme extends StandardScheme<rate_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, commentGoods_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, rate_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -34339,10 +34885,66 @@ public class ProductThriftRpcService {
             break;
           }
           switch (schemeField.id) {
-            case 1: // COMMENT
+            case 1: // BUYER_ID
+              if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                struct.buyerId = iprot.readI32();
+                struct.setBuyerIdIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 2: // SELLER_ID
+              if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                struct.sellerId = iprot.readI32();
+                struct.setSellerIdIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 3: // ORDER_ID
               if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-                struct.comment = iprot.readString();
-                struct.setCommentIsSet(true);
+                struct.orderId = iprot.readString();
+                struct.setOrderIdIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 4: // GOODS_ID
+              if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                struct.goodsId = iprot.readI32();
+                struct.setGoodsIdIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 5: // SCORE
+              if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                struct.score = iprot.readI32();
+                struct.setScoreIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 6: // CONTENT
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                struct.content = iprot.readString();
+                struct.setContentIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 7: // IMGS
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                struct.imgs = iprot.readString();
+                struct.setImgsIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            case 8: // ANONYMOUS
+              if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+                struct.anonymous = iprot.readI32();
+                struct.setAnonymousIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
@@ -34358,64 +34960,159 @@ public class ProductThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, commentGoods_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, rate_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
-        if (struct.comment != null) {
-          oprot.writeFieldBegin(COMMENT_FIELD_DESC);
-          oprot.writeString(struct.comment);
+        oprot.writeFieldBegin(BUYER_ID_FIELD_DESC);
+        oprot.writeI32(struct.buyerId);
+        oprot.writeFieldEnd();
+        oprot.writeFieldBegin(SELLER_ID_FIELD_DESC);
+        oprot.writeI32(struct.sellerId);
+        oprot.writeFieldEnd();
+        if (struct.orderId != null) {
+          oprot.writeFieldBegin(ORDER_ID_FIELD_DESC);
+          oprot.writeString(struct.orderId);
           oprot.writeFieldEnd();
         }
+        oprot.writeFieldBegin(GOODS_ID_FIELD_DESC);
+        oprot.writeI32(struct.goodsId);
+        oprot.writeFieldEnd();
+        oprot.writeFieldBegin(SCORE_FIELD_DESC);
+        oprot.writeI32(struct.score);
+        oprot.writeFieldEnd();
+        if (struct.content != null) {
+          oprot.writeFieldBegin(CONTENT_FIELD_DESC);
+          oprot.writeString(struct.content);
+          oprot.writeFieldEnd();
+        }
+        if (struct.imgs != null) {
+          oprot.writeFieldBegin(IMGS_FIELD_DESC);
+          oprot.writeString(struct.imgs);
+          oprot.writeFieldEnd();
+        }
+        oprot.writeFieldBegin(ANONYMOUS_FIELD_DESC);
+        oprot.writeI32(struct.anonymous);
+        oprot.writeFieldEnd();
         oprot.writeFieldStop();
         oprot.writeStructEnd();
       }
 
     }
 
-    private static class commentGoods_argsTupleSchemeFactory implements SchemeFactory {
-      public commentGoods_argsTupleScheme getScheme() {
-        return new commentGoods_argsTupleScheme();
+    private static class rate_argsTupleSchemeFactory implements SchemeFactory {
+      public rate_argsTupleScheme getScheme() {
+        return new rate_argsTupleScheme();
       }
     }
 
-    private static class commentGoods_argsTupleScheme extends TupleScheme<commentGoods_args> {
+    private static class rate_argsTupleScheme extends TupleScheme<rate_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, commentGoods_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, rate_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
-        if (struct.isSetComment()) {
+        if (struct.isSetBuyerId()) {
           optionals.set(0);
         }
-        oprot.writeBitSet(optionals, 1);
-        if (struct.isSetComment()) {
-          oprot.writeString(struct.comment);
+        if (struct.isSetSellerId()) {
+          optionals.set(1);
+        }
+        if (struct.isSetOrderId()) {
+          optionals.set(2);
+        }
+        if (struct.isSetGoodsId()) {
+          optionals.set(3);
+        }
+        if (struct.isSetScore()) {
+          optionals.set(4);
+        }
+        if (struct.isSetContent()) {
+          optionals.set(5);
+        }
+        if (struct.isSetImgs()) {
+          optionals.set(6);
+        }
+        if (struct.isSetAnonymous()) {
+          optionals.set(7);
+        }
+        oprot.writeBitSet(optionals, 8);
+        if (struct.isSetBuyerId()) {
+          oprot.writeI32(struct.buyerId);
+        }
+        if (struct.isSetSellerId()) {
+          oprot.writeI32(struct.sellerId);
+        }
+        if (struct.isSetOrderId()) {
+          oprot.writeString(struct.orderId);
+        }
+        if (struct.isSetGoodsId()) {
+          oprot.writeI32(struct.goodsId);
+        }
+        if (struct.isSetScore()) {
+          oprot.writeI32(struct.score);
+        }
+        if (struct.isSetContent()) {
+          oprot.writeString(struct.content);
+        }
+        if (struct.isSetImgs()) {
+          oprot.writeString(struct.imgs);
+        }
+        if (struct.isSetAnonymous()) {
+          oprot.writeI32(struct.anonymous);
         }
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, commentGoods_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, rate_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
-        BitSet incoming = iprot.readBitSet(1);
+        BitSet incoming = iprot.readBitSet(8);
         if (incoming.get(0)) {
-          struct.comment = iprot.readString();
-          struct.setCommentIsSet(true);
+          struct.buyerId = iprot.readI32();
+          struct.setBuyerIdIsSet(true);
+        }
+        if (incoming.get(1)) {
+          struct.sellerId = iprot.readI32();
+          struct.setSellerIdIsSet(true);
+        }
+        if (incoming.get(2)) {
+          struct.orderId = iprot.readString();
+          struct.setOrderIdIsSet(true);
+        }
+        if (incoming.get(3)) {
+          struct.goodsId = iprot.readI32();
+          struct.setGoodsIdIsSet(true);
+        }
+        if (incoming.get(4)) {
+          struct.score = iprot.readI32();
+          struct.setScoreIsSet(true);
+        }
+        if (incoming.get(5)) {
+          struct.content = iprot.readString();
+          struct.setContentIsSet(true);
+        }
+        if (incoming.get(6)) {
+          struct.imgs = iprot.readString();
+          struct.setImgsIsSet(true);
+        }
+        if (incoming.get(7)) {
+          struct.anonymous = iprot.readI32();
+          struct.setAnonymousIsSet(true);
         }
       }
     }
 
   }
 
-  public static class commentGoods_result implements org.apache.thrift.TBase<commentGoods_result, commentGoods_result._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("commentGoods_result");
+  public static class rate_result implements org.apache.thrift.TBase<rate_result, rate_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("rate_result");
 
     private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.I32, (short)0);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new commentGoods_resultStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new commentGoods_resultTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new rate_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new rate_resultTupleSchemeFactory());
     }
 
     public int success; // required
@@ -34487,13 +35184,13 @@ public class ProductThriftRpcService {
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(commentGoods_result.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(rate_result.class, metaDataMap);
     }
 
-    public commentGoods_result() {
+    public rate_result() {
     }
 
-    public commentGoods_result(
+    public rate_result(
       int success)
     {
       this();
@@ -34504,13 +35201,13 @@ public class ProductThriftRpcService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public commentGoods_result(commentGoods_result other) {
+    public rate_result(rate_result other) {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
     }
 
-    public commentGoods_result deepCopy() {
-      return new commentGoods_result(this);
+    public rate_result deepCopy() {
+      return new rate_result(this);
     }
 
     @Override
@@ -34523,7 +35220,7 @@ public class ProductThriftRpcService {
       return this.success;
     }
 
-    public commentGoods_result setSuccess(int success) {
+    public rate_result setSuccess(int success) {
       this.success = success;
       setSuccessIsSet(true);
       return this;
@@ -34581,12 +35278,12 @@ public class ProductThriftRpcService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof commentGoods_result)
-        return this.equals((commentGoods_result)that);
+      if (that instanceof rate_result)
+        return this.equals((rate_result)that);
       return false;
     }
 
-    public boolean equals(commentGoods_result that) {
+    public boolean equals(rate_result that) {
       if (that == null)
         return false;
 
@@ -34607,13 +35304,13 @@ public class ProductThriftRpcService {
       return 0;
     }
 
-    public int compareTo(commentGoods_result other) {
+    public int compareTo(rate_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      commentGoods_result typedOther = (commentGoods_result)other;
+      rate_result typedOther = (rate_result)other;
 
       lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
       if (lastComparison != 0) {
@@ -34642,7 +35339,7 @@ public class ProductThriftRpcService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("commentGoods_result(");
+      StringBuilder sb = new StringBuilder("rate_result(");
       boolean first = true;
 
       sb.append("success:");
@@ -34675,15 +35372,15 @@ public class ProductThriftRpcService {
       }
     }
 
-    private static class commentGoods_resultStandardSchemeFactory implements SchemeFactory {
-      public commentGoods_resultStandardScheme getScheme() {
-        return new commentGoods_resultStandardScheme();
+    private static class rate_resultStandardSchemeFactory implements SchemeFactory {
+      public rate_resultStandardScheme getScheme() {
+        return new rate_resultStandardScheme();
       }
     }
 
-    private static class commentGoods_resultStandardScheme extends StandardScheme<commentGoods_result> {
+    private static class rate_resultStandardScheme extends StandardScheme<rate_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, commentGoods_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, rate_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -34712,7 +35409,7 @@ public class ProductThriftRpcService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, commentGoods_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, rate_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -34727,16 +35424,16 @@ public class ProductThriftRpcService {
 
     }
 
-    private static class commentGoods_resultTupleSchemeFactory implements SchemeFactory {
-      public commentGoods_resultTupleScheme getScheme() {
-        return new commentGoods_resultTupleScheme();
+    private static class rate_resultTupleSchemeFactory implements SchemeFactory {
+      public rate_resultTupleScheme getScheme() {
+        return new rate_resultTupleScheme();
       }
     }
 
-    private static class commentGoods_resultTupleScheme extends TupleScheme<commentGoods_result> {
+    private static class rate_resultTupleScheme extends TupleScheme<rate_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, commentGoods_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, rate_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -34749,7 +35446,7 @@ public class ProductThriftRpcService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, commentGoods_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, rate_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {

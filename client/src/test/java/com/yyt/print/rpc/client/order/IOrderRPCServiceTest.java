@@ -1,6 +1,7 @@
 package com.yyt.print.rpc.client.order;
 
 import com.yyt.print.order.front.OrderProductFront;
+import com.yyt.print.order.pojo.Orders;
 import com.yyt.print.order.query.OrdersQuery;
 import com.yyt.print.rpc.client.YytRpcClientFactory;
 import org.junit.Test;
@@ -116,5 +117,10 @@ public class IOrderRPCServiceTest {
     @Test
     public void getOrderCount(){
         System.out.println(service.getOrderCount(224));
+    }
+
+    @Test
+    public void getOrder(){
+        Orders orders = service.getOrders("25");
     }
 }

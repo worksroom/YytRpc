@@ -26,10 +26,9 @@ public class OrdersDAOImpl extends YytBaseDAO<Orders> implements IOrdersDAO {
     }
 
     @Override
-    public int updateStatus(String id, int paytype, int status) {
+    public int updateStatus(String id, int status) {
         Map<String,Object> map = new HashMap<>();
         map.put("id",id);
-        map.put("paytype",paytype);
         map.put("status",status);
         return super.updateBy("updateStatus",map);
     }

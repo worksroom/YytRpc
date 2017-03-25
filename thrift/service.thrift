@@ -293,8 +293,8 @@ service ProductThriftRpcService {
      */
     string findStoreLocations(1:i32 shopId);
 
-    /** 评论货品 **/
-    i32 commentGoods(1:string comment);
+    i32 rate(1:i32 buyerId, 2:i32 sellerId, 3:string orderId, 4:i32 goodsId, 5:i32 score, 6:string content, 7:string
+                imgs, 8:i32 anonymous);
 
     /** 查询货品评论 **/
     string findProductEvaluateList(1:i32 goodIds,2:i32 seq,3:i32 num);

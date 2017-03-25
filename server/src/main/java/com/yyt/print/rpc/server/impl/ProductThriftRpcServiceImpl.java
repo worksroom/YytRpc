@@ -285,8 +285,9 @@ public class ProductThriftRpcServiceImpl implements ProductThriftRpcService.Ifac
     }
 
     @Override
-    public int commentGoods(String comment) throws TException {
-        return iProductEvaluateService.commentGoods(JSON.parseObject(comment,ProductEvaluateRecord.class));
+    public int rate(int buyerId, int sellerId, String orderId, int goodsId, int score, String content, String imgs,
+                    int anonymous) throws TException {
+        return iProductEvaluateService.rate(buyerId, sellerId, orderId, goodsId, score, content, imgs, anonymous);
     }
 
     @Override

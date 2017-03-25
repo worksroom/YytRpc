@@ -3,29 +3,43 @@
 <mapper namespace="ProductEvaluate">
     <resultMap type="ProductEvaluate" id="ProductEvaluateMap">
         <result property="id" column="id"/>
-        <result property="productId" column="product_id"/>
-        <result property="totalNum" column="total_num"/>
-        <result property="rate" column="rate"/>
-        <result property="updateTime" column="update_time"/>
         <result property="goodsId" column="goods_id"/>
+        <result property="totalNum" column="total_num"/>
+        <result property="totalStar" column="total_star"/>
+        <result property="rate" column="rate"/>
         <result property="productSpec" column="product_spec"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createTime" column="create_time"/>
     </resultMap>
+
     <insert id="insert" parameterType="ProductEvaluate">
         insert into product_evaluate (
-        product_id, total_num, rate, update_time, goods_id, product_spec)
-        VALUES
-        ( #{productId}, #{totalNum}, #{rate}, #{updateTime}, #{goodsId}, #{productSpec})
+          goods_id, total_num, total_star, rate, product_spec, update_time, create_time
+        ) VALUES(
+          #{goodsId}, #{totalNum}, #{totalStar}, #{rate}, #{productSpec}, #{updateTime}, #{createTime}
+        )
         <selectKey resultType="int" keyProperty="id">
             select LAST_INSERT_ID() AS id
         </selectKey>
     </insert>
-    <update id="update" parameterType="ProductEvaluate">
-        update product_evaluate set product_id = #{productId},total_num = #{totalNum},rate = #{rate},update_time = #{updateTime},goods_id = #{goodsId},product_spec = #{productSpec} where id=#{id}
+
+    <update id="updateByGoodsId" parameterType="ProductEvaluate">
+        update product_evaluate set total_num = total_num+1, total_star= total_star+#{totalStar}, rate = #{rate},
+        update_time = #{updateTime},
+        product_spec = #{productSpec} where goods_id = #{goodsId}
     </update>
+
     <select id="select" parameterType="int" resultMap="ProductEvaluateMap">
-        select id ,  product_id, total_num, rate, update_time, goods_id, product_spec from product_evaluate where id=#{id}
+        select id, total_num, total_star, rate, update_time, goods_id, product_spec, create_time from product_evaluate where
+        id=#{id}
     </select>
+
     <delete id="delete" parameterType="int">
         delete from product_evaluate where id=#{id}
     </delete>
+
+    <select id="getProductEvaluateByGoodsId" parameterType="int" resultMap="ProductEvaluateMap">
+        select id, total_num, total_star, rate, update_time, goods_id, product_spec, create_time from product_evaluate where
+        goods_id=#{goodsId}
+    </select>
 </mapper>

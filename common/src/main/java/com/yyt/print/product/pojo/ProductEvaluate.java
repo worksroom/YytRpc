@@ -7,67 +7,77 @@ import java.util.Date;
  * 商品评价汇总
  */
 public class ProductEvaluate {
-    private int id;
-    private int productId;
-    private int totalNum;
-    private Double rate;
-    private Date updateTime;
-    private int goodsId;
-    private String productSpec;
 
-    public int getId() {
-        return id;
-    }
+	private int id;//主键,自增
+	private int goodsId;//货品ID
+	private int totalNum;//评价总数
+	private int totalStar;//评价总星级
+	private Double rate;//好评率
+	private String productSpec;//描述
+	private Date updateTime;//修改时间
+	private Date createTime;//创建时间
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public int getProductId() {
-        return productId;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
+	public int getGoodsId() {
+		return goodsId;
+	}
 
-    public int getTotalNum() {
-        return totalNum;
-    }
+	public void setGoodsId(int goodsId) {
+		this.goodsId = goodsId;
+	}
 
-    public void setTotalNum(int totalNum) {
-        this.totalNum = totalNum;
-    }
+	public int getTotalNum() {
+		return totalNum;
+	}
 
-    public Double getRate() {
-        return rate;
-    }
+	public void setTotalNum(int totalNum) {
+		this.totalNum = totalNum;
+	}
 
-    public void setRate(Double rate) {
-        this.rate = rate;
-    }
+	public int getTotalStar() {
+		return totalStar;
+	}
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
+	public void setTotalStar(int totalStar) {
+		this.totalStar = totalStar;
+	}
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
+	public Double getRate() {
+		return rate;
+	}
 
-    public int getGoodsId() {
-        return goodsId;
-    }
+	public void setRate(Double rate) {
+		this.rate = rate;
+	}
 
-    public void setGoodsId(int goodsId) {
-        this.goodsId = goodsId;
-    }
+	public String getProductSpec() {
+		return productSpec;
+	}
 
-    public String getProductSpec() {
-        return productSpec;
-    }
+	public void setProductSpec(String productSpec) {
+		this.productSpec = productSpec;
+	}
 
-    public void setProductSpec(String productSpec) {
-        this.productSpec = productSpec;
-    }
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 }

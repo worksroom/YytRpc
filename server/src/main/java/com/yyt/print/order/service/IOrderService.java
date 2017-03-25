@@ -73,19 +73,6 @@ public interface IOrderService {
      */
     public String payOrder(int buyUserId, String orderId);
 
-    /**
-     * 评价接口
-     * @param buyUserId 买家ID
-     * @param orderId 订单ID
-     * @param goodsId 商品ID
-     * @param score 评价分数
-     * @param content 评价内容
-     * @param imgs 晒图(支持多张图)
-     * @return
-     */
-    public int rate(int buyUserId, String orderId, String goodsId, int score, String content, String imgs);
-
-
 
     /**
      * 查询物流信息

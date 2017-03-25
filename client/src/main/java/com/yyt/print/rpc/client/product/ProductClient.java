@@ -850,13 +850,14 @@ public class ProductClient implements ProductThriftRpcService.Iface {
         }
     }
 
-
     @Override
-    public int commentGoods(String comment) throws TException {
+    public int rate(int buyerId, int sellerId, String orderId, int goodsId, int score, String content, String imgs,
+                    int anonymous) throws TException {
         RPCMultiplexConnection client = null;
         try {
             client = getConnection();
-            return client.getClient(ProductThriftRpcService.Client.class).commentGoods(comment);
+            return client.getClient(ProductThriftRpcService.Client.class).rate(buyerId, sellerId, orderId, goodsId,
+                    score, content, imgs, anonymous);
         } catch(TException e){
             client.setIdle(false);
             throw e;
@@ -870,6 +871,7 @@ public class ProductClient implements ProductThriftRpcService.Iface {
             }
         }
     }
+
 
     @Override
     public String findProductEvaluateList(int goodIds, int seq, int num) throws TException {

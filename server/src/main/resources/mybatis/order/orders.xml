@@ -31,7 +31,7 @@
     </update>
 
     <update id="updateStatus" parameterType="map">
-        update orders set pay_type=#{payType},status=#{status} where id=#{id}
+        update orders set status=#{status} where id=#{id}
     </update>
 
     <update id="updateExpress" parameterType="int">

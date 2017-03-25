@@ -455,9 +455,10 @@ public class ProductRpcServiceImpl implements IProductRpcService {
     }
 
     @Override
-    public int commentGoods(ProductEvaluateRecord pvr) {
+    public int rate(int buyerId, int sellerId, String orderId, int goodsId, int score, String content, String imgs,
+                    int anonymous) {
         try {
-            return getClient().commentGoods(JSON.toJSONString(pvr));
+            return getClient().rate(buyerId, sellerId, orderId, goodsId, score, content, imgs, anonymous);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
